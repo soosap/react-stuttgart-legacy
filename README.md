@@ -22,8 +22,10 @@ yarn remove babel-cli
 
 * browsersync+webpack?
 * editorconfig
+* eslint
 * express
-* now/localtunnel/sharing work-in-progress?
+* flow?
+* localtunnel
 * npm_scripts
 * react
 * semantic?
