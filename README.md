@@ -20,9 +20,11 @@ yarn remove babel-cli
 
 # Technology stack
 
-* browsersync?
+* browsersync+webpack?
 * editorconfig
 * express
+* now/localtunnel/sharing work-in-progress?
+* npm_scripts
 * react
 * semantic?
 * yarn
