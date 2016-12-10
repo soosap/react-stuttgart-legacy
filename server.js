@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import express from 'express';
 import path from 'path';
 import open from 'open';
