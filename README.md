@@ -15,3 +15,16 @@ yarn remove babel-cli
 ```
 
 ## vault
+
+
+
+# Technology stack
+
+* browsersync?
+* editorconfig
+* express
+* react
+* semantic?
+* yarn
+* vault
+* webpack

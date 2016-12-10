@@ -9,8 +9,11 @@
   },
   "author": "Prasath Soosaithasan <prasath.soosaithasan@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.14.0"
+  },
   "devDependencies": {
-    "babel-cli": "^6.18.0"
+    "babel-cli": "^6.18.0",
+    "open": "^0.0.5"
   }
 }
