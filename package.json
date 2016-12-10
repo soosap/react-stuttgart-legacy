@@ -1,0 +1,16 @@
+{
+  "name": "react-starter-kit",
+  "version": "1.0.0",
+  "description": "Starter kit to be up and running w/ a React project in no time",
+  "main": "server.js",
+  "repository": {
+    "url": "https://github.com/saronia/react-starter-kit.git",
+    "type": "git"
+  },
+  "author": "Prasath Soosaithasan <prasath.soosaithasan@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.18.0"
+  }
+}
