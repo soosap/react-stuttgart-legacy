@@ -1,4 +1,5 @@
 import path from 'path';
+import BrowsersyncPlugin from 'browser-sync-webpack-plugin';
 
 export default {
   devtool: 'inline-source-map',
@@ -11,7 +12,13 @@ export default {
     publicPath: '/',
     filename: 'bundle.js',
   },
-  plugins: [],
+  plugins: [
+    new BrowsersyncPlugin({
+      host: 'localhost',
+      port: 8080,
+      server: { baseDir: [path.resolve(__dirname, 'src')] }
+    })
+  ],
   module: {
     rules: [
       {
