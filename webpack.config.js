@@ -12,6 +12,8 @@ export default function ({ development }) {
   return {
     devtool: development ? 'inline-source-map' : 'source-map',
     entry: development ? [
+      // ?reload=true parameter tells webpack to reload the page of HMR fails for some reason
+      'webpack-hot-middleware/client?reload=true',
       path.resolve(__dirname, 'src/index'),
     ] : {
       vendor: path.resolve(__dirname, 'src/vendor'),
@@ -27,7 +29,7 @@ export default function ({ development }) {
       publicPath: '/',
       filename: '[name].[chunkhash].js',
     },
-    plugins: development ? [
+    plugins: development ? [ // ====================================================================
       new BrowsersyncPlugin({
         host: 'localhost',
         port: 9090,
@@ -39,7 +41,10 @@ export default function ({ development }) {
         inject: true,
         NODE_ENV: process.env.NODE_ENV,
       }),
-    ] : [
+      new webpack.HotModuleReplacementPlugin(),
+      // Keep errors from breaking our HMR experience
+      new webpack.NoErrorsPlugin(),
+    ] : [ // =======================================================================================
       // Hash bundle-files using MD5 so that their names change when the content changes
       new WebpackMd5HashPlugin(),
       // Generate an external css file with a hash in the filename
@@ -71,7 +76,7 @@ export default function ({ development }) {
         FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
         SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
       }),
-    ],
+    ], // ==========================================================================================
     module: {
       rules: [
         {

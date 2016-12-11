@@ -23,6 +23,7 @@ yarn remove babel-cli
 | Technology | Purpose | State | Comment |
 |---|---|---|---|
 | browsersync | Cross-device ui testing | yes |  |
+| **docker** | Continuous deployment | no |  |
 | editorconfig | A team's agreed upon editor configuration | yes |   |
 | **enzyme** | Javascript testing utilities for React | no | wip |
 | eslint | Maintain code quality and scalability | yes | preset: airbnb |
@@ -34,6 +35,6 @@ yarn remove babel-cli
 | **redux** | Handling application state | no | wip |
 | **semantic** | Component framework to design beautiful ui | no | wip |
 | **vault** | Secret management | no | wip |
-| webpack | Bundle dependencies into modules | yes | hmr is still wip |
+| webpack | Bundle dependencies into modules | yes | |
 | yarn | Speed up package installation/ensure package consistency across installations | yes |   |
 | **yeoman** | Maintain starter-kit over time | no | wip |

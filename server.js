@@ -4,7 +4,7 @@ import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
 import webpack from 'webpack';
-import config from './webpack.config';
+import webpackConfig from './webpack.config';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -13,11 +13,15 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
-  const compiler = webpack(config({ development: true }));
+  const config = webpackConfig({ development: true });
+  const compiler = webpack(config);
 
   app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true,
+    publicPath: config.output.publicPath,
   }));
+
+  app.use(require('webpack-hot-middleware')(compiler));
 
   app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'src/index.html'));
@@ -36,6 +40,6 @@ app.listen(PORT, (err) => {
   if (err) {
     console.log('err: ', err);
   } else {
-    console.info('===> Listening on port %s.', PORT);
+    console.info(`===> Listening on http://localhost:${PORT}.`);
   }
 });
