@@ -5,6 +5,8 @@ import webpack from 'webpack';
 
 import BrowsersyncPlugin from 'browser-sync-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import WebpackMd5HashPlugin from 'webpack-md5-hash';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export default function ({ development }) {
   return {
@@ -23,7 +25,7 @@ export default function ({ development }) {
     } : {
       path: path.resolve(__dirname, 'dist'),
       publicPath: '/',
-      filename: '[name].js',
+      filename: '[name].[chunkhash].js',
     },
     plugins: development ? [
       new BrowsersyncPlugin({
@@ -37,6 +39,15 @@ export default function ({ development }) {
         inject: true,
       }),
     ] : [
+      // Hash bundle-files using MD5 so that their names change when the content changes
+      new WebpackMd5HashPlugin(),
+      // Generate an external css file with a hash in the filename
+      new ExtractTextPlugin('[name].[contenthash].css'),
+      // Use CommonChunkPlugin to create a separate bundle of vendor libraries
+      // so that they are cached separately improving performance
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+      }),
       // Minify JS
       new webpack.optimize.UglifyJsPlugin(),
       // Generate HTML file that contains references to generated bundles
@@ -56,11 +67,6 @@ export default function ({ development }) {
         },
         inject: true,
       }),
-      // Use CommonChunkPlugin to create a separate bundle of vendor libraries
-      // so that they are cached separately improving performance
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-      }),
     ],
     module: {
       rules: [
@@ -69,9 +75,12 @@ export default function ({ development }) {
           exclude: /node_modules/,
           loader: 'babel-loader',
         },
-        {
+        development ? {
           test: /\.css$/,
           use: ['style-loader', 'css-loader'],
+        } : {
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract('css?sourceMap'),
         },
       ],
     },
