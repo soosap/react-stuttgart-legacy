@@ -66,6 +66,8 @@ export default function ({ development }) {
           minifyURLs: true,
         },
         inject: true,
+        FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
+        SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
       }),
     ],
     module: {

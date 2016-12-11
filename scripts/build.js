@@ -1,8 +1,12 @@
 /* eslint-disable no-console, import/no-extraneous-dependencies */
 
 import chalk from 'chalk';
+import dotenv from 'dotenv';
 import webpack from 'webpack';
 import config from '../webpack.config';
+
+// Load environment variables from .env file
+dotenv.config();
 
 console.log(chalk.blue('Generating minified bundle for production. This will take a moment...'));
 

@@ -1,8 +1,39 @@
+<!--
+|--------------------------------------------------------------------------
+| Environment-based index.html template
+|--------------------------------------------------------------------------
+|
+| It uses ejs and HtmlWebpackPlugin to generate a different index.html
+| for each environment. HtmlWebpackPlugin will dynamically add references
+| to the scripts and styles that it bundles to this file.
+|
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Hello React</title>
+  <title>Hello React</title>
+  <meta charset="UTF-8">
+  <!-- BEGIN OPENGRAPH -->
+  <% if (htmlWebpackPlugin.options.FACEBOOK_APP_ID) { %>
+  <meta property="fb:app_id" content="<%= htmlWebpackPlugin.options.FACEBOOK_APP_ID %>" />
+  <% } %>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Prasath Soosaithasan | react-starter-kit" />
+  <meta property="og:url" content="https://soosap.me/" />
+  <meta property="og:image" content="https://soosap.me/logo.png" />
+  <meta property="og:description" content="Working w/ React, Redux, GraphQL, Relay, Docker, node.js, mongodb." />
+  <!-- END OPENGRAPH -->
+
+  <% if (htmlWebpackPlugin.options.SEGMENT_WRITE_KEY) { %>
+  <!-- BEGIN SEGMENT -->
+  <script type="text/javascript">
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+      analytics.load('<%= htmlWebpackPlugin.options.SEGMENT_WRITE_KEY %>');
+      // analytics.page() => triggered in <App />'s componentDidMount instead.
+    }}();
+  </script>
+  <!-- END SEGMENT -->
+  <% } %>
 </head>
 <body>
   <h1>Hello React</h1>
