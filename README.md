@@ -25,6 +25,9 @@ yarn remove babel-cli
 * eslint
 * express
 * flow?
+* jest
+* enzyme
+* jsdom?
 * localtunnel
 * npm_scripts
 * react
