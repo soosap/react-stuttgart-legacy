@@ -1,6 +1,3 @@
-console.log('Hello from Webpack');
+/* eslint-disable no-console */
 
-debugger;
-
-console.log('something else is printed to the console');
-
+console.log('hello');
