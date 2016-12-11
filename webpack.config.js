@@ -9,9 +9,12 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 export default function ({ development }) {
   return {
     devtool: development ? 'inline-source-map' : 'source-map',
-    entry: [
+    entry: development ? [
       path.resolve(__dirname, 'src/index'),
-    ],
+    ] : {
+      vendor: path.resolve(__dirname, 'src/vendor'),
+      main: path.resolve(__dirname, 'src/index'),
+    },
     target: 'web',
     output: development ? {
       path: path.resolve(__dirname, 'src'),
@@ -20,7 +23,7 @@ export default function ({ development }) {
     } : {
       path: path.resolve(__dirname, 'dist'),
       publicPath: '/',
-      filename: 'bundle.js',
+      filename: '[name].js',
     },
     plugins: development ? [
       new BrowsersyncPlugin({
@@ -52,6 +55,11 @@ export default function ({ development }) {
           minifyURLs: true,
         },
         inject: true,
+      }),
+      // Use CommonChunkPlugin to create a separate bundle of vendor libraries
+      // so that they are cached separately improving performance
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
       }),
     ],
     module: {
