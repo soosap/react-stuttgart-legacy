@@ -37,6 +37,7 @@ export default function ({ development }) {
       new HtmlWebpackPlugin({
         template: 'src/index.ejs',
         inject: true,
+        NODE_ENV: process.env.NODE_ENV,
       }),
     ] : [
       // Hash bundle-files using MD5 so that their names change when the content changes
@@ -66,6 +67,7 @@ export default function ({ development }) {
           minifyURLs: true,
         },
         inject: true,
+        NODE_ENV: process.env.NODE_ENV,
         FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
         SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
       }),
