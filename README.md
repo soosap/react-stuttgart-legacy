@@ -1,24 +1,13 @@
 # react-starter-kit
 
-## yarn
+## Project setup
 
-### Add a package
+1. Clone the repository via `git clone https://github.com/saronia/react-starter-kit.git react-starter-kit && cd $_`
+2. Install package.json deps using `yarn` or `npm install`
+3. Compile project-specific semantic-ui css and js via `yarn run semantic:build` 
+4. Create a `.env` environment variables file following the pattern specified in `.env.example`
 
-```sh
-yarn add react
-yarn add babel-cli --dev
-```
-### Remove a package
-
-```sh
-yarn remove babel-cli
-```
-
-## vault
-
-
-
-# Technology stack
+## Technology stack
 
 | Technology | Purpose | State | Comment |
 |---|---|---|---|

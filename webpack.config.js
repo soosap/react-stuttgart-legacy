@@ -52,6 +52,8 @@ export default function ({ development }) {
       new webpack.NoErrorsPlugin(),
       // Print more readable module names in the browser console on HMR updates
       new webpack.NamedModulesPlugin(),
+      // Pass environment variables to webpack's build process
+      new webpack.EnvironmentPlugin(['NODE_ENV']),
     ] : [ // =======================================================================================
       // Hash bundle-files using MD5 so that their names change when the content changes
       new WebpackMd5HashPlugin(),
@@ -84,6 +86,8 @@ export default function ({ development }) {
         FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
         SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
       }),
+      // Pass environment variables to webpack's build process
+      new webpack.EnvironmentPlugin(['NODE_ENV']),
     ], // ==========================================================================================
     module: {
       rules: [
@@ -98,6 +102,38 @@ export default function ({ development }) {
         } : {
           test: /\.css$/,
           loader: ExtractTextPlugin.extract('css?sourceMap'),
+        },
+        {
+          test: /\.json$/,
+          loader: 'json-loader',
+        },
+        {
+          test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+          loader: 'file-loader',
+        },
+        {
+          test: /\.(woff|woff2)$/,
+          loader: 'url-loader?prefix=font/&limit=5000',
+        },
+        {
+          test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+          loader: 'url-loader?limit=10000&mimetype=application/octet-stream',
+        },
+        {
+          test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+          loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
+        },
+        {
+          test: /\.gif/,
+          loader: 'url-loader?limit=10000&mimetype=image/gif',
+        },
+        {
+          test: /\.jpg/,
+          loader: 'url-loader?limit=10000&mimetype=image/jpg',
+        },
+        {
+          test: /\.png/,
+          loader: 'url-loader?limit=10000&mimetype=image/png',
         },
       ],
     },

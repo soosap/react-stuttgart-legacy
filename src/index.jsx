@@ -13,7 +13,11 @@ import Root from './components/Root';
  | importing index.scss at the very bottom of the list.
  |
  */
- // semantic-ui
+if (process.env.NODE_ENV === 'development') {
+  require('./../semantic/dist/semantic.css');
+} else {
+  require('./../semantic/dist/semantic.min.css');
+}
 
 /*
  |--------------------------------------------------------------------------
