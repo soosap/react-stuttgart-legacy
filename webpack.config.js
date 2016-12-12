@@ -10,6 +10,9 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export default function ({ development }) {
   return {
+    resolve: {
+      extensions: ['.js', '.jsx', '.json'],
+    },
     devtool: development ? 'inline-source-map' : 'source-map',
     entry: development ? [
       // ?reload=true parameter tells webpack to reload the page of HMR fails for some reason
@@ -44,6 +47,8 @@ export default function ({ development }) {
       new webpack.HotModuleReplacementPlugin(),
       // Keep errors from breaking our HMR experience
       new webpack.NoErrorsPlugin(),
+      // Print more readable module names in the browser console on HMR updates
+      new webpack.NamedModulesPlugin(),
     ] : [ // =======================================================================================
       // Hash bundle-files using MD5 so that their names change when the content changes
       new WebpackMd5HashPlugin(),
@@ -80,7 +85,7 @@ export default function ({ development }) {
     module: {
       rules: [
         {
-          test: /\.js?$/,
+          test: /\.jsx?$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
         },

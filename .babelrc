@@ -1,3 +1,13 @@
 {
-  "presets": ["latest"]
+  "presets": [
+    ["latest", { "modules": false }],
+    // Webpack understands the native import syntax and uses it for tree shaking
+
+    "react",
+    // Transpile React components to JavaScript
+
+    "stage-0"
+    // Specifies what level of language features to activate.
+    // stage-2 is "draft", stage-4 is "finished", stage-0 is "strawman".
+  ]
 }
