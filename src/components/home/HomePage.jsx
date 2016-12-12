@@ -5,7 +5,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <h1>HomePage</h1>
+        <h1>SARONIA's react-starter-kit rocks!</h1>
         <Link to="about">Learn more</Link>
       </div>
     );

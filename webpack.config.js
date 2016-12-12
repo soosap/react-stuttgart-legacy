@@ -3,7 +3,7 @@
 import path from 'path';
 import webpack from 'webpack';
 
-import BrowsersyncPlugin from 'browser-sync-webpack-plugin';
+import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WebpackMd5HashPlugin from 'webpack-md5-hash';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
@@ -15,8 +15,8 @@ export default function ({ development }) {
     },
     devtool: development ? 'inline-source-map' : 'source-map',
     entry: development ? [
-      // ?reload=true parameter tells webpack to reload the page of HMR fails for some reason
-      'webpack-hot-middleware/client?reload=true',
+      // ?reload=false parameter tells webpack to avoid page reloads
+      'webpack-hot-middleware/client?reload=false',
       path.resolve(__dirname, 'src/index'),
     ] : {
       vendor: path.resolve(__dirname, 'src/vendor'),
@@ -33,10 +33,13 @@ export default function ({ development }) {
       filename: '[name].[chunkhash].js',
     },
     plugins: development ? [ // ====================================================================
-      new BrowsersyncPlugin({
+      new BrowserSyncPlugin({
         host: 'localhost',
         port: 9090,
         proxy: 'http://localhost:8080/',
+      }, { // plugin options
+        // Prevent BrowserSync from reloading the page
+        reload: false
       }),
       // Generate HTML file that contains references to generated bundles
       new HtmlWebpackPlugin({

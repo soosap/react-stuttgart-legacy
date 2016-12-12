@@ -1,8 +1,66 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, browserHistory } from 'react-router';
 
-import routes from './routes';
+import Root from './components/Root';
 
-const rootEl = document.getElementById('app');
-ReactDOM.render(<Router history={browserHistory} routes={routes} />, rootEl);
+/*
+ |--------------------------------------------------------------------------
+ | Global CSS imports to be processed by Webpack
+ |--------------------------------------------------------------------------
+ |
+ | We import all top-level css libraries that will be accessible by the
+ | entire app. Customization and Corporate Identity are realized by
+ | importing index.scss at the very bottom of the list.
+ |
+ */
+ // semantic-ui
+
+/*
+ |--------------------------------------------------------------------------
+ | Hot Module Replacement with Webpack
+ |--------------------------------------------------------------------------
+ |
+ | http://webpack.github.io/docs/hot-module-replacement-with-webpack.html
+ | https://medium.com/@dan_abramov/hot-reloading-in-react-1140438583bf
+ | http://andrewhfarmer.com/webpack-hmr-tutorial/
+ |
+ */
+const rootEl = document.getElementById('root');
+let render = () => {
+  const Root = require('./components/Root.jsx').default;
+  ReactDOM.render(
+    <Root />,
+    rootEl
+  );
+};
+
+if (module.hot) {
+  const renderApp = render;
+  const renderErr = (err) => {
+    const Redbox = require('redbox-react');
+    ReactDOM.render(
+      <Redbox error={err} />,
+      rootEl
+    );
+  };
+
+  render = () => {
+    try {
+      renderApp();
+    } catch (err) {
+      renderErr(err);
+    }
+  };
+
+  module.hot.accept('./components/Root.jsx', render);
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | render
+ |--------------------------------------------------------------------------
+ |
+ | Go!
+ |
+ */
+render();
