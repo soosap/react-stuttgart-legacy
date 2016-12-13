@@ -12,6 +12,9 @@ export default function ({ development }) {
   return {
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
+      alias: {
+        react$: path.join(__dirname, 'node_modules', 'react', 'dist', development ? 'react.js' : 'react.min.js'),
+      },
     },
     devtool: development ? 'inline-source-map' : 'source-map',
     entry: development ? [
@@ -39,7 +42,7 @@ export default function ({ development }) {
         proxy: 'http://localhost:8080/',
       }, { // plugin options
         // Prevent BrowserSync from reloading the page
-        reload: false
+        reload: false,
       }),
       // Generate HTML file that contains references to generated bundles
       new HtmlWebpackPlugin({
@@ -98,10 +101,21 @@ export default function ({ development }) {
         },
         development ? {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
+          use: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'],
         } : {
           test: /\.css$/,
-          loader: ExtractTextPlugin.extract('css?sourceMap'),
+          loader: ExtractTextPlugin.extract('css-loader?sourceMap?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'),
+        },
+        development ? {
+          test: /\.scss$/,
+          use: [
+            'style-loader',
+            'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+            'sass-loader',
+          ],
+        } : {
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract('css-loader?sourceMap?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!sass-loader?sourceMap'),
         },
         {
           test: /\.json$/,
