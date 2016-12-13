@@ -9,10 +9,13 @@ import WebpackMd5HashPlugin from 'webpack-md5-hash';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export default function ({ development }) {
+  const thirdPartyCSSRegex = /(semantic.css|semantic.min.css)/;
+
   return {
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
       alias: {
+        // common: path.join(__dirname, 'src', 'components', 'common'), // wip directory structure best practice...??
         react$: path.join(__dirname, 'node_modules', 'react', 'dist', development ? 'react.js' : 'react.min.js'),
       },
     },
@@ -101,10 +104,16 @@ export default function ({ development }) {
         },
         development ? {
           test: /\.css$/,
+          exclude: thirdPartyCSSRegex,
           use: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'],
         } : {
           test: /\.css$/,
+          exclude: thirdPartyCSSRegex,
           loader: ExtractTextPlugin.extract('css-loader?sourceMap?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'),
+        },
+        { // Don't put third party css dependencies through CSSModules transformer
+          test: thirdPartyCSSRegex,
+          use: ['style-loader', 'css-loader'],
         },
         development ? {
           test: /\.scss$/,
