@@ -10,16 +10,17 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export default function ({ development }) {
   const thirdPartyCSSRegex = new RegExp([
-    '/(',
+    '(',
     'semantic.css', '|', 'semantic.min.css',
-    ')/',
+    ')',
   ].join(''));
+
+  console.log('thirdPartyCSSRegex: ', thirdPartyCSSRegex);
 
   return {
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
       alias: {
-        components: path.join(__dirname, 'src', 'components'),
         react$: path.join(__dirname, 'node_modules', 'react', 'dist', development ? 'react.js' : 'react.min.js'),
       },
     },
