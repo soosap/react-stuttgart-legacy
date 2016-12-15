@@ -9,13 +9,17 @@ import WebpackMd5HashPlugin from 'webpack-md5-hash';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export default function ({ development }) {
-  const thirdPartyCSSRegex = /(semantic.css|semantic.min.css)/;
+  const thirdPartyCSSRegex = new RegExp([
+    '/(',
+    'semantic.css', '|', 'semantic.min.css',
+    ')/',
+  ].join(''));
 
   return {
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
       alias: {
-        // common: path.join(__dirname, 'src', 'components', 'common'), // wip directory structure best practice...??
+        components: path.join(__dirname, 'src', 'components'),
         react$: path.join(__dirname, 'node_modules', 'react', 'dist', development ? 'react.js' : 'react.min.js'),
       },
     },

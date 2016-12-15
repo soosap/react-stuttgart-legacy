@@ -7,10 +7,38 @@
 3. Compile project-specific semantic-ui css and js via `yarn run semantic:build` 
 4. Create a `.env` environment variables file following the pattern specified in `.env.example`
 
+## npm scripts
+
+| Script | Description |
+|--------|-------------|
+| **start** | Start express server |
+| **localtunnel** | Make localhost:8080 publicly available through a custom domain as long as the localtunnel exists |
+
+
+## Yeoman generator
+
+Make sure you have **yeoman** as well as the **saronia-react** generator installed, i.e. 
+* `npm install -g yo`
+* `npm install -g generator-saronia-react`
+
+```sh
+yo saronia-react react-starter-kit
+(x) firebase
+(x) redux
+(x) semantic
+(x) vault
+yo saronia-react --help
+yo saronia-react:sfc --help
+yo saronia-react:sfc Header
+yo saronia-react:class AboutScreen
+yo saronia-react:class AboutScreen --redux
+yo saronia-react:spec AboutScreen
+```
+
 ## Technology stack
 
 | Technology | Purpose | State | Comment |
-|---|---|---|---|
+|------------|---------|-------|---------|
 | browsersync | Cross-device ui testing | yes |  |
 | CSSModules | Locally scoped css class names | yes | |
 | **docker** | Continuous deployment | no |  |

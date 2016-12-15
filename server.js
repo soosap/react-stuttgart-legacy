@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 
+import chalk from 'chalk';
 import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
@@ -40,6 +41,6 @@ app.listen(PORT, (err) => {
   if (err) {
     console.log('err: ', err);
   } else {
-    console.info(`===> Listening on http://localhost:${PORT}.`);
+    console.log(chalk.green(`===> tax-it-easy <=== | Listening on http://localhost:${PORT}.`));
   }
 });
