@@ -8,9 +8,11 @@ import styles from './Home.scss';
 class Home extends React.Component {
   render() {
     return (
-      <div styleName="root" className="ui segment">
-        <h1>SARONIA's react-starter-kit rocks!</h1>
-        <Link to="about">Learn more</Link>
+      <div styleName="root" className="ui basic center aligned segment">
+        <h1 className="ui header">react-starter-kit rocks!</h1>
+        <h3 className="ui header">
+          <Link to="about">Learn more</Link>
+        </h3>
       </div>
     );
   }
