@@ -9,9 +9,7 @@ class Auth extends React.Component {
   render() {
     return (
       <div styleName="root" className="ui basic segment">
-        {this.props.children && React.cloneElement(this.props.children, {
-          firebase: this.props.firebase
-        })}
+        {this.props.children}
       </div>
     );
   }

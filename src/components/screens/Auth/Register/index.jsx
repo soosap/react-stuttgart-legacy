@@ -13,12 +13,7 @@ class Register extends React.Component {
   createUser = (e) => {
     e.preventDefault();
 
-    this.props.firebase.createUser({
-      email: this.state.email,
-      password: this.state.password,
-    }, (err) => {
-      console.log('err: ', err);
-    });
+    // Call action
   }
 
   render() {

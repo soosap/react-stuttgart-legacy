@@ -1102,10 +1102,6 @@ base64id@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/base64id/-/base64id-0.1.0.tgz#02ce0fdeee0cef4f40080e1e73e834f0b1bfce3f"
 
-base64url@2.0.0, base64url@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/base64url/-/base64url-2.0.0.tgz#eac16e03ea1438eff9423d69baa36262ed1f70bb"
-
 batch@0.5.3:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/batch/-/batch-0.5.3.tgz#3f3414f380321743bfc1042f9a83ff1d5824d464"
@@ -1328,10 +1324,6 @@ bser@^1.0.2:
   resolved "https://registry.yarnpkg.com/bser/-/bser-1.0.2.tgz#381116970b2a6deea5646dd15dd7278444b56169"
   dependencies:
     node-int64 "^0.4.0"
-
-buffer-equal-constant-time@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/buffer-equal-constant-time/-/buffer-equal-constant-time-1.0.1.tgz#f8e71132f7ffe6e01a5c9697a4c6f3e48d5cc819"
 
 buffer-shims@^1.0.0:
   version "1.0.0"
@@ -2211,10 +2203,6 @@ dom-serializer@0, dom-serializer@~0.1.0:
     domelementtype "~1.1.1"
     entities "~1.1.1"
 
-dom-storage@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/dom-storage/-/dom-storage-2.0.2.tgz#ed17cbf68abd10e0aef8182713e297c5e4b500b0"
-
 domain-browser@^1.1.1:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.1.7.tgz#867aa4b093faa05f1de08c06f4d7b21fdf8698bc"
@@ -2292,13 +2280,6 @@ ecc-jsbn@~0.1.1:
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
   dependencies:
     jsbn "~0.1.0"
-
-ecdsa-sig-formatter@1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/ecdsa-sig-formatter/-/ecdsa-sig-formatter-1.0.9.tgz#4bc926274ec3b5abb5016e7e1d60921ac262b2a1"
-  dependencies:
-    base64url "^2.0.0"
-    safe-buffer "^5.0.1"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -2822,12 +2803,6 @@ fastparse@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.1.tgz#d1e2643b38a94d7583b479060e6c4affc94071f8"
 
-faye-websocket@0.9.3:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/faye-websocket/-/faye-websocket-0.9.3.tgz#482a505b0df0ae626b969866d3bd740cdb962e83"
-  dependencies:
-    websocket-driver ">=0.5.1"
-
 fb-watchman@^1.8.0, fb-watchman@^1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/fb-watchman/-/fb-watchman-1.9.0.tgz#6f268f1f347a6b3c875d1e89da7e1ed79adfc0ec"
@@ -2942,16 +2917,6 @@ fined@^1.0.1:
     lodash.isstring "^4.0.1"
     lodash.pick "^4.2.1"
     parse-filepath "^1.0.1"
-
-firebase@^3.5.2:
-  version "3.6.4"
-  resolved "https://registry.yarnpkg.com/firebase/-/firebase-3.6.4.tgz#5c5b91d20f439b6f0a7aebe1b27c2db1a463e308"
-  dependencies:
-    dom-storage "2.0.2"
-    faye-websocket "0.9.3"
-    jsonwebtoken "7.1.9"
-    rsvp "3.2.1"
-    xmlhttprequest "1.8.0"
 
 first-chunk-stream@^1.0.0:
   version "1.0.0"
@@ -4476,7 +4441,7 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-joi@^6.10.1, joi@^6.9.1:
+joi@^6.9.1:
   version "6.10.1"
   resolved "https://registry.yarnpkg.com/joi/-/joi-6.10.1.tgz#4d50c318079122000fe5f16af1ff8e1917b77e06"
   dependencies:
@@ -4589,16 +4554,6 @@ jsonpointer@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-4.0.0.tgz#6661e161d2fc445f19f98430231343722e1fcbd5"
 
-jsonwebtoken@7.1.9:
-  version "7.1.9"
-  resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-7.1.9.tgz#847804e5258bec5a9499a8dc4a5e7a3bae08d58a"
-  dependencies:
-    joi "^6.10.1"
-    jws "^3.1.3"
-    lodash.once "^4.0.0"
-    ms "^0.7.1"
-    xtend "^4.0.1"
-
 jsprim@^1.2.2:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/jsprim/-/jsprim-1.3.1.tgz#2a7256f70412a29ee3670aaca625994c4dcff252"
@@ -4613,23 +4568,6 @@ jsx-ast-utils@^1.0.0, jsx-ast-utils@^1.3.4:
   dependencies:
     acorn-jsx "^3.0.1"
     object-assign "^4.1.0"
-
-jwa@^1.1.4:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/jwa/-/jwa-1.1.5.tgz#a0552ce0220742cd52e153774a32905c30e756e5"
-  dependencies:
-    base64url "2.0.0"
-    buffer-equal-constant-time "1.0.1"
-    ecdsa-sig-formatter "1.0.9"
-    safe-buffer "^5.0.1"
-
-jws@^3.1.3:
-  version "3.1.4"
-  resolved "https://registry.yarnpkg.com/jws/-/jws-3.1.4.tgz#f9e8b9338e8a847277d6444b1464f61880e050a2"
-  dependencies:
-    base64url "^2.0.0"
-    jwa "^1.1.4"
-    safe-buffer "^5.0.1"
 
 keypress@^0.2.1:
   version "0.2.1"
@@ -5013,10 +4951,6 @@ lodash.mergewith@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.0.tgz#150cf0a16791f5903b8891eab154609274bdea55"
 
-lodash.once@^4.0.0:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
-
 lodash.partialright@^4.1.4:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/lodash.partialright/-/lodash.partialright-4.2.1.tgz#0130d80e83363264d40074f329b8a3e7a8a1cc4b"
@@ -5329,7 +5263,7 @@ moment@2.x.x:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
-ms@0.7.1, ms@^0.7.1:
+ms@0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
 
@@ -6349,12 +6283,6 @@ rc@^1.1.2, rc@~1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~1.0.4"
 
-re-base@^2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/re-base/-/re-base-2.5.1.tgz#f49b7e6255dfe931e5af0e43e59bb1b270a6677a"
-  dependencies:
-    firebase "^3.5.2"
-
 react-css-modules@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/react-css-modules/-/react-css-modules-4.1.0.tgz#848e3d5089ec6596feabf6c0daaacc06866c58e7"
@@ -6838,10 +6766,6 @@ ripemd160@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-1.0.1.tgz#93a4bbd4942bc574b69a8fa57c71de10ecca7d6e"
 
-rsvp@3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-3.2.1.tgz#07cb4a5df25add9e826ebc67dcc9fd89db27d84a"
-
 rtlcss@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/rtlcss/-/rtlcss-2.1.0.tgz#150a9f2207859cf7757c12e53e57fee46f02d81f"
@@ -6872,10 +6796,6 @@ rx-lite@^3.1.2:
 rx@4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
-
-safe-buffer@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
 
 sane@~1.4.1:
   version "1.4.1"
@@ -7947,16 +7867,6 @@ webpack@2.1.0-beta.25:
     webpack-sources "^0.1.0"
     yargs "^4.7.1"
 
-websocket-driver@>=0.5.1:
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/websocket-driver/-/websocket-driver-0.6.5.tgz#5cb2556ceb85f4373c6d8238aa691c8454e13a36"
-  dependencies:
-    websocket-extensions ">=0.1.1"
-
-websocket-extensions@>=0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.1.tgz#76899499c184b6ef754377c2dbb0cd6cb55d29e7"
-
 weinre@^2.0.0-pre-I0Z7U9OV:
   version "2.0.0-pre-I0Z7U9OV"
   resolved "https://registry.yarnpkg.com/weinre/-/weinre-2.0.0-pre-I0Z7U9OV.tgz#fef8aa223921f7b40bbbbd4c3ed4302f6fd0a813"
@@ -8084,11 +7994,7 @@ xmlhttprequest-ssl@1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.5.1.tgz#3b7741fea4a86675976e908d296d4445961faa67"
 
-xmlhttprequest@1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/xmlhttprequest/-/xmlhttprequest-1.8.0.tgz#67fe075c5c24fef39f9d65f5f7b7fe75171968fc"
-
-"xtend@>=4.0.0 <4.1.0-0", xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
+"xtend@>=4.0.0 <4.1.0-0", xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
 

@@ -17,18 +17,6 @@ class About extends React.Component {
     technology: { title: '' },
   }
 
-  // componentDidMount = () => {
-  //   this.ref = this.props.firebase.syncState('technologies', {
-  //     context: this,
-  //     state: 'technologies',
-  //     asArray: true,
-  //   });
-  // }
-
-  // componentWillUnmount(){
-  //   this.props.firebase.removeBinding(this.ref);
-  // }
-
   addTechnology = (e) => {
     e.preventDefault();
 

@@ -63,10 +63,9 @@ export default function ({ development }) {
         // Variables required to render index.html
         NODE_ENV: process.env.NODE_ENV,
       }),
-      // Pass environment variables to webpack's build process
+      // Pass ".env" environment variables to webpack's build process
       new webpack.EnvironmentPlugin([
         'NODE_ENV', 'APP_NAME',
-        'FIREBASE_API_KEY', 'FIREBASE_AUTH_DOMAIN', 'FIREBASE_DATABASE_URL', 'FIREBASE_STORAGE_BUCKET', 'FIREBASE_MESSAGING_SENDER_ID',
       ]),
       // Enable Hot Module Replacement in development
       new webpack.HotModuleReplacementPlugin(),
@@ -107,10 +106,9 @@ export default function ({ development }) {
         FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
         SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
       }),
-      // Pass environment variables to webpack's build process
+      // Pass ".env" environment variables to webpack's build process
       new webpack.EnvironmentPlugin([
         'NODE_ENV',
-        'FIREBASE_API_KEY', 'FIREBASE_AUTH_DOMAIN', 'FIREBASE_DATABASE_URL', 'FIREBASE_STORAGE_BUCKET',
       ]),
     ], // ==========================================================================================
     module: {
