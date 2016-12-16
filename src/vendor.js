@@ -19,4 +19,10 @@
 
  /* eslint-disable no-unused-vars */
 
-import axios from 'axios';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactRouter from 'react-router';
+import CSSModules from 'react-css-modules';
+import Recompose from 'recompose';
+import classnames from 'classnames';
+import Rebase from 're-base';

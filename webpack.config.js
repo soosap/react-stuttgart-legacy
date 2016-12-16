@@ -15,14 +15,18 @@ export default function ({ development }) {
     ')',
   ].join(''));
 
-  console.log('thirdPartyCSSRegex: ', thirdPartyCSSRegex);
-
   return {
     resolve: {
-      extensions: ['.js', '.jsx', '.json'],
       alias: {
+        // redux
+        actions: path.join(__dirname, 'src', 'actions'),
+        components: path.join(__dirname, 'src', 'components'),
+        reducers: path.join(__dirname, 'src', 'reducers'),
+        store: path.join(__dirname, 'src', 'store'),
+        images: path.join(__dirname, 'src', 'images'),
         react$: path.join(__dirname, 'node_modules', 'react', 'dist', development ? 'react.js' : 'react.min.js'),
       },
+      extensions: ['.js', '.jsx', '.json'],
     },
     devtool: development ? 'inline-source-map' : 'source-map',
     entry: development ? [
@@ -56,15 +60,20 @@ export default function ({ development }) {
       new HtmlWebpackPlugin({
         template: 'src/index.ejs',
         inject: true,
+        // Variables required to render index.html
         NODE_ENV: process.env.NODE_ENV,
       }),
+      // Pass environment variables to webpack's build process
+      new webpack.EnvironmentPlugin([
+        'NODE_ENV', 'APP_NAME',
+        'FIREBASE_API_KEY', 'FIREBASE_AUTH_DOMAIN', 'FIREBASE_DATABASE_URL', 'FIREBASE_STORAGE_BUCKET', 'FIREBASE_MESSAGING_SENDER_ID',
+      ]),
+      // Enable Hot Module Replacement in development
       new webpack.HotModuleReplacementPlugin(),
       // Keep errors from breaking our HMR experience
       new webpack.NoErrorsPlugin(),
       // Print more readable module names in the browser console on HMR updates
       new webpack.NamedModulesPlugin(),
-      // Pass environment variables to webpack's build process
-      new webpack.EnvironmentPlugin(['NODE_ENV']),
     ] : [ // =======================================================================================
       // Hash bundle-files using MD5 so that their names change when the content changes
       new WebpackMd5HashPlugin(),
@@ -93,12 +102,16 @@ export default function ({ development }) {
           minifyURLs: true,
         },
         inject: true,
+        // Variables needed to render index.html
         NODE_ENV: process.env.NODE_ENV,
         FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
         SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
       }),
       // Pass environment variables to webpack's build process
-      new webpack.EnvironmentPlugin(['NODE_ENV']),
+      new webpack.EnvironmentPlugin([
+        'NODE_ENV',
+        'FIREBASE_API_KEY', 'FIREBASE_AUTH_DOMAIN', 'FIREBASE_DATABASE_URL', 'FIREBASE_STORAGE_BUCKET',
+      ]),
     ], // ==========================================================================================
     module: {
       rules: [

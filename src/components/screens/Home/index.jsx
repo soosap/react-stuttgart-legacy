@@ -11,7 +11,7 @@ class Home extends React.Component {
       <div styleName="root" className="ui basic center aligned segment">
         <h1 className="ui header">react-starter-kit rocks!</h1>
         <h3 className="ui header">
-          <Link to="about">Learn more</Link>
+          <Link to="/about">Learn more</Link>
         </h3>
       </div>
     );
