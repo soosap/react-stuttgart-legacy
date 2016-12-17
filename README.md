@@ -23,7 +23,6 @@ Make sure you have **yeoman** as well as the **saronia-react** generator install
 
 ```sh
 yo saronia-react react-starter-kit
-(x) firebase
 (x) redux
 (x) semantic
 (x) vault

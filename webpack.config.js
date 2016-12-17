@@ -9,11 +9,39 @@ import WebpackMd5HashPlugin from 'webpack-md5-hash';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export default function ({ development }) {
+  /*
+   |--------------------------------------------------------------------------
+   | Application-level configuration
+   |--------------------------------------------------------------------------
+   |
+   | All the vars defined prior to the return statement are directly
+   | related to the application at hand. It's meant to be the only
+   | section that needs to be maintained by the application author.
+   |
+   */
   const thirdPartyCSSRegex = new RegExp([
     '(',
     'semantic.css', '|', 'semantic.min.css',
     ')',
   ].join(''));
+
+  // Webpack => HTML | Variables needed to render index.html
+  // used by HtmlWebpackPlugin
+  const buildTimeVarsHtml = development ? {
+    NODE_ENV: process.env.NODE_ENV,
+  } : {
+    NODE_ENV: process.env.NODE_ENV,
+    FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
+    SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
+  };
+
+  // Webpack => JS | Variables needed to build bundle.js
+  // used by EnvironmentPlugin
+  const buildTimeVarsJs = development ? [
+    'NODE_ENV', 'APP_NAME',
+  ] : [
+    'NODE_ENV', 'APP_NAME',
+  ];
 
   return {
     resolve: {
@@ -60,13 +88,10 @@ export default function ({ development }) {
       new HtmlWebpackPlugin({
         template: 'src/index.ejs',
         inject: true,
-        // Variables required to render index.html
-        NODE_ENV: process.env.NODE_ENV,
+        ...buildTimeVarsHtml,
       }),
-      // Pass ".env" environment variables to webpack's build process
-      new webpack.EnvironmentPlugin([
-        'NODE_ENV', 'APP_NAME',
-      ]),
+      // Make bundle.js build vars available via "process.env"
+      new webpack.EnvironmentPlugin(buildTimeVarsJs),
       // Enable Hot Module Replacement in development
       new webpack.HotModuleReplacementPlugin(),
       // Keep errors from breaking our HMR experience
@@ -101,15 +126,10 @@ export default function ({ development }) {
           minifyURLs: true,
         },
         inject: true,
-        // Variables needed to render index.html
-        NODE_ENV: process.env.NODE_ENV,
-        FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
-        SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
+        ...buildTimeVarsHtml,
       }),
-      // Pass ".env" environment variables to webpack's build process
-      new webpack.EnvironmentPlugin([
-        'NODE_ENV',
-      ]),
+      // Make bundle.js build vars available via "process.env"
+      new webpack.EnvironmentPlugin(buildTimeVarsJs),
     ], // ==========================================================================================
     module: {
       rules: [

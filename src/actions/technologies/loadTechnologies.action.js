@@ -8,8 +8,8 @@
  | any time that we want.
  |
  */
-export default function () {
-  return function loadTechnologies(dispatch) {
-    console.log('hello');
-  };
-}
+// export default function () {
+//   // return function loadTechnologies(dispatch) {
+//   //   console.log('hello');
+//   // };
+// }

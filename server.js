@@ -3,12 +3,8 @@
 import chalk from 'chalk';
 import express from 'express';
 import path from 'path';
-import dotenv from 'dotenv';
 import webpack from 'webpack';
 import webpackConfig from './webpack.config';
-
-// Load environment variables from .env file
-dotenv.config();
 
 const PORT = process.env.PORT || 8080;
 const app = express();

@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 /*
  |--------------------------------------------------------------------------
  | vendor.js | CommonsChunkPlugin
@@ -16,13 +18,12 @@
  | here will be bundled into main.js for the production build.
  |
  */
-
- /* eslint-disable no-unused-vars */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Redux from 'redux';
+import ReactRedux from 'react-redux';
 import ReactRouter from 'react-router';
-import CSSModules from 'react-css-modules';
+import ReactRouterRedux from 'react-router-redux';
 import Recompose from 'recompose';
+import CSSModules from 'react-css-modules';
 import classnames from 'classnames';
-import Rebase from 're-base';
