@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Starter kit to be up and running w/ a React project in no time",
   "scripts": {
-    "prestart": "babel-node scripts/startMessage.js",
     "start": "babel-node server.js",
     "share": "npm-run-all --parallel start localtunnel",
     "security-check": "nsp check",
