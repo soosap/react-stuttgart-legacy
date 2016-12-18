@@ -25,6 +25,9 @@ export default function ({ development }) {
     ')',
   ].join(''));
 
+  console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
+  console.log('process.env.FACEBOOK_APP_ID: ', process.env.FACEBOOK_APP_ID);
+
   // Webpack => HTML | Variables needed to render index.html
   // used by HtmlWebpackPlugin
   const buildTimeVarsHtml = development ? {
@@ -46,13 +49,13 @@ export default function ({ development }) {
   return {
     resolve: {
       alias: {
-        // redux
         actions: path.join(__dirname, 'src', 'actions'),
         components: path.join(__dirname, 'src', 'components'),
         reducers: path.join(__dirname, 'src', 'reducers'),
         store: path.join(__dirname, 'src', 'store'),
         images: path.join(__dirname, 'src', 'images'),
         react$: path.join(__dirname, 'node_modules', 'react', 'dist', development ? 'react.js' : 'react.min.js'),
+        redux$: path.join(__dirname, 'node_modules', 'redux', 'dist', development ? 'redux.js' : 'redux.min.js'),
       },
       extensions: ['.js', '.jsx', '.json'],
     },
@@ -138,29 +141,22 @@ export default function ({ development }) {
           exclude: /node_modules/,
           loader: 'babel-loader',
         },
-        development ? {
+        {
           test: /\.css$/,
           exclude: thirdPartyCSSRegex,
           use: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'],
-        } : {
-          test: /\.css$/,
-          exclude: thirdPartyCSSRegex,
-          loader: ExtractTextPlugin.extract('css-loader?sourceMap?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'),
         },
         { // Don't put third party css dependencies through CSSModules transformer
           test: thirdPartyCSSRegex,
           use: ['style-loader', 'css-loader'],
         },
-        development ? {
+        {
           test: /\.scss$/,
           use: [
             'style-loader',
             'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
             'sass-loader',
           ],
-        } : {
-          test: /\.scss$/,
-          loader: ExtractTextPlugin.extract('css-loader?sourceMap?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!sass-loader?sourceMap'),
         },
         {
           test: /\.json$/,

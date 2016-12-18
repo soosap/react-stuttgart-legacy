@@ -4,9 +4,11 @@ import chalk from 'chalk';
 import webpack from 'webpack';
 import config from '../webpack.config';
 
-console.log(chalk.blue('Generating minified bundle for production. This will take a moment...'));
+console.log(
+  chalk.blue('Generating bundle for production. This will take a moment...'),
+);
 
-webpack(config({ production: true })).run((err, stats) => {
+webpack(config({ development: false })).run((err, stats) => {
   if (err) { // in this case a fatal error occurred - stop here!
     console.log(chalk.red(err));
     return 1;
@@ -24,7 +26,9 @@ webpack(config({ production: true })).run((err, stats) => {
 
   console.log(`Webpack stats: ${stats}`);
   // If we got this far the build succeeded!
-  console.log(chalk.green('The app has been built for production and written to /dist!'));
+  console.log(
+    chalk.green('The app has been built for production and written to /dist!'),
+  );
 
   return 0;
 });

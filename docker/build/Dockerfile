@@ -1,4 +1,4 @@
-FROM saronia/node:7.2.0.7
+FROM saronia/node:7.2.0.8
 MAINTAINER Prasath Soosaithasan <prasath.soosaithasan@gmail.com>
 
 # Change the working directory to /var/www
