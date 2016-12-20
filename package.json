@@ -11,7 +11,10 @@
     "lint": "esw webpack.config.* src scripts --color",
     "lint:watch": "npm run lint -- --watch",
     "localtunnel": "lt --port 8080",
-    "test": "echo 'Add testing here'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "generate": "plop --plopfile generators/index.js",
     "clean-dist": "rimraf ./dist && mkdir dist",
     "prebuild": "npm-run-all clean-dist test lint",
     "build": "env-cmd .env cross-env NODE_ENV=production babel-node scripts/build.js",
@@ -48,6 +51,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.20.0",
+    "babel-jest": "^18.0.0",
     "babel-loader": "^6.2.9",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
@@ -57,6 +61,7 @@
     "browser-sync-webpack-plugin": "^1.1.3",
     "css-loader": "^0.26.1",
     "enzyme": "^2.6.0",
+    "enzyme-to-json": "^1.4.5",
     "eslint": "^3.12.0",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
@@ -66,11 +71,15 @@
     "extract-text-webpack-plugin": "^2.0.0-beta",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.24.1",
-    "jest-cli": "^17.0.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-cli": "^18.0.0",
+    "jest-css-modules": "^1.1.0",
     "localtunnel": "^1.8.2",
     "node-sass": "^4.0.0",
     "npm-run-all": "^3.1.2",
     "nsp": "^2.6.2",
+    "plop": "^1.7.3",
+    "react-addons-test-utils": "^15.4.1",
     "redbox-react": "^1.3.3",
     "rimraf": "^2.5.4",
     "sass-loader": "^4.0.2",
@@ -80,5 +89,10 @@
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2",
     "webpack-md5-hash": "^0.0.5"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss|less)$": "identity-obj-proxy"
+    }
   }
 }

@@ -9,5 +9,11 @@
     "stage-0"
     // Specifies what level of language features to activate.
     // stage-2 is "draft", stage-4 is "finished", stage-0 is "strawman".
-  ]
+  ],
+
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  }
 }

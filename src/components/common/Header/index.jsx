@@ -8,7 +8,7 @@ import styles from './Header.scss';
 
 class Header extends React.Component {
   state = {
-    selectedItem: '',
+    activeTab: '/',
   }
 
   render() {
@@ -17,15 +17,15 @@ class Header extends React.Component {
         <div className="ui grey secondary pointing menu">
           <Link
             to="/"
-            className={cx({ item: true, active: this.state.selectedItem === '/' })}
-            onClick={() => this.setState({ selectedItem: '/' })}
+            className={cx({ item: true, active: this.state.activeTab === '/' })}
+            onClick={() => this.setState({ activeTab: '/' })}
           >
             Home
           </Link>
           <Link
             to="about"
-            className={cx({ item: true, active: this.state.selectedItem === 'about' })}
-            onClick={() => this.setState({ selectedItem: 'about' })}
+            className={cx({ item: true, active: this.state.activeTab === 'about' })}
+            onClick={() => this.setState({ activeTab: 'about' })}
           >
             About
           </Link>
@@ -34,7 +34,7 @@ class Header extends React.Component {
             <Link
               to="/auth/login"
               className={cx({ item: true, active: this.state.selectedItem === 'auth' })}
-              onClick={() => this.setState({ selectedItem: 'auth' })}
+              onClick={() => this.setState({ activeTab: 'auth' })}
             >
               Login / Register
             </Link>
