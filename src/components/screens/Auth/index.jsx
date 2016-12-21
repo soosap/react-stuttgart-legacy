@@ -1,7 +1,10 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { compose } from 'recompose';
+import { authUser, unauthUser } from 'actions';
 
 import styles from './Auth.scss';
 

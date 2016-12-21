@@ -1,7 +1,10 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { compose } from 'recompose';
+import { authUser } from 'actions';
 
 import styles from './Login.scss';
 
@@ -26,7 +29,10 @@ class Login extends React.Component {
                 <i className="lock icon" />
               </div>
             </div>
-            <div className="ui blue submit button">Login</div>
+            <button
+              className="ui blue submit button"
+              onClick={this.props.authUser}
+            >Login</button>
           </div>
         </div>
 
@@ -48,6 +54,20 @@ class Login extends React.Component {
   }
 }
 
+const mapStateToProps = (state, ownProps) => ({
+  // Pick pieces of application state needed by <Login /> component
+  // authenticated: state.auth.authenticated,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  ...bindActionCreators({
+    // Pick actions needed by <Login /> component
+    authUser,
+  }, dispatch),
+  dispatch,
+});
+
 export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
   CSSModules(styles, { allowMultiple: true, errorWhenNotFound: false }),
 )(Login);

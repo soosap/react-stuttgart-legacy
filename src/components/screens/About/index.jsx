@@ -77,6 +77,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default compose(
-  CSSModules(styles, { allowMultiple: true, errorWhenNotFound: false }),
   connect(mapStateToProps, mapDispatchToProps),
+  CSSModules(styles, { allowMultiple: true, errorWhenNotFound: false }),
 )(About);
