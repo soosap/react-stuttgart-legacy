@@ -83,6 +83,7 @@ export default function ({ development }) {
         host: 'localhost',
         port: 9090,
         proxy: 'http://localhost:8080/',
+        open: false,
       }, { // plugin options
         // Prevent BrowserSync from reloading the page
         reload: false,

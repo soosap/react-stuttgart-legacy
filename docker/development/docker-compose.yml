@@ -1,0 +1,34 @@
+version: '2'
+services:
+  react_starter_kit:
+    command: ["babel-node", "server.js"]
+    env_file:
+      - ../../.env
+    environment:
+      NODE_ENV: development
+      PATH: node_modules/.bin:${PATH}
+    expose:
+      - "9090"
+    image: node:7.2.1
+    networks:
+      - starter_kit_network
+    ports:
+      - "9090:9090"
+    restart: always
+    volumes:
+      - ../../:/var/www
+    working_dir: /var/www
+
+# --------------------------------------------------------------------------
+#  External network
+# --------------------------------------------------------------------------
+#
+#  The external network is necessary so that we can connect our backend
+#  services w/ our frontend services!
+#
+#  Create bridge network if it does not exist yet:
+#  docker network create starter_kit_network
+#
+networks:
+  starter_kit_network:
+    external: true

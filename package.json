@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Starter kit to be up and running w/ a React project in no time",
   "scripts": {
-    "start": "npm run server:dev",
-    "server:dev": "env-cmd .env cross-env NODE_ENV=development babel-node server.js",
-    "server:prod": "env-cmd .env cross-env NODE_ENV=production babel-node server.js",
+    "start": "npm run compose:up",
+    "compose:up": "docker-compose -f docker/development/docker-compose.yml up",
+    "compose:down": "docker-compose -f docker/development/docker-compose.yml down",
     "share": "npm-run-all --parallel start localtunnel",
     "security-check": "nsp check",
     "lint": "esw webpack.config.* src scripts --color",
