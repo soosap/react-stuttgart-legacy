@@ -8,7 +8,7 @@
  | any time that we want.
  |
  */
-// export default function () {
+// export default function loadStack() {
 //   // return function loadTechnologies(dispatch) {
 //   //   console.log('hello');
 //   // };

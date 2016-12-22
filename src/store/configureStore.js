@@ -1,29 +1,45 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
-import thunk from 'redux-thunk';
-import rootReducer from '../reducers';
+import createSagaMiddleware from 'redux-saga';
+import rootReducer from 'reducers';
+import rootSaga from 'sagas';
 
+/*
+ |==========================================================================
+ | PRODUCTION
+ |--------------------------------------------------------------------------
+ */
 function configureStore(initialState) {
+  const sagaMiddleware = createSagaMiddleware();
+
   const middleware = [
     /*
      |--------------------------------------------------------------------------
-     | redux-thunk
+     | redux-saga
      |--------------------------------------------------------------------------
      |
-     | https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
-     | redux-thunk middleware can also accept an extra argument to be passed
-     | to each thunk action.
+     | redux-saga is there to handle impure operations or side effects like
+     | making API calls or touching a database inside the redux flow.
      |
      */
-    thunk,
+    sagaMiddleware,
   ];
+
+  sagaMiddleware.run(rootSaga);
 
   return createStore(rootReducer, initialState, compose(
     applyMiddleware(...middleware),
   ));
 }
 
+/*
+ |==========================================================================
+ | DEVELOPMENT
+ |--------------------------------------------------------------------------
+ */
 function configureStoreDevelopment(initialState) {
+  const sagaMiddleware = createSagaMiddleware();
+
   const middleware = [
     /*
      |--------------------------------------------------------------------------
@@ -38,17 +54,15 @@ function configureStoreDevelopment(initialState) {
 
     /*
      |--------------------------------------------------------------------------
-     | redux-thunk
+     | redux-saga
      |--------------------------------------------------------------------------
      |
-     | https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
-     | redux-thunk middleware can also accept an extra argument to be passed
-     | to each thunk action.
+     | redux-saga is there to handle impure operations or side effects like
+     | making API calls or touching a database inside the redux flow.
      |
      */
-    thunk,
+    sagaMiddleware,
   ];
-
 
   /* eslint-disable no-underscore-dangle */
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -57,6 +71,8 @@ function configureStoreDevelopment(initialState) {
   const store = createStore(rootReducer, initialState, composeEnhancers(
     applyMiddleware(...middleware),
   ));
+
+  sagaMiddleware.run(rootSaga);
 
   if (module.hot) {
     /*

@@ -3,14 +3,14 @@ import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { compose } from 'recompose';
-import { createTechnology } from 'actions';
+import { addTechnology } from 'actions';
 
 import styles from './About.scss';
 
 class About extends React.Component {
   static propTypes = {
-    createTechnology: PropTypes.func.isRequired,
-    technologies: PropTypes.array.isRequired,
+    addTechnology: PropTypes.func.isRequired,
+    stack: PropTypes.array.isRequired,
   }
 
   state = {
@@ -20,7 +20,7 @@ class About extends React.Component {
   addTechnology = (e) => {
     e.preventDefault();
 
-    this.props.createTechnology(this.state.technology);
+    this.props.addTechnology(this.state.technology);
 
     this.setState({ technology: { title: '' } })
   }
@@ -46,14 +46,14 @@ class About extends React.Component {
           <button className="ui primary inverted button" type="submit">Submit</button>
         </form>
 
-        {this.props.technologies.length > 0 && <div className="ui basic segment">
+        {this.props.stack.length > 0 && <div className="ui basic segment">
           <h4 className="ui horizontal divider header">
             <i className="settings icon" />
             Tech stack
           </h4>
 
           <ul className="ui list">
-            {this.props.technologies.map((technology, index) => {
+            {this.props.stack.map((technology, index) => {
               return <li key={index} className="item">{technology.title}</li>;
             })}
           </ul>
@@ -65,13 +65,13 @@ class About extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
   // Pick pieces of application state needed by <About /> component
-  technologies: state.technologies,
+  stack: state.tech.stack,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   ...bindActionCreators({
     // Pick actions needed by <About /> component
-    createTechnology,
+    addTechnology,
   }, dispatch),
   dispatch,
 });

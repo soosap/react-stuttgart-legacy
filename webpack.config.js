@@ -25,9 +25,6 @@ export default function ({ development }) {
     ')',
   ].join(''));
 
-  console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
-  console.log('process.env.FACEBOOK_APP_ID: ', process.env.FACEBOOK_APP_ID);
-
   // Webpack => HTML | Variables needed to render index.html
   // used by HtmlWebpackPlugin
   const buildTimeVarsHtml = development ? {
@@ -52,6 +49,7 @@ export default function ({ development }) {
         actions: path.join(__dirname, 'src', 'actions'),
         components: path.join(__dirname, 'src', 'components'),
         reducers: path.join(__dirname, 'src', 'reducers'),
+        sagas: path.join(__dirname, 'src', 'sagas'),
         store: path.join(__dirname, 'src', 'store'),
         images: path.join(__dirname, 'src', 'images'),
         react$: path.join(__dirname, 'node_modules', 'react', 'dist', development ? 'react.js' : 'react.min.js'),

@@ -1,10 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import expect from 'expect';
 
 import Header from './';
 
 function renderHeader(props) {
-  return shallow(<Header {...props} />)
+  return shallow(<Header {...props} />);
 }
 
 describe('<Header />', () => {
@@ -26,5 +27,5 @@ describe('<Header />', () => {
 
   it('displays a link to login/register when user is unauth\'ed');
 
-  it('displays username and avatar when user is auth\'ed')
+  it('displays username and avatar when user is auth\'ed');
 });
