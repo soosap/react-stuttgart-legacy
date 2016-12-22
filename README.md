@@ -1,5 +1,11 @@
 # react-starter-kit
 
+## Pending issues
+
+* Fix `<Redbox />` error message display
+* Indicate how to consume dist files in output message
+* Improve technologies table in README
+
 ## Project setup
 
 1. Clone repo via `git clone https://github.com/saronia/react-starter-kit.git react-starter-kit && cd $_`

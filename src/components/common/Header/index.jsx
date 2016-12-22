@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router';
+import { Link, IndexLink } from 'react-router';
 import { compose } from 'recompose';
 import cx from 'classnames';
 import { unauthUser } from 'actions';
@@ -10,10 +10,6 @@ import { unauthUser } from 'actions';
 import styles from './Header.scss';
 
 class Header extends React.Component {
-  state = {
-    activeTab: '/',
-  }
-
   renderAuthButton = () => {
     if (this.props.authenticated) {
       return (
@@ -27,11 +23,7 @@ class Header extends React.Component {
     }
 
     return (
-      <Link
-        to="/auth/login"
-        className={cx({ item: true, active: this.state.selectedItem === 'auth' })}
-        onClick={() => this.setState({ activeTab: 'auth' })}
-      >
+      <Link to="/auth/login" className="item" activeClassName="active">
         Login / Register
       </Link>
     );
@@ -41,28 +33,15 @@ class Header extends React.Component {
     return (
       <div styleName="root">
         <div className="ui grey secondary pointing menu">
-          <Link
-            to="/"
-            className={cx({ item: true, active: this.state.activeTab === '/' })}
-            onClick={() => this.setState({ activeTab: '/' })}
-          >
+          <IndexLink to="/" className="item" activeClassName="active">
             Home
-          </Link>
-          <Link
-            to="about"
-            className={cx({ item: true, active: this.state.activeTab === 'about' })}
-            onClick={() => this.setState({ activeTab: 'about' })}
-          >
+          </IndexLink>
+          <Link to="about" className="item" activeClassName="active">
             About
           </Link>
-          <Link
-            to="dashboard"
-            className={cx({ item: true, active: this.state.activeTab === 'dashboard' })}
-            onClick={() => this.setState({ activeTab: 'dashboard' })}
-          >
+          <Link to="dashboard" className="item" activeClassName="active">
             Dashboard
           </Link>
-
           <div className="right menu">
             {this.renderAuthButton()}
           </div>

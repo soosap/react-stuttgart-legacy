@@ -43,6 +43,12 @@ class Login extends React.Component {
           </div>
         }
 
+        <div styleName="divider-column">
+          <div className="ui vertical divider">
+            Or
+          </div>
+        </div>
+
         <div className="center aligned column">
           <Link to="/auth/register" className="ui big green labeled icon button">
             <i className="signup icon" />
