@@ -6,12 +6,12 @@ import {
 export default function (state = {}, action) {
   switch (action.type) {
     case AUTH_USER:
-      return { ...state, authenticated: true };
+      return state;
     case AUTH_USER_SUCCEEDED:
       console.log('SUCCESS!');
       return { ...state, authenticated: true };
     case AUTH_USER_FAILED:
-      return state;
+      return { ...state, authenticated: false };
     case UNAUTH_USER:
       return { ...state, authenticated: false };
     default:

@@ -1,7 +1,7 @@
 {
   "name": "react-starter-kit",
   "version": "1.0.0",
-  "description": "Starter kit to be up and running w/ a React project in no time",
+  "description": "Dockerized React Starter Kit",
   "scripts": {
     "start": "npm run compose:up",
     "compose:up": "docker-compose -f docker/development/docker-compose.yml up",
@@ -46,6 +46,7 @@
     "react-router-redux": "^4.0.7",
     "recompose": "^0.21.0",
     "redux": "^3.6.0",
+    "redux-form": "^6.4.0",
     "redux-immutable-state-invariant": "^1.2.4",
     "redux-saga": "^0.13.0"
   },

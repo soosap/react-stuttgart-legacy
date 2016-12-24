@@ -16,6 +16,7 @@ export function* authUserAsync(action) {
   try {
     // trying to call our api
     console.log('Attempting to authenticate the user via the api');
+    console.log('action.payload from saga: ', action.payload);
     const response = yield call(
       axios.post, 'https://jsonplaceholder.typicode.com/posts',
       // axios.post, 'https://jsonplaceholder.typicode.com/posts', action.payload,

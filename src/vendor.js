@@ -18,12 +18,14 @@
  | here will be bundled into main.js for the production build.
  |
  */
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Redux from 'redux';
-import ReactRedux from 'react-redux';
-import ReactRouter from 'react-router';
-import ReactRouterRedux from 'react-router-redux';
-import Recompose from 'recompose';
-import CSSModules from 'react-css-modules';
-import classnames from 'classnames';
+import 'classnames';
+import 'react';
+import 'react-css-modules';
+import 'react-dom';
+import 'react-redux';
+import 'react-router';
+import 'react-router-redux';
+import 'recompose';
+import 'redux';
+import 'redux-form';
+import 'redux-saga';
