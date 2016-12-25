@@ -1,38 +1,55 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { compose } from 'recompose';
+import { authenticateUser } from 'actions/users';
 
 import LoginForm from './LoginForm';
 
 import styles from './Login.scss';
 
-const something = (values) => {
-  console.log('values: ', values);
+class Login extends React.Component {
+  render() {
+    const { authenticateUser, submissionError } = this.props;
+
+    return (
+      <div styleName="root" className="ui two column middle aligned very relaxed stackable grid">
+        <div className="column">
+          <h1>Authenticate</h1>
+          <LoginForm onSubmit={authenticateUser} submissionError={submissionError} />
+        </div>
+
+        <div styleName="divider-column">
+          <div className="ui vertical divider">Or</div>
+        </div>
+
+        <div className="center aligned column">
+          <Link to="/auth/register" className="ui big green labeled icon button">
+            <i className="signup icon" />
+            Sign Up
+          </Link>
+        </div>
+      </div>
+    );
+  }
 }
 
-const Login = () => {
-  return (
-    <div styleName="root" className="ui two column middle aligned very relaxed stackable grid">
-      <div className="column">
-        <h1>Authenticate</h1>
-        <LoginForm onSubmit={(values) => something(values)} />
-      </div>
+const mapStateToProps = (state, ownProps) => ({
+  // Pick pieces of application state needed by <Login /> component
+  submissionError: state.auth.error,
+});
 
-      <div styleName="divider-column">
-        <div className="ui vertical divider">Or</div>
-      </div>
-
-      <div className="center aligned column">
-        <Link to="/auth/register" className="ui big green labeled icon button">
-          <i className="signup icon" />
-          Sign Up
-        </Link>
-      </div>
-    </div>
-  );
-}
+const mapDispatchToProps = (dispatch) => ({
+  ...bindActionCreators({
+    // Pick actions needed by <Login /> component
+    authenticateUser,
+  }, dispatch),
+  dispatch,
+});
 
 export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
   CSSModules(styles, { allowMultiple: true, errorWhenNotFound: false }),
 )(Login);

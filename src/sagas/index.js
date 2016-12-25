@@ -1,4 +1,4 @@
-import { watchAuthUser } from './auth.saga';
+import { watchAuthenticateUser } from './auth.saga';
 
 /*
  |--------------------------------------------------------------------------
@@ -15,6 +15,6 @@ import { watchAuthUser } from './auth.saga';
  */
 export default function* rootSaga() {
   yield [
-    watchAuthUser(),
+    watchAuthenticateUser(),
   ];
 }

@@ -5,6 +5,7 @@ services:
     env_file:
       - ../../.env
     environment:
+      BACKEND_URL: http://localhost:3000 # This will later be a highly available URL like backend.saronia.io in production
       NODE_ENV: development
       PATH: node_modules/.bin:${PATH}
     expose:

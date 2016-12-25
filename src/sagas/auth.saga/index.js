@@ -1,7 +1,8 @@
 import { takeEvery } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 import axios from 'axios';
-import { AUTH_USER_SUCCEEDED, AUTH_USER_FAILED } from 'actions/types';
+import { AUTH_USER, AUTH_USER_SUCCEEDED } from 'actions/types';
+import { userAuthenticated, userAuthenticationFailed } from 'actions/users';
 
 /*
  |--------------------------------------------------------------------------
@@ -12,26 +13,27 @@ import { AUTH_USER_SUCCEEDED, AUTH_USER_FAILED } from 'actions/types';
  | async stuff and then returning a response.
  |
  */
-export function* authUserAsync(action) {
+export function* authenticateUserAsync(action) {
   try {
-    // trying to call our api
-    console.log('Attempting to authenticate the user via the api');
-    console.log('action.payload from saga: ', action.payload);
     const response = yield call(
-      axios.post, 'https://jsonplaceholder.typicode.com/posts',
-      // axios.post, 'https://jsonplaceholder.typicode.com/posts', action.payload,
+      axios.post, `${process.env.BACKEND_URL}/auth/login`, action.payload,
     );
 
-    console.log('response: ', response);
-
-
-    yield put({ type: 'AUTH_USER_SUCCEEDED', payload: response.data });
-
-  } catch (e) {
-    // act on the error
-    console.log('request failed!!!', e);
-
-    yield put({ type: 'AUTH_USER_FAILED', message: e.message });
+    /*
+     |--------------------------------------------------------------------------
+     | Action creator vs. dispatch
+     |--------------------------------------------------------------------------
+     |
+     | We first set the authenticated flag to true and then in the next
+     | iteration put the userAuthenticated method tu use! Else the redirect
+     | to the protected "/dashboard" route would not get through.
+     |
+     */
+    yield put({ type: AUTH_USER_SUCCEEDED });
+    yield put(userAuthenticated(response.data));
+  } catch (err) {
+    yield put(userAuthenticationFailed(err.message));
+    // yield put({ type: AUTH_USER_FAILED, payload: err.message });
   }
 }
 
@@ -46,8 +48,8 @@ export function* authUserAsync(action) {
  | Spawn a new async task on each action.
  |
  */
-export function* watchAuthUser() {
+export function* watchAuthenticateUser() {
   console.log('redux saga in running the AUTH_USER action listener');
 
-  yield takeEvery('AUTH_USER', authUserAsync);
+  yield takeEvery(AUTH_USER, authenticateUserAsync);
 }

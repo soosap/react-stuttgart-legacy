@@ -15,9 +15,9 @@ import Register from './components/screens/Auth/Register';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomeScreen} />
-    <Route path="about" component={AboutScreen} />
-    <Route path="dashboard" component={requireAuth(DashboardScreen)} />
-    <Route path="auth" component={AuthScreen}>
+    <Route path="/about" component={AboutScreen} />
+    <Route path="/dashboard" component={requireAuth(DashboardScreen)} />
+    <Route path="/auth" component={AuthScreen}>
       <Route path="login" component={Login} />
       <Route path="register" component={Register} />
     </Route>

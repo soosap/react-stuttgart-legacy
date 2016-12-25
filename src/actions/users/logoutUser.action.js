@@ -1,5 +1,5 @@
 import { UNAUTH_USER } from 'actions/types';
 
-export default function () {
+export function logoutUser() {
   return { type: UNAUTH_USER };
 }

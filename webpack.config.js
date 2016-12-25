@@ -38,7 +38,7 @@ export default function ({ development }) {
   // Webpack => JS | Variables needed to build bundle.js
   // used by EnvironmentPlugin
   const buildTimeVarsJs = development ? [
-    'NODE_ENV', 'APP_NAME',
+    'NODE_ENV', 'APP_NAME', 'BACKEND_URL',
   ] : [
     'NODE_ENV', 'APP_NAME',
   ];
@@ -54,8 +54,8 @@ export default function ({ development }) {
         images: path.join(__dirname, 'src', 'images'),
         react: path.join(__dirname, 'node_modules', 'react', 'dist', development ? 'react.js' : 'react.min.js'),
         redux: path.join(__dirname, 'node_modules', 'redux', 'dist', development ? 'redux.js' : 'redux.min.js'),
-        "react-dom": path.join(__dirname, 'node_modules', 'react-dom', 'dist', development ? 'react-dom.js' : 'react-dom.min.js'),
-        "redux-form": path.join(__dirname, 'node_modules', 'redux-form', 'dist', development ? 'redux-form.js' : 'redux-form.min.js'),
+        'react-dom': path.join(__dirname, 'node_modules', 'react-dom', 'dist', development ? 'react-dom.js' : 'react-dom.min.js'),
+        'redux-form': path.join(__dirname, 'node_modules', 'redux-form', 'dist', development ? 'redux-form.js' : 'redux-form.min.js'),
       },
       extensions: ['.js', '.jsx', '.json'],
     },

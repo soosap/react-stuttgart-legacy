@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { Link, IndexLink } from 'react-router';
 import { compose } from 'recompose';
 import cx from 'classnames';
-import { unauthUser } from 'actions';
+import { logoutUser } from 'actions/users';
 
 import styles from './Header.scss';
 
@@ -15,7 +15,7 @@ class Header extends React.Component {
       return (
         <button
           className="ui secondary basic button"
-          onClick={this.props.unauthUser}
+          onClick={this.props.logoutUser}
         >
           Logout
         </button>
@@ -59,7 +59,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => ({
   ...bindActionCreators({
     // Pick actions needed by <Header /> component
-    unauthUser,
+    logoutUser,
   }, dispatch),
   dispatch,
 });

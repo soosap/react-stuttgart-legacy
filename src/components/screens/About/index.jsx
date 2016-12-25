@@ -3,7 +3,7 @@ import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { compose } from 'recompose';
-import { addTechnology } from 'actions';
+import { addTechnology } from 'actions/tech';
 
 import styles from './About.scss';
 
