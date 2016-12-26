@@ -3,9 +3,8 @@
 ## Pending issues
 
 * Fix `<Redbox />` error message display
-* Indicate how to consume dist files in output message
 * Improve technologies table in README
-* Enable browserHistory direct access to links through react-router
+* Add flavicon
 
 ## Project setup
 

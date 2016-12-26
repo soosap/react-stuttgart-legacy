@@ -25,11 +25,13 @@ function configureStore(initialState) {
     sagaMiddleware,
   ];
 
-  sagaMiddleware.run(rootSaga);
-
-  return createStore(rootReducer, initialState, compose(
+  const store = createStore(rootReducer, initialState, compose(
     applyMiddleware(...middleware),
   ));
+
+  sagaMiddleware.run(rootSaga);
+
+  return store;
 }
 
 /*

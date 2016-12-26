@@ -26,9 +26,17 @@ webpack(config({ development: false })).run((err, stats) => {
 
   console.log(`Webpack stats: ${stats}`);
   // If we got this far the build succeeded!
-  console.log(
-    chalk.green('The app has been built for production and written to /dist!'),
-  );
+  console.log(`${chalk.green('Successfully compiled!')}`);
+
+  console.log();
+  console.log(`The ${chalk.cyan('dist')} folder is ready to be deployed.`);
+  console.log('You may also serve it locally with a static server:');
+
+  console.log();
+  console.log(`    ${chalk.cyan('yarn')} global add pushstate-server`);
+  console.log(`    ${chalk.cyan('pushstate-server')} dist/`);
+  console.log(`    ${chalk.cyan('open')} http://localhost:9000`);
+  console.log();
 
   return 0;
 });

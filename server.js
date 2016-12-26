@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(require('compression')());
   app.use(express.static('dist'));
 
-  app.get('/', (req, res) => {
+  app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
   });
 }
