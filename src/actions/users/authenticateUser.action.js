@@ -12,7 +12,7 @@ export function userAuthenticated(payload) {
   // Store jwt token to localStorage
   localStorage.setItem('token', payload.token);
 
-  return { type: AUTH_USER_SUCCEEDED };
+  return { type: AUTH_USER_SUCCEEDED, payload };
 }
 
 export function userAuthenticationFailed(payload) {

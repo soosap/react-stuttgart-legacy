@@ -19,16 +19,6 @@ export function* authenticateUserAsync(action) {
       axios.post, `${process.env.BACKEND_URL}/auth/login`, action.payload,
     );
 
-    /*
-     |--------------------------------------------------------------------------
-     | Action creator vs. dispatch
-     |--------------------------------------------------------------------------
-     |
-     | We first set the authenticated flag to true and then in the next
-     | iteration put the userAuthenticated method tu use! Else the redirect
-     | to the protected "/dashboard" route would not get through.
-     |
-     */
     yield put({ type: AUTH_USER_SUCCEEDED });
     yield put(userAuthenticated(response.data));
   } catch (err) {

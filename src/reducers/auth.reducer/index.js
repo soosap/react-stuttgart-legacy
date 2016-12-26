@@ -8,6 +8,10 @@ export default function (state = {}, action) {
     case AUTH_USER:
       return state;
     case AUTH_USER_SUCCEEDED:
+      if (action.payload && action.payload.user) {
+        return { ...state, authenticated: true, user: action.payload.user };
+      }
+
       return { ...state, authenticated: true };
     case AUTH_USER_FAILED:
       return { ...state, authenticated: false, error: action.payload };

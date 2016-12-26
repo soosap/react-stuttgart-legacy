@@ -11,14 +11,19 @@ import styles from './Header.scss';
 
 class Header extends React.Component {
   renderAuthButton = () => {
-    if (this.props.authenticated) {
+    if (this.props.authenticated && this.props.user) {
+      const { logoutUser, user }  = this.props;
+
       return (
-        <button
-          className="ui secondary basic button"
-          onClick={this.props.logoutUser}
-        >
-          Logout
-        </button>
+        <div>
+          <a className="ui yellow image label">
+            <img src={require('images/avatars/avatar_seetha.png')} />
+            {user.email}
+            <div className="detail" onClick={logoutUser}>
+              <i className="sign out icon" />
+            </div>
+          </a>
+        </div>
       );
     }
 
@@ -39,9 +44,10 @@ class Header extends React.Component {
           <Link to="about" className="item" activeClassName="active">
             About
           </Link>
-          <Link to="dashboard" className="item" activeClassName="active">
+          {this.props.authenticated && <Link to="dashboard" className="item" activeClassName="active">
             Dashboard
-          </Link>
+          </Link>}
+
           <div className="right menu">
             {this.renderAuthButton()}
           </div>
@@ -54,6 +60,7 @@ class Header extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
   // Pick pieces of application state needed by <Header /> component
   authenticated: state.auth.authenticated,
+  user: state.auth.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({
