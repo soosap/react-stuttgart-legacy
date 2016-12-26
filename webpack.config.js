@@ -91,6 +91,7 @@ export default function ({ development }) {
       // Generate HTML file that contains references to generated bundles
       new HtmlWebpackPlugin({
         template: 'src/index.ejs',
+        favicon: 'src/images/favicon.ico',
         inject: true,
         ...buildTimeVarsHtml,
       }),
@@ -117,6 +118,7 @@ export default function ({ development }) {
       // Generate HTML file that contains references to generated bundles
       new HtmlWebpackPlugin({
         template: 'src/index.ejs',
+        favicon: 'src/images/favicon.ico',
         minify: {
           removeComments: true,
           collapseWhitespace: true,
