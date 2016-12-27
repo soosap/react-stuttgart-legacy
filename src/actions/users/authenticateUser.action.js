@@ -1,9 +1,5 @@
 import { browserHistory } from 'react-router';
-import { AUTH_USER, AUTH_USER_SUCCEEDED, AUTH_USER_FAILED } from 'actions/types';
-
-export function authenticateUser(payload) {
-  return { type: AUTH_USER, payload };
-}
+import { AUTH_USER_SUCCESS, AUTH_USER_FAILURE } from 'actions/types';
 
 export function userAuthenticated(payload) {
   // Redirect user to route "/dashboard"
@@ -12,10 +8,12 @@ export function userAuthenticated(payload) {
   // Store jwt token to localStorage
   localStorage.setItem('token', payload.token);
 
-  return { type: AUTH_USER_SUCCEEDED, payload };
+  return { type: AUTH_USER_SUCCESS, payload };
 }
 
 export function userAuthenticationFailed(payload) {
+  // Redirect user to route "/"
+  browserHistory.push('/');
 
-  return { type: AUTH_USER_FAILED, payload };
+  return { type: AUTH_USER_FAILURE, payload };
 }

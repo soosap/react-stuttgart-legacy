@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { compose } from 'recompose';
-import { authenticateUser } from 'actions/users';
 
 import LoginForm from './LoginForm';
 
@@ -17,8 +16,7 @@ class Login extends React.Component {
     return (
       <div styleName="root" className="ui two column middle aligned very relaxed stackable grid">
         <div className="column">
-          <h1>Authenticate</h1>
-          <LoginForm onSubmit={authenticateUser} submissionError={submissionError} />
+          <LoginForm submissionError={submissionError} />
         </div>
 
         <div styleName="divider-column">
@@ -44,7 +42,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => ({
   ...bindActionCreators({
     // Pick actions needed by <Login /> component
-    authenticateUser,
+    // ...
   }, dispatch),
   dispatch,
 });

@@ -1,8 +1,11 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import createSagaMiddleware from 'redux-saga';
+import { addFormSubmitSagaTo } from 'redux-form-submit-saga';
 import rootReducer from 'reducers';
-import rootSaga from 'sagas';
+import allMySagas from 'sagas';
+
+const rootSaga = addFormSubmitSagaTo(allMySagas);
 
 /*
  |==========================================================================

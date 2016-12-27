@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
 import { reduxForm, Field } from 'redux-form';
+import { onSubmitActions } from 'redux-form-submit-saga';
 import { compose } from 'recompose';
+import cx from 'classnames';
 
 import styles from './LoginForm.scss';
 
@@ -15,25 +17,18 @@ const renderField = ({ input, label, type, placeholder, icon }) => (
   </div>
 );
 
-const renderSubmissionError = (submissionError) => {
-  return (
-    submissionError && <div className="ui bottom attached warning message">
-      hallo...{submissionError}
-    </div>
-  );
-};
+const renderSubmissionError = (submissionError) => (
+  submissionError && <div className="ui message">{submissionError}</div>
+);
 
-const renderTest = (submissionError) => {
+const LoginForm = ({ handleSubmit, submitting, submissionError }) => {
+  console.log('submitting: ', submitting);
+  const cxForm = cx({ 'ui': true, 'loading': submitting, 'form': true });
   return (
-    submissionError && <div className="ui message">{submissionError}</div>
-  );
-};
-
-const LoginForm = ({ handleSubmit, submissionError }) => {
-  return (
-    <form className="ui form" onSubmit={handleSubmit}>
+    <form className={cxForm} onSubmit={handleSubmit}>
+      <h1>Authenticate!</h1>
       <Field
-        name="email" type="text" label="Email"
+        name="email" type="email" label="Email"
         placeholder="i.e. seetha@saronia.io" icon="mail"
         component={renderField}
       />
@@ -42,7 +37,7 @@ const LoginForm = ({ handleSubmit, submissionError }) => {
         placeholder="Enter your password..." icon="lock"
         component={renderField}
       />
-      {renderTest(submissionError)}
+      {renderSubmissionError(submissionError)}
       <button className="ui blue submit button">Login</button>
     </form>
   );
@@ -53,6 +48,6 @@ LoginForm.propTypes = {
 };
 
 export default compose(
-  reduxForm({ form: 'login' }),
+  reduxForm({ form: 'loginForm', onSubmit: onSubmitActions('AUTH_USER') }),
   CSSModules(styles, { allowMultiple: true, errorWhenNotFound: false }),
 )(LoginForm);

@@ -1,19 +1,19 @@
 import {
-  AUTH_USER, AUTH_USER_SUCCEEDED, AUTH_USER_FAILED,
+  AUTH_USER_SUBMIT, AUTH_USER_SUCCESS, AUTH_USER_FAILURE,
   UNAUTH_USER,
 } from 'actions/types';
 
 export default function (state = {}, action) {
   switch (action.type) {
-    case AUTH_USER:
+    case AUTH_USER_SUBMIT:
       return state;
-    case AUTH_USER_SUCCEEDED:
+    case AUTH_USER_SUCCESS:
       if (action.payload && action.payload.user) {
         return { ...state, authenticated: true, user: action.payload.user };
       }
 
       return { ...state, authenticated: true };
-    case AUTH_USER_FAILED:
+    case AUTH_USER_FAILURE:
       return { ...state, authenticated: false, error: action.payload };
     case UNAUTH_USER:
       return { ...state, authenticated: false };
