@@ -61,6 +61,7 @@ export default function ({ development }) {
     },
     devtool: development ? 'inline-source-map' : 'source-map',
     entry: development ? [
+      'regenerator-runtime/runtime',
       // ?reload=false parameter tells webpack to avoid page reloads
       'webpack-hot-middleware/client?reload=false',
       path.resolve(__dirname, 'src/index'),
