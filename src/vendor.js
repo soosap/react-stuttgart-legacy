@@ -26,7 +26,7 @@ import 'react-redux';
 import 'react-router';
 import 'react-router-redux';
 import 'recompose';
+import 'regenerator-runtime/runtime';
 import 'redux';
 import 'redux-form';
 import 'redux-saga';
-import 'regenerator-runtime/runtime';

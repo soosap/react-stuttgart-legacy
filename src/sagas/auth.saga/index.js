@@ -25,7 +25,10 @@ export function* authenticateUserAsync(action) {
   } catch (error) {
     const { response: { data } } = error;
 
+    // Populate submitErrors and submitFailed/submitSucceeded
+    // If you pass an object as second parameter it assumes the submit failed with errors written to that object.
     yield put(stopSubmit('loginForm', data));
+    // yield put({ type: AUTH_USER_FAILURE });
   }
 }
 
