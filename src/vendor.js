@@ -29,3 +29,4 @@ import 'recompose';
 import 'redux';
 import 'redux-form';
 import 'redux-saga';
+import 'regenerator-runtime/runtime';

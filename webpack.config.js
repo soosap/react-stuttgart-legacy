@@ -62,8 +62,9 @@ export default function ({ development }) {
     devtool: development ? 'inline-source-map' : 'source-map',
     entry: development ? [
       'regenerator-runtime/runtime',
-      // ?reload=false parameter tells webpack to avoid page reloads
+      // enables use of modern ESNext features like async/await and generator functions
       'webpack-hot-middleware/client?reload=false',
+      // ?reload=false parameter tells webpack to avoid page reloads
       path.resolve(__dirname, 'src/index'),
     ] : {
       vendor: path.resolve(__dirname, 'src/vendor'),

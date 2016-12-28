@@ -11,7 +11,6 @@ import styles from './Login.scss';
 // pass submitErrors down to <LoginForm />
 // Consume isSubmitting and submitErrors from redux-form selectors
 // Disable "SignUp" button while "submitting"
-// get rid of redux-form-submit-saga
 
 const Login = () => {
   return (
