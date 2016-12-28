@@ -1,5 +1,5 @@
 import { browserHistory } from 'react-router';
-import { AUTH_USER_SUCCESS, AUTH_USER_FAILURE } from 'actions/types';
+import { AUTH_USER_SUCCESS } from 'actions/types';
 
 export function userAuthenticated(payload) {
   // Redirect user to route "/dashboard"
@@ -9,11 +9,4 @@ export function userAuthenticated(payload) {
   localStorage.setItem('token', payload.token);
 
   return { type: AUTH_USER_SUCCESS, payload };
-}
-
-export function userAuthenticationFailed(payload) {
-  // Redirect user to route "/"
-  browserHistory.push('/');
-
-  return { type: AUTH_USER_FAILURE, payload };
 }

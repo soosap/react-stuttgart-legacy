@@ -4,7 +4,9 @@
 
 * Fix `<Redbox />` error message display
 * Improve technologies table in README
-* Add flavicon
+* Use yarn powered docker image
+* Handle SubmissionErrors redux-form style
+* Wire up Register component and logic
 
 ## Project setup
 
