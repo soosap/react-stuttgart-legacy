@@ -6,7 +6,8 @@
 * Improve technologies table in README
 * Use yarn powered docker image
 * Handle SubmissionErrors redux-form style
-* Wire up Register component and logic
+* Protect individual routes, best practice?! requireAuth HoC?
+
 
 ## Project setup
 

@@ -1,34 +1,36 @@
 import React, { PropTypes } from 'react';
-import CSSModules from 'react-css-modules';
 import { reduxForm, Field, Fields } from 'redux-form';
 import { createFormAction } from 'redux-form-saga';
 import { compose } from 'recompose';
 import styled from 'styled-components';
 import cx from 'classnames';
 
-import styles from './RegisterForm.scss';
-
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`;
-
-// Create a <Wrapper> react component that renders a <section> with
-// some padding and a papayawhip background
-const Wrapper = styled.section`
+const PasswordFields = styled.div`
   padding-bottom: 1em;
   // background: papayawhip;
 `;
 
-const validate = (values, form) => {
-  // form has submitErrors
+const validate = (formProps, reduxForm) => {
+  // reduxForm contains submitErrors
   // so we can use this validate function to handle both:
   // server side and client side validation errors!!!
+  console.log('reduxForm.submitErrors: ', reduxForm.submitErrors);
 
   const errors = {};
 
-  if (values.passwordConfirm !== values.password) {
+  if (!formProps.email) {
+    errors.email = 'Please enter an email.';
+  }
+
+  if (!formProps.password) {
+    errors.password = 'Please enter a password.';
+  }
+
+  if (!formProps.passwordConfirm) {
+    errors.passwordConfirm = 'Please enter a password confirmation.';
+  }
+
+  if (formProps.passwordConfirm !== formProps.password) {
     errors.passwordConfirm = 'Passwords must match.';
   }
 
@@ -42,18 +44,22 @@ const renderField = ({ input, label, type, placeholder, icon, meta: { error, tou
       <input {...input} type={type} placeholder={placeholder} />
       <i className={`${icon} icon`} />
     </div>
-    {touched && error && <span className="ui pointing label">{error}</span>}
+    {touched && error && <div className="ui pointing label">{error}</div>}
   </div>
 );
 
 const renderPasswordFields = ({ password, passwordConfirm }) => (
-  <Wrapper>
+  <PasswordFields>
     <div className={cx({ field: true, error: passwordConfirm.meta.touched && passwordConfirm.meta.error })}>
       <label>Password:</label>
       <div className="ui left icon input">
         <input {...password.input} type="password" placeholder="Enter your password..." />
         <i className={'unlock alternate icon'} />
       </div>
+      {
+        password.meta.touched && password.meta.error &&
+        <div className="ui pointing label">{password.meta.error}</div>
+      }
     </div>
     <div className={cx({ field: true, error: passwordConfirm.meta.touched && passwordConfirm.meta.error })}>
       <div className="ui left icon input">
@@ -65,7 +71,7 @@ const renderPasswordFields = ({ password, passwordConfirm }) => (
         <div className="ui pointing label">{passwordConfirm.meta.error}</div>
       }
     </div>
-  </Wrapper>
+  </PasswordFields>
 );
 
 const renderFormSubmitErrors = (submitErrors) => (
@@ -100,5 +106,4 @@ export default compose(
     onSubmit: createFormAction('REGISTER_USER'),
     validate,
   }),
-  CSSModules(styles, { allowMultiple: true, errorWhenNotFound: false }),
 )(RegisterForm);
