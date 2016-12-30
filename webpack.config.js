@@ -56,6 +56,7 @@ export default function ({ development }) {
         redux: path.join(__dirname, 'node_modules', 'redux', 'dist', development ? 'redux.js' : 'redux.min.js'),
         'react-dom': path.join(__dirname, 'node_modules', 'react-dom', 'dist', development ? 'react-dom.js' : 'react-dom.min.js'),
         'redux-form': path.join(__dirname, 'node_modules', 'redux-form', 'dist', development ? 'redux-form.js' : 'redux-form.min.js'),
+        'styled-components': path.join(__dirname, 'node_modules', 'styled-components', 'lib', 'index.js'),
       },
       extensions: ['.js', '.jsx', '.json'],
     },
@@ -144,7 +145,7 @@ export default function ({ development }) {
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,
-          loader: 'babel-loader',
+          use: ['babel-loader'],
         },
         {
           test: /\.css$/,

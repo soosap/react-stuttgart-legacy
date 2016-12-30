@@ -48,7 +48,7 @@ const LoginForm = ({ handleSubmit, submitting, submitErrors }) => {
         component={renderField}
       />
       {renderFormSubmitErrors(submitErrors)}
-      <button className="ui blue submit button">Login</button>
+      <button className="ui blue submit button" type="submit">Login</button>
     </form>
   );
 }

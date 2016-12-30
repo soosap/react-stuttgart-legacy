@@ -51,7 +51,8 @@
     "redux-form-saga": "^0.0.8",
     "redux-immutable-state-invariant": "^1.2.4",
     "redux-saga": "^0.13.0",
-    "regenerator-runtime": "^0.10.1"
+    "regenerator-runtime": "^0.10.1",
+    "styled-components": "^1.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.20.0",

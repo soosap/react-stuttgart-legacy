@@ -1,15 +1,11 @@
 /* eslint-disable import/prefer-default-export */
-import {
-  authenticateUser,
-  userAuthenticated,
-  userAuthenticationFailed,
-} from './authenticateUser.action';
+import { userAuthenticated } from './authenticateUser.action';
+import { userRegistered } from './registerUser.action';
 
 import { logoutUser } from './logoutUser.action';
 
 export {
-  authenticateUser,
   userAuthenticated,
-  userAuthenticationFailed,
+  userRegistered,
   logoutUser,
 };

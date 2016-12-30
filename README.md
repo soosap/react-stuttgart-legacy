@@ -47,7 +47,7 @@ yo saronia-react:spec AboutScreen
 | Technology | Purpose | State | Comment |
 |------------|---------|-------|---------|
 | browsersync | Cross-device ui testing | yes |  |
-| CSSModules | Locally scoped css class names | yes | |
+| styled-components | Library for styling React components | yes | |
 | **docker** | Continuous deployment | no |  |
 | editorconfig | A team's agreed upon editor configuration | yes |   |
 | **enzyme** | Javascript testing utilities for React | no | wip |
