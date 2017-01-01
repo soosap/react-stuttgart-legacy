@@ -19,16 +19,16 @@ const Divider = styled.div`
 
 class Login extends React.Component {
   render() {
-    const { submitting, submitErrors } = this.props;
-
     return (
       <Wrapper className="ui two column middle aligned very relaxed stackable grid">
         <div className="column">
           <LoginForm submitErrors={submitErrors} />
         </div>
 
-        <Divider className="ui vertical divider">Or</Divider>
-        
+        <Divider>
+          <div className="ui vertical divider">Or</div>
+        </Divider>
+
         <div className="center aligned column">
           <Link
             to="/auth/register"
@@ -40,6 +40,8 @@ class Login extends React.Component {
         </div>
       </Wrapper>
     );
+
+    const { submitting, submitErrors } = this.props;
   }
 }
 
