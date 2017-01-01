@@ -7,7 +7,6 @@ import cx from 'classnames';
 
 const PasswordFields = styled.div`
   padding-bottom: 1em;
-  // background: papayawhip;
 `;
 
 const validate = (formProps, reduxForm) => {

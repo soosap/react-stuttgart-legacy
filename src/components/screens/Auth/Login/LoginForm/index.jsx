@@ -1,18 +1,13 @@
 import React, { PropTypes } from 'react';
-import CSSModules from 'react-css-modules';
 import { reduxForm, Field } from 'redux-form';
 import { createFormAction } from 'redux-form-saga';
 import { compose } from 'recompose';
 import cx from 'classnames';
 
-import styles from './LoginForm.scss';
-
 const validate = (values) => {
   const errors = {};
-
-
+  
   // console.log('errors: ', errors);
-
   return errors;
 }
 
@@ -59,5 +54,4 @@ export default compose(
     onSubmit: createFormAction('AUTH_USER'),
     validate,
   }),
-  CSSModules(styles, { allowMultiple: true, errorWhenNotFound: false }),
 )(LoginForm);

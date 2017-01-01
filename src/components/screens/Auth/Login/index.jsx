@@ -1,28 +1,34 @@
 import React from 'react';
-import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { isSubmitting, getFormSubmitErrors } from 'redux-form';
 import { compose } from 'recompose';
+import styled from 'styled-components';
 import cx from 'classnames';
 
 import LoginForm from './LoginForm';
-import styles from './Login.scss';
+
+const Wrapper = styled.div`
+  position: relative;
+`;
+
+const Divider = styled.div`
+  position: relative;
+  padding: 0 !important;
+`;
 
 class Login extends React.Component {
   render() {
     const { submitting, submitErrors } = this.props;
 
     return (
-      <div styleName="root" className="ui two column middle aligned very relaxed stackable grid">
+      <Wrapper className="ui two column middle aligned very relaxed stackable grid">
         <div className="column">
           <LoginForm submitErrors={submitErrors} />
         </div>
 
-        <div styleName="divider-column">
-          <div className="ui vertical divider">Or</div>
-        </div>
-
+        <Divider className="ui vertical divider">Or</Divider>
+        
         <div className="center aligned column">
           <Link
             to="/auth/register"
@@ -32,7 +38,7 @@ class Login extends React.Component {
             Sign Up
           </Link>
         </div>
-      </div>
+      </Wrapper>
     );
   }
 }
@@ -42,5 +48,4 @@ export default compose(
     submitErrors: getFormSubmitErrors('loginForm')(state),
     submitting: isSubmitting('loginForm')(state),
   })),
-  CSSModules(styles, { allowMultiple: true, errorWhenNotFound: false }),
 )(Login);

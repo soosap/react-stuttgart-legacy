@@ -1,13 +1,15 @@
 import React, { PropTypes } from 'react';
-import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link, IndexLink } from 'react-router';
 import { compose } from 'recompose';
+import styled from 'styled-components';
 import cx from 'classnames';
 import { logoutUser } from 'actions/users';
 
-import styles from './Header.scss';
+const Wrapper = styled.div`
+  margin-top: 50px;
+`;
 
 class Header extends React.Component {
   renderAuthButton = () => {
@@ -36,7 +38,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div styleName="root">
+      <Wrapper>
         <div className="ui grey secondary pointing menu">
           <IndexLink to="/" className="item" activeClassName="active">
             Home
@@ -52,7 +54,7 @@ class Header extends React.Component {
             {this.renderAuthButton()}
           </div>
         </div>
-      </div>
+      </Wrapper>
     );
   }
 }
@@ -73,5 +75,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  CSSModules(styles, { allowMultiple: true, errorWhenNotFound: false }),
 )(Header);

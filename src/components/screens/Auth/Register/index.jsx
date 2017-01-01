@@ -1,20 +1,26 @@
 import React, { PropTypes } from 'react';
-import CSSModules from 'react-css-modules';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { getFormSubmitErrors } from 'redux-form';
+import styled from 'styled-components';
 
 import RegisterForm from './RegisterForm';
-import styles from './Register.scss';
+
+const Wrapper = styled.div`
+  width: 95%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+`;
 
 class Register extends React.Component {
   render() {
     const { submitErrors } = this.props;
 
     return (
-      <div styleName="root">
+      <Wrapper>
         <RegisterForm submitErrors={submitErrors} />
-      </div>
+      </Wrapper>
     );
   }
 }
@@ -23,5 +29,4 @@ export default compose(
   connect(state => ({
     submitErrors: getFormSubmitErrors('registerForm')(state),
   })),
-  CSSModules(styles, { allowMultiple: true, errorWhenNotFound: false }),
 )(Register);

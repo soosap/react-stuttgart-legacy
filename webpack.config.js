@@ -19,11 +19,6 @@ export default function ({ development }) {
    | section that needs to be maintained by the application author.
    |
    */
-  const thirdPartyCSSRegex = new RegExp([
-    '(',
-    'semantic.css', '|', 'semantic.min.css',
-    ')',
-  ].join(''));
 
   // Webpack => HTML | Variables needed to render index.html
   // used by HtmlWebpackPlugin
@@ -149,20 +144,7 @@ export default function ({ development }) {
         },
         {
           test: /\.css$/,
-          exclude: thirdPartyCSSRegex,
-          use: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'],
-        },
-        { // Don't put third party css dependencies through CSSModules transformer
-          test: thirdPartyCSSRegex,
           use: ['style-loader', 'css-loader'],
-        },
-        {
-          test: /\.scss$/,
-          use: [
-            'style-loader',
-            'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-            'sass-loader',
-          ],
         },
         {
           test: /\.json$/,

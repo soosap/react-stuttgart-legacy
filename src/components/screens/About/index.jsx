@@ -1,11 +1,8 @@
 import React, { PropTypes } from 'react';
-import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { compose } from 'recompose';
 import { addTechnology } from 'actions/tech';
-
-import styles from './About.scss';
 
 class About extends React.Component {
   static propTypes = {
@@ -78,5 +75,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  CSSModules(styles, { allowMultiple: true, errorWhenNotFound: false }),
 )(About);
