@@ -7,6 +7,8 @@
 * Use yarn powered docker image
 * Handle SubmissionErrors redux-form style
 * Protect individual routes, best practice?! requireAuth HoC?
+* Run unit tests in a single container
+* Run integration tests in a multi-container setting w/ docker-compose
 
 
 ## Project setup
