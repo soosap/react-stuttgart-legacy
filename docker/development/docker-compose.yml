@@ -7,7 +7,7 @@ services:
     environment:
       BACKEND_URL: http://localhost:3000 # This will later be a highly available URL like backend.saronia.io in production
       NODE_ENV: development
-      PATH: node_modules/.bin:${PATH}
+      PATH: /var/www/node_modules/.bin:${PATH}
     expose:
       - "9090"
     image: node:7.2.1
