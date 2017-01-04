@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   margin-right: auto;
 `;
 
-class Register extends React.Component {
+export class Register extends React.Component {
   render() {
     const { submitErrors } = this.props;
 

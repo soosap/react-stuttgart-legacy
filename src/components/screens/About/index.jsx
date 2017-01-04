@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { compose } from 'recompose';
 import { addTechnology } from 'actions/tech';
 
-class About extends React.Component {
+export class About extends React.Component {
   static propTypes = {
     addTechnology: PropTypes.func.isRequired,
     stack: PropTypes.array.isRequired,

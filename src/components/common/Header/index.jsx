@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   margin-top: 50px;
 `;
 
-class Header extends React.Component {
+export class Header extends React.Component {
   renderAuthButton = () => {
     if (this.props.authenticated && this.props.user) {
       const { logoutUser, user }  = this.props;

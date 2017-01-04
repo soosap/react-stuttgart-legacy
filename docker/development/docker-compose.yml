@@ -10,7 +10,7 @@ services:
       PATH: /var/www/node_modules/.bin:${PATH}
     expose:
       - "9090"
-    image: node:7.2.1
+    image: saronia/node:7.2.0.8 # To be refined... it throws some errors after all
     networks:
       - starter_kit_network
     ports:

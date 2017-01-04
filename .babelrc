@@ -15,5 +15,18 @@
     "test": {
       "plugins": ["transform-es2015-modules-commonjs"]
     }
-  }
+  },
+
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "actions": "./actions",
+        "components": "./components",
+        "images": "./images",
+        "reducers": "./reducers",
+        "sagas": "./sagas"
+      }
+    }]
+  ]
 }

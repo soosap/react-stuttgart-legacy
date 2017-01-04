@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { compose } from 'recompose';
 
-class Dashboard extends React.Component {
+export class Dashboard extends React.Component {
   render() {
     return (
       <div className="ui basic center aligned segment">

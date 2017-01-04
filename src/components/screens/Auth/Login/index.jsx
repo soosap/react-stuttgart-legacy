@@ -17,7 +17,7 @@ const Divider = styled.div`
   padding: 0 !important;
 `;
 
-class Login extends React.Component {
+export class Login extends React.Component {
   render() {
     return (
       <Wrapper className="ui two column middle aligned very relaxed stackable grid">

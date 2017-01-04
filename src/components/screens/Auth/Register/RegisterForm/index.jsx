@@ -78,7 +78,7 @@ const renderFormSubmitErrors = (submitErrors) => (
   <div className="ui message">{submitErrors.form}</div>
 );
 
-const RegisterForm = ({ handleSubmit, submitting, submitErrors }) => {
+export const RegisterForm = ({ handleSubmit, submitting, submitErrors }) => {
   const cxForm = cx({ 'ui': true, 'loading': submitting, 'form': true });
 
   return (
