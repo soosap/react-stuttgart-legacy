@@ -142,9 +142,14 @@ export default function ({ development }) {
           exclude: /node_modules/,
           use: ['babel-loader'],
         },
-        {
+        development ? {
           test: /\.css$/,
           use: ['style-loader', 'css-loader'],
+        } : {
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract({
+            loader: 'css-loader',
+          }),
         },
         {
           test: /\.json$/,

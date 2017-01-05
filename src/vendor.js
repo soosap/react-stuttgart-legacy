@@ -20,7 +20,6 @@
  */
 import 'classnames';
 import 'react';
-import 'react-css-modules';
 import 'react-dom';
 import 'react-redux';
 import 'react-router';
