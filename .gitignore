@@ -5,3 +5,4 @@ node_modules
 npm-debug.log
 .yo-rc.json
 .DS_Store
+coverage
