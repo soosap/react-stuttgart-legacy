@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { compose } from 'recompose';
 
 class Home extends React.Component {
   render() {
@@ -10,6 +9,7 @@ class Home extends React.Component {
         <h3 className="ui header">
           <Link to="/about">Learn more</Link>
         </h3>
+        <img src={require('images/avatars/avatar_seetha.png')} alt="sample"/>
       </div>
     );
   }

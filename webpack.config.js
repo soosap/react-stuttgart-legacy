@@ -168,20 +168,14 @@ export default function ({ development }) {
           loader: 'url-loader?limit=10000&mimetype=application/octet-stream',
         },
         {
-          test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-          loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
-        },
-        {
-          test: /\.gif/,
-          loader: 'url-loader?limit=10000&mimetype=image/gif',
-        },
-        {
-          test: /\.jpg/,
-          loader: 'url-loader?limit=10000&mimetype=image/jpg',
-        },
-        {
-          test: /\.png/,
-          loader: 'url-loader?limit=10000&mimetype=image/png',
+          test: /\.(jpe?g|png|gif|svg)$/,
+          use: [
+            {
+              loader: 'url-loader',
+              options: { limit: 40000 }
+            },
+            'image-webpack-loader'
+          ],
         },
       ],
     },
