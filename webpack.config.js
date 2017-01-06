@@ -112,7 +112,7 @@ export default function ({ development }) {
       // Use CommonChunkPlugin to create a separate bundle of vendor libraries
       // so that they are cached separately improving performance
       new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
+        names: ['vendor', 'manifest'],
       }),
       // Minify JS
       new webpack.optimize.UglifyJsPlugin(),
