@@ -47,9 +47,12 @@ export default function ({ development }) {
         sagas: path.join(__dirname, 'src', 'sagas'),
         store: path.join(__dirname, 'src', 'store'),
         images: path.join(__dirname, 'src', 'images'),
+        // vendor libs
         react: path.join(__dirname, 'node_modules', 'react', 'dist', development ? 'react.js' : 'react.min.js'),
-        redux: path.join(__dirname, 'node_modules', 'redux', 'dist', development ? 'redux.js' : 'redux.min.js'),
         'react-dom': path.join(__dirname, 'node_modules', 'react-dom', 'dist', development ? 'react-dom.js' : 'react-dom.min.js'),
+        'react-redux': path.join(__dirname, 'node_modules', 'react-redux', 'dist', development ? 'react-redux.js' : 'react-redux.min.js'),
+        'react-router-redux': path.join(__dirname, 'node_modules', 'react-router-redux', 'dist', development ? 'ReactRouterRedux.js' : 'ReactRouterRedux.min.js'),
+        redux: path.join(__dirname, 'node_modules', 'redux', 'dist', development ? 'redux.js' : 'redux.min.js'),
         'redux-form': path.join(__dirname, 'node_modules', 'redux-form', 'dist', development ? 'redux-form.js' : 'redux-form.min.js'),
         'styled-components': path.join(__dirname, 'node_modules', 'styled-components', 'lib', 'index.js'),
       },
