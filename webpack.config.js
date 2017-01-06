@@ -175,9 +175,9 @@ export default function ({ development }) {
           use: [
             {
               loader: 'url-loader',
-              options: { limit: 40000 }
+              options: { limit: 40000 },
             },
-            'image-webpack-loader'
+            'image-webpack-loader',
           ],
         },
       ],

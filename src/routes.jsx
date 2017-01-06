@@ -5,21 +5,45 @@ import requireAuth from './components/common/requireAuth';
 
 import App from './components/App';
 import HomeScreen from './components/screens/Home';
-import AboutScreen from './components/screens/About';
-import DashboardScreen from './components/screens/Dashboard';
-import AuthScreen from './components/screens/Auth';
 
-import Login from './components/screens/Auth/Login';
-import Register from './components/screens/Auth/Register';
+const routes = {
+  component: App,
+  path: '/',
+  indexRoute: { component: HomeScreen },
+  childRoutes: [
+    {
+      path: '/about',
+      getComponent(location, cb) {
+        System.import('./components/screens/About').then(module => cb(null, module.default));
+      },
+    },
+    {
+      path: '/dashboard',
+      getComponent(location, cb) {
+        System.import('./components/screens/Dashboard').then(module => cb(null, module.default));
+      },
+    },
+    {
+      path: '/auth',
+      getComponent(location, cb) {
+        System.import('./components/screens/Auth').then(module => cb(null, module.default));
+      },
+      childRoutes: [
+        {
+          path: 'login',
+          getComponent(location, cb) {
+            System.import('./components/screens/Auth/Login').then(module => cb(null, module.default));
+          },
+        },
+        {
+          path: 'register',
+          getComponent(location, cb) {
+            System.import('./components/screens/Auth/Register').then(module => cb(null, module.default));
+          },
+        },
+      ],
+    },
+  ],
+};
 
-export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={HomeScreen} />
-    <Route path="/about" component={AboutScreen} />
-    <Route path="/dashboard" component={requireAuth(DashboardScreen)} />
-    <Route path="/auth" component={AuthScreen}>
-      <Route path="login" component={Login} />
-      <Route path="register" component={Register} />
-    </Route>
-  </Route>
-);
+export default routes;
