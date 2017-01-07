@@ -1,15 +1,14 @@
 /* eslint-disable no-console */
-
 import chalk from 'chalk';
 import express from 'express';
 import path from 'path';
-import webpack from 'webpack';
-import webpackConfig from './webpack.config';
 
 const PORT = process.env.PORT || 8080;
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
+  const webpack = require('webpack');
+  const webpackConfig = require('./webpack.config');
   const config = webpackConfig({ development: true });
   const compiler = webpack(config);
 
