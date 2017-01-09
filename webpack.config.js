@@ -170,7 +170,10 @@ export default function ({ development }) {
           test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
           loader: 'url-loader?limit=10000&mimetype=application/octet-stream',
         },
-        {
+        development ? {
+            test: /\.(jpe?g|png|gif|svg)$/,
+            use: [{ loader: 'url-loader', options: { limit: 40000 }}]
+        } : {
           test: /\.(jpe?g|png|gif|svg)$/,
           use: [
             {
