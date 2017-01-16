@@ -1,7 +1,9 @@
 import { browserHistory } from 'react-router';
-import { AUTH_USER_SUCCESS } from 'actions/types';
+import { authenticate } from '../../../actions/users';
 
 export function userAuthenticated(payload) {
+  console.log('payload: ', payload);
+
   // Redirect user to route "/dashboard"
   browserHistory.push('/dashboard');
 
@@ -10,5 +12,5 @@ export function userAuthenticated(payload) {
 
   // Works as expected but the user data is not available yet.
   // We either need to store the user in localStorage or we need to request user data through token
-  return { type: AUTH_USER_SUCCESS, payload };
+  return authenticate.success(payload);
 }

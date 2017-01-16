@@ -1,11 +1,17 @@
-/* eslint-disable import/prefer-default-export */
-import { userAuthenticated } from './lib/authenticateUser.action';
-import { userRegistered } from './lib/registerUser.action';
+import { createFormAction } from 'redux-form-saga';
 
-import { logoutUser } from './lib/logoutUser.action';
+const authenticate = createFormAction('AUTH_USER');
+import { userAuthenticated } from './lib/authenticate.action';
+
+const register = createFormAction('REGISTER_USER');
+import { userRegistered } from './lib/register.action';
+
+import { logoutUser } from './lib/logout.action';
 
 export {
+  authenticate,
   userAuthenticated,
+  register,
   userRegistered,
   logoutUser,
 };

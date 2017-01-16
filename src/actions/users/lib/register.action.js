@@ -1,5 +1,5 @@
 import { browserHistory } from 'react-router';
-import { AUTH_USER_SUCCESS } from 'actions/types';
+import { authenticate } from '../../../actions/users';
 
 export function userRegistered(payload) {
   // Redirect user to route "/dashboard"
@@ -8,5 +8,5 @@ export function userRegistered(payload) {
   // Store jwt token to localStorage
   localStorage.setItem('token', payload.token);
 
-  return { type: AUTH_USER_SUCCESS, payload };
+  return authenticate.success(payload);
 }

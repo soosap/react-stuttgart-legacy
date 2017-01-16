@@ -1,19 +1,22 @@
 import {
-  AUTH_USER_REQUEST, AUTH_USER_SUCCESS, AUTH_USER_FAILURE,
-  UNAUTH_USER,
-} from 'actions/types';
+  authenticate,
+} from '../../actions/users';
+
+import { UNAUTH_USER } from '../../actions/types';
 
 export default function (state = {}, action) {
+  console.log('action in reducer: ', action);
+
   switch (action.type) {
-    case AUTH_USER_REQUEST:
+    case authenticate.REQUEST:
       return state;
-    case AUTH_USER_SUCCESS:
+    case authenticate.SUCCESS:
       if (action.payload && action.payload.user) {
         return { ...state, authenticated: true, user: action.payload.user };
       }
 
       return { ...state, authenticated: true };
-    case AUTH_USER_FAILURE:
+    case authenticate.FAILURE:
       return { ...state, authenticated: false };
     case UNAUTH_USER:
       return { ...state, authenticated: false };

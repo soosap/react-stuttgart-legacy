@@ -1,13 +1,12 @@
 import { takeEvery, delay } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
-import { stopSubmit, reset } from 'redux-form';
+import { reset, SubmissionError } from 'redux-form';
 import axios from 'axios';
 
 import {
-  AUTH_USER_REQUEST, AUTH_USER_SUCCESS, AUTH_USER_FAILURE,
-  REGISTER_USER_REQUEST, REGISTER_USER_SUCCESS, REGISTER_USER_FAILURE,
-} from 'actions/types';
-import { userAuthenticated, userRegistered } from 'actions/users';
+  authenticate, userAuthenticated,
+  register, userRegistered,
+} from '../../actions/users';
 
 /*
  |--------------------------------------------------------------------------
@@ -18,26 +17,31 @@ import { userAuthenticated, userRegistered } from 'actions/users';
  | async stuff and then returning a response.
  |
  */
-export function* authenticateUserAsync(action) {
+export function* handleUserAuthentication(action) {
   try {
+    console.log('action: ', action);
+
     const response = yield call(
       axios.post, `${process.env.BACKEND_URL}/auth/login`, action.payload,
     );
 
-    yield put({ type: AUTH_USER_SUCCESS }); // wip, to be replaced by a better way to protect routes in react-router
+    console.log('response: ', response);
+
+    yield put(authenticate.success());
+    // wip, to be replaced by a better way to protect routes in react-router
+    // we call authenticate.success() one more time in userAuthenticated
+
     yield put(userAuthenticated(response.data));
   } catch (error) {
     const { response: { data } } = error;
 
     // Populate submitErrors and submitFailed/submitSucceeded
     // If you pass an object as second parameter it assumes the submit failed with errors written to that object.
-    yield put(stopSubmit('loginForm', data));
-    // yield call(delay, 4000);
-    // yield put({ type: AUTH_USER_FAILURE });
+    yield put(authenticate.failure(new SubmissionError(data)));
   }
 }
 
-export function *registerUserAsync(action) {
+export function *handleUserRegistration(action) {
   console.log('action: ', action);
 
   try {
@@ -45,11 +49,14 @@ export function *registerUserAsync(action) {
       axios.post, `${process.env.BACKEND_URL}/auth/register`, action.payload,
     );
 
-    yield put({ type: AUTH_USER_SUCCESS }); // wip, to be replaced by a better way to protect routes in react-router
+    yield put(authenticate.success());
+    // wip, to be replaced by a better way to protect routes in react-router
+    // we call authenticate.success() one more time in userRegistered
+
     yield put(userRegistered(response.data));
   } catch (error) {
     const { response: { data } } = error;
-    yield put(stopSubmit('registerForm', data));
+    yield put(register.failure(new SubmissionError(data)));
   }
 }
 
@@ -67,6 +74,6 @@ export function *registerUserAsync(action) {
 export function* watchAuthenticateUser() {
   console.log('redux saga in running the AUTH_USER action listener');
 
-  yield takeEvery(AUTH_USER_REQUEST, authenticateUserAsync);
-  yield takeEvery(REGISTER_USER_REQUEST, registerUserAsync);
+  yield takeEvery(authenticate.REQUEST, handleUserAuthentication);
+  yield takeEvery(register.REQUEST, handleUserRegistration);
 }
