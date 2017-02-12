@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -39,18 +39,22 @@ const EventYear = styled.div`
   height: 2em;
 `;
 
-class NextEvent extends React.Component {
-  render() {
-    return (
-      <Wrapper>
-        <Circle>
-          <Header>Next Event:</Header>
-          <EventDayAndMonth>{this.props.day}/{this.props.month}</EventDayAndMonth>
-          <EventYear>{this.props.year}</EventYear>
-        </Circle>
-      </Wrapper>
-    );
-  }
-}
+const NextEvent = ({ day, month, year }) => {
+  return (
+    <Wrapper>
+      <Circle>
+        <Header>Next Event:</Header>
+        <EventDayAndMonth>{day}/{month}</EventDayAndMonth>
+        <EventYear>{year}</EventYear>
+      </Circle>
+    </Wrapper>
+  );
+};
+
+NextEvent.propTypes = {
+  day: PropTypes.string.isRequired,
+  month: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
+};
 
 export default NextEvent;
