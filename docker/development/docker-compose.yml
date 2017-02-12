@@ -1,18 +1,17 @@
 version: '2'
 services:
-  react_starter_kit:
+  react_stuttgart:
     command: ["babel-node", "server.js"]
     env_file:
       - ../../.env
     environment:
-      BACKEND_URL: http://localhost:3000 # This will later be a highly available URL like backend.saronia.io in production
       NODE_ENV: development
       PATH: /var/www/node_modules/.bin:${PATH}
     expose:
       - "9090"
     image: saronia/node:7.2.0.8 # To be refined... it throws some errors after all
     networks:
-      - starter_kit_network
+      - react_stuttgart_network
     ports:
       - "9090:9090"
     restart: always
@@ -28,8 +27,8 @@ services:
 #  services w/ our frontend services!
 #
 #  Create bridge network if it does not exist yet:
-#  docker network create starter_kit_network
+#  docker network create react_stuttgart_network
 #
 networks:
-  starter_kit_network:
+  react_stuttgart_network:
     external: true

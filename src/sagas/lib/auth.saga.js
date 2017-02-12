@@ -22,7 +22,7 @@ export function* handleUserAuthentication(action) {
     console.log('action: ', action);
 
     const response = yield call(
-      axios.post, `${process.env.BACKEND_URL}/auth/login`, action.payload,
+      // axios.post, `${process.env.BACKEND_URL}/auth/login`, action.payload,
     );
 
     console.log('response: ', response);
@@ -46,7 +46,7 @@ export function *handleUserRegistration(action) {
 
   try {
     const response = yield call(
-      axios.post, `${process.env.BACKEND_URL}/auth/register`, action.payload,
+      // axios.post, `${process.env.BACKEND_URL}/auth/register`, action.payload,
     );
 
     yield put(authenticate.success());

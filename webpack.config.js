@@ -33,7 +33,7 @@ export default function ({ development }) {
   // Webpack => JS | Variables needed to build bundle.js
   // used by EnvironmentPlugin
   const buildTimeVarsJs = development ? [
-    'NODE_ENV', 'APP_NAME', 'BACKEND_URL',
+    'NODE_ENV', 'APP_NAME',
   ] : [
     'NODE_ENV', 'APP_NAME',
   ];
