@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import expect from 'expect';
 
 import Home from './';
 
@@ -10,4 +9,4 @@ describe('<Home />', () => {
 
     expect(wrapper.find('.segment').length).toEqual(1);
   });
-})
+});
