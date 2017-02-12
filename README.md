@@ -2,13 +2,14 @@
 
 ## Pending issues
 
-* Fix `<Redbox />` error message display
+* Write components using styled-components!
+* Use FlowType
 * Improve technologies table in README
 * Use yarn powered docker image
-* Handle SubmissionErrors redux-form style
 * Protect individual routes, best practice?! requireAuth HoC?
 * Run unit tests in a single container
 * Run integration tests in a multi-container setting w/ docker-compose
+* Write stories w/ react-storyboard or at least evaluate if it makes sense
 
 
 ## Project setup
@@ -25,30 +26,11 @@
 | **start** | Start express server |
 | **localtunnel** | Make localhost:8080 publicly available through a custom domain as long as the localtunnel exists |
 
-
-## Yeoman generator
-
-Make sure you have **yeoman** as well as the **saronia-react** generator installed, i.e. 
-* `npm install -g yo`
-* `npm install -g generator-saronia-react`
-
-```sh
-yo saronia-react react-starter-kit
-(x) redux
-(x) semantic
-(x) vault
-yo saronia-react --help
-yo saronia-react:sfc --help
-yo saronia-react:sfc Header
-yo saronia-react:class AboutScreen
-yo saronia-react:class AboutScreen --redux
-yo saronia-react:spec AboutScreen
-```
-
 ## Technology stack
 
 | Technology | Purpose | State | Comment |
 |------------|---------|-------|---------|
+| **apollo** | GraphQL client | yes |  |
 | browsersync | Cross-device ui testing | yes |  |
 | styled-components | Library for styling React components | yes | |
 | **docker** | Continuous deployment | no |  |
@@ -67,4 +49,4 @@ yo saronia-react:spec AboutScreen
 | **vault** | Secret management | no | wip |
 | webpack | Bundle dependencies into modules | yes | |
 | yarn | Speed up package installation/ensure package consistency across installations | yes |   |
-| **yeoman** | Maintain starter-kit over time | no | wip |
+| **plop** | Generator to create boilerplate files | no | wip |

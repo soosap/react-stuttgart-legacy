@@ -5,8 +5,6 @@ import {
 import { UNAUTH_USER } from '../../actions/types';
 
 export default function (state = {}, action) {
-  console.log('action in reducer: ', action);
-
   switch (action.type) {
     case authenticate.REQUEST:
       return state;
