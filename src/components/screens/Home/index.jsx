@@ -18,7 +18,7 @@ class Home extends React.Component {
           <Speaker
             technology="graphql"
             twitter="soosap"
-            title="Introduction to GraphQL"
+            title="Advanced GraphQL"
           />
         </NextEvent>
       </div>

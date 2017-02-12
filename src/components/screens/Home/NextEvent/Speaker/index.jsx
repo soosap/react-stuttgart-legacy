@@ -48,6 +48,7 @@ Speaker.propTypes = {
 };
 
 Speaker.defaultProps = {
+  title: 'To be announced soon...',
   description: 'A description will follow soon.'
 };
 
