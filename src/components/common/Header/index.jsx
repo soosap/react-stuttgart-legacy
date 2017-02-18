@@ -34,7 +34,7 @@ export class Header extends React.Component {
       <Wrapper>
         <Menu pointing secondary>
           <Brand>
-            <img className="ui mini image" src={require('../../../images/reactstuttgart@1x.png')} />
+            <img className="ui mini image" src={require('../../../assets/images/reactstuttgart@1x.png')} />
             <Title>ReactStuttgart</Title>
           </Brand>
 

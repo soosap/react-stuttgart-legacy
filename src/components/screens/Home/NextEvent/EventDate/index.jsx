@@ -26,6 +26,7 @@ const Circle = styled.div`
 const Header = styled.h1`
   padding-top: 1em;
   color: white;
+  font-family: Lullabies-Text;
 `;
 
 const EventDayAndMonth = styled.div`

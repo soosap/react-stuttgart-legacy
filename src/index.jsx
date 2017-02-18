@@ -19,6 +19,8 @@ if (process.env.NODE_ENV === 'development') {
   require('./../semantic/dist/semantic.min.css');
 }
 
+import './assets/css/lullabies.css';
+
 /*
  |--------------------------------------------------------------------------
  | Hot Module Replacement with Webpack
