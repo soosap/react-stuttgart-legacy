@@ -1,59 +1,48 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link, IndexLink } from 'react-router';
 import { compose } from 'recompose';
 import styled from 'styled-components';
-import cx from 'classnames';
+import { Menu } from 'semantic-ui-react';
 import { logoutUser } from 'actions/users';
 
 const Wrapper = styled.div`
   margin-top: 50px;
 `;
 
+const Title = styled.h3`
+  margin-top: 0;
+  margin-left: 0.3rem;
+  color: black;
+  font-size: 1.8rem;
+  font-weight: 400;
+`;
+
+const Brand = styled(Menu.Item)`
+  display: flex;
+`;
+
 export class Header extends React.Component {
-  renderAuthButton = () => {
-    if (this.props.authenticated && this.props.user) {
-      const { logoutUser, user }  = this.props;
+  state = { activeItem: 'English' };
 
-      return (
-        <div>
-          <a className="ui yellow image label">
-            <img src={require('images/avatars/avatar_seetha.png')} />
-            {user.email}
-            <div className="detail" onClick={logoutUser}>
-              <i className="sign out icon" />
-            </div>
-          </a>
-        </div>
-      );
-    }
-
-    return (
-      <Link to="/auth/login" className="item" activeClassName="active">
-        Login / Register
-      </Link>
-    );
-  }
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
+    const { activeItem } = this.state;
+
     return (
       <Wrapper>
-        <div className="ui grey secondary pointing menu">
-          <IndexLink to="/" className="item" activeClassName="active">
-            Home
-          </IndexLink>
-          <Link to="about" className="item" activeClassName="active">
-            About
-          </Link>
-          {this.props.authenticated && <Link to="dashboard" className="item" activeClassName="active">
-            Dashboard
-          </Link>}
+        <Menu pointing secondary>
+          <Brand>
+            <img className="ui mini image" src={require('../../../images/reactstuttgart@1x.png')} />
+            <Title>ReactStuttgart</Title>
+          </Brand>
 
-          <div className="right menu">
-            {this.renderAuthButton()}
-          </div>
-        </div>
+          <Menu.Menu position='right'>
+            <Menu.Item name='Deutsch' active={activeItem === 'Deutsch'} onClick={this.handleItemClick} />
+            <Menu.Item name='English' active={activeItem === 'English'} onClick={this.handleItemClick} />
+          </Menu.Menu>
+        </Menu>
       </Wrapper>
     );
   }
