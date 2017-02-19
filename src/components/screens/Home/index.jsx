@@ -3,9 +3,6 @@ import NextEvent from './NextEvent';
 import EventDate from './NextEvent/EventDate';
 import Speaker from './NextEvent/Speaker';
 
-
-
-
 class Home extends React.Component {
   render() {
     return (
