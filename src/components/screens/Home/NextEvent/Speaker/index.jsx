@@ -16,12 +16,12 @@ const TwitterHandle = styled.span`
   font-size: 1.3rem;
 `;
 
-const Speaker = ({ twitter, title, description }) => {
+const Speaker = ({ twitter, title, description, technology }) => {
   return (
     <Wrapper>
       <Card className="ui card">
         <div className="image">
-          <img src="/images/movies/watchmen-horizontal.jpg" />
+          <img src={require(`../../../../../assets/images/techstack/${technology}.png`)} />
         </div>
         <div className="content">
           <div className="header">{title}</div>
@@ -42,14 +42,16 @@ const Speaker = ({ twitter, title, description }) => {
 };
 
 Speaker.propTypes = {
-  twitter: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  technology: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  twitter: PropTypes.string.isRequired,
 };
 
 Speaker.defaultProps = {
+  description: 'A description will follow soon.',
+  technology: 'react',
   title: 'To be announced soon...',
-  description: 'A description will follow soon.'
 };
 
 export default Speaker;
