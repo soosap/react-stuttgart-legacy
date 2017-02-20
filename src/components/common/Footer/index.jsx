@@ -1,9 +1,80 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  background-color: #2F3141;
+  padding: 10px;
+`;
+
+const Wrapper2 = styled.div`
+  padding: 20px;
+`;
+
+
+const Title = styled.h3`
+  padding-top: 1em;
+  color: white;
+  text-align: center;
+`;
+
+
+const Text = styled.p`
+  padding-top: 1em;
+  color: white;
+  text-align: center;
+`;
+
+
+
 
 const Footer = () => {
   return (
-    <div>
-      <h1 className="ui inverted centered header">#ReactStuttgart-Team</h1>
+    <Wrapper>
+      
+
+       {/* <div className="ui three column grid basic center aligned segment">
+          <div className="ui middle center aligned column">
+            <img className="ui middle aligned medium image" src={require("../../../assets/images/daimler1.png")}/>.
+          </div>
+          <div className="ui middle center aligned column">
+            <img className="ui middle aligned small image" src={require("../../../assets/images/moovel1.png")}/>
+          </div>
+          <div className="ui middle center aligned column">
+            <img className="ui middle aligned medium image" src={require("../../../assets/images/nexmart1.png")}/>
+          </div>
+        </div>*/}
+
+      <div className="ui horizontal inverted divider">Your ReactStuttgart Team</div>
+
+      <Wrapper2>
+        <div className="ui three column grid">
+          <div className="column">
+
+            <Text>
+              <img className="ui avatar image" src={`https://twitter.com/soosap/profile_image?size=bigger`} />
+              @soosap
+            </Text>
+          </div>      
+          <div className="column">
+           <Text>
+              <img className="ui avatar image" src={`https://twitter.com/chautzi/profile_image?size=bigger`} />
+              @schautzi
+           </Text>
+          </div>
+        </div>
+         <div className="column">
+           <Text>
+              <img className="ui avatar image" src={`https://twitter.com/FabioDeVasco/profile_image?size=bigger`} />
+              @FabioDeVasco
+            </Text>
+          </div>
+      </Wrapper2>
+
+
+
+          
+
+
       <div className="ui inverted right floated horizontal list">
         <div className="disabled item">© ReactStuttgart</div>
         <a className="item" href="#">Terms</a>
@@ -14,7 +85,7 @@ const Footer = () => {
         <a className="item" href="#">About Us</a>
         <a className="item" href="#">Become a Speaker</a>
       </div>
-    </div>
+    </Wrapper>
   );
 };
 

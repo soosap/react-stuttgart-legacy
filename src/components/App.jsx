@@ -10,11 +10,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="ui container">
-        <Header />
-        {this.props.children}
+      <div>
+        <div className="ui container">
+          <Header />
+          {this.props.children}
+        </div>
         <Footer />
       </div>
+
     );
   }
 }
