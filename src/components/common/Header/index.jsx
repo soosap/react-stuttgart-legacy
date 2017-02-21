@@ -3,19 +3,22 @@ import styled from 'styled-components';
 import { Menu } from 'semantic-ui-react';
 
 const Wrapper = styled.div`
-  margin-top: 50px;
+  margin: 0px;
+  background: #EEEEEE;
+  background-opacity:0.1;
 `;
 
-const Title = styled.h3`
+const Title = styled.h2`
   margin-top: 0;
   margin-left: 0.3rem;
   color: black;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 400;
 `;
 
 const Brand = styled(Menu.Item)`
   display: flex;
+  padding-bottom: 0px; 
 `;
 
 export class Header extends React.Component {
