@@ -25,12 +25,15 @@ class Home extends React.Component {
   }
 
   renderEventGalleries = (events) => {
-      return R.values(events).map(event => {
-          const photos = event.photos.map(photoId => this.props.photos[photoId]);
+      return R.values(events).map((event, index) => {
+          if (event.photos) {
+            const photos = event.photos.map(photoId => this.props.photos[photoId]);
 
-          return (
-            <Gallery key={event.id} photos={photos} selectedPhoto={photos[0]} />
-          )
+            return (
+              <Gallery key={index} photos={photos} selectedPhoto={photos[0]} />
+            )
+          }
+
       });
   };
 
