@@ -7,7 +7,8 @@ const Wrapper = styled.div`
 `;
 
 const Wrapper2 = styled.div`
-  padding: 20px;
+  padding: 30px;
+  text-align: center;
 `;
 
 
@@ -30,7 +31,11 @@ const Text = styled.p`
 const Footer = () => {
   return (
     <Wrapper>
-      
+      <Wrapper2>
+        <i className="facebook square icon"></i>
+        <i className="twitter square icon"></i>
+        <i className="github square icon"></i>
+      </Wrapper2>
 
        {/* <div className="ui three column grid basic center aligned segment">
           <div className="ui middle center aligned column">
@@ -49,7 +54,6 @@ const Footer = () => {
       <Wrapper2>
         <div className="ui three column grid">
           <div className="column">
-
             <Text>
               <img className="ui avatar image" src={`https://twitter.com/soosap/profile_image?size=bigger`} />
               @soosap
@@ -61,13 +65,13 @@ const Footer = () => {
               @schautzi
            </Text>
           </div>
-        </div>
          <div className="column">
            <Text>
               <img className="ui avatar image" src={`https://twitter.com/FabioDeVasco/profile_image?size=bigger`} />
               @FabioDeVasco
             </Text>
           </div>
+        </div>
       </Wrapper2>
 
 
