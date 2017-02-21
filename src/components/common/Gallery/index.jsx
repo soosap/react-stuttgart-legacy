@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid darkgray;
+  margin: 50px 10px 10px 10px;
 `;
 
 const GalleryImage = styled.img`

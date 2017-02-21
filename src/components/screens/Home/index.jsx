@@ -1,5 +1,6 @@
 import R from 'ramda';
 import React from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { compose } from 'recompose';
@@ -8,8 +9,13 @@ import NextEvent from './NextEvent';
 import EventDate from './NextEvent/EventDate';
 import Speaker from './NextEvent/Speaker';
 import Gallery from '../../common/Gallery';
-
 import { fetchEvents, fetchPhotos } from '../../../actions/events';
+
+const Collection = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 class Home extends React.Component {
   componentWillMount() {
@@ -25,7 +31,7 @@ class Home extends React.Component {
   }
 
   renderEventGalleries = (events) => {
-      return R.values(events).map((event, index) => {
+      const galleries = R.values(events).map((event, index) => {
           if (event.photos) {
             const photos = event.photos.map(photoId => this.props.photos[photoId]);
 
@@ -33,8 +39,11 @@ class Home extends React.Component {
               <Gallery key={index} photos={photos} selectedPhoto={photos[0]} />
             )
           }
-
       });
+
+      if (galleries.length) {
+        return <Collection>{galleries}</Collection>
+      }
   };
 
   render() {
