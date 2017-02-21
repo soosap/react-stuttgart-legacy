@@ -32,9 +32,9 @@ const Footer = () => {
   return (
     <Wrapper>
       <Wrapper2>
-        <i className="facebook square icon"></i>
-        <i className="twitter square icon"></i>
-        <i className="github square icon"></i>
+        <i className="facebook inverted big square icon"></i>
+        <i className="twitter inverted big square icon"></i>
+        <i className="github inverted big square icon"></i>
       </Wrapper2>
 
        {/* <div className="ui three column grid basic center aligned segment">
