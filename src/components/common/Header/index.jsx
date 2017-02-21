@@ -1,10 +1,6 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { compose } from 'recompose';
 import styled from 'styled-components';
 import { Menu } from 'semantic-ui-react';
-import { logoutUser } from 'actions/users';
 
 const Wrapper = styled.div`
   margin-top: 50px;
@@ -48,20 +44,4 @@ export class Header extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  // Pick pieces of application state needed by <Header /> component
-  authenticated: state.auth.authenticated,
-  user: state.auth.user,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  ...bindActionCreators({
-    // Pick actions needed by <Header /> component
-    logoutUser,
-  }, dispatch),
-  dispatch,
-});
-
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-)(Header);
+export default Header;

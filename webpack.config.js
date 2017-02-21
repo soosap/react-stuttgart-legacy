@@ -46,7 +46,7 @@ export default function ({ development }) {
         reducers: path.join(__dirname, 'src', 'reducers'),
         sagas: path.join(__dirname, 'src', 'sagas'),
         store: path.join(__dirname, 'src', 'store'),
-        images: path.join(__dirname, 'src', 'images'),
+        images: path.join(__dirname, 'src', 'assets', 'images'),
         // vendor libs
         react: path.join(__dirname, 'node_modules', 'react', 'dist', development ? 'react.js' : 'react.min.js'),
         'react-dom': path.join(__dirname, 'node_modules', 'react-dom', 'dist', development ? 'react-dom.js' : 'react-dom.min.js'),
@@ -92,7 +92,7 @@ export default function ({ development }) {
       // Generate HTML file that contains references to generated bundles
       new HtmlWebpackPlugin({
         template: 'src/index.ejs',
-        favicon: 'src/images/favicon.ico',
+        favicon: 'src/assets/images/favicon.ico',
         inject: true,
         ...buildTimeVarsHtml,
       }),
@@ -119,7 +119,7 @@ export default function ({ development }) {
       // Generate HTML file that contains references to generated bundles
       new HtmlWebpackPlugin({
         template: 'src/index.ejs',
-        favicon: 'src/images/favicon.ico',
+        favicon: 'src/assets/images/favicon.ico',
         minify: {
           removeComments: true,
           collapseWhitespace: true,

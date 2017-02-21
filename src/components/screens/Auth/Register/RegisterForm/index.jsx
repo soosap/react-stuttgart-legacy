@@ -34,7 +34,7 @@ const validate = (formProps, reduxForm) => {
   }
 
   return errors;
-}
+};
 
 const renderField = ({ input, label, type, placeholder, icon, meta: { error, touched } }) => (
   <div className={cx({ field: true, error: touched && error })}>

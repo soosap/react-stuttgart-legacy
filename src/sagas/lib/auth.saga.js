@@ -71,9 +71,7 @@ export function *handleUserRegistration(action) {
  | Spawn a new async task on each action.
  |
  */
-export function* watchAuthenticateUser() {
-  console.log('redux saga in running the AUTH_USER action listener');
-
+export function* watchForAuthenticateUser() {
   yield takeEvery(authenticate.REQUEST, handleUserAuthentication);
   yield takeEvery(register.REQUEST, handleUserRegistration);
 }

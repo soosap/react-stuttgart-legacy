@@ -18,6 +18,6 @@ if (token) {
 const Root = () =>
   <Provider store={store}>
     <Router history={history} routes={routes} />
-  </Provider>
+  </Provider>;
 
 export default Root;

@@ -2,9 +2,16 @@
 import chalk from 'chalk';
 import express from 'express';
 import path from 'path';
+import axios from 'axios';
 
 const PORT = process.env.PORT || 8080;
 const app = express();
+
+app.get('/meetup', (req, res) => {
+  axios.get(req.query.uri)
+    .then(meetup => res.json(meetup.data))
+    .catch(e => res.send(e));
+});
 
 if (process.env.NODE_ENV === 'development') {
   const webpack = require('webpack');
