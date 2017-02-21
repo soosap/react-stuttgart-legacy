@@ -7,15 +7,15 @@ const Wrapper = styled.div`
 `;
 
 const Wrapper2 = styled.div`
-  padding: 30px;
+  padding: 3em;
   text-align: center;
+  padding-bottom:4em;
 `;
 
 
 const Title = styled.h3`
-  padding-top: 1em;
   color: white;
-  text-align: center;
+  font-family: Lullabies-Text;
 `;
 
 
@@ -31,25 +31,15 @@ const Text = styled.p`
 const Footer = () => {
   return (
     <Wrapper>
+      
       <Wrapper2>
         <i className="facebook inverted big square icon"></i>
         <i className="twitter inverted big square icon"></i>
         <i className="github inverted big square icon"></i>
       </Wrapper2>
 
-       {/* <div className="ui three column grid basic center aligned segment">
-          <div className="ui middle center aligned column">
-            <img className="ui middle aligned medium image" src={require("../../../assets/images/daimler1.png")}/>.
-          </div>
-          <div className="ui middle center aligned column">
-            <img className="ui middle aligned small image" src={require("../../../assets/images/moovel1.png")}/>
-          </div>
-          <div className="ui middle center aligned column">
-            <img className="ui middle aligned medium image" src={require("../../../assets/images/nexmart1.png")}/>
-          </div>
-        </div>*/}
 
-      <div className="ui horizontal inverted divider">Your ReactStuttgart Team</div>
+      <div className="ui horizontal inverted divider"> <Title>Your #ReactStuttgart Team </Title></div>
 
       <Wrapper2>
         <div className="ui three column grid">
