@@ -4,9 +4,12 @@ import { Menu } from 'semantic-ui-react';
 
 const Wrapper = styled.div`
   margin: 0px;
-  background: #EEEEEE;
-  background-opacity:0.1;
+  background-color: black;
+  opacity: 0.3;
+
+
 `;
+
 
 const Title = styled.h2`
   margin-top: 0;

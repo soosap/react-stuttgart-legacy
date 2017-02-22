@@ -57,7 +57,7 @@
     "regenerator-runtime": "^0.10.1",
     "reselect": "^2.5.4",
     "semantic-ui": "^2.2.7",
-    "semantic-ui-react": "0.62.0",
+    "semantic-ui-react": "^0.65.0",
     "styled-components": "^1.2.1"
   },
   "devDependencies": {
