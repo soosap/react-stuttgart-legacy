@@ -79,7 +79,7 @@ class Home extends React.Component {
             description="The talk will be on styled components."
           />
           <EventDate day="09" month="03" year="2017" />
-          <Speaker technology="flow" twitter="soosap" title="Advanced GraphQL" />
+          <Speaker technology="graphql" twitter="soosap" title="Advanced GraphQL" />
         </NextEvent>
         {this.renderGallery(selectedEvent)}
       </div>
