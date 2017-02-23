@@ -2,7 +2,7 @@
 import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
-// import LightBox from 'react-images';
+import LightBox from '../LightBox';
 
 import type { LightBoxImage } from '../../../types';
 
@@ -90,7 +90,7 @@ class Gallery extends React.Component {
     return (
       <Wrapper>
         {this.renderImageGrid}
-{/*        <LightBox
+        <LightBox
           currentImage={currentImage}
           images={images}
           isOpen={isOpenLightBox}
@@ -101,7 +101,7 @@ class Gallery extends React.Component {
           onClose={this.closeLightBox}
           showThumbnails={showThumbnails}
           theme={theme}
-        />*/}
+        />
       </Wrapper>
     );
   };

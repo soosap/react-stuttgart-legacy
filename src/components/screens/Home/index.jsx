@@ -1,4 +1,3 @@
-/* @flow */
 import R from 'ramda';
 import React from 'react';
 import styled from 'styled-components';
@@ -23,6 +22,13 @@ const Collection = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+const Exhibition = styled.div`
+  padding: 50px;
+  font-size: 32px;
+  font-family: Lullabies-Text
+`;
+
 
 class Home extends React.Component {
   props: Props;
@@ -56,7 +62,9 @@ class Home extends React.Component {
   // };
 
   renderGallery(selectedEvent: string) {
-
+    return (
+      <Exhibition>Expect Image Gallery Here</Exhibition>
+    );
   };
 
   render() {
