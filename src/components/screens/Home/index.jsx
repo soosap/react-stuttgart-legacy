@@ -1,3 +1,4 @@
+/* @flow */
 import R from 'ramda';
 import React from 'react';
 import styled from 'styled-components';
@@ -11,6 +12,12 @@ import Speaker from './NextEvent/Speaker';
 import Gallery from '../../common/Gallery';
 import { fetchEvents, fetchPhotos } from '../../../actions/events';
 
+type Props = {
+  selectedEvent: string,
+  fetchEvents: () => void,
+  fetchPhotos: () => void,
+}
+
 const Collection = styled.div`
   display: flex;
   align-items: center;
@@ -18,6 +25,8 @@ const Collection = styled.div`
 `;
 
 class Home extends React.Component {
+  props: Props;
+
   componentWillMount() {
     this.props.fetchEvents([
       'https://api.meetup.com/ReactStuttgart/events/228547676?photo-host=public&sig_id=193558024&sig=9e46aaae0e343ad513f5781530e32efdcc6aab35',
@@ -30,24 +39,28 @@ class Home extends React.Component {
     ]);
   }
 
-  renderEventGalleries = (events) => {
-      const galleries = R.values(events).map((event, index) => {
-          if (event.photos) {
-            const photos = event.photos.map(photoId => this.props.photos[photoId]);
+  // renderEventGalleries = (events) => {
+  //     const galleries = R.values(events).map((event, index) => {
+  //         if (event.photos) {
+  //           const photos = event.photos.map(photoId => this.props.photos[photoId]);
+  //
+  //           return (
+  //             <Gallery key={index} photos={photos} />
+  //           )
+  //         }
+  //     });
+  //
+  //     if (galleries.length) {
+  //       return <Collection>{galleries}</Collection>
+  //     }
+  // };
 
-            return (
-              <Gallery key={index} photos={photos} selectedPhoto={photos[0]} />
-            )
-          }
-      });
+  renderGallery(selectedEvent: string) {
 
-      if (galleries.length) {
-        return <Collection>{galleries}</Collection>
-      }
   };
 
   render() {
-    const { events } = this.props;
+    const { selectedEvent } = this.props;
 
     return (
       <div className="ui basic center aligned segment">
@@ -60,7 +73,7 @@ class Home extends React.Component {
           <EventDate day="09" month="03" year="2017" />
           <Speaker technology="flow" twitter="soosap" title="Advanced GraphQL" />
         </NextEvent>
-        {this.renderEventGalleries(events)}
+        {this.renderGallery(selectedEvent)}
       </div>
     );
   }
