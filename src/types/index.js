@@ -72,7 +72,7 @@ export type Technology =
   | 'graphql'
   | 'apollo'
   | 'relay'
-  | 'flow';
+  | 'flowtype';
 
 export type Speaker = {|
   twitter: string,
