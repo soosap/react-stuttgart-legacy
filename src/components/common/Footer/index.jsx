@@ -5,7 +5,6 @@ import { secondaryDarkRGB } from '../../../assets/styles/colors';
 
 
 const Wallpaper = styled.div`
-  background-image: url(${require('../../../assets/images/benjamin-child-17946.jpg')});
   background-attachment: fixed;
   background-position: 100%; 
   background-size: 100%, 100%;
