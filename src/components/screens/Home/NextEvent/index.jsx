@@ -9,10 +9,6 @@ const Wrapper = styled.div`
   justify-content: flex-start;
 `;
 
-const WrappedEventDate = styled.div`
-  
-`;
-
 const NextEvent = ({ speakers, date }) => {
 
   return (
@@ -24,6 +20,7 @@ const NextEvent = ({ speakers, date }) => {
 
         return (
           <Speaker
+            id={index}
             key={index}
             technology={technology}
             twitter={twitter}
@@ -32,7 +29,6 @@ const NextEvent = ({ speakers, date }) => {
           />
         );
       })}
-
 
     </Wrapper>
   );
