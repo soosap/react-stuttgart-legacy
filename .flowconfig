@@ -36,6 +36,7 @@ node_modules/styled-components/flow-typed/inline-style-prefixer_vx.x.x.js
 # Just add it, if you have a different suppress_comment notation
 suppress_comment=.*\\$FlowIssue
 suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+module.ignore_non_literal_requires=true
 
 [version]
 0.39.0

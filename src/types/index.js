@@ -65,3 +65,11 @@ export type Venue = {|
   country: string,
   localized_country_name: string,
 |};
+
+export type Technology =
+  | 'react'
+  | 'redux'
+  | 'graphql'
+  | 'apollo'
+  | 'relay'
+  | 'flow';

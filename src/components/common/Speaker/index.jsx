@@ -1,28 +1,34 @@
-import React, { PropTypes } from 'react';
+/* @flow */
+import React from 'react';
+import R from 'ramda';
 import styled from 'styled-components';
+import { Technology } from '../../../types';
+
+type Props = {
+  index: number,
+  twitter: string,
+  title: string,
+  description: string,
+  technology: Technology,
+};
 
 const Card = styled.div`
   min-width: 320px;
 `;
 
 const TwitterHandle = styled.span`
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 `;
 
-function getOrder(id) {
-  switch(id) {
-    case 0:
-      return 0;
-      break;
-    case 1:
-      return 2;
-      break;
-    default:
-      return 3;
-  }
+function getOrder(index: number): number {
+  return R.cond([
+    [R.equals(0), R.always(0)],
+    [R.equals(1), R.always(2)],
+    [R.T, R.always(3)],
+  ])(index);
 }
 
-const Speaker = ({ twitter, title, description, technology, id }) => {
+const Speaker = ({ index, twitter, title, description, technology }: Props) => {
   const Wrapper = styled.div`
     display: flex;
     text-align: left;
@@ -31,14 +37,14 @@ const Speaker = ({ twitter, title, description, technology, id }) => {
     
     background-color: #000;
     justify-content: center; 
-    order: ${getOrder(id)};
+    order: ${getOrder(index)};
   `;
 
   return (
     <Wrapper>
       <Card className="ui card">
         <div className="image">
-          {/*<img src={require(`../../../../../assets/images/techstack/${x}.png`)} />*/}
+          <img src={require('../../../assets/images/techstack/react.png')} />
         </div>
         <div className="content">
           <div className="header">{title}</div>
@@ -58,18 +64,11 @@ const Speaker = ({ twitter, title, description, technology, id }) => {
   );
 };
 
-Speaker.propTypes = {
-  id: PropTypes.number.isRequired,
-  description: PropTypes.string.isRequired,
-  technology: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  twitter: PropTypes.string.isRequired,
-};
-
 Speaker.defaultProps = {
-  description: 'A description will follow soon.',
+  description: 'tba',
   technology: 'react',
-  title: 'To be announced soon...',
+  title: 'tba',
+  twitter: 'ReactStuttgart',
 };
 
 export default Speaker;

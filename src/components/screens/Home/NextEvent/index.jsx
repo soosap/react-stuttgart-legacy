@@ -11,7 +11,6 @@ const Wrapper = styled.div`
 `;
 
 const NextEvent = ({ speakers, date }) => {
-
   return (
     <Wrapper>
       <EventDate day="07" month="03" year="2017"/>
@@ -21,8 +20,8 @@ const NextEvent = ({ speakers, date }) => {
 
         return (
           <Speaker
-            id={index}
             key={index}
+            index={index}
             technology={technology}
             twitter={twitter}
             description={description}
@@ -30,7 +29,6 @@ const NextEvent = ({ speakers, date }) => {
           />
         );
       })}
-
     </Wrapper>
   );
 };
