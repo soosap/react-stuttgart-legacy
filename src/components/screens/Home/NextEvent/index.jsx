@@ -18,7 +18,7 @@ const NextEvent = ({ speakers, date }) => {
 
       {speakers.map(speaker => {
         return (
-          <Speaker />
+          <Speaker/>
         )
       })}
     </Wrapper>

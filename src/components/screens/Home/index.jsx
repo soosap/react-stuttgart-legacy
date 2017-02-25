@@ -40,8 +40,15 @@ class Home extends React.Component {
       {
         twitter: 'SquashPaT',
         title: 'React',
-        description: 'Introduction'
+        description: 'Introduection',
+        technology: 'react'
       },
+      {
+        twitter: 'BetterCallPaT',
+        title: 'React',
+        description: 'Introduction',
+        technology: 'redux'
+      }
     ];
 
     return (
