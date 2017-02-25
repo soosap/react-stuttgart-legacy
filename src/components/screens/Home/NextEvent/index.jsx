@@ -6,15 +6,25 @@ import Speaker from '../NextEvent/Speaker';
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex;
+`;
+
+const RawEventDate = styled.div`
+  background-color: #fff000;
+  padding-bottom: 5%;
+  
 `;
 
 const NextEvent = ({ speakers, date }) => {
 
-
   return (
     <Wrapper>
-      <EventDate day="07" month="03" year="2017" />
+
+      <RawEventDate>
+        <EventDate day="07" month="03" year="2017"/>
+      </RawEventDate>
+      {/*<RawEventDate day="07" month="03" year="2017" />*/}
+
 
       {speakers.map((speaker, index) => {
         const { technology, twitter, description, title } = speaker;

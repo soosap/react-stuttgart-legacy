@@ -16,6 +16,7 @@ const TwitterHandle = styled.span`
   font-size: 1.3rem;
 `;
 
+
 const Speaker = ({ twitter, title, description, technology }) => {
   return (
     <Wrapper>
