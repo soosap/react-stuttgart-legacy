@@ -8,7 +8,7 @@ import type { Photo } from '../../../types';
 
 type Props = {
   heading?: string,
-  photos: Array<Object>,
+  photos: Array<Photo>,
   showThumbnails?: boolean,
   subheading?: string,
   dimmer: boolean | 'inverted' | 'blurring',

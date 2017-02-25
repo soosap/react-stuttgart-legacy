@@ -7,7 +7,7 @@ import { compose } from 'recompose';
 
 import NextEvent from './NextEvent';
 import EventDate from './NextEvent/EventDate';
-import Speaker from './NextEvent/Speaker';
+import Speaker from './../../common/Speaker';
 import EventHistory from './EventHistory';
 import Gallery from '../../common/Gallery';
 import { fetchEvents, fetchPhotos } from '../../../actions/events';
