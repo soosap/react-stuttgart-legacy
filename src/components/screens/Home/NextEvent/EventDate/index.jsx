@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
-import { secondary, backgroundDarkRGB } from '../../../../../assets/styles/colors';
+import { secondary, backgroundDarkRGB, graphql } from '../../../../../assets/styles/colors';
 
 const Wrapper = styled.div`
   display: flex;

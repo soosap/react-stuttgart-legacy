@@ -65,7 +65,7 @@ class Home extends React.Component {
         },
         title: 'React',
         description: 'Introduction',
-        technology: 'react'
+        technology: 'react',
       },
       {
         speaker: {
@@ -73,8 +73,8 @@ class Home extends React.Component {
         },
         title: 'Introduction to GraphQL',
         description: 'Introduction',
-        technology: 'graphql'
-      }
+        technology: 'graphql',
+      },
     ];
 
     return (
