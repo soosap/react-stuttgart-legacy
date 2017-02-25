@@ -2,9 +2,10 @@ import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import EventDate from '../NextEvent/EventDate';
 import Speaker from '../../../common/Speaker/index.jsx';
+import {  } from '../../../../assets/styles/colors';
 
 const Wrapper = styled.div`
-  margin-top: 25vh;
+  margin-top: 20vh;
   display: flex;
   align-items: center;
   justify-content: center;

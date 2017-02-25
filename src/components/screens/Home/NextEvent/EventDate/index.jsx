@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
+import { secondary, backgroundDarkRGB } from '../../../../../assets/styles/colors';
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   order: 1
-  background-color: #fff000;
   justify-content: center; 
   order: 1;
 `;
@@ -15,12 +15,13 @@ const Circle = styled.div`
   font-size: 2.5em;
   text-align: center;
   vertical-align: middle;
-  color: palevioletred;
-  background: #1B1C1D;
+  color: ${secondary};
+  background: rgba(${backgroundDarkRGB}, 0.9);
 	width: 300px;
 	height: 300px; 
   padding: 0.5em;
   border-radius: 500em;
+  
   
   display: flex;
   flex-direction: column;

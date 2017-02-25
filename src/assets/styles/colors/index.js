@@ -1,6 +1,7 @@
 export const primary = '#27A5CE';
 export const secondary = '#FFCE38';
 export const secondaryDark = '#2F3141';
+export const secondaryDarkRGB = '47,49,65';
 export const background = '#F2F2F2';
 export const backgroundLight = '#FFFFFF';
 export const backgroundDark = '#313131';

@@ -5,7 +5,7 @@ import { backgroundDarkRGB, backgroundLight } from '../../../assets/styles/color
 
 const Wrapper = styled.div`
   margin: 0px;
-  background: rgba(${backgroundDarkRGB}, 0.4)
+  background: rgba(${backgroundDarkRGB}, 0.5)
 `;
 
 const Title = styled.h2`

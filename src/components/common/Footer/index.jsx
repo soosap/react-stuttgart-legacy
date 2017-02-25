@@ -1,21 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
-import { secondaryDark } from '../../../assets/styles/colors';
+import { secondaryDarkRGB } from '../../../assets/styles/colors';
 
 
+
+const Wallpaper = styled.div`
+  background-image: url(${require('../../../assets/images/benjamin-child-17946.jpg')});
+  background-attachment: fixed;
+  background-position: 100%; 
+  background-size: 100%, 100%;
+`;
 
 const Wrapper = styled.div`
-  background-color: ${secondaryDark};
+  background: rgba(${secondaryDarkRGB}, 0.9)
   padding: 10px;
 `;
 
-const Wrapper2 = styled.div`
+const Iconset = styled.div`
   padding: 3em;
   text-align: center;
   padding-bottom:20px;
 `;
 
-const Wrapper3 = styled.div`
+const Team = styled.div`
   padding: 4em;
   text-align: center;
   padding-Top:10px;
@@ -23,7 +30,7 @@ const Wrapper3 = styled.div`
   padding-right: 200px;
 `;
 
-const Wrapper4 = styled.div`
+const Links = styled.div`
   padding: 1em;
 `;
 
@@ -32,30 +39,25 @@ const Title = styled.h3`
   font-family: Lullabies-Text;
 `;
 
-
 const Text = styled.p`
   padding-top: 1em;
   color: white;
   text-align: center;
 `;
 
-
-
-
 const Footer = () => {
   return (
+  <Wallpaper>
     <Wrapper>
-
-      <Wrapper2>
-        <i className="facebook inverted big square icon"></i>
-        <i className="twitter inverted big square icon"></i>
-        <i className="github inverted big square icon"></i>
-      </Wrapper2>
-
+      <Iconset>
+        <i className="facebook inverted big square icon" />
+        <i className="twitter inverted big square icon" />
+        <i className="github inverted big square icon" />
+      </Iconset>
 
       <div className="ui horizontal inverted divider"> Your <Title>#ReactStuttgart</Title> Team </div>
 
-      <Wrapper3>
+      <Team>
         <div className="ui three column grid">
           <div className="column">
             <Text>
@@ -76,13 +78,13 @@ const Footer = () => {
             </Text>
           </div>
         </div>
-      </Wrapper3>
+      </Team>
 
 
 
 
 
-      <Wrapper4>
+      <Links>
         <div className="ui inverted right floated horizontal list">
           <div className="disabled item">© ReactStuttgart</div>
           <a className="item" href="#">Terms</a>
@@ -93,8 +95,9 @@ const Footer = () => {
           <a className="item" href="#">About Us</a>
           <a className="item" href="#">Become a Speaker</a>
         </div>
-      </Wrapper4>
+      </Links>
     </Wrapper>
+  </Wallpaper>
   );
 };
 
