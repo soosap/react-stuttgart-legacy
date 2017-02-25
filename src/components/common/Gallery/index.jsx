@@ -1,51 +1,111 @@
-import React, { PropTypes } from 'react';
+/* @flow */
+import React from 'react';
+import R from 'ramda';
 import styled from 'styled-components';
+import LightBox from '../LightBox';
+
+import type { Photo } from '../../../types';
+
+type Props = {
+  heading?: string,
+  photos: Array<Object>,
+  showThumbnails?: boolean,
+  subheading?: string,
+  dimmer: boolean | 'inverted' | 'blurring',
+};
+
+type State = {
+  selectedPhoto: number,
+  selectedEvent: string,
+  isOpenLightBox: boolean,
+};
 
 const Wrapper = styled.div`
-  width: 300px;
+  height: 300px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid darkgray;
+  border: 4px solid darkgray;
   margin: 50px 10px 10px 10px;
 `;
 
-const GalleryImage = styled.img`
-  height: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const Tiles = styled.div`
+  width: 100%;
+  background-color: green;
 `;
 
-const ScrollBar = styled.div`
-  display: flex;
-  justify-content: space-around;
-  overflow: auto;
-  overflow-y: hidden;
-`;
+class Gallery extends React.Component {
+  props: Props;
+  state: State;
 
-const Thumbnail = styled.img`
-  width: 100px;
-  height: 100px;
-  padding: 1px;
-  border: 1px solid gray;
-`;
+  constructor(props: Props) {
+    super(props);
 
-const Gallery = ({ photos, selectedPhoto }) => {
-  return (
-    <Wrapper>
-      <GalleryImage src={selectedPhoto.photo_link} />
-      <ScrollBar>
-        {photos.map((photo, index) => (
-          <Thumbnail key={index} src={photo.thumb_link} />
-        ))}
-      </ScrollBar>
-    </Wrapper>
-  );
-};
+    this.state = {
+      isOpenLightBox: false,
+      selectedEvent: '',
+      selectedPhoto: 0,
+    };
+  }
 
-Gallery.propTypes = {
-  photos: PropTypes.arrayOf(PropTypes.object).isRequired,
-  selectedPhoto: PropTypes.object.isRequired,
-};
+  handleClickImage = () => {
+    // if (this.state.currentImage === this.props.images.length - 1) return;
+
+    this.goToNext();
+  };
+
+  goToNext = () => {
+    // this.setState({ currentImage: R.inc(this.state.currentImage) });
+  };
+
+  goToPrevious = () => {
+    // this.setState({ currentImage: R.dec(this.state.currentImage) });
+  };
+
+  goToClicked = (index: number) => {
+    // this.setState({ currentImage: index });
+  };
+
+  openLightBox = (selectedPhoto: number, event: Object) => {
+    event.preventDefault();
+
+    this.setState({ selectedPhoto, isOpenLightBox: true });
+  };
+
+  closeLightBox = () => {
+    this.setState({ isOpenLightBox: false });
+  };
+
+  renderTiles = () => {
+    return (
+      <Tiles onClick={this.openLightBox}>
+        hold images
+      </Tiles>
+    )
+  };
+
+  render() {
+    const { isOpenLightBox, selectedPhoto } = this.state;
+    const { photos, showThumbnails, dimmer } = this.props;
+
+    return (
+      <Wrapper>
+        {this.renderTiles()}
+        <LightBox
+          selectedPhoto={selectedPhoto}
+          images={photos}
+          isOpen={isOpenLightBox}
+          onClickImage={this.handleClickImage}
+          onClickNext={this.goToNext}
+          onClickPrev={this.goToPrevious}
+          onClickThumbnail={this.goToClicked}
+          onClose={this.closeLightBox}
+          showThumbnails={showThumbnails}
+          dimmer={dimmer}
+        />
+      </Wrapper>
+    );
+  };
+}
 
 export default Gallery;

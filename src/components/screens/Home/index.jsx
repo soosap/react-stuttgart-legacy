@@ -6,18 +6,21 @@ import { bindActionCreators } from 'redux';
 import { compose } from 'recompose';
 
 import NextEvent from './NextEvent';
-import EventDate from './NextEvent/EventDate';
-import Speaker from './NextEvent/Speaker';
+import EventHistory from './EventHistory';
 import Gallery from '../../common/Gallery';
 import { fetchEvents, fetchPhotos } from '../../../actions/events';
+import { eventPhotos } from '../../../selectors/photos';
 
-const Collection = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+import type { Photo, Event } from '../../../types';
+
+type Props = {
+  fetchEvents: () => void,
+  fetchPhotos: () => void,
+}
 
 class Home extends React.Component {
+  props: Props;
+
   componentWillMount() {
     this.props.fetchEvents([
       'https://api.meetup.com/ReactStuttgart/events/228547676?photo-host=public&sig_id=193558024&sig=9e46aaae0e343ad513f5781530e32efdcc6aab35',
@@ -30,45 +33,30 @@ class Home extends React.Component {
     ]);
   }
 
-  renderEventGalleries = (events) => {
-      const galleries = R.values(events).map((event, index) => {
-          if (event.photos) {
-            const photos = event.photos.map(photoId => this.props.photos[photoId]);
-
-            return (
-              <Gallery key={index} photos={photos} selectedPhoto={photos[0]} />
-            )
-          }
-      });
-
-      if (galleries.length) {
-        return <Collection>{galleries}</Collection>
-      }
-  };
-
   render() {
-    const { events } = this.props;
+    const { photos, events } = this.props;
+
+    const speakers = [
+      {
+        twitter: 'SquashPaT',
+        title: 'React',
+        description: 'Introduction'
+      },
+    ];
 
     return (
       <div className="ui basic center aligned segment">
-        <NextEvent>
-          <Speaker
-            twitter="webkreation"
-            title="Styling React w/ styled-components"
-            description="The talk will be on styled components."
-          />
-          <EventDate day="09" month="03" year="2017" />
-          <Speaker technology="flow" twitter="soosap" title="Advanced GraphQL" />
-        </NextEvent>
-        {this.renderEventGalleries(events)}
+        <NextEvent speakers={speakers} date={new Date()} />
+        <EventHistory events={events} />
+        <Gallery dimmer={true} photos={photos} />
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  events: state.events,
-  photos: state.photos,
+  events: R.values(state.events),
+  photos: R.values(state.photos),
 });
 
 const mapDispatchToProps = (dispatch) => ({
