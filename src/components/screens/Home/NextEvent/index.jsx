@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import EventDate from '../NextEvent/EventDate';
-import Speaker from '../NextEvent/Speaker';
+import Speaker from '../../../common/Speaker/index.jsx';
 
 const Wrapper = styled.div`
   display: flex;
@@ -23,7 +23,6 @@ const NextEvent = ({ speakers, date }) => {
       <RawEventDate>
         <EventDate day="07" month="03" year="2017"/>
       </RawEventDate>
-      {/*<RawEventDate day="07" month="03" year="2017" />*/}
 
 
       {speakers.map((speaker, index) => {
