@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 const NextEvent = ({ talks, date }: Props): React$Element<Wrapper> => {
   const renderSpeakerWanted = () => {
     return R.cond([
-      [R.gte(R.__, 2), () => null],
+      [R.gte(R.__, 2), R.always(null)],
       [R.equals(1), R.always(<SpeakerWanted gender="male" />)],
       [R.equals(0), R.always([
         <SpeakerWanted key="0" gender="male" />,
