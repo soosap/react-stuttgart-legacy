@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
+import EventDate from '../NextEvent/EventDate';
+import Speaker from '../NextEvent/Speaker';
 
 const Wrapper = styled.div`
   display: flex;
@@ -7,10 +9,18 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-const NextEvent = ({ children }) => {
+const NextEvent = ({ speakers, date }) => {
+
+
   return (
     <Wrapper>
-      {children}
+      <EventDate day="07" month="03" year="2017" />
+
+      {speakers.map(speaker => {
+        return (
+          <Speaker/>
+        )
+      })}
     </Wrapper>
   );
 };

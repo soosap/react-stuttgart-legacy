@@ -6,19 +6,22 @@ import type { Event } from '../../../../types';
 
 type Props = {
   events: Array<Event>,
+  selectEvent: () => void,
 };
 
 const Wrapper = styled.div`
   border: 1px solid black;
 `;
 
-const EventHistory = ({ events }: Props): ?React$Element<Wrapper> => {
+const EventHistory = ({ events, selectEvent }: Props): ?React$Element<Wrapper> => {
   if (!events.length) return null;
+
+  console.log('events', events);
 
   return (
     <Wrapper>
       {events.map(event => (
-        <List.Item key={event.id}>
+        <List.Item key={event.id} onClick={selectEvent}>
           <List.Content>
             {event.name}
           </List.Content>
