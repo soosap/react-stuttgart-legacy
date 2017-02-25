@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { compose } from 'recompose';
-
+import Header from '../../common/Header';
 import NextEvent from './NextEvent';
 import EventHistory from './EventHistory';
 import Gallery from '../../common/Gallery';
@@ -17,6 +17,11 @@ type Props = {
   fetchEvents: () => void,
   fetchPhotos: () => void,
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 class Home extends React.Component {
   props: Props;
@@ -56,11 +61,12 @@ class Home extends React.Component {
     ];
 
     return (
-      <div className="ui basic center aligned segment">
+      <Wrapper>
+        <Header />
         <NextEvent speakers={speakers} date={new Date()} />
         <EventHistory events={events} selectEvent={this.selectEvent} />
         <Gallery dimmer={true} photos={photos} />
-      </div>
+      </Wrapper>
     );
   }
 }

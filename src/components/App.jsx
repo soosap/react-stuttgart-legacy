@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 
-import Header from './common/Header';
 import Footer from './common/Footer';
 
 const Wrapper = styled.div`
@@ -16,7 +15,6 @@ class App extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Header />
         {this.props.children}
         <Footer />
       </Wrapper>
