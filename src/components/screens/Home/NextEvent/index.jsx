@@ -1,8 +1,14 @@
-import React, { PropTypes } from 'react';
+/* @flow */
+import React from 'react';
 import styled from 'styled-components';
 import EventDate from '../NextEvent/EventDate';
-import Speaker from '../../../common/Speaker/index.jsx';
-import {  } from '../../../../assets/styles/colors';
+import SpeakerCard from '../../../common/SpeakerCard/index.jsx';
+import type { Talk } from '../../../../types';
+
+type Props = {
+  talks: Array<Talk>,
+  date: Date,
+};
 
 const Wrapper = styled.div`
   margin-top: 20vh;
@@ -11,32 +17,27 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-const NextEvent = ({ speakers, date }) => {
+const NextEvent = ({ talks, date }: Props): React$Element<Wrapper> => {
   return (
     <Wrapper>
       <EventDate day="07" month="03" year="2017"/>
 
-      {speakers.map((speaker, index) => {
-        const { technology, twitter, description, title } = speaker;
+      {talks.map((talk, index) => {
+        const { speaker, technology, description, title } = talk;
 
         return (
-          <Speaker
+          <SpeakerCard
             key={index}
             index={index}
+            speaker={speaker}
             technology={technology}
-            twitter={twitter}
-            description={description}
             title={title}
+            description={description}
           />
         );
       })}
     </Wrapper>
   );
-};
-
-NextEvent.propTypes = {
-  speakers: PropTypes.array.isRequired,
-  event: PropTypes.instanceOf(Date),
 };
 
 export default NextEvent;

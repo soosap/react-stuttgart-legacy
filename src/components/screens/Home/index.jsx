@@ -1,5 +1,6 @@
-import R from 'ramda';
+/* @flow */
 import React from 'react';
+import R from 'ramda';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -11,11 +12,13 @@ import Gallery from '../../common/Gallery';
 import { fetchEvents, fetchPhotos } from '../../../actions/events';
 import { eventPhotos } from '../../../selectors/photos';
 
-import type { Photo, Event } from '../../../types';
+import type { Photo, Event, Talk } from '../../../types';
 
 type Props = {
   fetchEvents: () => void,
   fetchPhotos: () => void,
+  photos: Array<Photo>,
+  events: Array<Event>,
 }
 
 const Wrapper = styled.div`
@@ -55,18 +58,22 @@ class Home extends React.Component {
   render() {
     const { photos, events } = this.props;
 
-    const speakers = [
+    const talks: Array<Talk> = [
       {
-        twitter: 'SquashPaT',
+        speaker: {
+          twitter: 'SquashPaT',
+        },
         title: 'React',
-        description: 'Introduection',
+        description: 'Introduction',
         technology: 'react'
       },
       {
-        twitter: 'BetterCallPaT',
-        title: 'React',
+        speaker: {
+          twitter: 'BetterCallPaT',
+        },
+        title: 'Introduction to GraphQL',
         description: 'Introduction',
-        technology: 'redux'
+        technology: 'graphql'
       }
     ];
 
@@ -74,7 +81,7 @@ class Home extends React.Component {
       <Wrapper>
         <Wallpaper>
           <Header />
-          <NextEvent speakers={speakers} date={new Date()} />
+          <NextEvent talks={talks} date={new Date()} />
         </Wallpaper>
         <EventHistory events={events} selectEvent={this.selectEvent} />
         <Gallery dimmer={true} photos={photos} />

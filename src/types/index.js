@@ -73,3 +73,15 @@ export type Technology =
   | 'apollo'
   | 'relay'
   | 'flow';
+
+export type Speaker = {|
+  twitter: string,
+|};
+
+export type Talk = {|
+  description: string,
+  speaker: Speaker,
+  technology: Technology,
+  title: string,
+|};
+

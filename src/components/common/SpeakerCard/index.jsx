@@ -2,14 +2,14 @@
 import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
-import { Technology } from '../../../types';
+import type { Speaker, Technology } from '../../../types';
 
 type Props = {
   index: number,
-  twitter: string,
+  speaker: Speaker,
+  technology: Technology,
   title: string,
   description: string,
-  technology: Technology,
 };
 
 const Card = styled.div`
@@ -28,7 +28,7 @@ function getOrder(index: number): number {
   ])(index);
 }
 
-const Speaker = ({ index, twitter, title, description, technology }: Props) => {
+const SpeakerCard = ({ index, speaker, technology, title, description }: Props) => {
   const Wrapper = styled.div`
     display: flex;
     text-align: left;
@@ -44,7 +44,7 @@ const Speaker = ({ index, twitter, title, description, technology }: Props) => {
     <Wrapper>
       <Card className="ui card">
         <div className="image">
-          <img src={require('../../../assets/images/techstack/react.png')} />
+          <img src={require(`../../../assets/images/techstack/${technology}.png`)} />
         </div>
         <div className="content">
           <div className="header">{title}</div>
@@ -54,9 +54,9 @@ const Speaker = ({ index, twitter, title, description, technology }: Props) => {
           <div className="right floated author">
             <img
               className="ui avatar image"
-              src={`https://twitter.com/${twitter}/profile_image?size=bigger`}
+              src={`https://twitter.com/${speaker.twitter}/profile_image?size=bigger`}
             />
-            <TwitterHandle>@{twitter}</TwitterHandle>
+            <TwitterHandle>@{speaker.twitter}</TwitterHandle>
           </div>
         </div>
       </Card>
@@ -64,11 +64,13 @@ const Speaker = ({ index, twitter, title, description, technology }: Props) => {
   );
 };
 
-Speaker.defaultProps = {
+SpeakerCard.defaultProps = {
   description: 'tba',
+  speaker: {
+    twitter: 'ReactStuttgart',
+  },
   technology: 'react',
   title: 'tba',
-  twitter: 'ReactStuttgart',
 };
 
-export default Speaker;
+export default SpeakerCard;
