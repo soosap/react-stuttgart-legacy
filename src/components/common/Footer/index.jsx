@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { primary } from '../../../assets/styles/colors';
+
+// #2F3141
 
 const Wrapper = styled.div`
-  background-color: #2F3141;
+  background-color: ${primary};
   padding: 10px;
 `;
 
@@ -42,7 +45,7 @@ const Text = styled.p`
 const Footer = () => {
   return (
     <Wrapper>
-      
+
       <Wrapper2>
         <i className="facebook inverted big square icon"></i>
         <i className="twitter inverted big square icon"></i>
@@ -59,7 +62,7 @@ const Footer = () => {
               <img className="ui avatar image" src={`https://twitter.com/soosap/profile_image?size=bigger`} />
               @soosap
             </Text>
-          </div>      
+          </div>
           <div className="column">
            <Text>
               <img className="ui avatar image" src={`https://twitter.com/chautzi/profile_image?size=bigger`} />
@@ -77,7 +80,7 @@ const Footer = () => {
 
 
 
-          
+
 
       <Wrapper4>
         <div className="ui inverted right floated horizontal list">
