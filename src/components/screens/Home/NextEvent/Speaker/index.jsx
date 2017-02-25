@@ -21,7 +21,7 @@ const Speaker = ({ twitter, title, description, technology }) => {
     <Wrapper>
       <Card className="ui card">
         <div className="image">
-          <img src={require(`../../../../../assets/images/techstack/${technology}.png`)} />
+          {/*<img src={require(`../../../../../assets/images/techstack/${x}.png`)} />*/}
         </div>
         <div className="content">
           <div className="header">{title}</div>

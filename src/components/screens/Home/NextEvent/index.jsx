@@ -16,9 +16,17 @@ const NextEvent = ({ speakers, date }) => {
     <Wrapper>
       <EventDate day="07" month="03" year="2017" />
 
-      {speakers.map(speaker => {
+      {speakers.map((speaker, index) => {
+        const { technology, twitter, description, title } = speaker;
+
         return (
-          <Speaker/>
+          <Speaker
+            key={index}
+            technology={technology}
+            twitter={twitter}
+            description={description}
+            title={title}
+          />
         )
       })}
     </Wrapper>
@@ -26,7 +34,8 @@ const NextEvent = ({ speakers, date }) => {
 };
 
 NextEvent.propTypes = {
-  children: PropTypes.any.isRequired,
+  speakers: PropTypes.array.isRequired,
+  event: PropTypes.instanceOf(Date),
 };
 
 export default NextEvent;
