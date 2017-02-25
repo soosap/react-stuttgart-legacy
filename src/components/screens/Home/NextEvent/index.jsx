@@ -4,9 +4,10 @@ import EventDate from '../NextEvent/EventDate';
 import Speaker from '../../../common/Speaker/index.jsx';
 
 const Wrapper = styled.div`
+  margin-top: 25vh;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 `;
 
 const NextEvent = ({ speakers, date }) => {

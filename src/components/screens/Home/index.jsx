@@ -28,6 +28,9 @@ const Wallpaper = styled.div`
   background-attachment: fixed;
   background-position: 100%; 
   background-size: 100%, 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 `;
 
 class Home extends React.Component {
