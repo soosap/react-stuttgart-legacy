@@ -3,6 +3,7 @@ import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 import type { Speaker, Technology } from '../../../types';
+import { backgroundDarkRGB, backgroundLight, black, graphql } from '../../../assets/styles/colors';
 
 type Props = {
   index: number,
@@ -18,6 +19,9 @@ const Card = styled.div`
 
 const TwitterHandle = styled.span`
   font-size: 1.2rem;
+  opacity: 1;
+  color: ${black};
+  font-weight: 900;
 `;
 
 function getOrder(index: number): number {
@@ -38,6 +42,12 @@ const SpeakerCard = ({ index, speaker, technology, title, description }: Props) 
     background-color: #000;
     justify-content: center; 
     order: ${getOrder(index)};
+    
+    opacity: 0.7;
+  `;
+
+  const Card = styled.div`
+    
   `;
 
   return (

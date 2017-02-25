@@ -17,3 +17,5 @@ export const flowtype = '#FEC60E';
 export const react = '#00D8FF';
 export const redux = '#764BBC';
 export const reactNative = '#00A2D1';
+
+export const black = '#000000';
