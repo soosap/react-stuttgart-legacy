@@ -23,6 +23,13 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
+const Wallpaper = styled.div`
+  background-image: url(${require('../../../assets/images/meduana-6917.jpg')});
+  background-attachment: fixed;
+  background-position: 100%; 
+  background-size: 100%, 100%;
+`;
+
 class Home extends React.Component {
   props: Props;
 
@@ -62,8 +69,10 @@ class Home extends React.Component {
 
     return (
       <Wrapper>
-        <Header />
-        <NextEvent speakers={speakers} date={new Date()} />
+        <Wallpaper>
+          <Header />
+          <NextEvent speakers={speakers} date={new Date()} />
+        </Wallpaper>
         <EventHistory events={events} selectEvent={this.selectEvent} />
         <Gallery dimmer={true} photos={photos} />
       </Wrapper>
