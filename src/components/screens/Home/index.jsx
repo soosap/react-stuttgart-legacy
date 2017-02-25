@@ -6,8 +6,6 @@ import { bindActionCreators } from 'redux';
 import { compose } from 'recompose';
 
 import NextEvent from './NextEvent';
-import EventDate from './NextEvent/EventDate';
-import Speaker from './NextEvent/Speaker';
 import EventHistory from './EventHistory';
 import Gallery from '../../common/Gallery';
 import { fetchEvents, fetchPhotos } from '../../../actions/events';
@@ -38,17 +36,17 @@ class Home extends React.Component {
   render() {
     const { photos, events } = this.props;
 
+    const speakers = [
+      {
+        twitter: 'SquashPaT',
+        title: 'React',
+        description: 'Introduction'
+      },
+    ];
+
     return (
       <div className="ui basic center aligned segment">
-        <NextEvent>
-          <Speaker
-            twitter="webkreation"
-            title="Styling React w/ styled-components"
-            description="The talk will be on styled components."
-          />
-          <EventDate day="09" month="03" year="2017" />
-          <Speaker technology="graphql" twitter="soosap" title="Advanced GraphQL" />
-        </NextEvent>
+        <NextEvent speakers={speakers} date={new Date()} />
         <EventHistory events={events} />
         <Gallery dimmer={true} photos={photos} />
       </div>
