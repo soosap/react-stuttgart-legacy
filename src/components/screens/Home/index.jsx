@@ -33,6 +33,10 @@ class Home extends React.Component {
     ]);
   }
 
+  selectEvent = () => {
+    console.log('Event has been selected.');
+  };
+
   render() {
     const { photos, events } = this.props;
 
@@ -54,7 +58,7 @@ class Home extends React.Component {
     return (
       <div className="ui basic center aligned segment">
         <NextEvent speakers={speakers} date={new Date()} />
-        <EventHistory events={events} />
+        <EventHistory events={events} selectEvent={this.selectEvent} />
         <Gallery dimmer={true} photos={photos} />
       </div>
     );
