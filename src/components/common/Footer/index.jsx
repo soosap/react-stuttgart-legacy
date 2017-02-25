@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { primary } from '../../../assets/styles/colors';
+import { secondaryDark } from '../../../assets/styles/colors';
 
-// #2F3141
+
 
 const Wrapper = styled.div`
-  background-color: ${primary};
+  background-color: ${secondaryDark};
   padding: 10px;
 `;
 

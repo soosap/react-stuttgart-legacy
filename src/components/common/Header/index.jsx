@@ -1,11 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Menu } from 'semantic-ui-react';
+import { backgroundDarkRGB, backgroundLight } from '../../../assets/styles/colors';
 
 const Wrapper = styled.div`
   margin: 0px;
-  background: rgba(220,160,140,0.5);
-  color: white;
+  background: rgba(${backgroundDarkRGB}, 0.4)
 `;
 
 const Title = styled.h2`
@@ -14,12 +14,17 @@ const Title = styled.h2`
   color: black;
   font-size: 1.4rem;
   font-weight: 400;
+  color: ${backgroundLight};
 `;
 
-const Brand = styled(Menu.Item)`
+const Brand = styled.div`
   display: flex;
-  padding-bottom: 0px; 
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  padding-left: 6em; 
 `;
+
+
 
 export class Header extends React.Component {
   state = { activeItem: 'English' };
@@ -31,10 +36,12 @@ export class Header extends React.Component {
 
     return (
       <Wrapper>
-        <Menu pointing secondary>
+        <Menu inverted pointing secondary>
           <Brand>
-            <img className="ui mini image" src={require('../../../assets/images/reactstuttgart@1x.png')} />
-            <Title>ReactStuttgart</Title>
+            <Menu.Item>
+              <img className="ui mini image" src={require('../../../assets/images/reactstuttgart@1x.png')} />
+              <Title>ReactStuttgart</Title>
+            </Menu.Item>
           </Brand>
 
           <Menu.Menu position='right'>

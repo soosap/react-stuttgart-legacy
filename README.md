@@ -50,3 +50,7 @@
 | webpack | Bundle dependencies into modules | yes | |
 | yarn | Speed up package installation/ensure package consistency across installations | yes |   |
 | **plop** | Generator to create boilerplate files | no | wip |
+
+
+styled-components
+https://polished.js.org/docs/#rgba
