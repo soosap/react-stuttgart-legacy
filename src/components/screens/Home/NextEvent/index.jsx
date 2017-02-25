@@ -6,12 +6,10 @@ import Speaker from '../../../common/Speaker/index.jsx';
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex;
+  justify-content: flex-start;
 `;
 
-const RawEventDate = styled.div`
-  background-color: #fff000;
-  padding-bottom: 5%;
+const WrappedEventDate = styled.div`
   
 `;
 
@@ -19,11 +17,7 @@ const NextEvent = ({ speakers, date }) => {
 
   return (
     <Wrapper>
-
-      <RawEventDate>
-        <EventDate day="07" month="03" year="2017"/>
-      </RawEventDate>
-
+      <EventDate day="07" month="03" year="2017"/>
 
       {speakers.map((speaker, index) => {
         const { technology, twitter, description, title } = speaker;
@@ -36,8 +30,10 @@ const NextEvent = ({ speakers, date }) => {
             description={description}
             title={title}
           />
-        )
+        );
       })}
+
+
     </Wrapper>
   );
 };

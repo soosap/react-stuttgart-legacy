@@ -5,6 +5,10 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  order: 1
+  background-color: #fff000;
+  justify-content: center; 
+  order: 1;
 `;
 
 const Circle = styled.div`

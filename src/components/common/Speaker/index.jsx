@@ -6,6 +6,10 @@ const Wrapper = styled.div`
   text-align: left;
   justify-content: center;
   margin: 2em;
+  
+  background-color: #000;
+  justify-content: center; 
+  order: 0;
 `;
 
 const Card = styled.div`
@@ -15,7 +19,6 @@ const Card = styled.div`
 const TwitterHandle = styled.span`
   font-size: 1.3rem;
 `;
-
 
 const Speaker = ({ twitter, title, description, technology }) => {
   return (

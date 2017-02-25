@@ -20,8 +20,8 @@ const EventHistory = ({ events, selectEvent }: Props): ?React$Element<Wrapper> =
 
   return (
     <Wrapper>
-      {events.map(event => (
-        <List.Item key={event.id} onClick={selectEvent}>
+      {events.map((event, index) => (
+        <List.Item key={index} onClick={selectEvent}>
           <List.Content>
             {event.name}
           </List.Content>
