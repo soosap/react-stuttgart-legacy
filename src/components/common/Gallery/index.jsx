@@ -4,31 +4,34 @@ import R from 'ramda';
 import styled from 'styled-components';
 import LightBox from '../LightBox';
 
-import type { LightBoxImage } from '../../../types';
+import type { Photo } from '../../../types';
 
 type Props = {
   heading?: string,
-  images: Array<LightBoxImage>,
+  photos: Array<Object>,
   showThumbnails?: boolean,
   subheading?: string,
-  theme?: Object,
+  dimmer: boolean | 'inverted' | 'blurring',
 };
 
 type State = {
-  currentImage: number,
+  selectedPhoto: number,
+  selectedEvent: string,
   isOpenLightBox: boolean,
 };
 
 const Wrapper = styled.div`
-  width: 300px;
+  height: 300px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid darkgray;
+  border: 4px solid darkgray;
   margin: 50px 10px 10px 10px;
 `;
 
-const Grid = styled.div`
+const Tiles = styled.div`
   width: 100%;
+  background-color: green;
 `;
 
 class Gallery extends React.Component {
@@ -40,59 +43,57 @@ class Gallery extends React.Component {
 
     this.state = {
       isOpenLightBox: false,
-      currentImage: 0,
+      selectedEvent: '',
+      selectedPhoto: 0,
     };
   }
 
-  handleClickImage() {
-    if (this.state.currentImage === this.props.images.length - 1) return;
+  handleClickImage = () => {
+    // if (this.state.currentImage === this.props.images.length - 1) return;
 
     this.goToNext();
   };
 
-  goToNext() {
-    this.setState({ currentImage: R.inc(this.state.currentImage) });
+  goToNext = () => {
+    // this.setState({ currentImage: R.inc(this.state.currentImage) });
   };
 
-  goToPrevious() {
-    this.setState({ currentImage: R.dec(this.state.currentImage) });
+  goToPrevious = () => {
+    // this.setState({ currentImage: R.dec(this.state.currentImage) });
   };
 
-  goToClicked(index: number) {
-    this.setState({ currentImage: index });
+  goToClicked = (index: number) => {
+    // this.setState({ currentImage: index });
   };
 
-  openLightBox(index: number, event: Event) {
+  openLightBox = (selectedPhoto: number, event: Object) => {
     event.preventDefault();
 
-    this.setState({ currentImage: index, isOpenLightBox: true });
-  }
-
-  closeLightBox() {
-    this.setState({ currentImage: 0, isOpenLightBox: false });
+    this.setState({ selectedPhoto, isOpenLightBox: true });
   };
 
-  renderImageGrid() {
+  closeLightBox = () => {
+    this.setState({ isOpenLightBox: false });
+  };
 
-
-
+  renderTiles = () => {
     return (
-      <Grid>
+      <Tiles onClick={this.openLightBox}>
         hold images
-      </Grid>
+      </Tiles>
     )
   };
 
   render() {
-    const { currentImage, isOpenLightBox } = this.state;
-    const { images, showThumbnails, theme } = this.props;
+    const { isOpenLightBox, selectedPhoto } = this.state;
+    const { photos, showThumbnails, dimmer } = this.props;
 
     return (
       <Wrapper>
-        {this.renderImageGrid}
+        {this.renderTiles()}
         <LightBox
-          currentImage={currentImage}
-          images={images}
+          selectedPhoto={selectedPhoto}
+          images={photos}
           isOpen={isOpenLightBox}
           onClickImage={this.handleClickImage}
           onClickNext={this.goToNext}
@@ -100,7 +101,7 @@ class Gallery extends React.Component {
           onClickThumbnail={this.goToClicked}
           onClose={this.closeLightBox}
           showThumbnails={showThumbnails}
-          theme={theme}
+          dimmer={dimmer}
         />
       </Wrapper>
     );

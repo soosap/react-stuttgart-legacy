@@ -16,7 +16,7 @@ class App extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Header />
+        {/*<Header />*/}
         {this.props.children}
         <Footer />
       </Wrapper>

@@ -8,27 +8,17 @@ import { compose } from 'recompose';
 import NextEvent from './NextEvent';
 import EventDate from './NextEvent/EventDate';
 import Speaker from './NextEvent/Speaker';
+import EventHistory from './EventHistory';
 import Gallery from '../../common/Gallery';
 import { fetchEvents, fetchPhotos } from '../../../actions/events';
+import { eventPhotos } from '../../../selectors/photos';
+
+import type { Photo, Event } from '../../../types';
 
 type Props = {
-  selectedEvent: string,
   fetchEvents: () => void,
   fetchPhotos: () => void,
 }
-
-const Collection = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Exhibition = styled.div`
-  padding: 50px;
-  font-size: 32px;
-  font-family: Lullabies-Text
-`;
-
 
 class Home extends React.Component {
   props: Props;
@@ -45,30 +35,8 @@ class Home extends React.Component {
     ]);
   }
 
-  // renderEventGalleries = (events) => {
-  //     const galleries = R.values(events).map((event, index) => {
-  //         if (event.photos) {
-  //           const photos = event.photos.map(photoId => this.props.photos[photoId]);
-  //
-  //           return (
-  //             <Gallery key={index} photos={photos} />
-  //           )
-  //         }
-  //     });
-  //
-  //     if (galleries.length) {
-  //       return <Collection>{galleries}</Collection>
-  //     }
-  // };
-
-  renderGallery(selectedEvent: string) {
-    return (
-      <Exhibition>Expect Image Gallery Here</Exhibition>
-    );
-  };
-
   render() {
-    const { selectedEvent } = this.props;
+    const { photos, events } = this.props;
 
     return (
       <div className="ui basic center aligned segment">
@@ -81,15 +49,16 @@ class Home extends React.Component {
           <EventDate day="09" month="03" year="2017" />
           <Speaker technology="graphql" twitter="soosap" title="Advanced GraphQL" />
         </NextEvent>
-        {this.renderGallery(selectedEvent)}
+        <EventHistory events={events} />
+        <Gallery dimmer={true} photos={photos} />
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  events: state.events,
-  photos: state.photos,
+  events: R.values(state.events),
+  photos: R.values(state.photos),
 });
 
 const mapDispatchToProps = (dispatch) => ({
