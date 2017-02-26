@@ -1,8 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+
+import Member from './Member';
 import { secondaryDarkRGB } from '../../../assets/styles/colors';
 
-
+const Wrapper = styled.div`
+  background: rgba(${secondaryDarkRGB}, 0.9)
+  padding: 10px;
+`;
 
 const Wallpaper = styled.div`
   background-attachment: fixed;
@@ -10,23 +15,16 @@ const Wallpaper = styled.div`
   background-size: 100%, 100%;
 `;
 
-const Wrapper = styled.div`
-  background: rgba(${secondaryDarkRGB}, 0.9)
-  padding: 10px;
-`;
-
-const Iconset = styled.div`
+const Icons = styled.div`
   padding: 3em;
   text-align: center;
   padding-bottom:20px;
 `;
 
 const Team = styled.div`
-  padding: 4em;
-  text-align: center;
-  padding-Top:10px;
-  padding-left: 200px;
-  padding-right: 200px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 `;
 
 const Links = styled.div`
@@ -38,50 +36,25 @@ const Title = styled.h3`
   font-family: Lullabies-Text;
 `;
 
-const Text = styled.p`
-  padding-top: 1em;
-  color: white;
-  text-align: center;
-`;
-
 const Footer = () => {
   return (
   <Wallpaper>
     <Wrapper>
-      <Iconset>
+      <Icons>
         <i className="facebook inverted big square icon" />
         <i className="twitter inverted big square icon" />
         <i className="github inverted big square icon" />
-      </Iconset>
+      </Icons>
 
-      <div className="ui horizontal inverted divider"> Your <Title>#ReactStuttgart</Title> Team </div>
+      <div className="ui horizontal inverted divider">
+        <Title>Organized by</Title>
+      </div>
 
       <Team>
-        <div className="ui three column grid">
-          <div className="column">
-            <Text>
-              <img className="ui avatar image" src={`https://twitter.com/soosap/profile_image?size=bigger`} />
-              @soosap
-            </Text>
-          </div>
-          <div className="column">
-           <Text>
-              <img className="ui avatar image" src={`https://twitter.com/chautzi/profile_image?size=bigger`} />
-              @schautzi
-           </Text>
-          </div>
-         <div className="column">
-           <Text>
-              <img className="ui avatar image" src={`https://twitter.com/FabioDeVasco/profile_image?size=bigger`} />
-              @FabioDeVasco
-            </Text>
-          </div>
-        </div>
+        <Member twitter="soosap" />
+        <Member twitter="chautzi" />
+        <Member twitter="FabioDeVasco" />
       </Team>
-
-
-
-
 
       <Links>
         <div className="ui inverted right floated horizontal list">
