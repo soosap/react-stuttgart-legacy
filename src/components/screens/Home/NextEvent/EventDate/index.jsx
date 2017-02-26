@@ -29,7 +29,6 @@ const Circle = styled.div`
   padding: 0.5em;
   border-radius: 500em;
   
-  
   display: flex;
   flex-direction: column;
   justify-content: center;
