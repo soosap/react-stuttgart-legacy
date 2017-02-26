@@ -3,9 +3,9 @@ import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 import LightBox from '../LightBox';
+// import { graphql } from '../../../assets/styles/colors';
 
 import type { Photo } from '../../../types';
-
 type Props = {
   heading?: string,
   photos: Array<Photo>,
@@ -21,17 +21,20 @@ type State = {
 };
 
 const Wrapper = styled.div`
-  height: 300px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  border: 4px solid darkgray;
-  margin: 50px 10px 10px 10px;
 `;
 
 const Tiles = styled.div`
   width: 100%;
-  background-color: green;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+const Tile = styled.img`
+  height: 100px;
 `;
 
 class Gallery extends React.Component {
@@ -79,7 +82,7 @@ class Gallery extends React.Component {
   renderTiles = () => {
     return (
       <Tiles onClick={this.openLightBox}>
-        hold images
+        {this.props.photos.map(photo => <Tile key={photo.id} src={photo.photo_link} />)}
       </Tiles>
     )
   };

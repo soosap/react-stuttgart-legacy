@@ -36,6 +36,10 @@ const Wallpaper = styled.div`
   flex-direction: column;
 `;
 
+const Exhibition = styled.div`
+  margin: 20px;
+`;
+
 class Home extends React.Component {
   props: Props;
 
@@ -85,8 +89,10 @@ class Home extends React.Component {
           <Header />
           <NextEvent talks={talks} date={scheduledDate} />
         </Wallpaper>
-        <EventHistory events={events} selectEvent={this.selectEvent} />
-        <Gallery dimmer={true} photos={photos} />
+        <Exhibition>
+          <EventHistory events={events} selectEvent={this.selectEvent} />
+          <Gallery dimmer={true} photos={photos} />
+        </Exhibition>
       </Wrapper>
     );
   }
