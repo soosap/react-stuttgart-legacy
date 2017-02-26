@@ -6,6 +6,7 @@ import events from './lib/events.reducer';
 import venues from './lib/venues.reducer';
 import organization from './lib/organization.reducer';
 import photos from './lib/photos.reducer';
+import selected from './lib/selected.reducer';
 
 const rootReducer = combineReducers({
   auth,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   organization,
   photos,
   routing,
+  selected,
   venues,
 });
 

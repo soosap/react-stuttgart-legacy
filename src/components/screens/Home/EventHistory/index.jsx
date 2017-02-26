@@ -24,7 +24,7 @@ const EventHistory = ({ events, selectEvent }: Props): ?React$Element<Wrapper> =
   return (
     <Wrapper>
       {events.map((event, index) => (
-        <List.Item key={index} onClick={selectEvent}>
+        <List.Item key={index} onClick={() => selectEvent(event.id)}>
           <List.Content>
             <Button className="ui primary button">{event.name}</Button>
           </List.Content>

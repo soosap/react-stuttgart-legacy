@@ -9,7 +9,7 @@ import Header from '../../common/Header';
 import NextEvent from './NextEvent';
 import EventHistory from './EventHistory';
 import Gallery from '../../common/Gallery';
-import { fetchEvents, fetchPhotos } from '../../../actions/events';
+import { fetchEvents, fetchPhotos, selectEvent } from '../../../actions/events';
 import { eventPhotos } from '../../../selectors/photos';
 
 import type { Photo, Event, Talk } from '../../../types';
@@ -17,6 +17,7 @@ import type { Photo, Event, Talk } from '../../../types';
 type Props = {
   fetchEvents: () => void,
   fetchPhotos: () => void,
+  selectEvent: () => void,
   photos: Array<Photo>,
   events: Array<Event>,
 }
@@ -47,8 +48,11 @@ class Home extends React.Component {
 
   componentWillMount() {
     this.props.fetchEvents([
-      'https://api.meetup.com/ReactStuttgart/events/228547676?photo-host=public&sig_id=193558024&sig=9e46aaae0e343ad513f5781530e32efdcc6aab35',
-      'https://api.meetup.com/ReactStuttgart/events/233941914?photo-host=public&sig_id=193558024&sig=a23a9bfb697285b899fbfc525f26c58cbc1d8b04',
+      'https://api.meetup.com/ReactStuttgart/events/234759379?photo-host=public&sig_id=193558024&sig=c2010ff3fcab0066df19c4ce7ca4765f300c267f', // Daimler
+      'https://api.meetup.com/ReactStuttgart/events/233941914?photo-host=public&sig_id=193558024&sig=a23a9bfb697285b899fbfc525f26c58cbc1d8b04', // nexmart
+      'https://api.meetup.com/ReactStuttgart/events/229668388?photo-host=public&sig_id=193558024&sig=5940a66fffe912bf593d370c5f5cf683a2d98f6a', // ReactEurope 2016
+      'https://api.meetup.com/ReactStuttgart/events/228547676?photo-host=public&sig_id=193558024&sig=9e46aaae0e343ad513f5781530e32efdcc6aab35', // conspecton
+      'https://api.meetup.com/ReactStuttgart/events/227497500?photo-host=public&sig_id=193558024&sig=776e4a745d65cddf96e39825fee2bf3dd7fcd768', // conspecton
     ]);
 
     this.props.fetchPhotos([
@@ -56,10 +60,6 @@ class Home extends React.Component {
       'https://api.meetup.com/ReactStuttgart/events/233941914/photos?photo-host=public&page=20&sig_id=193558024&sig=4c3a88ef46750cd73ceda75058dcd5cc2ee76a04',
     ]);
   }
-
-  selectEvent = () => {
-    console.log('Event has been selected.');
-  };
 
   render() {
     const { photos, events } = this.props;
@@ -92,7 +92,7 @@ class Home extends React.Component {
           <NextEvent talks={talks} date={scheduledDate} />
         </Wallpaper>
         <Exhibition>
-          <EventHistory events={events} selectEvent={this.selectEvent} />
+          <EventHistory events={events} selectEvent={this.props.selectEvent} />
           <Gallery dimmer={true} photos={photos} />
         </Exhibition>
       </Wrapper>
@@ -102,11 +102,11 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => ({
   events: R.values(state.events),
-  photos: R.values(state.photos),
+  photos: eventPhotos(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  ...bindActionCreators({ fetchEvents, fetchPhotos }, dispatch),
+  ...bindActionCreators({ fetchEvents, selectEvent, fetchPhotos }, dispatch),
   dispatch,
 });
 

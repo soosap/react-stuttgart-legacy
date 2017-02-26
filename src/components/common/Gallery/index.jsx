@@ -3,7 +3,7 @@ import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 import LightBox from '../LightBox';
-// import { graphql } from '../../../assets/styles/colors';
+import { colors, media } from '../../../assets/styles';
 
 import type { Photo } from '../../../types';
 type Props = {
@@ -15,9 +15,8 @@ type Props = {
 };
 
 type State = {
-  selectedPhoto: number,
-  selectedEvent: string,
   isOpenLightBox: boolean,
+  selectedPhoto?: number,
 };
 
 const Wrapper = styled.div`
@@ -46,8 +45,6 @@ class Gallery extends React.Component {
 
     this.state = {
       isOpenLightBox: false,
-      selectedEvent: '',
-      selectedPhoto: 0,
     };
   }
 

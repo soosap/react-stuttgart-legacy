@@ -15,6 +15,8 @@ import {
   FETCH_VENUES_SUCCESS,
 } from '../../actions/types';
 
+import { selectEvent } from '../../actions/events';
+
 /*
  |--------------------------------------------------------------------------
  | Worker saga
@@ -38,12 +40,14 @@ export function* handleFetchEvents(action) {
     const normalizedData = normalize(eventData, [event]);
     const { entities: { events, groups, venues }, result } = normalizedData;
 
-    const groupId = events[result[0]].group;
+    const latestEvent = events[result[0]];
+    const groupId = latestEvent.group;
     const organization = groups[groupId];
 
     yield put({ type: FETCH_ORGANIZATION_SUCCESS, payload: organization });
     yield put({ type: FETCH_EVENTS_SUCCESS, payload: events });
     yield put({ type: FETCH_VENUES_SUCCESS, payload: venues });
+    yield put(selectEvent(latestEvent.id));
   } catch (error) {
     yield put({ type: FETCH_EVENTS_FAILURE, payload: error });
   }

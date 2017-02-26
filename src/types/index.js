@@ -1,9 +1,7 @@
-export type LightBoxImage = {
-  src: string,
-  srcSet?: Array<string>,
-  caption?: string,
-  thumbnail?: string,
-};
+export type Action = {|
+  type: string,
+  payload?: any
+|};
 
 export type Member = {|
   id: number,
