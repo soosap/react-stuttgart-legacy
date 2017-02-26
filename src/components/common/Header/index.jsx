@@ -25,7 +25,6 @@ const Brand = styled.div`
 `;
 
 
-
 export class Header extends React.Component {
   state = { activeItem: 'English' };
 
