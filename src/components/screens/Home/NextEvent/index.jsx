@@ -31,9 +31,13 @@ const NextEvent = ({ talks, date }: Props): React$Element<Wrapper> => {
     ])(R.length(talks));
   };
 
+  const day = (`0${date.getDate()}`).slice(-2);
+  const month = (`0${date.getMonth()}`).slice(-2);
+  const year = date.getFullYear();
+
   return (
     <Wrapper>
-      <EventDate day="07" month="03" year="2017"/>
+      <EventDate day={day} month={month} year={year} />
 
       {talks.map((talk, index) => {
         const { speaker, technology, description, title } = talk;

@@ -77,11 +77,13 @@ class Home extends React.Component {
       },
     ];
 
+    const scheduledDate = new Date(2017, 3, 24);
+
     return (
       <Wrapper>
         <Wallpaper>
           <Header />
-          <NextEvent talks={talks} date={new Date()} />
+          <NextEvent talks={talks} date={scheduledDate} />
         </Wallpaper>
         <EventHistory events={events} selectEvent={this.selectEvent} />
         <Gallery dimmer={true} photos={photos} />
