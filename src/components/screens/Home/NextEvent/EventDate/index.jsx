@@ -1,6 +1,13 @@
-import React, { PropTypes } from 'react';
+/* @flow */
+import React from 'react';
 import styled from 'styled-components';
-import { secondary, backgroundDarkRGB, graphql } from '../../../../../assets/styles/colors';
+import { secondary, backgroundDarkRGB } from '../../../../../assets/styles/colors';
+
+type Props = {
+  day: string,
+  month: string,
+  year: string | number,
+};
 
 const Wrapper = styled.div`
   display: flex;
@@ -45,7 +52,7 @@ const EventYear = styled.div`
   height: 2em;
 `;
 
-const EventDate = ({ day, month, year }) => {
+const EventDate = ({ day, month, year }: Props) => {
   return (
     <Wrapper>
       <Circle>
@@ -55,12 +62,6 @@ const EventDate = ({ day, month, year }) => {
       </Circle>
     </Wrapper>
   );
-};
-
-EventDate.propTypes = {
-  day: PropTypes.string.isRequired,
-  month: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
 };
 
 export default EventDate;
