@@ -31,7 +31,6 @@ const Wallpaper = styled.div`
   background-repeat: no-repeat;
   border-image-repeat: stretch;
   background-attachment: fixed;
-  background-position: 100%; 
   background-size: 100%, 100%;
   height: 100vh;
   display: flex;
