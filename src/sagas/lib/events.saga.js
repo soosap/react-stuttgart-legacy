@@ -67,8 +67,8 @@ export function* handleFetchPhotos(action) {
     const eventIds = action.payload.photoGalleryLinks.map(R.pipe(R.split('/'), R.nth(5)));
 
     const events = {};
-    const forEachId = R.addIndex(R.forEach);
-    forEachId((id, index) => events[id] = { photos: result[index]}, eventIds);
+    const forEachEventId = R.addIndex(R.forEach(R.__, eventIds));
+    forEachEventId((id, index) => events[id] = { photos: result[index]});
 
     yield put({ type: FETCH_PHOTOS_SUCCESS, payload: { photos, events } });
   } catch (error) {

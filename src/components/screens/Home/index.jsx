@@ -18,6 +18,7 @@ type Props = {
   fetchEvents: () => void,
   fetchPhotos: () => void,
   selectEvent: () => void,
+  selectedEventId?: string,
   photos: Array<Photo>,
   events: Array<Event>,
 }
@@ -62,7 +63,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { photos, events } = this.props;
+    const { photos, events, selectedEventId, selectEvent } = this.props;
 
     const talks: Array<Talk> = [
       {
@@ -92,7 +93,7 @@ class Home extends React.Component {
           <NextEvent talks={talks} date={scheduledDate} />
         </Wallpaper>
         <Exhibition>
-          <EventHistory events={events} selectEvent={this.props.selectEvent} />
+          <EventHistory events={events} selectedEventId={selectedEventId} selectEvent={selectEvent} />
           <Gallery dimmer={true} photos={photos} />
         </Exhibition>
       </Wrapper>
@@ -102,6 +103,7 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => ({
   events: R.values(state.events),
+  selectedEventId: state.selected.event,
   photos: eventPhotos(state),
 });
 

@@ -20,7 +20,8 @@ const selectedEventSelector: Event = createSelector(
 const retrieveEventPhotos = (selectedEvent: ?Event, photos: Object): Array<Photo> => {
   if (!selectedEvent) return [];
 
-  const photoBelongsToSelectedEvent = R.contains(R.__, selectedEvent.photos);
+  const photoIdsOfSelectedEvent = R.ifElse(R.isNil, R.always([]), R.identity)(selectedEvent.photos);
+  const photoBelongsToSelectedEvent = R.contains(R.__, photoIdsOfSelectedEvent);
   return R.filter(R.propSatisfies(photoBelongsToSelectedEvent, 'id'), R.values(photos));
 };
 

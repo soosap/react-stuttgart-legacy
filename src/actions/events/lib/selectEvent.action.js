@@ -2,6 +2,5 @@
 import { SELECT_EVENT_SUCCESS } from '../../../actions/types';
 
 export function selectEvent(event: string) {
-  console.log('selected: ', event);
   return { type: SELECT_EVENT_SUCCESS, payload: { event } };
 }
