@@ -19,6 +19,16 @@ const Icons = styled.div`
   text-align: center;
 `;
 
+const Icon = styled.i`
+  color: ${colors.white} !important;
+  
+  &:hover {
+    transition: 0.2s ease-in;
+    color: ${colors.secondary} !important;
+    cursor: pointer;   
+  }
+`;
+
 const Team = styled.div`
   display: flex;
   flex-direction: column;
@@ -74,8 +84,8 @@ const Footer = () => {
   <Wallpaper>
     <Wrapper>
       <Icons>
-        <i className="twitter inverted big square icon" />
-        <i className="github inverted big square icon" />
+        <Icon href="https://twitter.com/ReactStuttgart" className="twitter inverted big square icon" />
+        <Icon href="https://github.com/ReactStuttgart" className="github inverted big square icon" />
       </Icons>
 
       <div className="ui horizontal inverted divider">
