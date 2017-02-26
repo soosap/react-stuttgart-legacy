@@ -20,7 +20,7 @@ export const reactNative = '#00A2D1';
 
 export const black = '#000000';
 
-export const techstack = {
+export const technology = {
   apollo,
   relay,
   graphql,

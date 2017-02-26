@@ -28,48 +28,61 @@ const TwitterHandle = styled.span`
   opacity: no !important;
 `;
 
-const Card = styled.div`
-  min-width: 320px;
-  // opacity: 0.3 !important;
-  background: rgba(255,255,255,0.3) !important;
+const TechnologyIndicator = styled.div`
+    display: flex;
+    align-items: center;
+    background: rgba(${backgroundDarkRGB},0.9);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+`;
+
+const TechnologyIcon = styled.img`
+      width: 75px;
+      padding: 3%;
+`;
+
+const TechnologyName = styled.div`
+  
+`;
+
+
+const Avatar = styled.div`
+  
+`;
+
+const Topic = styled.div`
+  
 `;
 
 const SpeakerCard = ({ index, speaker, technology, title, description }: Props) => {
   const Wrapper = styled.div`
     display: flex;
-    text-align: left;
-    justify-content: center;
-    margin: 2em;
-    
-    background-color: #fff;
-    justify-content: center; 
     order: ${getOrder(index)};
-    // opacity: 0.3 !important;
-    background: rgba(255,255,255,0.3) !important;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 320px;
+    
+    text-align: left;
+    margin-left: 3em;
+    margin-right: 3em;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 10px;
   `;
-
 
   return (
     <Wrapper>
-        <Card className="ui card">
-          <div className="image">
-            <img src={require(`../../../assets/images/techstack/${technology}.png`)} />
-          </div>
-          <div className="content">
-            <div className="header">{title}</div>
-            <div className="description">{description}</div>
-          </div>
-          <div className="extra content">
-            <div className="right floated author">
-              <img
-                className="ui avatar image"
-                src={`https://twitter.com/${speaker.twitter}/profile_image?size=bigger`}
-              />
-              <TwitterHandle>@{speaker.twitter}</TwitterHandle>
-
-            </div>
-          </div>
-        </Card>
+      <TechnologyIndicator>
+        <TechnologyIcon src={require(`../../../assets/images/technology/${technology}.png`)}/>
+        <TechnologyName>{technology}</TechnologyName>
+      </TechnologyIndicator>
+      <Topic>
+        <div>{title}</div>
+        <div>{description}</div>
+      </Topic>
+      <Avatar>
+        <img src={`https://twitter.com/${speaker.twitter}/profile_image?size=bigger`} />
+        <TwitterHandle>@{speaker.twitter}</TwitterHandle>
+      </Avatar>
     </Wrapper>
   );
 };

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import EventDate from '../NextEvent/EventDate';
 import SpeakerCard from '../../../common/SpeakerCard/index.jsx';
 import SpeakerWanted from '../../../common/SpeakerCard/SpeakerWanted/index.jsx';
+import { media } from '../../../../assets/styles';
 import type { Talk } from '../../../../types';
 
 type Props = {
@@ -15,8 +16,13 @@ type Props = {
 const Wrapper = styled.div`
   margin-top: 20vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  
+  ${media.desktopAndLargerThanThat} {
+    flex-direction: row;  
+  }
 `;
 
 const NextEvent = ({ talks, date }: Props): React$Element<Wrapper> => {
