@@ -2,8 +2,8 @@ export const primary = '#27A5CE';
 export const secondary = '#FFCE38';
 export const secondaryDark = '#2F3141';
 export const secondaryDarkRGB = '47,49,65';
-export const background = '#F2F2F2';
-export const backgroundLight = '#FFFFFF';
+export const whiteDark = '#F2F2F2';
+export const white = '#FFFFFF';
 export const backgroundDark = '#313131';
 export const backgroundDarkRGB = '49,49,49';
 export const danger = '#DB5E7B';
@@ -19,3 +19,20 @@ export const redux = '#764BBC';
 export const reactNative = '#00A2D1';
 
 export const black = '#000000';
+
+export const techstack = {
+  apollo,
+  relay,
+  graphql,
+  flowtype,
+  react,
+  redux,
+  reactNative,
+};
+
+export default {
+  primary,
+  secondary,
+  secondaryDarkRGB,
+  white,
+};

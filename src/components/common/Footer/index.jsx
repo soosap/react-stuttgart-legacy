@@ -2,11 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Member from './Member';
-import { secondaryDarkRGB } from '../../../assets/styles/colors';
+import { colors, media } from '../../../assets/styles';
 
 const Wrapper = styled.div`
-  background: rgba(${secondaryDarkRGB}, 0.9)
-  padding: 10px;
+  background: rgba(${colors.secondaryDarkRGB}, 0.9)
 `;
 
 const Wallpaper = styled.div`
@@ -16,22 +15,56 @@ const Wallpaper = styled.div`
 `;
 
 const Icons = styled.div`
-  padding: 3em;
+  padding: 2rem 1.5rem 1rem 1.5rem;
   text-align: center;
-  padding-bottom:20px;
 `;
 
 const Team = styled.div`
   display: flex;
-  justify-content: center;
-  margin-top: 30px;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.5rem 2rem;
+  
+  ${media.tabletAndLargerThanThat} {
+    flex-direction: row;
+    justify-content: center;
+  }
 `;
 
 const Links = styled.div`
-  padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+  
+  ${media.tabletAndLargerThanThat} {
+    justify-content: space-between;
+  }
 `;
 
-const Title = styled.h3`
+const Link = styled.a`
+  margin: 5px;
+  color: ${colors.white};
+  &:hover {
+    color: ${colors.secondary};
+    text-decoration: underline;
+  }
+`;
+
+const Brand = styled.span`
+  margin: 5px;
+  color: ${colors.secondary};
+`;
+
+const Left = styled.div`
+  display: flex;
+`;
+
+const Right = styled.div`
+  display: flex;
+`;
+
+const Divider = styled.h3`
   color: white;
   font-family: Lullabies-Text;
 `;
@@ -41,32 +74,31 @@ const Footer = () => {
   <Wallpaper>
     <Wrapper>
       <Icons>
-        <i className="facebook inverted big square icon" />
         <i className="twitter inverted big square icon" />
         <i className="github inverted big square icon" />
       </Icons>
 
       <div className="ui horizontal inverted divider">
-        <Title>Organized by</Title>
+        <Divider>Organized by</Divider>
       </div>
 
       <Team>
         <Member twitter="soosap" />
         <Member twitter="chautzi" />
         <Member twitter="FabioDeVasco" />
+        <Member twitter="BetterCallPat" />
       </Team>
 
       <Links>
-        <div className="ui inverted right floated horizontal list">
-          <div className="disabled item">© ReactStuttgart</div>
-          <a className="item" href="#">Terms</a>
-          <a className="item" href="#">Community</a>
-          <a className="item" href="#">Contact Us</a>
-        </div>
-        <div className="ui inverted horizontal list">
-          <a className="item" href="#">About Us</a>
-          <a className="item" href="#">Become a Speaker</a>
-        </div>
+        <Left>
+          <Brand className="disabled item">© #ReactStuttgart</Brand>
+          <Link className="item" href="#">Terms</Link>
+          <Link className="item" href="#">Contact Us</Link>
+        </Left>
+        <Right>
+          <Link className="item" href="#">About Us</Link>
+          <Link className="item" href="#">Become a Speaker</Link>
+        </Right>
       </Links>
     </Wrapper>
   </Wallpaper>
