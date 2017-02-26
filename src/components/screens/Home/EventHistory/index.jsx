@@ -10,20 +10,23 @@ type Props = {
 };
 
 const Wrapper = styled.div`
-  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+`;
+
+const Button = styled.button`
+  margin-bottom: 10px !important;
 `;
 
 const EventHistory = ({ events, selectEvent }: Props): ?React$Element<Wrapper> => {
   if (!events.length) return null;
-
-  console.log('events', events);
 
   return (
     <Wrapper>
       {events.map((event, index) => (
         <List.Item key={index} onClick={selectEvent}>
           <List.Content>
-            {event.name}
+            <Button className="ui primary button">{event.name}</Button>
           </List.Content>
         </List.Item>
       ))}
