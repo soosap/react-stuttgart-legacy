@@ -31,13 +31,11 @@ const Wrapper = styled.div`
 const Wallpaper = styled.div`
   background-image: url(${require('../../../assets/images/meduana-6917.jpg')});
   background-repeat: no-repeat;
-  border-image-repeat: stretch;
   background-attachment: fixed;
-  background-size: 100%, 100%;
+  background-size: cover;
   height: 100vh;
   display: flex;
   flex-direction: column;
-
 `;
 
 const Exhibition = styled.div`
