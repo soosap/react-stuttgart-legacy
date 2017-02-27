@@ -44,6 +44,6 @@ app.listen(PORT, (err) => {
     console.log('err: ', err);
   } else {
     console.log(chalk.yellow(`NODE_ENV: ${process.env.NODE_ENV}`));
-    console.log(chalk.green(`===> react-starter-kit <=== | Listening on http://localhost:${PORT}.`));
+    console.log(chalk.green(`===> react-stuttgart <=== | Listening on http://localhost:${PORT}.`));
   }
 });
