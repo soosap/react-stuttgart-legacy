@@ -66,15 +66,16 @@ class Home extends React.Component {
     const talks: Array<Talk> = [
       {
         speaker: {
-          twitter: 'SquashPaT',
+          twitter: 'Webkreation',
         },
-        title: 'React',
-        description: 'Introduction',
+        title: 'Styling React w/ styled-components',
+        description: 'Utilising tagged template literals (a recent addition to JavaScript) and the power of CSS, ' +
+        'styled-components allows you to write actual CSS code to style your components. ',
         technology: 'react',
       },
       {
         speaker: {
-          twitter: 'BetterCallPaT',
+          twitter: 'soosap',
         },
         title: 'Introduction to GraphQL',
         description: 'Introduction',

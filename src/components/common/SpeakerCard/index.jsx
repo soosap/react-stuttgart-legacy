@@ -25,8 +25,8 @@ const TechnologyIndicator = styled.div`
   display: flex;
   align-items: center;
   background: rgba(${colors.backgroundDarkRGB}, 0.9);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
   height: 3rem;
   
   ${media.desktopAndLargerThanThat} {
@@ -41,33 +41,52 @@ const TechnologyIcon = styled.img`
 `;
 
 const Avatar = styled.div`
-  
+  border-top: 1px solid rgba(${colors.backgroundDarkRGB}, 0.9);
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0.5rem;
+  padding-top: 0.3rem;
+  margin-top: 0.5rem;
 `;
 
 const TwitterHandle = styled.span`
-  font-size: 1.2rem;
-  color: ${colors.black};
-  font-weight: 900;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: ${colors.backgroundDarkRGB};
+  margin-left: 0.2rem;
   opacity: no !important;
 `;
 
-const Topic = styled.div`
+const Body = styled.div`
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+`;
+
+const Title = styled.h1`
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-top: 0.3rem !important;
+  margin-bottom: 0.5rem;
+`;
+
+const Description = styled.p`
   
 `;
 
 const SpeakerCard = ({ index, speaker, technology, title, description }: Props) => {
   const Wrapper = styled.div`
     display: flex;
-    order: ${getOrder(index)};
-    justify-content: center;
     flex-direction: column;
-    min-width: 320px;
+    justify-content: center;
+    order: ${getOrder(index)};
     
-    text-align: left;
-    margin-left: 3em;
-    margin-right: 3em;
-    background-color: rgba(255,255,255,0.5);
-    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem    
+    background-color: rgba(255,255,255, 0.8);
+    border-radius: 3px;
   `;
 
   const TechnologyName = styled.div`
@@ -83,12 +102,12 @@ const SpeakerCard = ({ index, speaker, technology, title, description }: Props) 
         <TechnologyIcon src={require(`../../../assets/images/technology/${technology}.png`)}/>
         <TechnologyName>{technology}</TechnologyName>
       </TechnologyIndicator>
-      <Topic>
-        <div>{title}</div>
-        <div>{description}</div>
-      </Topic>
+      <Body>
+        <Title>{title}</Title>
+        <Description>{description}</Description>
+      </Body>
       <Avatar>
-        <img src={`https://twitter.com/${speaker.twitter}/profile_image?size=bigger`} />
+        <img className="ui circular image" src={`https://twitter.com/${speaker.twitter}/profile_image?size=bigger`} />
         <TwitterHandle>@{speaker.twitter}</TwitterHandle>
       </Avatar>
     </Wrapper>
