@@ -20,7 +20,7 @@ export const reactNative = '#00A2D1';
 
 export const black = '#000000'; // do we need this?
 
-export const technology = {
+export const techstack = {
   apollo,
   relay,
   graphql,
@@ -36,4 +36,5 @@ export default {
   secondaryDarkRGB,
   backgroundDarkRGB,
   white,
+  techstack,
 };

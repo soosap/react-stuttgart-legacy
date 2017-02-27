@@ -3,8 +3,7 @@ import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 import type { Speaker, Technology } from '../../../types';
-import { backgroundDarkRGB, backgroundLight, black, graphql } from '../../../assets/styles/colors';
-import { media } from '../../../assets/styles';
+import { colors, fonts, media } from '../../../assets/styles';
 
 type Props = {
   index: number,
@@ -22,38 +21,34 @@ function getOrder(index: number): number {
   ])(index);
 }
 
-const TwitterHandle = styled.span`
-  font-size: 1.2rem;
-  color: ${black};
-  font-weight: 900;
-  opacity: no !important;
-`;
-
 const TechnologyIndicator = styled.div`
-    display: flex;
-    align-items: center;
-    background: rgba(${backgroundDarkRGB},0.9);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    height: 3rem;
-    
-    ${media.desktopAndLargerThanThat} {
-      height: 4rem;
-    }
+  display: flex;
+  align-items: center;
+  background: rgba(${colors.backgroundDarkRGB}, 0.9);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 3rem;
+  
+  ${media.desktopAndLargerThanThat} {
+    height: 4rem;
+  }
 `;
 
 const TechnologyIcon = styled.img`
-      width: 75px;
-      padding: 3%;
+  width: 30px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 `;
-
-const TechnologyName = styled.div`
-  
-`;
-
 
 const Avatar = styled.div`
   
+`;
+
+const TwitterHandle = styled.span`
+  font-size: 1.2rem;
+  color: ${colors.black};
+  font-weight: 900;
+  opacity: no !important;
 `;
 
 const Topic = styled.div`
@@ -73,6 +68,13 @@ const SpeakerCard = ({ index, speaker, technology, title, description }: Props) 
     margin-right: 3em;
     background-color: rgba(255,255,255,0.5);
     border-radius: 10px;
+  `;
+
+  const TechnologyName = styled.div`
+    color: ${colors.techstack[technology]};
+    font-size: 1.8rem;
+    font-weight: 400;
+    padding-bottom: 0.1rem;
   `;
 
   return (
