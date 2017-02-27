@@ -21,7 +21,6 @@ const Circle = styled.div`
   color: ${colors.secondary};
   background: rgba(${colors.backgroundDarkRGB}, 0.9);
   margin-bottom: 1rem;
-
   
 	width: 15rem;
 	height: 15rem; 

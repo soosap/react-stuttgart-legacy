@@ -57,6 +57,11 @@ const TwitterHandle = styled.span`
   opacity: no !important;
 `;
 
+const TwitterPicture = styled.img`
+  width: 25px !important;
+  height: 25px !important;
+`;
+
 const Body = styled.div`
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -65,7 +70,7 @@ const Body = styled.div`
 const Title = styled.h1`
   font-size: 1.3rem;
   font-weight: 400;
-  margin-top: 0.3rem !important;
+  margin-top: 0.4rem !important;
   margin-bottom: 0.5rem;
 `;
 
@@ -107,7 +112,7 @@ const SpeakerCard = ({ index, speaker, technology, title, description }: Props) 
         <Description>{description}</Description>
       </Body>
       <Avatar>
-        <img className="ui circular image" src={`https://twitter.com/${speaker.twitter}/profile_image?size=bigger`} />
+        <TwitterPicture className="ui circular image" src={`https://twitter.com/${speaker.twitter}/profile_image?size=bigger`} />
         <TwitterHandle>@{speaker.twitter}</TwitterHandle>
       </Avatar>
     </Wrapper>
