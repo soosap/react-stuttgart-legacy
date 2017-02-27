@@ -83,7 +83,6 @@ const SpeakerCard = ({ index, speaker, technology, title, description }: Props) 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    order: ${getOrder(index)};
     
     width: 100%;
     max-width: 400px;
@@ -92,6 +91,10 @@ const SpeakerCard = ({ index, speaker, technology, title, description }: Props) 
     margin-bottom: 1rem    
     background-color: rgba(255,255,255, 0.8);
     border-radius: 3px;
+    
+    ${media.desktopAndLargerThanThat} {
+      order: ${getOrder(index)};
+    }
   `;
 
   const TechnologyName = styled.div`

@@ -23,10 +23,6 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   
-  ${media.tabletAndLargerThanThat} {
-    margin-top: 4rem;  
-  }
-  
   ${media.desktopAndLargerThanThat} {
     flex-direction: row;  
   }

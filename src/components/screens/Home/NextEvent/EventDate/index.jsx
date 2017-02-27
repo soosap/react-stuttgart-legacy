@@ -14,6 +14,15 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   order: 0;
+  
+  ${media.tabletAndLargerThanThat} {
+    margin-top: 2.5rem;  
+    margin-bottom: 1.5rem;  
+  }
+  
+  ${media.desktopAndLargerThanThat} {
+    order: 1;  
+  }
 `;
 
 const Circle = styled.div`
