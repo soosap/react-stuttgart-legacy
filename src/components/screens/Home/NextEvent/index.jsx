@@ -14,12 +14,16 @@ type Props = {
 };
 
 const Wrapper = styled.div`
-  // margin-top: 20vh;
+  margin-top: 1rem;
   
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
+  ${media.tabletAndLargerThanThat} {
+    margin-top: 4rem;  
+  }
   
   ${media.desktopAndLargerThanThat} {
     flex-direction: row;  

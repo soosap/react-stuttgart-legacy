@@ -1,7 +1,7 @@
 /* @flow */
 import React from 'react';
 import styled from 'styled-components';
-import { secondary, backgroundDarkRGB } from '../../../../../assets/styles/colors';
+import { colors, fonts, media } from '../../../../../assets/styles';
 
 type Props = {
   day: string,
@@ -13,42 +13,41 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  order: 1
-  justify-content: center; 
-  order: 1;
+  order: 0;
 `;
 
 const Circle = styled.div`
   font-size: 2.5em;
-  text-align: center;
-  vertical-align: middle;
-  color: ${secondary};
-  background: rgba(${backgroundDarkRGB}, 0.9);
-	width: 300px;
-	height: 300px; 
-  padding: 0.5em;
+  color: ${colors.secondary};
+  background: rgba(${colors.backgroundDarkRGB}, 0.9);
+  margin-bottom: 1rem;
+
+  
+	width: 15rem;
+	height: 15rem; 
   border-radius: 500em;
   
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 const Header = styled.h1`
-  padding-top: 1em;
-  color: white;
-  font-family: Lullabies-Text;
+  padding-top: 2rem;
+  margin: 0;
+  color: ${colors.white};
+  font-family: ${fonts.secondary};
 `;
 
 const EventDayAndMonth = styled.div`
-  font-size: 2.5em;
-  padding: 0.5em 0 0 0;
-  height: 1.5em;
+  font-size: 4rem;
+  padding-bottom: 0.75rem;
 `;
 
 const EventYear = styled.div`
-  padding: 0;
-  height: 2em;
+  font-size: 2rem;
+  padding-bottom: 1.25rem;
 `;
 
 const EventDate = ({ day, month, year }: Props) => {
