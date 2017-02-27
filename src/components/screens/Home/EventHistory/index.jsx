@@ -24,6 +24,7 @@ const EventHistory = ({ events, selectedEventId, selectEvent }: Props): ?React$E
   if (!events.length) return null;
 
   console.log('selectedEventId: ', selectedEventId);
+  console.log('events: ', events);
 
   return (
     <Wrapper>
