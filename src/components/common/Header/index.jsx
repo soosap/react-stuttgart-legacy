@@ -1,53 +1,48 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Menu } from 'semantic-ui-react';
-import { backgroundDarkRGB, backgroundLight } from '../../../assets/styles/colors';
+import { colors, media } from '../../../assets/styles';
 
 const Wrapper = styled.div`
-  margin: 0px;
-  background: rgba(${backgroundDarkRGB}, 0.5)
+  background: rgba(${colors.backgroundDarkRGB}, 0.5)
+`;
+
+const Wordmark = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+`;
+
+const Logo = styled.img`
+  width: 2rem !important;
+  
+  ${media.tabletAndLargerThanThat} {
+    width: 3.5rem !important;
+  }
 `;
 
 const Title = styled.h2`
-  margin-top: 0;
-  margin-left: 0.3rem;
-  color: black;
-  font-size: 1.4rem;
-  font-weight: 400;
-  color: ${backgroundLight};
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: ${colors.white};
+  padding-left: 0.5rem;
+  
+  ${media.tabletAndLargerThanThat} {
+    font-size: 2rem;
+    padding-left: 0.6rem;
+  }
 `;
-
-const Brand = styled.div`
-  display: flex;
-  padding-bottom: 0px;
-  margin-bottom: 0px;
-  padding-left: 6em; 
-`;
-
 
 export class Header extends React.Component {
-  state = { activeItem: 'English' };
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-
   render() {
-    const { activeItem } = this.state;
-
     return (
       <Wrapper>
-        <Menu inverted pointing secondary>
-          <Brand>
-            <Menu.Item>
-              <img className="ui mini image" src={require('../../../assets/images/reactstuttgart@1x.png')} />
-              <Title>ReactStuttgart</Title>
-            </Menu.Item>
-          </Brand>
-
-          <Menu.Menu position='right'>
-            <Menu.Item name='Deutsch' active={activeItem === 'Deutsch'} onClick={this.handleItemClick} />
-            <Menu.Item name='English' active={activeItem === 'English'} onClick={this.handleItemClick} />
-          </Menu.Menu>
-        </Menu>
+        <Wordmark>
+          <Logo className="ui mini image" src={require('../../../assets/images/reactstuttgart@1x.png')} />
+          <Title>#ReactStuttgart</Title>
+        </Wordmark>
       </Wrapper>
     );
   }
