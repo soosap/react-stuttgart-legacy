@@ -18,7 +18,8 @@ WORKDIR /var/www
 COPY package.json yarn.lock ./
 
 # Install the app's production dependencies using yarn
-RUN yarn --pure-lockfile
+# RUN yarn --pure-lockfile
+RUN npm install
 
 # Place all files from the build context inside the image
 COPY . .
@@ -32,7 +33,8 @@ COPY . .
 #
 
 # Upon successful test run build application artefacts
-RUN yarn run build
+# RUN yarn run build
+RUN npm run build
 
 # -------------------------------------------------------------------------
 #  pid1

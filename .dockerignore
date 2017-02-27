@@ -3,6 +3,5 @@
 
 node_modules
 dist
-!semantic/dist
-.env
+# .env # Temporarily do not ignore this. Find a better way to handle secrets. i.e. with vault eventually.
 .env.example
