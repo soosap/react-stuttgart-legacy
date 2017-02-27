@@ -47,14 +47,17 @@ const Avatar = styled.div`
   padding-right: 0.5rem;
   padding-top: 0.3rem;
   margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
 `;
 
-const TwitterHandle = styled.span`
+const TwitterHandle = styled.div`
   font-size: 1.1rem;
   font-weight: 400;
   color: ${colors.backgroundDarkRGB};
-  margin-left: 0.2rem;
+  margin-left: 0.3rem;
+  margin-bottom: 0.25rem;
   opacity: no !important;
+  align-self: flex-end;
 `;
 
 const TwitterPicture = styled.img`

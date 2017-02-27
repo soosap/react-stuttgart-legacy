@@ -21,7 +21,9 @@ const Wrapper = styled.div`
   }
   
   ${media.desktopAndLargerThanThat} {
-    order: 1;  
+    order: 1;
+    margin-left: 3rem;
+    margin-right: 3rem;
   }
 `;
 
@@ -32,13 +34,18 @@ const Circle = styled.div`
   margin-bottom: 1rem;
   
 	width: 15rem;
-	height: 15rem; 
+	height: 15rem;
   border-radius: 500em;
   
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  
+  ${media.desktopAndLargerThanThat} {
+    width: 18rem;
+	  height: 18rem;
+  }
 `;
 
 const Header = styled.h1`
@@ -46,16 +53,28 @@ const Header = styled.h1`
   margin: 0;
   color: ${colors.white};
   font-family: ${fonts.secondary};
+  
+  ${media.desktopAndLargerThanThat} {
+    font-size: 2.2rem;
+  }
 `;
 
 const EventDayAndMonth = styled.div`
   font-size: 4rem;
   padding-bottom: 0.75rem;
+  
+  ${media.desktopAndLargerThanThat} {
+    font-size: 5rem;
+  }
 `;
 
 const EventYear = styled.div`
   font-size: 2rem;
   padding-bottom: 1.25rem;
+  
+  ${media.desktopAndLargerThanThat} {
+    font-size: 2.5rem;
+  }
 `;
 
 const EventDate = ({ day, month, year }: Props) => {

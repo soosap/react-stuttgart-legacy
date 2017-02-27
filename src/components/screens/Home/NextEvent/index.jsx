@@ -24,6 +24,7 @@ const Wrapper = styled.div`
   justify-content: center;
   
   ${media.desktopAndLargerThanThat} {
+    margin-top: 8rem;  
     flex-direction: row;  
   }
 `;
