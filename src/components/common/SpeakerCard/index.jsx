@@ -66,8 +66,8 @@ const TwitterPicture = styled.img`
 `;
 
 const Body = styled.div`
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
 `;
 
 const Title = styled.h1`

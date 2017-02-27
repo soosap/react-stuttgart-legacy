@@ -32,6 +32,8 @@ const Title = styled.h2`
   ${media.tabletAndLargerThanThat} {
     font-size: 2rem;
     padding-left: 0.6rem;
+    font-weight: 400;
+    opacity: 0.8;
   }
 `;
 
