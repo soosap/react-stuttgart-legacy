@@ -4,6 +4,7 @@ import R from 'ramda';
 import styled from 'styled-components';
 import type { Speaker, Technology } from '../../../types';
 import { backgroundDarkRGB, backgroundLight, black, graphql } from '../../../assets/styles/colors';
+import { media } from '../../../assets/styles';
 
 type Props = {
   index: number,
@@ -34,6 +35,11 @@ const TechnologyIndicator = styled.div`
     background: rgba(${backgroundDarkRGB},0.9);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    height: 3rem;
+    
+    ${media.desktopAndLargerThanThat} {
+      height: 4rem;
+    }
 `;
 
 const TechnologyIcon = styled.img`

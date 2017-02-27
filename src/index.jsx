@@ -14,9 +14,9 @@ import Root from './components/Root';
  |
  */
 if (process.env.NODE_ENV === 'development') {
-  require('./../semantic/dist/semantic.css');
+  // require('./../semantic/dist/semantic.css');
 } else {
-  require('./../semantic/dist/semantic.min.css');
+  // require('./../semantic/dist/semantic.min.css');
 }
 
 import './assets/css/lullabies.css';

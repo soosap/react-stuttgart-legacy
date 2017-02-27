@@ -14,7 +14,8 @@ type Props = {
 };
 
 const Wrapper = styled.div`
-  margin-top: 20vh;
+  // margin-top: 20vh;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
