@@ -23,17 +23,18 @@ const SelectButton = styled(Button)`
 const EventHistory = ({ events, selectedEventId, selectEvent }: Props): ?React$Element<Wrapper> => {
   if (!events.length) return null;
 
-  console.log('selectedEventId: ', selectedEventId);
-  console.log('events: ', events);
-
   return (
     <Wrapper>
-      {events.map((event, index) => {
+      {events.reverse().map((event, index) => {
         const isActive = R.equals(selectedEventId, event.id);
+        const displayText = R.cond([
+          [R.gte(2), () => event.name],
+          [R.T, () => `#${R.slice(0, 1, event.name)}`],
+        ])(index);
         return (
           <List.Item key={index} onClick={() => selectEvent(event.id)}>
             <List.Content>
-              <SelectButton active={isActive}>{event.name}</SelectButton>
+              <SelectButton active={isActive}>{displayText}</SelectButton>
             </List.Content>
           </List.Item>
         );
