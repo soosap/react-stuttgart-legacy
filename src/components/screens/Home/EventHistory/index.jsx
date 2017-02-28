@@ -4,6 +4,9 @@ import R from 'ramda';
 import styled from 'styled-components';
 import { Button, List } from 'semantic-ui-react';
 import type { Event } from '../../../../types';
+import Tiles from 'grommet/components/Tiles';
+import Tile from 'grommet/components/Tile';
+import 'grommet/grommet.min.css';
 
 type Props = {
   events: Array<Event>,
@@ -11,20 +14,25 @@ type Props = {
   selectedEventId?: string,
 };
 
-const Wrapper = styled.div`
+const EventTiles = styled(Tiles)`
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 `;
 
-const SelectButton = styled(Button)`
-  margin-bottom: 10px !important;
+const EventTile = styled(Tile)`
+  height: 5rem;
+  flex-grow: 1;
+  vertical-align: middle;
 `;
+
 
 const EventHistory = ({ events, selectedEventId, selectEvent }: Props): ?React$Element<Wrapper> => {
   if (!events.length) return null;
 
   return (
-    <Wrapper>
+    <EventTiles selectable={true}>
       {events.reverse().map((event, index) => {
         const isActive = R.equals(selectedEventId, event.id);
         const displayText = R.cond([
@@ -32,14 +40,12 @@ const EventHistory = ({ events, selectedEventId, selectEvent }: Props): ?React$E
           [R.T, () => `#${R.slice(0, 1, event.name)}`],
         ])(index);
         return (
-          <List.Item key={index} onClick={() => selectEvent(event.id)}>
-            <List.Content>
-              <SelectButton active={isActive}>{displayText}</SelectButton>
-            </List.Content>
-          </List.Item>
+          <EventTile key={index} onClick={() => selectEvent(event.id)} selected={isActive}>
+            {displayText}
+          </EventTile>
         );
       })}
-    </Wrapper>
+    </EventTiles>
   );
 };
 
