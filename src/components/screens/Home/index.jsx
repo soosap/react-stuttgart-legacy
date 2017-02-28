@@ -11,6 +11,8 @@ import EventHistory from './EventHistory';
 import Gallery from '../../common/Gallery';
 import { fetchEvents, fetchPhotos, selectEvent } from '../../../actions/events';
 import { eventPhotos } from '../../../selectors/photos';
+import { media } from '../../../assets/styles';
+
 
 import type { Photo, Event, Talk } from '../../../types';
 
@@ -32,10 +34,18 @@ const Wallpaper = styled.div`
   background-image: url(${require('../../../assets/images/meduana-6917.jpg')});
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
-  height: 100vh;
+  background-position: center bottom;
+  
+  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  
+  overflow: hidden;
+  
+  ${media.tabletAndLargerThanThat} {
+    background-size: cover;
+  }
 `;
 
 const Exhibition = styled.div`

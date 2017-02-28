@@ -14,7 +14,7 @@ type Props = {
 };
 
 const Wrapper = styled.div`
-  margin-top: 1rem;
+  // margin-top: 0.5rem;
   margin-bottom: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -23,10 +23,18 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 700px;
+  
+  position: relative;
+  overflow: auto;
+  
+  ${media.tabletAndLargerThanThat} {
+    margin-top: 2rem;
+  }
   
   ${media.desktopAndLargerThanThat} {
-    margin-top: 8rem;  
-    flex-direction: row;  
+    margin-top: 3rem;
+    flex-direction: row;
   }
 `;
 
@@ -49,6 +57,36 @@ const NextEvent = ({ talks, date }: Props): React$Element<Wrapper> => {
   return (
     <Wrapper>
       <EventDate day={day} month={month} year={year} />
+
+      {talks.map((talk, index) => {
+        const { speaker, technology, description, title } = talk;
+
+        return (
+          <SpeakerCard
+            key={index}
+            index={index}
+            speaker={speaker}
+            technology={technology}
+            title={title}
+            description={description}
+          />
+        );
+      })}
+
+      {talks.map((talk, index) => {
+        const { speaker, technology, description, title } = talk;
+
+        return (
+          <SpeakerCard
+            key={index}
+            index={index}
+            speaker={speaker}
+            technology={technology}
+            title={title}
+            description={description}
+          />
+        );
+      })}
 
       {talks.map((talk, index) => {
         const { speaker, technology, description, title } = talk;

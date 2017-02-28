@@ -2,7 +2,6 @@
 import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
-import { Button, List } from 'semantic-ui-react';
 import type { Event } from '../../../../types';
 import Tiles from 'grommet/components/Tiles';
 import Tile from 'grommet/components/Tile';
@@ -28,11 +27,11 @@ const EventTile = styled(Tile)`
 `;
 
 
-const EventHistory = ({ events, selectedEventId, selectEvent }: Props): ?React$Element<Wrapper> => {
+const EventHistory = ({ events, selectedEventId, selectEvent }: Props): ?React$Element<EventTiles> => {
   if (!events.length) return null;
 
   return (
-    <EventTiles selectable={true}>
+    <EventTiles selectable>
       {events.reverse().map((event, index) => {
         const isActive = R.equals(selectedEventId, event.id);
         const displayText = R.cond([
