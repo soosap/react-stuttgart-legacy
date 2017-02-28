@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Footer from './common/Footer';
 
 const Wrapper = styled.div`
-  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  // background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
 `;
 
 class App extends React.Component {

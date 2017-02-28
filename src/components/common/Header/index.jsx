@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { colors, media } from '../../../assets/styles';
 
 const Wrapper = styled.div`
-  background: rgba(${colors.backgroundDarkRGB}, 0.5)
+  background: rgba(${colors.backgroundDarkRGB}, 0.5);
 `;
 
 const Wordmark = styled.div`

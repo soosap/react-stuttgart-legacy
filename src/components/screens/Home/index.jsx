@@ -28,20 +28,18 @@ type Props = {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
 `;
 
 const Wallpaper = styled.div`
-  background-image: url(${require('../../../assets/images/meduana-6917.jpg')});
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center bottom;
-  
-  min-height: 100vh;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   
-  overflow: hidden;
+  background-image: url(${require('../../../assets/images/meduana-6917.jpg')});
+  background-repeat: no-repeat;
+  background-attachment: fixed !important;
+  background-position: center bottom;
   
   ${media.tabletAndLargerThanThat} {
     background-size: cover;
