@@ -81,14 +81,14 @@ class Home extends React.Component {
         'styled-components allows you to write actual CSS code to style your components. ',
         technology: 'react',
       },
-      {
-        speaker: {
-          twitter: 'soosap',
-        },
-        title: 'Introduction to GraphQL',
-        description: 'Introduction',
-        technology: 'graphql',
-      },
+      // {
+      //   speaker: {
+      //     twitter: 'soosap',
+      //   },
+      //   title: 'Introduction to GraphQL',
+      //   description: 'Introduction',
+      //   technology: 'graphql',
+      // },
     ];
 
     const scheduledDate = new Date(2017, 3, 24);
