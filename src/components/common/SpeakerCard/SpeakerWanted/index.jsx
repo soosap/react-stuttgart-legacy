@@ -104,18 +104,19 @@ const SpeakerWanted = ({ gender, index }: Props) => {
     <Wrapper>
     <SpeakerWantedIndicator>
         <SpeakerWantedIcon src={require(`../../../../assets/images/speaker/speaker_wanted.png`)}/>
-        <SpeakerWantedName>Looking for Speaker</SpeakerWantedName>
+        <SpeakerWantedName>Become a Speaker</SpeakerWantedName>
     </SpeakerWantedIndicator>
       <Body>
-        <Title>Speaker Wanted Key is</Title>
-        <Description>Want to be a speaker at @ReactStuttgart
+        <Title>React Stuttgart</Title>
+        <Description>U have some intressting knowledge about react, grapql, apollo, redux and want to share your knowledge, then contact us.
         <br/>
-          <button>Mail Us</button>
+        <br/>
+          <button>Contact Us</button>
         </Description>
       </Body>
       <Avatar>
         <TwitterPicture className="ui circular image" src={`https://twitter.com/reactstuttgart/profile_image?size=bigger`} />
-        <TwitterHandle>@reactstuttgart</TwitterHandle>
+        <TwitterHandle>@reactStuttgart</TwitterHandle>
       </Avatar>
 
     </Wrapper>
