@@ -9,8 +9,6 @@ type Props = {
   index: number,
 };
 
-
-
 const SpeakerWantedIndicator = styled.div`
   display: flex;
   align-items: center;
@@ -24,7 +22,7 @@ const SpeakerWantedIndicator = styled.div`
   }
 `;
 
-const SpeakerWantedIcon = styled.div`
+const SpeakerWantedIcon = styled.img`
   width: 30px;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
