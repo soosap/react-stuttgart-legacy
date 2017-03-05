@@ -3,9 +3,6 @@ import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 import type { Event } from '../../../../types';
-import Tiles from 'grommet/components/Tiles';
-import Tile from 'grommet/components/Tile';
-import 'grommet/grommet.min.css';
 
 type Props = {
   events: Array<Event>,
@@ -13,14 +10,14 @@ type Props = {
   selectedEventId?: string,
 };
 
-const EventTiles = styled(Tiles)`
+const Tiles = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 `;
 
-const EventTile = styled(Tile)`
+const Tile = styled.div`
   height: 5rem;
   flex-grow: 1;
   vertical-align: middle;
@@ -29,19 +26,23 @@ const EventTile = styled(Tile)`
 const events = [
   {
     id: 'event5',
-    name: '5. Meetup React Stuttgart @ Daimler',
+    name: '5. Meetup React Stuttgart @Daimler',
   },
   {
     id: 'event6',
-    name: '6. Meetup React Stuttgart @ ITM',
-  }
+    name: '6. Meetup React Stuttgart @ITM',
+  },
 ];
 
-const EventHistory = ({ selectedEventId, selectEvent }: Props): ?React$Element<EventTiles> => {
+const selectEvent = (eventId) => {
+  console.log('eventId: ', eventId);
+};
+
+const EventHistory = ({ selectedEventId }: Props): ?React$Element<Tiles> => {
   if (!events.length) return null;
 
   return (
-    <EventTiles selectable>
+    <Tiles>
       {events.reverse().map((event, index) => {
         const isActive = R.equals(selectedEventId, event.id);
         const displayText = R.cond([
@@ -49,12 +50,12 @@ const EventHistory = ({ selectedEventId, selectEvent }: Props): ?React$Element<E
           [R.T, () => `#${R.slice(0, 1, event.name)}`],
         ])(index);
         return (
-          <EventTile key={index} onClick={() => selectEvent(event.id)} selected={isActive}>
+          <Tile key={index} onClick={() => selectEvent(event.id)} selected={isActive}>
             {displayText}
-          </EventTile>
+          </Tile>
         );
       })}
-    </EventTiles>
+    </Tiles>
   );
 };
 
