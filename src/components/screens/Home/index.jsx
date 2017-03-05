@@ -45,10 +45,6 @@ const Wallpaper = styled.div`
   }
 `;
 
-const Exhibition = styled.div`
-  margin: 20px;
-`;
-
 class Home extends React.Component {
   props: Props;
 
@@ -97,10 +93,8 @@ class Home extends React.Component {
           <Header />
           <NextEvent talks={talks} date={scheduledDate} />
         </Wallpaper>
-        <Exhibition>
-          <EventHistory events={events} selectedEventId={selectedEventId} selectEvent={selectEvent} />
-          <Gallery dimmer={true} photos={photos} />
-        </Exhibition>
+        <EventHistory events={events} selectedEventId={selectedEventId} selectEvent={selectEvent} />
+        <Gallery dimmer={true} photos={photos} />
       </Wrapper>
     );
   }
