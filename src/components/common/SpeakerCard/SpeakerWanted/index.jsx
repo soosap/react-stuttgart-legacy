@@ -99,12 +99,11 @@ const SpeakerWanted = ({ gender, index }: Props) => {
     }
   `;
 
-
   return (
     <Wrapper>
     <SpeakerWantedIndicator>
-        <SpeakerWantedIcon src={require(`../../../../assets/images/speaker/speaker_wanted.png`)}/>
-        <SpeakerWantedName>Become a Speaker</SpeakerWantedName>
+        <SpeakerWantedIcon src={require('../../../../assets/images/speaker/speaker_wanted.png')}/>
+        <SpeakerWantedName>Looking for Speaker</SpeakerWantedName>
     </SpeakerWantedIndicator>
       <Body>
         <Title>React Stuttgart</Title>
@@ -118,7 +117,6 @@ const SpeakerWanted = ({ gender, index }: Props) => {
         <TwitterPicture className="ui circular image" src={`https://twitter.com/reactstuttgart/profile_image?size=bigger`} />
         <TwitterHandle>@reactStuttgart</TwitterHandle>
       </Avatar>
-
     </Wrapper>
   );
 };

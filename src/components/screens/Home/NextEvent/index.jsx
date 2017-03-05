@@ -71,36 +71,6 @@ const NextEvent = ({ talks, date }: Props): React$Element<Wrapper> => {
         );
       })}
 
-      {talks.map((talk, index) => {
-        const { speaker, technology, description, title } = talk;
-
-        return (
-          <SpeakerCard
-            key={index}
-            index={index}
-            speaker={speaker}
-            technology={technology}
-            title={title}
-            description={description}
-          />
-        );
-      })}
-
-      {talks.map((talk, index) => {
-        const { speaker, technology, description, title } = talk;
-
-        return (
-          <SpeakerCard
-            key={index}
-            index={index}
-            speaker={speaker}
-            technology={technology}
-            title={title}
-            description={description}
-          />
-        );
-      })}
-
       {renderSpeakerWanted()}
     </Wrapper>
   );

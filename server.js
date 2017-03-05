@@ -2,16 +2,39 @@
 import chalk from 'chalk';
 import express from 'express';
 import path from 'path';
-import axios from 'axios';
+import createMeetupClient from 'meetup-api';
 
 const PORT = process.env.PORT || 8080;
 const app = express();
 
-app.get('/meetup', (req, res) => {
-  axios.get(req.query.uri)
-    .then(meetup => res.json(meetup.data))
-    .catch(e => res.send(e));
+const meetup = createMeetupClient({
+  key: process.env.MEETUP_API_KEY,
 });
+
+app.get('/meetup/events/:id', (req, res) => {
+  meetup.getEvent({ urlname: 'ReactStuttgart', id: req.params.id }, (error, event) => {
+    if (error) {
+      console.log(error);
+      res.send(error);
+    } else {
+      console.log(event);
+      res.json(event);
+    }
+  });
+});
+
+app.get('/meetup/events/:id/photos', (req, res) => {
+  meetup.getEventPhotos({ urlname: 'ReactStuttgart', id: req.params.id }, (error, photos) => {
+    if (error) {
+      console.log(error);
+      res.send(error);
+    } else {
+      console.log(photos);
+      res.json(photos);
+    }
+  });
+});
+
 
 if (process.env.NODE_ENV === 'development') {
   const webpack = require('webpack');

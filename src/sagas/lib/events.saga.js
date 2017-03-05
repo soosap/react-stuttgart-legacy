@@ -28,8 +28,8 @@ import { selectEvent } from '../../actions/events';
  */
 export function* handleFetchEvents(action) {
   try {
-    const responses = yield action.payload.eventLinks.map(eventLink => {
-      return call(axios.get, '/meetup', { params: { uri: eventLink }});
+    const responses = yield action.payload.eventLinks.map(eventId => {
+      return call(axios.get, `/meetup/events/${eventId}`);
     });
 
     const eventData = responses.map(response => response.data);
@@ -55,8 +55,8 @@ export function* handleFetchEvents(action) {
 
 export function* handleFetchPhotos(action) {
   try {
-    const responses = yield action.payload.photoGalleryLinks.map(galleryLink => {
-      return call(axios.get, '/meetup', { params: { uri: galleryLink }});
+    const responses = yield action.payload.eventIds.map(eventId => {
+      return call(axios.get, `/meetup/events/${eventId}/photos`);
     });
 
     const photoData = responses.map(response => response.data);
