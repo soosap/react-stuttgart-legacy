@@ -26,8 +26,18 @@ const EventTile = styled(Tile)`
   vertical-align: middle;
 `;
 
+const events = [
+  {
+    id: 'event5',
+    name: '5. Meetup React Stuttgart @ Daimler',
+  },
+  {
+    id: 'event6',
+    name: '6. Meetup React Stuttgart @ ITM',
+  }
+];
 
-const EventHistory = ({ events, selectedEventId, selectEvent }: Props): ?React$Element<EventTiles> => {
+const EventHistory = ({ selectedEventId, selectEvent }: Props): ?React$Element<EventTiles> => {
   if (!events.length) return null;
 
   return (
