@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "root": true,
   "env": {
     "browser": true,
@@ -13,6 +14,18 @@
     "import/no-extraneous-dependencies": 0,
     "import/prefer-default-export": 0,
     "import/no-unresolved": 0,
-    "import/extensions": 0
+    "import/no-named-as-default": 0,
+    "import/extensions": 0,
+    "no-shadow": 0,
+    "arrow-body-style": 0,
+    "global-require": 0,
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": [
+          "__"
+        ]
+      }
+    ]
   }
 }

@@ -35,7 +35,6 @@ app.get('/meetup/events/:id/photos', (req, res) => {
   });
 });
 
-
 if (process.env.NODE_ENV === 'development') {
   const webpack = require('webpack');
   const webpackConfig = require('./webpack.config').default;
@@ -52,7 +51,6 @@ if (process.env.NODE_ENV === 'development') {
   app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'src/index.html'));
   });
-
 } else {
   app.use(require('compression')());
   app.use(express.static('dist'));

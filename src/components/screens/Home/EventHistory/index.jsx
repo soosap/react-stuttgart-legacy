@@ -1,5 +1,5 @@
 /* @flow */
-import React from 'react';
+import React, { Element } from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 import type { Event } from '../../../../types';
@@ -7,7 +7,7 @@ import type { Event } from '../../../../types';
 type Props = {
   events: Array<Event>,
   selectEvent: () => void,
-  selectedEventId?: string,
+  selectedEventId: string,
 };
 
 const Wrapper = styled.section`
@@ -29,29 +29,11 @@ const Tile = styled.div`
   vertical-align: middle;
 `;
 
-const events = [
-  {
-    id: 'event5',
-    name: '5. Meetup React Stuttgart @Daimler',
-  },
-  {
-    id: 'event6',
-    name: '6. Meetup React Stuttgart @ITM',
-  },
-];
-
-const selectEvent = (eventId) => {
-  console.log('eventId: ', eventId);
-};
-
-const EventHistory = ({ selectedEventId }: Props): ?React$Element<Tiles> => {
+const EventHistory = ({ selectedEventId, events, selectEvent }: Props): ?Element<Tiles> => {
   if (!events.length) return null;
 
   return (
     <Wrapper>
-      <h1>
-        I am a header!
-      </h1>
       <Tiles>
         {events.reverse().map((event, index) => {
           const isActive = R.equals(selectedEventId, event.id);
@@ -60,7 +42,7 @@ const EventHistory = ({ selectedEventId }: Props): ?React$Element<Tiles> => {
             [R.T, () => `#${R.slice(0, 1, event.name)}`],
           ])(index);
           return (
-            <Tile key={index} onClick={() => selectEvent(event.id)} selected={isActive}>
+            <Tile key={event.id} onClick={() => selectEvent(event.id)} selected={isActive}>
               {displayText}
             </Tile>
           );

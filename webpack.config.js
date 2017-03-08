@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-
 import path from 'path';
 import webpack from 'webpack';
 
@@ -171,8 +170,8 @@ export default function ({ development }) {
           loader: 'url-loader?limit=10000&mimetype=application/octet-stream',
         },
         development ? {
-            test: /\.(jpe?g|png|gif|svg)$/,
-            use: [{ loader: 'url-loader', options: { limit: 40000 }}]
+          test: /\.(jpe?g|png|gif|svg)$/,
+          use: [{ loader: 'url-loader', options: { limit: 40000 } }],
         } : {
           test: /\.(jpe?g|png|gif|svg)$/,
           use: [

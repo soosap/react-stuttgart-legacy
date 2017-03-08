@@ -28,7 +28,7 @@ import { selectEvent } from '../../actions/events';
  */
 export function* handleFetchEvents(action) {
   try {
-    const responses = yield action.payload.eventLinks.map(eventId => {
+    const responses = yield action.payload.eventIds.map((eventId) => {
       return call(axios.get, `/meetup/events/${eventId}`);
     });
 
@@ -55,7 +55,7 @@ export function* handleFetchEvents(action) {
 
 export function* handleFetchPhotos(action) {
   try {
-    const responses = yield action.payload.eventIds.map(eventId => {
+    const responses = yield action.payload.eventIds.map((eventId) => {
       return call(axios.get, `/meetup/events/${eventId}/photos`);
     });
 
@@ -64,11 +64,13 @@ export function* handleFetchPhotos(action) {
     const normalizedData = yield normalize(photoData, [[photo]]);
     const { entities: { photos }, result } = normalizedData;
 
-    const eventIds = action.payload.photoGalleryLinks.map(R.pipe(R.split('/'), R.nth(5)));
+    const eventIds = action.payload.photoGalleryLinks.map(
+      R.pipe(R.split('/'), R.nth(5)),
+    );
 
     const events = {};
     const forEachEventId = R.addIndex(R.forEach(R.__, eventIds));
-    forEachEventId((id, index) => events[id] = { photos: result[index]});
+    forEachEventId((id, index) => (events[id] = { photos: result[index] }));
 
     yield put({ type: FETCH_PHOTOS_SUCCESS, payload: { photos, events } });
   } catch (error) {
