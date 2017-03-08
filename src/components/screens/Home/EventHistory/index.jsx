@@ -10,7 +10,13 @@ type Props = {
   selectedEventId?: string,
 };
 
-const Tiles = styled.section`
+const Wrapper = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Tiles = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,20 +48,25 @@ const EventHistory = ({ selectedEventId }: Props): ?React$Element<Tiles> => {
   if (!events.length) return null;
 
   return (
-    <Tiles>
-      {events.reverse().map((event, index) => {
-        const isActive = R.equals(selectedEventId, event.id);
-        const displayText = R.cond([
-          [R.gte(2), () => event.name],
-          [R.T, () => `#${R.slice(0, 1, event.name)}`],
-        ])(index);
-        return (
-          <Tile key={index} onClick={() => selectEvent(event.id)} selected={isActive}>
-            {displayText}
-          </Tile>
-        );
-      })}
-    </Tiles>
+    <Wrapper>
+      <h1>
+        I am a header!
+      </h1>
+      <Tiles>
+        {events.reverse().map((event, index) => {
+          const isActive = R.equals(selectedEventId, event.id);
+          const displayText = R.cond([
+            [R.gte(2), () => event.name],
+            [R.T, () => `#${R.slice(0, 1, event.name)}`],
+          ])(index);
+          return (
+            <Tile key={index} onClick={() => selectEvent(event.id)} selected={isActive}>
+              {displayText}
+            </Tile>
+          );
+        })}
+      </Tiles>
+    </Wrapper>
   );
 };
 
