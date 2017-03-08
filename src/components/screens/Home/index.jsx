@@ -30,6 +30,7 @@ type Props = {
 };
 
 const eventIds = R.pluck('id', events);
+const mostRecentEventId = R.head(eventIds);
 
 const Wrapper = styled.div`
   display: flex;
@@ -54,12 +55,12 @@ const Wallpaper = styled.div`
 
 class Home extends React.Component {
   static defaultProps = {
-    selectedEventId: R.head(eventIds),
+    selectedEventId: mostRecentEventId,
   };
 
   componentWillMount() {
     this.props.fetchEvents(eventIds);
-    this.props.fetchEventPhotos(R.head(eventIds));
+    this.props.fetchEventPhotos([mostRecentEventId]);
   }
 
   props: Props;

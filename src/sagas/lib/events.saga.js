@@ -60,16 +60,14 @@ export function* handleFetchPhotos(action) {
     });
 
     const photoData = responses.map(response => response.data);
+    console.log('photoData', photoData);
     const photo = new schema.Entity('photos');
     const normalizedData = yield normalize(photoData, [[photo]]);
+    console.log('normalizedData', normalizedData);
     const { entities: { photos }, result } = normalizedData;
 
-    const eventIds = action.payload.photoGalleryLinks.map(
-      R.pipe(R.split('/'), R.nth(5)),
-    );
-
     const events = {};
-    const forEachEventId = R.addIndex(R.forEach(R.__, eventIds));
+    const forEachEventId = R.addIndex(R.forEach(R.__, action.payload.eventIds));
     forEachEventId((id, index) => (events[id] = { photos: result[index] }));
 
     yield put({ type: FETCH_PHOTOS_SUCCESS, payload: { photos, events } });
