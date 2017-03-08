@@ -2,10 +2,10 @@ import React from 'react';
 
 import R from 'ramda';
 import styled from 'styled-components';
-import type { Speaker, Technology } from '../../../../types';
 import { colors, fonts, media } from '../../../../assets/styles';
 
 type Props = {
+  gender: string,
   index: number,
 };
 

@@ -42,8 +42,8 @@ const NextEvent = ({ talks, date }: Props): React$Element<Wrapper> => {
       [R.gte(R.__, 2), R.always(null)],
       [R.equals(1), R.always(<SpeakerWanted gender="male" />)],
       [R.equals(0), R.always([
-        <SpeakerWanted key="0" gender="male" />,
-        <SpeakerWanted key="1" gender="female" />
+        <SpeakerWanted key={0} index={0} gender="male" />,
+        <SpeakerWanted key={1} index={1} gender="female" />
       ])],
     ])(R.length(talks));
   };
