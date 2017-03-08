@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Root from './components/Root';
+// import Root from './components/Root';
 
 /*
  |--------------------------------------------------------------------------
@@ -36,7 +36,7 @@ let render = () => {
   const Root = require('./components/Root.jsx').default;
   ReactDOM.render(
     <Root />,
-    rootEl
+    rootEl,
   );
 };
 
@@ -46,7 +46,7 @@ if (module.hot) {
     const Redbox = require('redbox-react');
     ReactDOM.render(
       <Redbox error={err} />,
-      rootEl
+      rootEl,
     );
   };
 

@@ -60,10 +60,8 @@ export function* handleFetchPhotos(action) {
     });
 
     const photoData = responses.map(response => response.data);
-    console.log('photoData', photoData);
     const photo = new schema.Entity('photos');
     const normalizedData = yield normalize(photoData, [[photo]]);
-    console.log('normalizedData', normalizedData);
     const { entities: { photos }, result } = normalizedData;
 
     const events = {};

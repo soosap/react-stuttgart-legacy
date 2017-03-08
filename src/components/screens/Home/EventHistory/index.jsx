@@ -36,6 +36,7 @@ const EventHistory = ({ selectedEventId, events, selectEvent }: Props): ?Element
     <Wrapper>
       <Tiles>
         {events.reverse().map((event, index) => {
+          if (!event.id) return null;
           const isActive = R.equals(selectedEventId, event.id);
           const displayText = R.cond([
             [R.gte(2), () => event.name],
