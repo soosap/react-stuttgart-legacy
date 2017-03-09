@@ -1,5 +1,5 @@
 /* @flow */
-import React from 'react';
+import React, { Element } from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 import EventDate from '../NextEvent/EventDate';
@@ -18,32 +18,32 @@ const Wrapper = styled.div`
   margin-bottom: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+
   min-height: 700px;
-  
+
   ${media.tabletAndLargerThanThat} {
     margin-top: 2rem;
   }
-  
+
   ${media.desktopAndLargerThanThat} {
     margin-top: 3rem;
     flex-direction: row;
   }
 `;
 
-const NextEvent = ({ talks, date }: Props): React$Element<Wrapper> => {
+const NextEvent = ({ talks, date }: Props): Element<Wrapper> => {
   const renderSpeakerWanted = () => {
     return R.cond([
       [R.gte(R.__, 2), R.always(null)],
       [R.equals(1), R.always(<SpeakerWanted gender="male" />)],
       [R.equals(0), R.always([
         <SpeakerWanted key={0} index={0} gender="male" />,
-        <SpeakerWanted key={1} index={1} gender="female" />
+        <SpeakerWanted key={1} index={1} gender="female" />,
       ])],
     ])(R.length(talks));
   };

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './assets/css/lullabies.css';
 
 // import Root from './components/Root';
 
@@ -18,8 +19,6 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   // require('./../semantic/dist/semantic.min.css');
 }
-
-import './assets/css/lullabies.css';
 
 /*
  |--------------------------------------------------------------------------
@@ -54,6 +53,7 @@ if (module.hot) {
     try {
       renderApp();
     } catch (err) {
+      console.log(err); // eslint-disable-line no-console
       renderErr(err);
     }
   };

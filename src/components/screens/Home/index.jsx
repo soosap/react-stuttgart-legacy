@@ -14,22 +14,22 @@ import {
   fetchEventPhotos,
   selectEvent,
 } from '../../../actions/events';
-import { eventPhotos } from '../../../selectors/photos';
+import { getSelectedEventPhotos } from '../../../selectors/photos';
+import { getEvents, getSelectedEvent } from '../../../selectors/events';
 import { media } from '../../../assets/styles';
-import events from '../../../assets/resources/events.json';
+import eventsData from '../../../assets/resources/events.json';
 
 import type { Photo, Event, Talk } from '../../../types';
 
 type Props = {
   fetchEvents: (eventIds: Array<string>) => void,
-  fetchEventPhotos: (eventIds: Array<string>) => void,
   selectEvent: () => void,
-  selectedEventId: string,
+  selectedEvent: Event,
   photos: Array<Photo>,
   events: Array<Event>,
 };
 
-const eventIds = R.pluck('id', events);
+const eventIds = R.pluck('id', eventsData);
 const mostRecentEventId = R.head(eventIds);
 
 const Wrapper = styled.div`
@@ -54,19 +54,15 @@ const Wallpaper = styled.div`
 `;
 
 class Home extends React.Component {
-  static defaultProps = {
-    selectedEventId: mostRecentEventId,
-  };
-
   componentWillMount() {
     this.props.fetchEvents(eventIds);
-    this.props.fetchEventPhotos([mostRecentEventId]);
+    this.props.selectEvent(mostRecentEventId);
   }
 
   props: Props;
 
   render() {
-    const { photos, events, selectedEventId, selectEvent } = this.props;
+    const { photos, events, selectedEvent, selectEvent } = this.props;
 
     const talks: Array<Talk> = [
       {
@@ -89,7 +85,7 @@ class Home extends React.Component {
         </Wallpaper>
         <EventHistory
           events={events}
-          selectedEventId={selectedEventId}
+          selectedEvent={selectedEvent}
           selectEvent={selectEvent}
         />
         <Gallery dimmer photos={photos} />
@@ -99,9 +95,9 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  events: R.values(state.events),
-  selectedEventId: state.selected.event,
-  photos: eventPhotos(state),
+  events: getEvents(state),
+  selectedEvent: getSelectedEvent(state),
+  photos: getSelectedEventPhotos(state),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -112,6 +108,4 @@ const mapDispatchToProps = dispatch => ({
   dispatch,
 });
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-)(Home);
+export default compose(connect(mapStateToProps, mapDispatchToProps))(Home);

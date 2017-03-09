@@ -82,4 +82,3 @@ export type Talk = {|
   technology: Technology,
   title: string,
 |};
-

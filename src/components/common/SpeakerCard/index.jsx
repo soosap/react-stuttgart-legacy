@@ -28,7 +28,7 @@ const TechnologyIndicator = styled.div`
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   height: 3rem;
-  
+
   ${media.desktopAndLargerThanThat} {
     height: 4rem;
   }
@@ -78,7 +78,7 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
-  
+
 `;
 
 const SpeakerCard = ({ index, speaker, technology, title, description }: Props) => {
@@ -86,15 +86,15 @@ const SpeakerCard = ({ index, speaker, technology, title, description }: Props) 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
     width: 100%;
     max-width: 400px;
     margin-left: 1rem;
     margin-right: 1rem;
-    margin-bottom: 1rem    
+    margin-bottom: 1rem
     background-color: rgba(255,255,255, 0.8);
     border-radius: 3px;
-    
+
     ${media.desktopAndLargerThanThat} {
       order: ${getOrder(index)};
     }
@@ -110,7 +110,7 @@ const SpeakerCard = ({ index, speaker, technology, title, description }: Props) 
   return (
     <Wrapper>
       <TechnologyIndicator>
-        <TechnologyIcon src={require(`../../../assets/images/technology/${technology}.png`)}/>
+        <TechnologyIcon src={require(`../../../assets/images/technology/${technology}.png`)} />
         <TechnologyName>{technology}</TechnologyName>
       </TechnologyIndicator>
       <Body>

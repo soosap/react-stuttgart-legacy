@@ -12,12 +12,14 @@ const meetup = createMeetupClient({
 });
 
 app.get('/meetup/events/:id', (req, res) => {
+  console.log('req.params', req.params);
+  console.log('req.params.id', req.params.id);
   meetup.getEvent({ urlname: 'ReactStuttgart', id: req.params.id }, (error, event) => {
     if (error) {
       console.log(error);
       res.send(error);
     } else {
-      console.log(event);
+      console.log(`Event: ${req.params.id} fetched!`);
       res.json(event);
     }
   });
@@ -29,7 +31,7 @@ app.get('/meetup/events/:id/photos', (req, res) => {
       console.log(error);
       res.send(error);
     } else {
-      console.log(photos);
+      console.log(`Photos: ${req.params.id} fetched!`);
       res.json(photos);
     }
   });

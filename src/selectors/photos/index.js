@@ -1,5 +1,5 @@
-import eventPhotos from './lib/eventPhotos.selector';
+/* @flow */
+import getPhotos from '../photos/lib/photos.selector';
+import getSelectedEventPhotos from './lib/selectedEventPhotos.selector';
 
-export {
-  eventPhotos,
-};
+export { getPhotos, getSelectedEventPhotos };

@@ -7,7 +7,7 @@ import type { Event } from '../../../../types';
 type Props = {
   events: Array<Event>,
   selectEvent: () => void,
-  selectedEventId: string,
+  selectedEvent: Event,
 };
 
 const Wrapper = styled.section`
@@ -29,7 +29,7 @@ const Tile = styled.div`
   vertical-align: middle;
 `;
 
-const EventHistory = ({ selectedEventId, events, selectEvent }: Props): ?Element<Tiles> => {
+const EventHistory = ({ selectedEvent, events, selectEvent }: Props): ?Element<Tiles> => {
   if (!events.length) return null;
 
   return (
@@ -37,7 +37,7 @@ const EventHistory = ({ selectedEventId, events, selectEvent }: Props): ?Element
       <Tiles>
         {events.reverse().map((event, index) => {
           if (!event.id) return null;
-          const isActive = R.equals(selectedEventId, event.id);
+          const isActive = R.equals(R.prop('id', selectedEvent), event.id);
           const displayText = R.cond([
             [R.gte(2), () => event.name],
             [R.T, () => `#${R.slice(0, 1, event.name)}`],

@@ -43,14 +43,14 @@ export function* handleFetchEvents(action) {
     const normalizedData = normalize(eventData, [event]);
     const { entities: { events, groups, venues }, result } = normalizedData;
 
-    const latestEvent = events[result[0]];
-    const groupId = latestEvent.group;
+    const lastEvent = events[result[0]];
+    const groupId = lastEvent.group;
     const organization = groups[groupId];
 
     yield put({ type: FETCH_ORGANIZATION_SUCCESS, payload: organization });
     yield put({ type: FETCH_EVENTS_SUCCESS, payload: events });
     yield put({ type: FETCH_VENUES_SUCCESS, payload: venues });
-    yield put(selectEvent(latestEvent.id));
+    yield put(selectEvent(lastEvent.id));
   } catch (error) {
     yield put({ type: FETCH_EVENTS_FAILURE, payload: error });
   }
@@ -79,14 +79,16 @@ export function* handleFetchPhotos(action) {
 
 export function* handleSelectEvent(action) {
   try {
+    const selectedEvent = action.payload.eventId;
+
     yield handleFetchPhotos({
       type: FETCH_PHOTOS_REQUEST,
-      payload: { eventIds: [action.payload.eventId] },
+      payload: { eventIds: [selectedEvent] },
     });
 
     yield put({
       type: SELECT_EVENT_SUCCESS,
-      payload: { event: action.payload.eventId },
+      payload: { eventId: selectedEvent },
     });
   } catch (error) {
     yield put({ type: SELECT_EVENT_FAILURE, payload: error });
