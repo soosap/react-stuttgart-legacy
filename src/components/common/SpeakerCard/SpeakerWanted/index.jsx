@@ -114,7 +114,7 @@ const SpeakerWanted = ({ gender, index }: Props) => {
         </Description>
       </Body>
       <Avatar>
-        <TwitterPicture className="ui circular image" src={`https://twitter.com/reactstuttgart/profile_image?size=bigger`} />
+        <TwitterPicture className="ui circular image" src={require('../../../../assets/images/reactstuttgart@1x.png')} />
         <TwitterHandle>@reactStuttgart</TwitterHandle>
       </Avatar>
     </Wrapper>
