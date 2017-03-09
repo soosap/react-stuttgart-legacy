@@ -1,5 +1,5 @@
 import R from 'ramda';
-import { takeEvery } from 'redux-saga';
+import { takeEvery, takeLatest } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 import { normalize, schema } from 'normalizr';
 import axios from 'axios';
@@ -13,6 +13,9 @@ import {
   FETCH_PHOTOS_FAILURE,
   FETCH_ORGANIZATION_SUCCESS,
   FETCH_VENUES_SUCCESS,
+  SELECT_EVENT_REQUEST,
+  SELECT_EVENT_SUCCESS,
+  SELECT_EVENT_FAILURE,
 } from '../../actions/types';
 
 import { selectEvent } from '../../actions/events';
@@ -28,7 +31,7 @@ import { selectEvent } from '../../actions/events';
  */
 export function* handleFetchEvents(action) {
   try {
-    const responses = yield action.payload.eventIds.map((eventId) => {
+    const responses = yield action.payload.eventIds.map(eventId => {
       return call(axios.get, `/meetup/events/${eventId}`);
     });
 
@@ -55,7 +58,7 @@ export function* handleFetchEvents(action) {
 
 export function* handleFetchPhotos(action) {
   try {
-    const responses = yield action.payload.eventIds.map((eventId) => {
+    const responses = yield action.payload.eventIds.map(eventId => {
       return call(axios.get, `/meetup/events/${eventId}/photos`);
     });
 
@@ -66,11 +69,27 @@ export function* handleFetchPhotos(action) {
 
     const events = {};
     const forEachEventId = R.addIndex(R.forEach(R.__, action.payload.eventIds));
-    forEachEventId((id, index) => (events[id] = { photos: result[index] }));
+    forEachEventId((id, index) => events[id] = { photos: result[index] });
 
     yield put({ type: FETCH_PHOTOS_SUCCESS, payload: { photos, events } });
   } catch (error) {
     yield put({ type: FETCH_PHOTOS_FAILURE, payload: error });
+  }
+}
+
+export function* handleSelectEvent(action) {
+  try {
+    yield handleFetchPhotos({
+      type: FETCH_PHOTOS_REQUEST,
+      payload: { eventIds: [action.payload.eventId] },
+    });
+
+    yield put({
+      type: SELECT_EVENT_SUCCESS,
+      payload: { event: action.payload.eventId },
+    });
+  } catch (error) {
+    yield put({ type: SELECT_EVENT_FAILURE, payload: error });
   }
 }
 
@@ -88,4 +107,5 @@ export function* handleFetchPhotos(action) {
 export function* watchForFetchEvents() {
   yield takeEvery(FETCH_EVENTS_REQUEST, handleFetchEvents);
   yield takeEvery(FETCH_PHOTOS_REQUEST, handleFetchPhotos);
+  yield takeLatest(SELECT_EVENT_REQUEST, handleSelectEvent);
 }
