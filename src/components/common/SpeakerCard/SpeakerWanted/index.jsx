@@ -98,6 +98,21 @@ const SpeakerWanted = ({ gender, index }: Props) => {
       order: ${getOrder(index)};
     }
   `;
+const ContactUsButton = styled.button`
+    justify-content: center;
+    text-align: center;
+    background-color: #000000;
+    padding: 4%;
+`;
+
+const ContactLink = styled.a`
+
+`;
+
+const CallToAction = styled.div`
+    display:flex;
+    justify-content:center;
+`;
 
   return (
     <Wrapper>
@@ -107,11 +122,16 @@ const SpeakerWanted = ({ gender, index }: Props) => {
     </SpeakerWantedIndicator>
       <Body>
         <Title>React Stuttgart</Title>
-        <Description>U have some intressting knowledge about react, grapql, apollo, redux and want to share your knowledge, then contact us.
-        <br/>
-        <br/>
-          <button><a href="mailto:reactstuttgart@example.com?Subject=Want%20to%20be%20a%20speaker" target="_top">Contact Us</a></button>
+        <Description>
+          U have some intressting knowledge about react, grapql, apollo, redux and want to share your knowledge, then contact us.
         </Description>
+        <CallToAction>
+          <ContactUsButton>
+            <ContactLink href="mailto:reactstuttgart@example.com?Subject=Want%20to%20be%20a%20speaker" target="_top">
+              Contact Us
+            </ContactLink>
+          </ContactUsButton>
+        </CallToAction>
       </Body>
       <Avatar>
         <TwitterPicture className="ui circular image" src={require('../../../../assets/images/reactstuttgart@1x.png')} />
