@@ -101,11 +101,12 @@ const SpeakerWanted = ({ gender, index }: Props) => {
 const ContactUsButton = styled.button`
     justify-content: center;
     text-align: center;
-    background-color: #000000;
+    background-color: ${colors.primary};
     padding: 4%;
 `;
 
 const ContactLink = styled.a`
+    padding:7%;
 
 `;
 
@@ -127,7 +128,7 @@ const CallToAction = styled.div`
         </Description>
         <CallToAction>
           <ContactUsButton>
-            <ContactLink href="mailto:reactstuttgart@example.com?Subject=Want%20to%20be%20a%20speaker" target="_top">
+            <ContactLink href="mailto:contact@react-stuttgart.de?Subject=Want%20to%20be%20a%20speaker" target="_top">
               Contact Us
             </ContactLink>
           </ContactUsButton>
@@ -135,7 +136,7 @@ const CallToAction = styled.div`
       </Body>
       <Avatar>
         <TwitterPicture className="ui circular image" src={require('../../../../assets/images/reactstuttgart@1x.png')} />
-        <TwitterHandle>@reactStuttgart</TwitterHandle>
+        <TwitterHandle>@ReactStuttgart</TwitterHandle>
       </Avatar>
     </Wrapper>
   );
