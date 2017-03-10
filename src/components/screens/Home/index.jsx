@@ -57,6 +57,11 @@ const Wallpaper = styled.div`
 const Photos = styled.div`
   margin-top: 1rem;
   margin-bottom: 1rem;
+
+  ${media.tabletAndLargerThanThat} {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 class Home extends React.Component {
