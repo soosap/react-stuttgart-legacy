@@ -16,7 +16,7 @@ import {
 } from '../../../actions/events';
 import { getSelectedEventPhotos } from '../../../selectors/photos';
 import { getEvents, getSelectedEvent } from '../../../selectors/events';
-import { media } from '../../../assets/styles';
+import { media, colors } from '../../../assets/styles';
 import eventsData from '../../../assets/resources/events.json';
 
 import type { Photo, Event, Talk } from '../../../types';
@@ -36,6 +36,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  background-color: ${colors.primary};
 `;
 
 const Wallpaper = styled.div`
@@ -51,6 +52,11 @@ const Wallpaper = styled.div`
   ${media.tabletAndLargerThanThat} {
     background-size: cover;
   }
+`;
+
+const Photos = styled.div`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
 
 class Home extends React.Component {
@@ -83,12 +89,14 @@ class Home extends React.Component {
           <Header />
           <NextEvent talks={talks} date={scheduledDate} />
         </Wallpaper>
-        <EventHistory
-          events={events}
-          selectedEvent={selectedEvent}
-          selectEvent={selectEvent}
-        />
-        <Gallery dimmer photos={photos} />
+        <Photos>
+          <EventHistory
+            events={events}
+            selectedEvent={selectedEvent}
+            selectEvent={selectEvent}
+          />
+          <Gallery dimmer photos={photos} />
+        </Photos>
       </Wrapper>
     );
   }
