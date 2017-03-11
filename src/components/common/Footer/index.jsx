@@ -6,6 +6,7 @@ import { compose, withHandlers } from 'recompose';
 import { colors, media } from '../../../assets/styles';
 import { BECOME_SPEAKER } from '../../modals/types';
 import Team from './Team';
+import SocialBar from './SocialBar';
 
 type Props = {
   showModal: () => void,
@@ -19,21 +20,6 @@ const Wallpaper = styled.div`
   background-attachment: fixed;
   background-position: 100%;
   background-size: 100%, 100%;
-`;
-
-const Icons = styled.div`
-  padding: 2rem 1.5rem 1rem 1.5rem;
-  text-align: center;
-`;
-
-const Icon = styled.i`
-  color: ${colors.white} !important;
-
-  &:hover {
-    transition: 0.2s ease-in;
-    color: ${colors.secondary} !important;
-    cursor: pointer;
-  }
 `;
 
 const Links = styled.div`
@@ -85,16 +71,7 @@ const enhance = compose(
 const Footer = enhance(({ onClick }) => (
   <Wallpaper>
     <Wrapper>
-      <Icons>
-        <Icon
-          href="https://twitter.com/ReactStuttgart"
-          className="twitter inverted big square icon"
-        />
-        <Icon
-          href="https://github.com/ReactStuttgart"
-          className="github inverted big square icon"
-        />
-      </Icons>
+      <SocialBar/>
       <div className="ui horizontal inverted divider">
         <Divider>Organized by</Divider>
       </div>
