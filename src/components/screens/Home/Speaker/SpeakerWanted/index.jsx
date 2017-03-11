@@ -1,8 +1,8 @@
+/* @flow */
 import React from 'react';
-
 import R from 'ramda';
 import styled from 'styled-components';
-import { colors, fonts, media } from '../../../../assets/styles';
+import { colors, media } from '../../../../../assets/styles';
 
 type Props = {
   gender: string,
@@ -16,7 +16,7 @@ const SpeakerWantedIndicator = styled.div`
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   height: 3rem;
-  
+
   ${media.desktopAndLargerThanThat} {
     height: 4rem;
   }
@@ -45,9 +45,11 @@ const Title = styled.h1`
   margin-top: 0.4rem !important;
   margin-bottom: 0.5rem;
 `;
+
 const Description = styled.p`
-  
+
 `;
+
 const Avatar = styled.div`
   border-top: 1px solid rgba(${colors.backgroundDarkRGB}, 0.9);
   display: flex;
@@ -57,6 +59,7 @@ const Avatar = styled.div`
   margin-top: 0.5rem;
   margin-bottom: 0.2rem;
 `;
+
 const TwitterHandle = styled.div`
   font-size: 1.1rem;
   font-weight: 400;
@@ -85,53 +88,63 @@ const SpeakerWanted = ({ gender, index }: Props) => {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
     width: 100%;
     max-width: 400px;
     margin-left: 1rem;
     margin-right: 1rem;
-    margin-bottom: 1rem    
+    margin-bottom: 1rem
     background-color: rgba(255,255,255, 0.8);
     border-radius: 3px;
-    
+
     ${media.desktopAndLargerThanThat} {
       order: ${getOrder(index)};
     }
   `;
-const ContactUsButton = styled.button`
-    
+  const ContactUsButton = styled.button`
+
 `;
 
-const ContactLink = styled.a`
+  const ContactLink = styled.a`
     color:${colors.secondary};
 `;
 
-const CallToAction = styled.div`
+  const CallToAction = styled.div`
     display:flex;
     justify-content:center;
 `;
 
   return (
     <Wrapper>
-    <SpeakerWantedIndicator>
-        <SpeakerWantedIcon src={require('../../../../assets/images/speaker/speaker_wanted.png')}/>
+      <SpeakerWantedIndicator>
+        <SpeakerWantedIcon
+          src={require('../../../../../assets/images/speaker/speaker_wanted.png')}
+        />
         <SpeakerWantedName>Looking for Speaker</SpeakerWantedName>
-    </SpeakerWantedIndicator>
+      </SpeakerWantedIndicator>
       <Body>
         <Title>React Stuttgart</Title>
         <Description>
-          U have some intressting knowledge about react, grapql, apollo, redux and want to share your knowledge, then contact us.
+          We are looking for more speaker on React, Redux, GraphQL, Apollo,
+          Relay, Flow, Reason or anything related. If you have something to share,
+          please catch up w/ us.
         </Description>
         <CallToAction>
           <ContactUsButton className="ui primary button">
-            <ContactLink href="mailto:contact@react-stuttgart.de?Subject=Want%20to%20be%20a%20speaker" target="_top">
+            <ContactLink
+              href="mailto:contact@react-stuttgart.de?Subject=Want%20to%20be%20a%20speaker"
+              target="_top"
+            >
               Contact Us
             </ContactLink>
           </ContactUsButton>
         </CallToAction>
       </Body>
       <Avatar>
-        <TwitterPicture className="ui circular image" src={require('../../../../assets/images/reactstuttgart@1x.png')} />
+        <TwitterPicture
+          className="ui circular image"
+          src={require('../../../../../assets/images/reactstuttgart@1x.png')}
+        />
         <TwitterHandle>@ReactStuttgart</TwitterHandle>
       </Avatar>
     </Wrapper>

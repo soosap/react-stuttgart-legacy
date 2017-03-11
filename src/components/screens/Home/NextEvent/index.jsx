@@ -3,8 +3,7 @@ import React, { Element } from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 import EventDate from '../NextEvent/EventDate';
-import SpeakerCard from '../../../common/SpeakerCard/index.jsx';
-import SpeakerWanted from '../../../common/SpeakerCard/SpeakerWanted/index.jsx';
+import { SpeakerCard, SpeakerWanted } from '../Speaker';
 import { media } from '../../../../assets/styles';
 import type { Talk } from '../../../../types';
 
@@ -14,7 +13,6 @@ type Props = {
 };
 
 const Wrapper = styled.div`
-  // margin-top: 0.5rem;
   margin-bottom: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;

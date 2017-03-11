@@ -2,8 +2,8 @@
 import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
-import type { Speaker, Technology } from '../../../types';
-import { colors, fonts, media } from '../../../assets/styles';
+import type { Speaker, Technology } from '../../../../../types';
+import { colors, media } from '../../../../../assets/styles';
 
 type Props = {
   index: number,
@@ -81,7 +81,9 @@ const Description = styled.p`
 
 `;
 
-const SpeakerCard = ({ index, speaker, technology, title, description }: Props) => {
+const SpeakerCard = (
+  { index, speaker, technology, title, description }: Props,
+) => {
   const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -110,7 +112,9 @@ const SpeakerCard = ({ index, speaker, technology, title, description }: Props) 
   return (
     <Wrapper>
       <TechnologyIndicator>
-        <TechnologyIcon src={require(`../../../assets/images/technology/${technology}.png`)} />
+        <TechnologyIcon
+          src={require(`../../../../../assets/images/technology/${technology}.png`)}
+        />
         <TechnologyName>{technology}</TechnologyName>
       </TechnologyIndicator>
       <Body>
@@ -118,7 +122,10 @@ const SpeakerCard = ({ index, speaker, technology, title, description }: Props) 
         <Description>{description}</Description>
       </Body>
       <Avatar>
-        <TwitterPicture className="ui circular image" src={`https://twitter.com/${speaker.twitter}/profile_image?size=bigger`} />
+        <TwitterPicture
+          className="ui circular image"
+          src={`https://twitter.com/${speaker.twitter}/profile_image?size=bigger`}
+        />
         <TwitterHandle>@{speaker.twitter}</TwitterHandle>
       </Avatar>
     </Wrapper>
