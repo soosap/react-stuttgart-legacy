@@ -111,7 +111,7 @@ class Home extends React.Component {
           />
           <Gallery photos={photos} showModal={showModal} />
         </Photos>
-        <Footer />
+        <Footer showModal={showModal} />
       </Wrapper>
     );
   }

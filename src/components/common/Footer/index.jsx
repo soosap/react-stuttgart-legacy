@@ -3,8 +3,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Member from './Member';
-import BecomeSpeakerModal from '../../modals/BecomeSpeaker';
 import { colors, media } from '../../../assets/styles';
+import { BECOME_SPEAKER } from '../../modals/types';
+
+type Props = {
+  showModal: () => void,
+};
+
+// This is a bad pattern
+// Let's pack <Icons /> into own component as well as Team, Links,
 
 const Wrapper = styled.div`
   background: rgba(${colors.secondaryDarkRGB}, 0.9);
@@ -81,7 +88,11 @@ const Divider = styled.h3`
   font-family: Lullabies-Text;
 `;
 
-const Footer = () => {
+const Footer = ({ showModal }: Props) => {
+  // const handleBecomeSpeakerClick = () => {
+  //   showModal(BECOME_SPEAKER);
+  // };
+
   return (
     <Wallpaper>
       <Wrapper>
@@ -112,8 +123,9 @@ const Footer = () => {
           </Left>
           <Right>
             <Link className="item" href="#">About Us</Link>
-            <Link className="item" href="#">Become a Speaker</Link>
-            <BecomeSpeakerModal />
+            <Link className="item" onClick={() => showModal(BECOME_SPEAKER)}>
+              Become a Speaker
+            </Link>
           </Right>
         </Links>
       </Wrapper>
