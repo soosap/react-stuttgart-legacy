@@ -1,13 +1,18 @@
 /* @flow */
-import React from 'react';
+import React, { Element } from 'react';
 import R from 'ramda';
+import { compose, withHandlers } from 'recompose';
 import styled from 'styled-components';
-import DefaultModal from '../../modals/templates/Default';
-import { BECOME_SPEAKER } from '../../modals/types';
+
+import { CONTACT_US } from '../../modals/types';
 
 type Props = {
   photos: Array<Object>,
   showModal: () => void,
+};
+
+type EnhancedProps = Props & {
+  onTileClick: () => void,
 };
 
 const Wrapper = styled.div`
@@ -29,13 +34,9 @@ const Tile = styled.img`
 `;
 
 class Gallery extends React.Component {
-  props: Props;
+  props: EnhancedProps;
 
-  handleClickTile = () => {
-    this.props.showModal(BECOME_SPEAKER);
-  };
-
-  renderTiles = () => {
+  renderTiles = (): ?Element<Tiles> => {
     if (R.either(R.isNil, R.isEmpty)(this.props.photos)) return null;
 
     return (
@@ -44,7 +45,7 @@ class Gallery extends React.Component {
           <Tile
             key={photo.id}
             src={photo.photo_link}
-            onClick={this.handleClickTile}
+            onClick={this.props.onTileClick}
           />
         ))}
       </Tiles>
@@ -55,12 +56,15 @@ class Gallery extends React.Component {
     return (
       <Wrapper>
         {this.renderTiles()}
-        <DefaultModal>
-          Gallery
-        </DefaultModal>
       </Wrapper>
     );
   }
 }
 
-export default Gallery;
+export default compose(
+  withHandlers({
+    onTileClick: (props: Props) => () => {
+      props.showModal(CONTACT_US);
+    },
+  }),
+)(Gallery);

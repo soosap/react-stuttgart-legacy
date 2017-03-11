@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { compose } from 'recompose';
+
+import ModalRoot from '../../modals';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 import NextEvent from './NextEvent';
@@ -112,6 +114,7 @@ class Home extends React.Component {
           <Gallery photos={photos} showModal={showModal} />
         </Photos>
         <Footer showModal={showModal} />
+        <ModalRoot />
       </Wrapper>
     );
   }
