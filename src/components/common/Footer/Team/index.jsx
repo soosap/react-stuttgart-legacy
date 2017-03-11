@@ -18,7 +18,6 @@ const Wrapper = styled.div`
 `;
 
 const Team = () => {
-
   return (
     <Wrapper>
       <Member twitter="soosap" />

@@ -7,6 +7,10 @@ import Team from './Team';
 import SocialBar from './SocialBar';
 import Links from './Links';
 
+type Props = {
+  showModal: () => void,
+};
+
 const Wrapper = styled.div`
   background: rgba(${colors.secondaryDarkRGB}, 0.9);
 `;
@@ -22,16 +26,16 @@ const Divider = styled.h3`
   font-family: Lullabies-Text;
 `;
 
-const Footer = () => {
+const Footer = ({ showModal }: Props) => {
   return (
     <Wallpaper>
       <Wrapper>
-        <SocialBar/>
+        <SocialBar />
         <div className="ui horizontal inverted divider">
           <Divider>Organized by</Divider>
         </div>
         <Team />
-        <Links/>
+        <Links showModal={showModal} />
       </Wrapper>
     </Wallpaper>
   );

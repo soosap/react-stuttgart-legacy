@@ -1,6 +1,7 @@
 /* @flow */
 import React from 'react';
 import styled from 'styled-components';
+
 import { colors } from '../../../../assets/styles';
 
 type Props = {
@@ -28,7 +29,10 @@ const Link = styled.a`
 const Member = ({ twitter }: Props) => {
   return (
     <Wrapper>
-      <Image className="ui avatar image" src={`https://twitter.com/${twitter}/profile_image?size=bigger`} />
+      <Image
+        className="ui avatar image"
+        src={`https://twitter.com/${twitter}/profile_image?size=bigger`}
+      />
       <Link href={`https://twitter.com/${twitter}`}>@{twitter}</Link>
     </Wrapper>
   );

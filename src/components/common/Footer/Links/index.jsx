@@ -45,26 +45,26 @@ const Right = styled.div`
 
 const enhance = compose(
   withHandlers({
-    onClick: (props: Props) => {
+    onClick: (props: Props) => () => {
       props.showModal(BECOME_SPEAKER);
     },
   }),
 );
 
 const Links = enhance(({ onClick }) => (
-
-    <Wrapper>
-        <Left>
-          <Brand className="disabled item">© #ReactStuttgart</Brand>
-          <Link className="item" href="#">Terms</Link>
-          <Link className="item" href="#">Contact Us</Link>
-        </Left>
-        <Right>
-          <Link className="item" href="#">About Us</Link>
-          <Link className="item" onClick={onClick}>
-            Become a Speaker
-          </Link>
-        </Right>
-    </Wrapper>
+  <Wrapper>
+    <Left>
+      <Brand className="disabled item">© #ReactStuttgart</Brand>
+      <Link className="item" href="#">Terms</Link>
+      <Link className="item" href="#">Contact Us</Link>
+    </Left>
+    <Right>
+      <Link className="item" href="#">About Us</Link>
+      <Link className="item" onClick={onClick}>
+        Become a Speaker
+      </Link>
+    </Right>
+  </Wrapper>
 ));
+
 export default Links;
