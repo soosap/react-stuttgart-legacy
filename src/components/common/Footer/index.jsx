@@ -1,6 +1,7 @@
 /* @flow */
 import React from 'react';
 import styled from 'styled-components';
+import { compose, withHandlers } from 'recompose';
 
 import Member from './Member';
 import { colors, media } from '../../../assets/styles';
@@ -9,9 +10,6 @@ import { BECOME_SPEAKER } from '../../modals/types';
 type Props = {
   showModal: () => void,
 };
-
-// This is a bad pattern
-// Let's pack <Icons /> into own component as well as Team, Links,
 
 const Wrapper = styled.div`
   background: rgba(${colors.secondaryDarkRGB}, 0.9);
@@ -88,48 +86,51 @@ const Divider = styled.h3`
   font-family: Lullabies-Text;
 `;
 
-const Footer = ({ showModal }: Props) => {
-  // const handleBecomeSpeakerClick = () => {
-  //   showModal(BECOME_SPEAKER);
-  // };
+const enhance = compose(
+  withHandlers({
+    onClick: (props: Props) => {
+      props.showModal(BECOME_SPEAKER);
+    }
+  })
+);
 
-  return (
-    <Wallpaper>
-      <Wrapper>
-        <Icons>
-          <Icon
-            href="https://twitter.com/ReactStuttgart"
-            className="twitter inverted big square icon"
-          />
-          <Icon
-            href="https://github.com/ReactStuttgart"
-            className="github inverted big square icon"
-          />
-        </Icons>
-        <div className="ui horizontal inverted divider">
-          <Divider>Organized by</Divider>
-        </div>
-        <Team>
-          <Member twitter="soosap" />
-          <Member twitter="chautzi" />
-          <Member twitter="FabioDeVasco" />
-          <Member twitter="BetterCallPat" />
-        </Team>
-        <Links>
-          <Left>
-            <Brand className="disabled item">© #ReactStuttgart</Brand>
-            <Link className="item" href="#">Terms</Link>
-            <Link className="item" href="#">Contact Us</Link>
-          </Left>
-          <Right>
-            <Link className="item" href="#">About Us</Link>
-            <Link className="item" onClick={() => showModal(BECOME_SPEAKER)}>
-              Become a Speaker
-            </Link>
-          </Right>
-        </Links>
-      </Wrapper>
-    </Wallpaper>
-  );
-};
+const Footer = enhance(({ onClick }) => (
+  <Wallpaper>
+    <Wrapper>
+      <Icons>
+        <Icon
+          href="https://twitter.com/ReactStuttgart"
+          className="twitter inverted big square icon"
+        />
+        <Icon
+          href="https://github.com/ReactStuttgart"
+          className="github inverted big square icon"
+        />
+      </Icons>
+      <div className="ui horizontal inverted divider">
+        <Divider>Organized by</Divider>
+      </div>
+      <Team>
+        <Member twitter="soosap" />
+        <Member twitter="chautzi" />
+        <Member twitter="FabioDeVasco" />
+        <Member twitter="BetterCallPat" />
+      </Team>
+      <Links>
+        <Left>
+          <Brand className="disabled item">© #ReactStuttgart</Brand>
+          <Link className="item" href="#">Terms</Link>
+          <Link className="item" href="#">Contact Us</Link>
+        </Left>
+        <Right>
+          <Link className="item" href="#">About Us</Link>
+          <Link className="item" onClick={onClick}>
+            Become a Speaker
+          </Link>
+        </Right>
+      </Links>
+    </Wrapper>
+  </Wallpaper>
+));
+
 export default Footer;

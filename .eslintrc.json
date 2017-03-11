@@ -16,6 +16,7 @@
     "import/prefer-default-export": 0,
     "import/no-unresolved": 0,
     "import/no-named-as-default": 0,
+    "import/no-dynamic-require": 0,
     "import/extensions": 0,
     "no-shadow": 0,
     "arrow-body-style": 0,
