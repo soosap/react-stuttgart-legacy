@@ -99,15 +99,11 @@ const SpeakerWanted = ({ gender, index }: Props) => {
     }
   `;
 const ContactUsButton = styled.button`
-    justify-content: center;
-    text-align: center;
-    background-color: ${colors.primary};
-    padding: 4%;
+    
 `;
 
 const ContactLink = styled.a`
-    padding:7%;
-
+    color:${colors.secondary};
 `;
 
 const CallToAction = styled.div`
@@ -127,7 +123,7 @@ const CallToAction = styled.div`
           U have some intressting knowledge about react, grapql, apollo, redux and want to share your knowledge, then contact us.
         </Description>
         <CallToAction>
-          <ContactUsButton>
+          <ContactUsButton className="ui primary button">
             <ContactLink href="mailto:contact@react-stuttgart.de?Subject=Want%20to%20be%20a%20speaker" target="_top">
               Contact Us
             </ContactLink>
