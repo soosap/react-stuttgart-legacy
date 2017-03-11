@@ -3,9 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { compose, withHandlers } from 'recompose';
 
-import Member from './Member';
 import { colors, media } from '../../../assets/styles';
 import { BECOME_SPEAKER } from '../../modals/types';
+import Team from './Team';
 
 type Props = {
   showModal: () => void,
@@ -33,18 +33,6 @@ const Icon = styled.i`
     transition: 0.2s ease-in;
     color: ${colors.secondary} !important;
     cursor: pointer;
-  }
-`;
-
-const Team = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2.5rem 2rem;
-
-  ${media.tabletAndLargerThanThat} {
-    flex-direction: row;
-    justify-content: center;
   }
 `;
 
@@ -90,8 +78,8 @@ const enhance = compose(
   withHandlers({
     onClick: (props: Props) => {
       props.showModal(BECOME_SPEAKER);
-    }
-  })
+    },
+  }),
 );
 
 const Footer = enhance(({ onClick }) => (
@@ -110,12 +98,7 @@ const Footer = enhance(({ onClick }) => (
       <div className="ui horizontal inverted divider">
         <Divider>Organized by</Divider>
       </div>
-      <Team>
-        <Member twitter="soosap" />
-        <Member twitter="chautzi" />
-        <Member twitter="FabioDeVasco" />
-        <Member twitter="BetterCallPat" />
-      </Team>
+      <Team />
       <Links>
         <Left>
           <Brand className="disabled item">© #ReactStuttgart</Brand>
