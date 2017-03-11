@@ -39,17 +39,17 @@ const EventHistory = (
   return (
     <Tiles>
       {events.reverse().map((event, index) => {
-        if (!R.prop('id', event)) return null;
+        if (R.isNil(event.id)) return null;
 
-        const isActive = R.equals(R.prop('id', selectedEvent), event.id);
-        const displayText = R.cond([
+        const isActive: boolean = R.propEq('id', event.id, R.defaultTo({}, selectedEvent));
+        const displayText: string = R.cond([
           [R.gte(2), () => event.name],
           [R.T, () => `#${R.slice(0, 1, event.name)}`],
         ])(index);
 
         return (
           <Tile
-            key={index}
+            key={event.id}
             onClick={() => selectEvent(event.id)}
             selected={isActive}
           >

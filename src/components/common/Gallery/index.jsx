@@ -2,21 +2,12 @@
 import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
-import LightBox from '../LightBox';
-import { colors, media } from '../../../assets/styles';
+import DefaultModal from '../../modals/templates/Default';
+import { BECOME_SPEAKER } from '../../modals/types';
 
-import type { Photo } from '../../../types';
 type Props = {
-  heading?: string,
-  photos: Array<Photo>,
-  showThumbnails?: boolean,
-  subheading?: string,
-  dimmer: boolean | 'inverted' | 'blurring',
-};
-
-type State = {
-  isOpenLightBox: boolean,
-  selectedPhoto?: number,
+  photos: Array<Object>,
+  showModal: () => void,
 };
 
 const Wrapper = styled.div`
@@ -34,78 +25,42 @@ const Tiles = styled.div`
 
 const Tile = styled.img`
   height: 100px;
+  cursor: pointer;
 `;
 
 class Gallery extends React.Component {
   props: Props;
-  state: State;
 
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      isOpenLightBox: false,
-    };
-  }
-
-  handleClickImage = () => {
-    // if (this.state.currentImage === this.props.images.length - 1) return;
-
-    this.goToNext();
-  };
-
-  goToNext = () => {
-    // this.setState({ currentImage: R.inc(this.state.currentImage) });
-  };
-
-  goToPrevious = () => {
-    // this.setState({ currentImage: R.dec(this.state.currentImage) });
-  };
-
-  goToClicked = (index: number) => {
-    // this.setState({ currentImage: index });
-  };
-
-  openLightBox = (selectedPhoto: number, event: Object) => {
-    event.preventDefault();
-
-    this.setState({ selectedPhoto, isOpenLightBox: true });
-  };
-
-  closeLightBox = () => {
-    this.setState({ isOpenLightBox: false });
+  handleClickTile = () => {
+    this.props.showModal(BECOME_SPEAKER);
   };
 
   renderTiles = () => {
+    if (R.either(R.isNil, R.isEmpty)(this.props.photos)) return null;
+
     return (
-      <Tiles onClick={this.openLightBox}>
-        {this.props.photos.map(photo => <Tile key={photo.id} src={photo.photo_link} />)}
+      <Tiles>
+        {this.props.photos.map(photo => (
+          <Tile
+            key={photo.id}
+            src={photo.photo_link}
+            onClick={this.handleClickTile}
+          />
+        ))}
       </Tiles>
-    )
+    );
   };
 
   render() {
-    const { isOpenLightBox, selectedPhoto } = this.state;
-    const { photos, showThumbnails, dimmer } = this.props;
-
     return (
       <Wrapper>
         {this.renderTiles()}
-        <LightBox
-          selectedPhoto={selectedPhoto}
-          images={photos}
-          isOpen={isOpenLightBox}
-          onClickImage={this.handleClickImage}
-          onClickNext={this.goToNext}
-          onClickPrev={this.goToPrevious}
-          onClickThumbnail={this.goToClicked}
-          onClose={this.closeLightBox}
-          showThumbnails={showThumbnails}
-          dimmer={dimmer}
-        />
+        <DefaultModal>
+          Gallery
+        </DefaultModal>
       </Wrapper>
     );
-  };
+  }
 }
 
 export default Gallery;

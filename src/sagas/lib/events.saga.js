@@ -1,3 +1,4 @@
+/* @flow */
 import R from 'ramda';
 import { takeEvery, takeLatest } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
@@ -19,6 +20,7 @@ import {
 } from '../../actions/types';
 
 import { selectEvent } from '../../actions/events';
+import type { Action } from '../../types';
 
 /*
  |--------------------------------------------------------------------------
@@ -29,7 +31,7 @@ import { selectEvent } from '../../actions/events';
  | async stuff and then returning a response.
  |
  */
-export function* handleFetchEvents(action) {
+export function* handleFetchEvents(action: Action): Generator<*, *, *> {
   try {
     const responses = yield action.payload.eventIds.map(eventId => {
       return call(axios.get, `/meetup/events/${eventId}`);
@@ -56,7 +58,7 @@ export function* handleFetchEvents(action) {
   }
 }
 
-export function* handleFetchPhotos(action) {
+export function* handleFetchPhotos(action: Action): Generator<*, *, *> {
   try {
     const responses = yield action.payload.eventIds.map(eventId => {
       return call(axios.get, `/meetup/events/${eventId}/photos`);
@@ -77,7 +79,7 @@ export function* handleFetchPhotos(action) {
   }
 }
 
-export function* handleSelectEvent(action) {
+export function* handleSelectEvent(action: Action): Generator<*, *, *> {
   try {
     const selectedEvent = action.payload.eventId;
 
@@ -106,7 +108,7 @@ export function* handleSelectEvent(action) {
  | Spawn a new async task on each action.
  |
  */
-export function* watchForFetchEvents() {
+export function* watchForFetchEvents(): Generator<*, *, *> {
   yield takeEvery(FETCH_EVENTS_REQUEST, handleFetchEvents);
   yield takeEvery(FETCH_PHOTOS_REQUEST, handleFetchPhotos);
   yield takeLatest(SELECT_EVENT_REQUEST, handleSelectEvent);

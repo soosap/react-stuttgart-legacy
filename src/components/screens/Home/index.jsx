@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { compose } from 'recompose';
 import Header from '../../common/Header';
+import Footer from '../../common/Footer';
 import NextEvent from './NextEvent';
 import EventHistory from './EventHistory';
 import Gallery from '../../common/Gallery';
@@ -14,6 +15,7 @@ import {
   fetchEventPhotos,
   selectEvent,
 } from '../../../actions/events';
+import { showModal } from '../../../actions/modal';
 import { getSelectedEventPhotos } from '../../../selectors/photos';
 import { getEvents, getSelectedEvent } from '../../../selectors/events';
 import { media, colors } from '../../../assets/styles';
@@ -24,6 +26,7 @@ import type { Photo, Event, Talk } from '../../../types';
 type Props = {
   fetchEvents: (eventIds: Array<string>) => void,
   selectEvent: () => void,
+  showModal: () => void,
   selectedEvent: Event,
   photos: Array<Photo>,
   events: Array<Event>,
@@ -73,7 +76,13 @@ class Home extends React.Component {
   props: Props;
 
   render() {
-    const { photos, events, selectedEvent, selectEvent } = this.props;
+    const {
+      events,
+      photos,
+      selectedEvent,
+      selectEvent,
+      showModal,
+    } = this.props;
 
     const talks: Array<Talk> = [
       {
@@ -100,8 +109,9 @@ class Home extends React.Component {
             selectedEvent={selectedEvent}
             selectEvent={selectEvent}
           />
-          <Gallery dimmer photos={photos} />
+          <Gallery photos={photos} showModal={showModal} />
         </Photos>
+        <Footer />
       </Wrapper>
     );
   }
@@ -115,7 +125,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   ...bindActionCreators(
-    { fetchEvents, fetchEventPhotos, selectEvent },
+    { fetchEvents, fetchEventPhotos, selectEvent, showModal },
     dispatch,
   ),
   dispatch,

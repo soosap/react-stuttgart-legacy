@@ -1,7 +1,8 @@
-import R from 'ramda';
+/* @flow */
 import { FETCH_ORGANIZATION_SUCCESS } from '../../actions/types';
+import type { Action } from '../../types';
 
-export default function (state = {}, action) {
+export default function (state: Object = {}, action: Action) {
   switch (action.type) {
     case FETCH_ORGANIZATION_SUCCESS:
       return state;

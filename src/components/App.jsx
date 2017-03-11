@@ -1,26 +1,12 @@
-import React, { PropTypes } from 'react';
-import styled from 'styled-components';
+/* @flow */
+import React from 'react';
 
-import Footer from './common/Footer';
+type Props = {
+  children: any,
+};
 
-const Wrapper = styled.div`
-  // background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-`;
-
-class App extends React.Component {
-  static propTypes = {
-    children: PropTypes.object.isRequired,
-  };
-
-  render() {
-    return (
-      <Wrapper>
-        {this.props.children}
-        <Footer />
-      </Wrapper>
-
-    );
-  }
-}
+const App = ({ children }: Props) => {
+  return <div>{children}</div>;
+};
 
 export default App;

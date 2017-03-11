@@ -1,6 +1,11 @@
 export type Action = {|
   type: string,
-  payload?: any
+  payload?: Object,
+|};
+
+export type Modal = {|
+  modalType: ?string,
+  modalProps: ?Object,
 |};
 
 export type Member = {|
@@ -8,7 +13,7 @@ export type Member = {|
   name: string,
   bio: string,
   photo?: Photo,
-  role: 'organizer' | 'member'
+  role: 'organizer' | 'member',
 |};
 
 export type Event = {|
