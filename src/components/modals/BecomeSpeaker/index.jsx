@@ -1,9 +1,10 @@
 /* @flow */
 import React from 'react';
-import DefaultModal from '../templates/Default';
+
+import Modal from '../templates/Default';
 
 const BecomeSpeakerModal = () => {
-  return <DefaultModal>Become a Speaker!</DefaultModal>;
+  return <Modal>Become a speaker!</Modal>;
 };
 
 export default BecomeSpeakerModal;

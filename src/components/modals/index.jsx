@@ -1,6 +1,7 @@
 /* @flow */
 import React from 'react';
 import { connect } from 'react-redux';
+
 import BecomeSpeakerModal from './BecomeSpeaker';
 import HostEventModal from './HostEvent';
 import ContactUsModal from './ContactUs';
