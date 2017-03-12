@@ -11,7 +11,6 @@ import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 import NextEvent from './NextEvent';
 import EventHistory from './EventHistory';
-import BecomeSpeakerForm from '../../forms/BecomeSpeaker';
 import Gallery from '../../common/Gallery';
 import {
   fetchEvents,
@@ -114,7 +113,6 @@ class Home extends React.Component {
           />
           <Gallery photos={photos} showModal={showModal} />
         </Photos>
-        <BecomeSpeakerForm />
         <Footer showModal={showModal} />
         <ModalRoot />
       </Wrapper>
