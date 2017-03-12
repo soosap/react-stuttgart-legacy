@@ -108,7 +108,7 @@ export function* handleSelectEvent(action: Action): Generator<*, *, *> {
  | Spawn a new async task on each action.
  |
  */
-export function* watchForFetchEvents(): Generator<*, *, *> {
+export function* watchForEventActions(): Generator<*, *, *> {
   yield takeEvery(FETCH_EVENTS_REQUEST, handleFetchEvents);
   yield takeEvery(FETCH_PHOTOS_REQUEST, handleFetchPhotos);
   yield takeLatest(SELECT_EVENT_REQUEST, handleSelectEvent);
