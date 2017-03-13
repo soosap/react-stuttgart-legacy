@@ -1,10 +1,8 @@
 /* @flow */
 import React from 'react';
-import R from 'ramda';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { compose } from 'recompose';
 
 import ModalRoot from '../../modals';
 import Header from '../../common/Header';
@@ -12,6 +10,7 @@ import Footer from '../../common/Footer';
 import NextEvent from './NextEvent';
 import EventHistory from './EventHistory';
 import Gallery from '../../common/Gallery';
+
 import {
   fetchEvents,
   fetchEventPhotos,
@@ -19,23 +18,24 @@ import {
 } from '../../../actions/events';
 import { showModal } from '../../../actions/modal';
 import { getSelectedEventPhotos } from '../../../selectors/photos';
-import { getEvents, getSelectedEvent } from '../../../selectors/events';
+import {
+  getEvents,
+  getSelectedEvent,
+  getNextEvent,
+} from '../../../selectors/events';
 import { media, colors } from '../../../assets/styles';
-import eventsData from '../../../assets/resources/events.json';
 
-import type { Photo, Event, Talk } from '../../../types';
+import type { Photo, Event } from '../../../types';
 
 type Props = {
-  fetchEvents: (eventIds: Array<string>) => void,
+  fetchEvents: () => void,
   selectEvent: () => void,
   showModal: () => void,
   selectedEvent: Event,
+  nextEvent: ?Event,
   photos: Array<Photo>,
   events: Array<Event>,
 };
-
-const eventIds = R.pluck('id', eventsData);
-const mostRecentEventId = R.head(eventIds);
 
 const Wrapper = styled.div`
   display: flex;
@@ -71,49 +71,30 @@ const Photos = styled.div`
 
 class Home extends React.Component {
   componentWillMount() {
-    this.props.fetchEvents(eventIds);
-    this.props.selectEvent(mostRecentEventId);
+    this.props.fetchEvents();
   }
 
   props: Props;
 
   render() {
-    const {
-      events,
-      photos,
-      selectedEvent,
-      selectEvent,
-      showModal,
-    } = this.props;
-
-    const talks: Array<Talk> = [
-      {
-        speaker: {
-          twitter: 'Webkreation',
-        },
-        title: 'Styling React w/ styled-components',
-        description: 'Utilising tagged template literals (a recent addition to JavaScript) and the power of CSS, styled-components allows you to write actual CSS code to style your components. ',
-        technology: 'react',
-      },
-    ];
-
-    const scheduledDate = new Date(2017, 3, 24);
-
     return (
       <Wrapper>
         <Wallpaper>
           <Header />
-          <NextEvent talks={talks} date={scheduledDate} />
+          <NextEvent event={this.props.nextEvent} />
         </Wallpaper>
         <Photos>
           <EventHistory
-            events={events}
-            selectedEvent={selectedEvent}
-            selectEvent={selectEvent}
+            events={this.props.events}
+            selectedEvent={this.props.selectedEvent}
+            selectEvent={this.props.selectEvent}
           />
-          <Gallery photos={photos} showModal={showModal} />
+          <Gallery
+            photos={this.props.photos}
+            showModal={this.props.showModal}
+          />
         </Photos>
-        <Footer showModal={showModal} />
+        <Footer showModal={this.props.showModal} />
         <ModalRoot />
       </Wrapper>
     );
@@ -122,16 +103,18 @@ class Home extends React.Component {
 
 const mapStateToProps = state => ({
   events: getEvents(state),
-  selectedEvent: getSelectedEvent(state),
   photos: getSelectedEventPhotos(state),
+  nextEvent: getNextEvent(state),
+  selectedEvent: getSelectedEvent(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(
-    { fetchEvents, fetchEventPhotos, selectEvent, showModal },
-    dispatch,
-  ),
-  dispatch,
+  ...bindActionCreators({
+    fetchEvents,
+    fetchEventPhotos,
+    selectEvent,
+    showModal,
+  }, dispatch),
 });
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

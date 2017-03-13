@@ -33,7 +33,8 @@ import type { Action } from '../../types';
  */
 export function* handleFetchEvents(action: Action): Generator<*, *, *> {
   try {
-    const responses = yield action.payload.eventIds.map(eventId => {
+    const eventIds = R.propOr([], 'eventIds', action.payload);
+    const responses = yield eventIds.map(eventId => {
       return call(axios.get, `/meetup/events/${eventId}`);
     });
 
@@ -60,7 +61,8 @@ export function* handleFetchEvents(action: Action): Generator<*, *, *> {
 
 export function* handleFetchPhotos(action: Action): Generator<*, *, *> {
   try {
-    const responses = yield action.payload.eventIds.map(eventId => {
+    const eventIds = R.propOr([], 'eventIds', action.payload);
+    const responses = yield eventIds.map(eventId => {
       return call(axios.get, `/meetup/events/${eventId}/photos`);
     });
 
@@ -70,7 +72,7 @@ export function* handleFetchPhotos(action: Action): Generator<*, *, *> {
     const { entities: { photos }, result } = normalizedData;
 
     const events = {};
-    const forEachEventId = R.addIndex(R.forEach(R.__, action.payload.eventIds));
+    const forEachEventId = R.addIndex(R.forEach(R.__, eventIds));
     forEachEventId((id, index) => events[id] = { photos: result[index] });
 
     yield put({ type: FETCH_PHOTOS_SUCCESS, payload: { photos, events } });
@@ -81,16 +83,16 @@ export function* handleFetchPhotos(action: Action): Generator<*, *, *> {
 
 export function* handleSelectEvent(action: Action): Generator<*, *, *> {
   try {
-    const selectedEvent = action.payload.eventId;
+    const selectedEventId = R.propOr(null, 'event', action.payload);
 
     yield handleFetchPhotos({
       type: FETCH_PHOTOS_REQUEST,
-      payload: { eventIds: [selectedEvent] },
+      payload: { eventIds: [selectedEventId] },
     });
 
     yield put({
       type: SELECT_EVENT_SUCCESS,
-      payload: { eventId: selectedEvent },
+      payload: { event: selectedEventId },
     });
   } catch (error) {
     yield put({ type: SELECT_EVENT_FAILURE, payload: error });

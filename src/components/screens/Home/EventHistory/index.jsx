@@ -6,7 +6,7 @@ import { colors } from '../../../../assets/styles';
 import type { Event } from '../../../../types';
 
 type Props = {
-  events: Array<Object>,
+  events: Array<Event>,
   selectEvent: () => void,
   selectedEvent: Event,
 };
@@ -20,7 +20,7 @@ const Tiles = styled.div`
 `;
 
 const Tile = styled.div`
-  padding: 0.25rem;
+  padding: 0.25rem 0.5rem;
   vertical-align: middle;
   margin: 0.25rem;
   background-color: ${colors.secondary};

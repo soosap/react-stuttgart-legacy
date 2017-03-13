@@ -2,7 +2,7 @@
 import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
-import { colors, media } from '../../../../../assets/styles';
+import { colors, media } from '../../../../assets/styles';
 
 type Props = {
   gender: string,
@@ -29,10 +29,10 @@ const SpeakerWantedIcon = styled.img`
 `;
 
 const SpeakerWantedName = styled.div`
-    color: #ffffff;
-    font-size: 1.8rem;
-    font-weight: 400;
-    padding-bottom: 0.1rem;
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 400;
+  padding-bottom: 0.1rem;
 `;
 const Body = styled.div`
   margin-left: 0.75rem;
@@ -75,6 +75,19 @@ const TwitterPicture = styled.img`
   height: 25px !important;
 `;
 
+const ContactUsButton = styled.button`
+
+`;
+
+const ContactLink = styled.a`
+  color:${colors.secondary};
+`;
+
+const CallToAction = styled.div`
+  display:flex;
+  justify-content:center;
+`;
+
 function getOrder(index: number): number {
   return R.cond([
     [R.equals(0), R.always(0)],
@@ -83,7 +96,7 @@ function getOrder(index: number): number {
   ])(index);
 }
 
-const SpeakerWanted = ({ gender, index }: Props) => {
+const SpeakerWanted = ({ index, gender }: Props) => {
   const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -101,24 +114,12 @@ const SpeakerWanted = ({ gender, index }: Props) => {
       order: ${getOrder(index)};
     }
   `;
-  const ContactUsButton = styled.button`
-
-`;
-
-  const ContactLink = styled.a`
-    color:${colors.secondary};
-`;
-
-  const CallToAction = styled.div`
-    display:flex;
-    justify-content:center;
-`;
 
   return (
     <Wrapper>
       <SpeakerWantedIndicator>
         <SpeakerWantedIcon
-          src={require('../../../../../assets/images/speaker/speaker_wanted.png')}
+          src={require('../../../../assets/images/speaker/speaker_wanted.png')}
         />
         <SpeakerWantedName>Looking for Speaker</SpeakerWantedName>
       </SpeakerWantedIndicator>
@@ -127,7 +128,7 @@ const SpeakerWanted = ({ gender, index }: Props) => {
         <Description>
           We are looking for more speaker on React, Redux, GraphQL, Apollo,
           Relay, Flow, Reason or anything related. If you have something to share,
-          please catch up w/ us.
+          please catch up w/ us. {gender}!
         </Description>
         <CallToAction>
           <ContactUsButton className="ui primary button">
@@ -143,7 +144,7 @@ const SpeakerWanted = ({ gender, index }: Props) => {
       <Avatar>
         <TwitterPicture
           className="ui circular image"
-          src={require('../../../../../assets/images/reactstuttgart@1x.png')}
+          src={require('../../../../assets/images/reactstuttgart@1x.png')}
         />
         <TwitterHandle>@ReactStuttgart</TwitterHandle>
       </Avatar>

@@ -2,12 +2,12 @@
 import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
-import type { Speaker, Technology } from '../../../../../types';
-import { colors, media } from '../../../../../assets/styles';
+import type { Member, Technology } from '../../../../types';
+import { colors, media } from '../../../../assets/styles';
 
 type Props = {
   index: number,
-  speaker: Speaker,
+  speakers: Array<Member>,
   technology: Technology,
   title: string,
   description: string,
@@ -78,12 +78,9 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
-
 `;
 
-const SpeakerCard = (
-  { index, speaker, technology, title, description }: Props,
-) => {
+const TechTalk = (props: Props) => {
   const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -98,12 +95,12 @@ const SpeakerCard = (
     border-radius: 3px;
 
     ${media.desktopAndLargerThanThat} {
-      order: ${getOrder(index)};
+      order: ${getOrder(props.index)};
     }
   `;
 
   const TechnologyName = styled.div`
-    color: ${colors.techstack[technology]};
+    color: ${colors.techstack[props.technology]};
     font-size: 1.8rem;
     font-weight: 400;
     padding-bottom: 0.1rem;
@@ -113,32 +110,34 @@ const SpeakerCard = (
     <Wrapper>
       <TechnologyIndicator>
         <TechnologyIcon
-          src={require(`../../../../../assets/images/technology/${technology}.png`)}
+          src={require(`../../../../assets/images/technology/${props.technology}.png`)}
         />
-        <TechnologyName>{technology}</TechnologyName>
+        <TechnologyName>{props.technology}</TechnologyName>
       </TechnologyIndicator>
       <Body>
-        <Title>{title}</Title>
-        <Description>{description}</Description>
+        <Title>{props.title}</Title>
+        <Description>{props.description}</Description>
       </Body>
-      <Avatar>
-        <TwitterPicture
-          className="ui circular image"
-          src={`https://twitter.com/${speaker.twitter}/profile_image?size=bigger`}
-        />
-        <TwitterHandle>@{speaker.twitter}</TwitterHandle>
-      </Avatar>
+      {props.speakers.map(speaker => {
+        const twitterHandle = R.propOr('ReactStuttgart', 'twitter', speaker);
+        return (
+          <Avatar>
+            <TwitterPicture
+              className="ui circular image"
+              src={`https://twitter.com/${twitterHandle}/profile_image?size=bigger`}
+            />
+            <TwitterHandle>@{twitterHandle}</TwitterHandle>
+          </Avatar>
+        );
+      })}
     </Wrapper>
   );
 };
 
-SpeakerCard.defaultProps = {
+TechTalk.defaultProps = {
   description: 'tba',
-  speaker: {
-    twitter: 'ReactStuttgart',
-  },
   technology: 'react',
   title: 'tba',
 };
 
-export default SpeakerCard;
+export default TechTalk;

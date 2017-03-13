@@ -6,7 +6,7 @@ import type { Action } from '../../types';
 export default function (state: Object = {}, action: Action) {
   switch (action.type) {
     case FETCH_PHOTOS_SUCCESS:
-      return R.merge(state, action.payload.photos);
+      return R.merge(state, R.propOr({}, 'photos', action.payload));
     default:
       return state;
   }
