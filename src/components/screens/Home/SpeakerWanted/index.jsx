@@ -2,6 +2,8 @@
 import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
+
+import Teaser from './Teaser';
 import { colors, media } from '../../../../assets/styles';
 
 type Props = {
@@ -9,31 +11,6 @@ type Props = {
   index: number,
 };
 
-const SpeakerWantedIndicator = styled.div`
-  display: flex;
-  align-items: center;
-  background: rgba(${colors.backgroundDarkRGB}, 0.9);
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  height: 3rem;
-
-  ${media.desktopAndLargerThanThat} {
-    height: 4rem;
-  }
-`;
-
-const SpeakerWantedIcon = styled.img`
-  width: 30px;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-`;
-
-const SpeakerWantedName = styled.div`
-  color: #ffffff;
-  font-size: 1.8rem;
-  font-weight: 400;
-  padding-bottom: 0.1rem;
-`;
 const Body = styled.div`
   margin-left: 0.75rem;
   margin-right: 0.75rem;
@@ -117,12 +94,7 @@ const SpeakerWanted = ({ index, gender }: Props) => {
 
   return (
     <Wrapper>
-      <SpeakerWantedIndicator>
-        <SpeakerWantedIcon
-          src={require('../../../../assets/images/speaker/speaker_wanted.png')}
-        />
-        <SpeakerWantedName>Looking for Speaker</SpeakerWantedName>
-      </SpeakerWantedIndicator>
+      <Teaser>Looking for Speaker</Teaser>
       <Body>
         <Title>React Stuttgart</Title>
         <Description>
