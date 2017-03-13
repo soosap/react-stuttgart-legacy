@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import Teaser from './Teaser';
 import { colors, media } from '../../../../assets/styles';
+import CallToAction from './CallToAction'
 
 type Props = {
   gender: string,
@@ -52,18 +53,6 @@ const TwitterPicture = styled.img`
   height: 25px !important;
 `;
 
-const ContactUsButton = styled.button`
-
-`;
-
-const ContactLink = styled.a`
-  color:${colors.secondary};
-`;
-
-const CallToAction = styled.div`
-  display:flex;
-  justify-content:center;
-`;
 
 function getOrder(index: number): number {
   return R.cond([
@@ -102,16 +91,7 @@ const SpeakerWanted = ({ index, gender }: Props) => {
           Relay, Flow, Reason or anything related. If you have something to share,
           please catch up w/ us. {gender}!
         </Description>
-        <CallToAction>
-          <ContactUsButton className="ui primary button">
-            <ContactLink
-              href="mailto:contact@react-stuttgart.de?Subject=Want%20to%20be%20a%20speaker"
-              target="_top"
-            >
-              Contact Us
-            </ContactLink>
-          </ContactUsButton>
-        </CallToAction>
+        <CallToAction/>
       </Body>
       <Avatar>
         <TwitterPicture
