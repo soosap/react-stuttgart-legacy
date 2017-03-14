@@ -1,8 +1,14 @@
 /* @flow */
 import React from 'react';
+import R from 'ramda';
 import styled from 'styled-components';
 
 import { colors } from '../../../assets/styles';
+
+type Props = {
+  twitterHandle: string,
+  imageUrl?: string,
+};
 
 const Wrapper = styled.div`
   border-top: 1px solid rgba(${colors.backgroundDarkRGB}, 0.9);
@@ -24,18 +30,27 @@ const TwitterHandle = styled.div`
   align-self: flex-end;
 `;
 
-const TwitterPicture = styled.img`
+const Picture = styled.img`
   width: 25px !important;
   height: 25px !important;
 `;
-const Avatar = () => {
+
+const Avatar = (props: Props) => {
+  const pictureSrc = R.ifElse(
+    R.compose(R.isNil, R.prop('imageUrl')),
+    R.always(`https://twitter.com/${props.twitterHandle}/profile_image?size=bigger`),
+    R.prop('imageUrl'),
+  )(props);
+
+  // const x = R.propOr(require('../../../assets/images/reactstuttgart@1x.png'), 'imageUrl', props);
+
   return (
     <Wrapper>
-      <TwitterPicture
+      <Picture
         className="ui circular image"
-        src={require('../../../assets/images/reactstuttgart@1x.png')}
+        src={pictureSrc}
       />
-      <TwitterHandle>@ReactStuttgart</TwitterHandle>
+      <TwitterHandle>@{props.twitterHandle}</TwitterHandle>
     </Wrapper>
   );
 };

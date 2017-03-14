@@ -66,9 +66,9 @@ const SpeakerWanted = ({ index, gender }: Props) => {
           Relay, Flow, Reason or anything related. If you have something to share,
           please catch up w/ us. {gender}!
         </Description>
-        <CallToAction/>
+        <CallToAction />
       </Body>
-      <Avatar/>
+      <Avatar twitterHandle="ReactStuttgart" imageUrl={require('../../../../assets/images/reactstuttgart@1x.png')} />
     </Wrapper>
   );
 };
