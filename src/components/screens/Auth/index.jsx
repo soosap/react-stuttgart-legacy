@@ -13,6 +13,6 @@ export const Auth = ({ children }: Props) => (
 
 Auth.defaultProps = {
   children: null,
-}
+};
 
 export default Auth;

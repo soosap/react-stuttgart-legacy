@@ -80,8 +80,8 @@ const renderContent = date => {
   }
 
   return [
-    <EventDayAndMonth>{date.day}/{date.month}</EventDayAndMonth>,
-    <EventYear>{date.year}</EventYear>,
+    <EventDayAndMonth key={0}>{date.day}/{date.month}</EventDayAndMonth>,
+    <EventYear key={1}>{date.year}</EventYear>,
   ];
 };
 

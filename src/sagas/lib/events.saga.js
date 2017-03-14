@@ -12,7 +12,6 @@ import {
   FETCH_PHOTOS_SUCCESS,
   FETCH_EVENTS_FAILURE,
   FETCH_PHOTOS_FAILURE,
-  FETCH_ORGANIZATION_SUCCESS,
   FETCH_VENUES_SUCCESS,
   SELECT_EVENT_REQUEST,
   SELECT_EVENT_SUCCESS,
@@ -33,27 +32,44 @@ import type { Action } from '../../types';
  */
 export function* handleFetchEvents(action: Action): Generator<*, *, *> {
   try {
-    const eventIds = R.propOr([], 'eventIds', action.payload);
-    const responses = yield eventIds.map(eventId => {
-      return call(axios.get, `/meetup/events/${eventId}`);
-    });
+    // console.log('action', action);
 
-    const eventData = responses.map(response => response.data);
+    const response = yield call(axios.get, '/meetup/events');
+    const stripped = R.compose(
+      R.map(R.evolve({
+        sponsors: R.map(R.evolve({
+          contacts: R.map(R.prop('fields')),
+        })),
+        talks: R.map(R.evolve({
+          speakers: R.map(R.prop('fields')),
+        }))
+      })),
+      R.map(R.evolve({
+        sponsors: R.map(R.prop('fields')),
+        talks: R.map(R.prop('fields')),
+        venue: R.prop('fields'),
+      })),
+      R.map(R.prop('fields')),
+      R.path(['data', 'items'])
+    )(response);
+
+    // console.log('stripped', stripped);
+
+    const contact = new schema.Entity('contacts');
+    const speaker = new schema.Entity('speakers', { contacts: [contact] });
     const venue = new schema.Entity('venues');
-    const group = new schema.Entity('groups');
-    const event = new schema.Entity('events', { venue, group });
+    const talk = new schema.Entity('talks', { speakers: [speaker] });
+    const sponsor = new schema.Entity('sponsors', { contacts: [contact] });
+    const event = new schema.Entity('events', { venue, talks: [talk], sponsors: [sponsor] });
 
-    const normalizedData = normalize(eventData, [event]);
-    const { entities: { events, groups, venues }, result } = normalizedData;
+    const normalizedData = normalize(stripped, [event]);
+    // console.log('normalizedData', normalizedData);
+    const { entities: { events, speakers, sponsors, talks, venues }, result } = normalizedData;
 
-    const lastEvent = events[result[0]];
-    const groupId = lastEvent.group;
-    const organization = groups[groupId];
-
-    yield put({ type: FETCH_ORGANIZATION_SUCCESS, payload: organization });
+    // yield put({ type: FETCH_ORGANIZATION_SUCCESS, payload: organization });
     yield put({ type: FETCH_EVENTS_SUCCESS, payload: events });
-    yield put({ type: FETCH_VENUES_SUCCESS, payload: venues });
-    yield put(selectEvent(lastEvent.id));
+    // yield put({ type: FETCH_VENUES_SUCCESS, payload: venues });
+    // yield put(selectEvent(lastEvent.id));
   } catch (error) {
     yield put({ type: FETCH_EVENTS_FAILURE, payload: error });
   }

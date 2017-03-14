@@ -17,6 +17,21 @@ const contentful = contentfulService.createClient({
   accessToken: process.env.CONTENTFUL_API_KEY,
 });
 
+app.get('/meetup/events', (req, res) => {
+  contentful
+    .getEntries({
+      content_type: 'event',
+      include: 3,
+    })
+    .then(entries => {
+      console.log('entries', entries);
+      res.send(entries);
+    })
+    .catch(err => {
+      console.log('err', err);
+    });
+});
+
 app.get('/meetup/events/next', (req, res) => {
   contentful
     .getEntries({

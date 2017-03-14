@@ -9,7 +9,7 @@ import { media } from '../../../../assets/styles';
 import type { Event, Talk } from '../../../../types';
 
 type Props = {
-  event: ?Event,
+  event?: Event,
 };
 
 const Wrapper = styled.div`
@@ -63,11 +63,18 @@ const renderTechTalks = (talks: Array<Talk>) => {
 };
 
 const NextEvent = ({ event }: Props): Element<Wrapper> => {
-  const formattedDate: ?Object = event && ({
-    day: (`0${event.eventDate.getDate()}`).slice(-2),
-    month: (`0${event.eventDate.getMonth()}`).slice(-2),
-    year: event.eventDate.getFullYear(),
-  });
+  // Todo: Refactor getFormattedDate outside of here
+  // Todo: Handle flickering of tba/formattedDate
+  const formattedDate: ?Object = R.ifElse(
+    R.isNil(), R.always(null), R.curry((strDate) => {
+      const eventDate = new Date(strDate);
+      return R.evolve({
+        day: R.always((`0${eventDate.getDate()}`).slice(-2)),
+        month: R.always((`0${R.inc(eventDate.getMonth())}`).slice(-2)),
+        year: R.always(`${eventDate.getFullYear()}`),
+      }, { day: '', month: '', year: '' });
+    }),
+  )(R.propOr(undefined, 'eventDate', event));
 
   return (
     <Wrapper>
