@@ -3,8 +3,9 @@ import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 import type { Member, Technology } from '../../../../types';
-import { colors, media } from '../../../../assets/styles';
+import { media } from '../../../../assets/styles';
 import Avatar from '../../../common/Avatar';
+import Header from './Header';
 
 type Props = {
   index: number,
@@ -22,25 +23,6 @@ function getOrder(index: number): number {
     [R.T, R.always(3)],
   ])(index);
 }
-
-const TechnologyIndicator = styled.div`
-  display: flex;
-  align-items: center;
-  background: rgba(${colors.backgroundDarkRGB}, 0.9);
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  height: 3rem;
-
-  ${media.desktopAndLargerThanThat} {
-    height: 4rem;
-  }
-`;
-
-const TechnologyIcon = styled.img`
-  width: 30px;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-`;
 
 const Body = styled.div`
   margin-left: 0.75rem;
@@ -76,21 +58,9 @@ const TechTalk = (props: Props) => {
     }
   `;
 
-  const TechnologyName = styled.div`
-    color: ${colors.techstack[props.technology]};
-    font-size: 1.8rem;
-    font-weight: 400;
-    padding-bottom: 0.1rem;
-  `;
-
   return (
     <Wrapper>
-      <TechnologyIndicator>
-        <TechnologyIcon
-          src={require(`../../../../assets/images/technology/${props.technology}.png`)}
-        />
-        <TechnologyName>{props.technology}</TechnologyName>
-      </TechnologyIndicator>
+      <Header subject={props.technology} />
       <Body>
         <Title>{props.title}</Title>
         <Description>{props.description}{props.length}</Description>
@@ -115,7 +85,7 @@ TechTalk.defaultProps = {
   technology: 'react',
   title: 'tba',
   speakers: [],
-  length: '45min'
+  length: '45min',
 };
 
 export default TechTalk;
