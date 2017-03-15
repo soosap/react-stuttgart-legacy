@@ -9,15 +9,24 @@ import { getSponsors } from '../../sponsors';
 import { getTalks } from '../../talks';
 import { getVenues } from '../../venues';
 
-const retrieveNextEvent = (
+const retrieveUpcomingEvents = (
   events: Object,
   speakers: Object,
   sponsors: Object,
   talks: Object,
   venues: Object,
 ): ?Event => {
-  const nextEvent = R.compose(
-    R.last,
+  return R.compose(
+    R.map(R.evolve({
+      talks: R.map(R.evolve({
+        speakers: R.map(speakerId => speakers[speakerId])
+      })),
+    })),
+    R.map(R.evolve({
+      sponsors: R.map(sponsorId => sponsors[sponsorId]),
+      talks: R.map(talkId => talks[talkId]),
+      venue: venueId => venues[venueId],
+    })),
     R.sortBy(() => Date.parse(R.prop('eventDate'))),
     R.values,
     R.filter(
@@ -26,27 +35,15 @@ const retrieveNextEvent = (
       }),
     ),
   )(events);
-
-  if (!nextEvent) { return undefined; }
-
-  const populatedNextEvent = R.compose(
-    R.evolve({
-      sponsors: R.map(sponsorId => sponsors[sponsorId]),
-      talks: R.map(talkId => talks[talkId]),
-      venue: venueId => venues[venueId],
-    }),
-  )(nextEvent);
-
-  return populatedNextEvent;
 };
 
-const nextEventSelector = createSelector(
+const upcomingEventsSelector = createSelector(
   getEvents,
   getSpeakers,
   getSponsors,
   getTalks,
   getVenues,
-  retrieveNextEvent,
+  retrieveUpcomingEvents,
 );
 
-export default nextEventSelector;
+export default upcomingEventsSelector;

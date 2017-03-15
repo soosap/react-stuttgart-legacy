@@ -11,7 +11,7 @@ export type Event = {|
   yes_rsvp_count?: number,
   waitlist_count?: number,
   photos?: Array<Photo>,
-  talks?: Array<Talk>,
+  talks: Array<Talk>,
   venue?: Venue,
-  sponsors?: Array<Sponsor>
+  sponsors: Array<Sponsor>
 |};

@@ -20,9 +20,9 @@ import {
 import { showModal } from '../../../actions/modal';
 import { getSelectedEventPhotos } from '../../../selectors/photos';
 import {
-  getEvents,
-  getSelectedEvent,
   getNextEvent,
+  getPreviousEvents,
+  getSelectedEvent,
 } from '../../../selectors/events';
 import { media, colors } from '../../../assets/styles';
 
@@ -32,10 +32,10 @@ type Props = {
   fetchEvents: () => void,
   selectEvent: () => void,
   showModal: () => void,
-  selectedEvent: Event,
   nextEvent: ?Event,
   photos: Array<Photo>,
-  events: Array<Event>,
+  previousEvents: Array<Event>,
+  selectedEvent: Event,
 };
 
 const Wrapper = styled.div`
@@ -87,7 +87,7 @@ class Home extends React.Component {
         </Wallpaper>
         <Photos>
           <EventHistory
-            events={this.props.events}
+            events={this.props.previousEvents}
             selectedEvent={this.props.selectedEvent}
             selectEvent={this.props.selectEvent}
           />
@@ -104,9 +104,9 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  events: R.values(getEvents(state)),
-  photos: getSelectedEventPhotos(state),
+  photos: R.values(getSelectedEventPhotos(state)),
   nextEvent: getNextEvent(state),
+  previousEvents: R.values(getPreviousEvents(state)),
   selectedEvent: getSelectedEvent(state),
 });
 

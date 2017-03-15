@@ -1,6 +1,6 @@
 /* @flow */
 export type Member = {|
-  slug: string,
+  id: string,
   firstName: string,
   lastName: string,
   twitter?: string,

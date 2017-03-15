@@ -12,10 +12,6 @@ import {
   FETCH_PHOTOS_REQUEST,
   FETCH_PHOTOS_SUCCESS,
   FETCH_PHOTOS_FAILURE,
-  FETCH_SPEAKERS_SUCCESS,
-  FETCH_SPONSORS_SUCCESS,
-  FETCH_TALKS_SUCCESS,
-  FETCH_VENUES_SUCCESS,
   SELECT_EVENT_REQUEST,
   SELECT_EVENT_SUCCESS,
   SELECT_EVENT_FAILURE,
@@ -78,11 +74,10 @@ export function* handleFetchEvents(action: Action): Generator<*, *, *> {
       entities: { events, speakers, sponsors, talks, venues },
     } = normalizedData;
 
-    yield put({ type: FETCH_EVENTS_SUCCESS, payload: events });
-    yield put({ type: FETCH_SPEAKERS_SUCCESS, payload: speakers });
-    yield put({ type: FETCH_SPONSORS_SUCCESS, payload: sponsors });
-    yield put({ type: FETCH_TALKS_SUCCESS, payload: talks });
-    yield put({ type: FETCH_VENUES_SUCCESS, payload: venues });
+    yield put({
+      type: FETCH_EVENTS_SUCCESS,
+      payload: { events, speakers, sponsors, talks, venues },
+    });
     // yield put(selectEvent(lastEvent.id));
   } catch (error) {
     yield put({ type: FETCH_EVENTS_FAILURE, payload: error });

@@ -6,7 +6,7 @@ import EventDate from '../NextEvent/EventDate';
 import TechTalk from '../TechTalk';
 import SpeakerWanted from '../SpeakerWanted';
 import { media } from '../../../../assets/styles';
-import type { Event, Talk } from '../../../../types';
+import type { Event } from '../../../../types';
 
 type Props = {
   event: ?Event,
@@ -45,13 +45,17 @@ const renderSpeakerWanted = (event: ?Event) => {
   ])(R.length(R.propOr([], 'talks', event)));
 };
 
-const renderTechTalks = (talks: Array<Talk>) => {
-  return talks.map((talk, index) => {
-    const { speakers, technology, description, title } = talk;
+const renderTechTalks = (event: ?Event): ?Array<Element<TechTalk>> => {
+  if (!event) { return null; }
+
+  return event.talks.map((talk, index) => {
+    const { id, speakers, technology, description, title } = talk;
+
+    console.log('talk', talk);
 
     return (
       <TechTalk
-        key={title}
+        key={id}
         index={index}
         speakers={speakers}
         technology={technology}
@@ -79,7 +83,7 @@ const NextEvent = ({ event }: Props): Element<Wrapper> => {
   return (
     <Wrapper>
       <EventDate date={formattedDate} />
-      {renderTechTalks(R.propOr([], 'talks', event))}
+      {renderTechTalks(event)}
       {renderSpeakerWanted(event)}
     </Wrapper>
   );

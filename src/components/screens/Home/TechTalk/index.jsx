@@ -12,6 +12,7 @@ type Props = {
   technology: Technology,
   title: string,
   description: string,
+  length?: string,
 };
 
 function getOrder(index: number): number {
@@ -92,7 +93,7 @@ const TechTalk = (props: Props) => {
       </TechnologyIndicator>
       <Body>
         <Title>{props.title}</Title>
-        <Description>{props.description}</Description>
+        <Description>{props.description}{props.length}</Description>
       </Body>
       {props.speakers.map(speaker => {
         const twitterHandle = R.propOr('ReactStuttgart', 'twitter', speaker);
@@ -114,6 +115,7 @@ TechTalk.defaultProps = {
   technology: 'react',
   title: 'tba',
   speakers: [],
+  length: '45min'
 };
 
 export default TechTalk;

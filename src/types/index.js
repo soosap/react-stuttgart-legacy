@@ -9,7 +9,7 @@ import type { Venue } from './lib/venue.type';
 
 type Action = {|
   type: string,
-  payload?: Object,
+  payload: ?Object,
 |};
 
 type Modal = {|
