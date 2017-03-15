@@ -41,31 +41,6 @@ const TechnologyIcon = styled.img`
   margin-right: 0.5rem;
 `;
 
-// const Avatar = styled.div`
-//   border-top: 1px solid rgba(${colors.backgroundDarkRGB}, 0.9);
-//   display: flex;
-//   justify-content: flex-end;
-//   padding-right: 0.5rem;
-//   padding-top: 0.3rem;
-//   margin-top: 0.5rem;
-//   margin-bottom: 0.2rem;
-// `;
-//
-// const TwitterHandle = styled.div`
-//   font-size: 1.1rem;
-//   font-weight: 400;
-//   color: ${colors.backgroundDarkRGB};
-//   margin-left: 0.3rem;
-//   margin-bottom: 0.25rem;
-//   opacity: no !important;
-//   align-self: flex-end;
-// `;
-//
-// const TwitterPicture = styled.img`
-//   width: 25px !important;
-//   height: 25px !important;
-// `;
-
 const Body = styled.div`
   margin-left: 0.75rem;
   margin-right: 0.75rem;
@@ -121,9 +96,13 @@ const TechTalk = (props: Props) => {
       </Body>
       {props.speakers.map(speaker => {
         const twitterHandle = R.propOr('ReactStuttgart', 'twitter', speaker);
-        const imageUrl = R.propOr(undefined, imageUrl, speaker);
+        const imageUrl = R.propOr(undefined, 'imageUrl', speaker);
         return (
-          <Avatar twitterHandle={twitterHandle} imageUrl={imageUrl} />
+          <Avatar
+            key={`${twitterHandle}---${imageUrl}`}
+            twitterHandle={twitterHandle}
+            imageUrl={imageUrl}
+          />
         );
       })}
     </Wrapper>
@@ -134,6 +113,7 @@ TechTalk.defaultProps = {
   description: 'tba',
   technology: 'react',
   title: 'tba',
+  speakers: [],
 };
 
 export default TechTalk;

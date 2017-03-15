@@ -1,5 +1,6 @@
 /* @flow */
 import React from 'react';
+import R from 'ramda';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -77,6 +78,7 @@ class Home extends React.Component {
   props: Props;
 
   render() {
+    console.log('this.props.nextEvent', this.props.nextEvent);
     return (
       <Wrapper>
         <Wallpaper>
@@ -102,7 +104,7 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  events: getEvents(state),
+  events: R.values(getEvents(state)),
   photos: getSelectedEventPhotos(state),
   nextEvent: getNextEvent(state),
   selectedEvent: getSelectedEvent(state),

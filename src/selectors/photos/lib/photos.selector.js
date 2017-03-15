@@ -1,6 +1,6 @@
 /* @flow */
-import R from 'ramda';
-
-const photosSelector = (state: Object) => R.values(state.photos);
+const photosSelector = (state: Object) => {
+  return state.photos;
+}
 
 export default photosSelector;

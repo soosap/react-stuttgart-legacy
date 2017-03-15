@@ -9,7 +9,7 @@ import { media } from '../../../../assets/styles';
 import type { Event, Talk } from '../../../../types';
 
 type Props = {
-  event?: Event,
+  event: ?Event,
 };
 
 const Wrapper = styled.div`
