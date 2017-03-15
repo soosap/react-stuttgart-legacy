@@ -46,4 +46,8 @@ const Header = (props: Props) => {
   );
 };
 
+Header.defaultProps = {
+  subject: 'react',
+};
+
 export default Header;
