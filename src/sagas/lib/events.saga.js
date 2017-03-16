@@ -29,7 +29,7 @@ import type { Action } from '../../types';
  | async stuff and then returning a response.
  |
  */
-export function* handleFetchEvents(action: Action): Generator<*, *, *> {
+export function* handleFetchEvents(): Generator<*, *, *> {
   try {
     const response = yield call(axios.get, '/meetup/events');
     const stripped = R.compose(
@@ -78,7 +78,14 @@ export function* handleFetchEvents(action: Action): Generator<*, *, *> {
       type: FETCH_EVENTS_SUCCESS,
       payload: { events, speakers, sponsors, talks, venues },
     });
-    // yield put(selectEvent(lastEvent.id));
+
+    const mostRecentEventId = R.compose(
+      R.prop('id'),
+      R.nth(2),
+      R.values
+    )(events);
+
+    yield put(selectEvent(mostRecentEventId));
   } catch (error) {
     yield put({ type: FETCH_EVENTS_FAILURE, payload: error });
   }
