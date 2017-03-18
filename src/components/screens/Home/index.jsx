@@ -83,7 +83,7 @@ class Home extends React.Component {
       <Wrapper>
         <Wallpaper>
           <Header />
-          <NextEvent event={this.props.nextEvent} />
+          <NextEvent event={this.props.nextEvent} showModal={this.props.showModal} />
         </Wallpaper>
         <Photos>
           <EventHistory

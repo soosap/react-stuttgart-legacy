@@ -7,6 +7,8 @@ import { media } from '../../../../assets/styles';
 import Avatar from '../../../common/Avatar';
 import Header from './Header';
 
+import { TECH_TALK_DESCRIPTION } from '../../../modals/types';
+
 type Props = {
   index: number,
   speakers: Array<Member>,
@@ -14,6 +16,7 @@ type Props = {
   title: string,
   description: string,
   length?: string,
+  showModal: () => void,
 };
 
 function getOrder(index: number): number {
@@ -37,6 +40,9 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
+`;
+
+const Button = styled.button`
 `;
 
 const TechTalk = (props: Props) => {
@@ -64,6 +70,7 @@ const TechTalk = (props: Props) => {
       <Body>
         <Title>{props.title}</Title>
         <Description>{props.description}{props.length}</Description>
+        <Button onClick={() => props.showModal(TECH_TALK_DESCRIPTION)}>Click Me</Button>
       </Body>
       {props.speakers.map(speaker => {
         const twitterHandle = R.propOr('ReactStuttgart', 'twitter', speaker);
