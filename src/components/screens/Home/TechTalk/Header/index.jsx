@@ -1,8 +1,8 @@
 /* @flow */
 import React from 'react';
 import styled from 'styled-components';
-import type { Technology } from '../../../../types';
-import { colors, media } from '../../../../../assets/styles';
+import type { Technology } from '../../../../../types';
+import { colors } from '../../../../../assets/styles';
 
 type Props = {
   subject: Technology,
@@ -15,10 +15,6 @@ const Wrapper = styled.div`
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   height: 3rem;
-
-  ${media.desktopAndLargerThanThat} {
-    height: 4rem;
-  }
 `;
 
 const TechnologyIcon = styled.img`
