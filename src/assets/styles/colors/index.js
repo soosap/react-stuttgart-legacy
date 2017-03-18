@@ -34,7 +34,9 @@ export default {
   primary,
   secondary,
   secondaryDarkRGB,
+  backgroundDark,
   backgroundDarkRGB,
   white,
+  whiteDark,
   techstack,
 };

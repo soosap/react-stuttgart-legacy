@@ -51,7 +51,7 @@ const renderTechTalks = (event: ?Event): ?Array<Element<TechTalk>> => {
   return event.talks.map((talk, index) => {
     const { id, speakers, technology, description, title } = talk;
 
-    console.log('talk', talk);
+    // console.log('talk', talk);
 
     return (
       <TechTalk

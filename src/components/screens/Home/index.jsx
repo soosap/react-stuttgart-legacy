@@ -78,7 +78,6 @@ class Home extends React.Component {
   props: Props;
 
   render() {
-    console.log('this.props.nextEvent', this.props.nextEvent);
     return (
       <Wrapper>
         <Wallpaper>

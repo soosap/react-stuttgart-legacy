@@ -11,12 +11,13 @@ type Props = {
 };
 
 const Wrapper = styled.div`
-  border-top: 1px solid rgba(${colors.backgroundDarkRGB}, 0.9);
+  ${''/* This makes no sense in a avatar component. border-top is part of the layout */}
+  ${''/* border-top: 1px solid rgba(${colors.backgroundDarkRGB}, 0.9); */}
   display: flex;
   justify-content: flex-end;
   padding-right: 0.5rem;
-  padding-top: 0.3rem;
-  margin-top: 0.5rem;
+  ${''/* padding-top: 0.3rem; */}
+  ${''/* margin-top: 0.5rem; */}
   margin-bottom: 0.2rem;
 `;
 

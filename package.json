@@ -42,6 +42,7 @@
     "env-cmd": "^4.0.0",
     "express": "^4.14.0",
     "immutable": "^3.8.1",
+    "marked": "^0.3.6",
     "meetup-api": "github:soosap/meetup-api#18195c1",
     "normalizr": "^3.2.1",
     "ramda": "^0.23.0",

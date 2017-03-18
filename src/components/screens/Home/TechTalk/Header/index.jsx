@@ -28,7 +28,6 @@ const TechnologyIcon = styled.img`
 `;
 
 const Header = (props: Props) => {
-
   const TechnologyName = styled.div`
     color: ${colors.techstack[props.subject]};
     font-size: 1.8rem;

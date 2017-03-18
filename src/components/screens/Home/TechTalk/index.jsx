@@ -2,10 +2,11 @@
 import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
-import type { Member, Technology } from '../../../../types';
-import { media } from '../../../../assets/styles';
-import Avatar from '../../../common/Avatar';
+import marked from 'marked';
+
 import Header from './Header';
+import type { Member, Technology } from '../../../../types';
+import { media, colors } from '../../../../assets/styles';
 
 type Props = {
   index: number,
@@ -16,6 +17,18 @@ type Props = {
   length?: string,
 };
 
+type DefaultProps = {
+  description: string,
+  technology: Technology,
+  title: string,
+  speakers: Array<Member>,
+  length: string,
+}
+
+type State = {
+  expanded: boolean,
+};
+
 function getOrder(index: number): number {
   return R.cond([
     [R.equals(0), R.always(0)],
@@ -24,61 +37,95 @@ function getOrder(index: number): number {
   ])(index);
 }
 
-const Body = styled.div`
+const Footer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3px;
+  cursor: pointer;
+`;
+
+const Title = styled.h1`
+  color: ${colors.backgroundDark};
+  font-size: 1.3rem;
+  font-weight: 400;
+  padding-top: 15px;
+  padding-bottom: 0.5rem;
+  margin: 0.4rem 0.75rem 0.5rem 0.75rem;
+  text-decoration: underline;
+`;
+
+const Description = styled.p`
+  display: inline-block;
+  max-width: 400px;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  word-wrap: normal;
+  line-height: 0;
   margin-left: 0.75rem;
   margin-right: 0.75rem;
 `;
 
-const Title = styled.h1`
-  font-size: 1.3rem;
-  font-weight: 400;
-  margin-top: 0.4rem !important;
-  margin-bottom: 0.5rem;
-`;
+class TechTalk extends React.Component {
+  static defaultProps: DefaultProps;
 
-const Description = styled.p`
-`;
+  constructor(props: Props) {
+    super(props);
 
-const TechTalk = (props: Props) => {
-  const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    this.state = {
+      expanded: false,
+    };
+  }
 
-    width: 100%;
-    max-width: 400px;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-bottom: 1rem
-    background-color: rgba(255,255,255, 0.8);
-    border-radius: 3px;
+  state: State;
+  props: Props;
+  toggleAccordion: Function;
 
-    ${media.desktopAndLargerThanThat} {
-      order: ${getOrder(props.index)};
-    }
-  `;
+  toggleAccordion = () => {
+    this.setState(R.evolve({ expanded: R.not }))
+  };
 
-  return (
-    <Wrapper>
-      <Header subject={props.technology} />
-      <Body>
-        <Title>{props.title}</Title>
-        <Description>{props.description}{props.length}</Description>
-      </Body>
-      {props.speakers.map(speaker => {
-        const twitterHandle = R.propOr('ReactStuttgart', 'twitter', speaker);
-        const imageUrl = R.propOr(undefined, 'imageUrl', speaker);
-        return (
-          <Avatar
-            key={`${twitterHandle}---${imageUrl}`}
-            twitterHandle={twitterHandle}
-            imageUrl={imageUrl}
+  render() {
+    const direction = R.ifElse(
+      R.propEq('expanded', true), R.always('up'), R.always('down')
+    )(this.state)
+
+    const Wrapper = styled.div`
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      width: 100%;
+      max-width: 400px;
+      margin: 0 1rem 1rem 1rem;
+      background-color: rgba(255,255,255, 0.9);
+      border-radius: 3px;
+
+      ${media.desktopAndLargerThanThat} {
+        order: ${getOrder(this.props.index)};
+      }
+    `;
+
+    const Accordion = styled.div`
+      overflow-y: scroll;
+      height: ${this.state.expanded ? '100%' : '150px'};
+    `;
+
+    return (
+      <Wrapper>
+        <Header subject={this.props.technology} />
+        <Accordion>
+          <Title>{this.props.title}</Title>
+          <Description
+            dangerouslySetInnerHTML={{ __html: marked(this.props.description) }}
           />
-        );
-      })}
-    </Wrapper>
-  );
-};
+        </Accordion>
+        <Footer onClick={this.toggleAccordion}>
+          <i className={`angle double ${direction} icon`} />
+        </Footer>
+      </Wrapper>
+    );
+  }
+}
 
 TechTalk.defaultProps = {
   description: 'tba',
