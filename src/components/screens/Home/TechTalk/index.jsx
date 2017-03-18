@@ -8,6 +8,8 @@ import Header from './Header';
 import type { Member, Technology } from '../../../../types';
 import { media, colors } from '../../../../assets/styles';
 
+import { TECH_TALK_DESCRIPTION } from '../../../modals/types';
+
 type Props = {
   index: number,
   speakers: Array<Member>,
@@ -15,6 +17,7 @@ type Props = {
   title: string,
   description: string,
   length?: string,
+  showModal: () => void,
 };
 
 type DefaultProps = {
@@ -81,13 +84,13 @@ class TechTalk extends React.Component {
   toggleAccordion: Function;
 
   toggleAccordion = () => {
-    this.setState(R.evolve({ expanded: R.not }))
+    this.setState(R.evolve({ expanded: R.not }));
   };
 
   render() {
     const direction = R.ifElse(
-      R.propEq('expanded', true), R.always('up'), R.always('down')
-    )(this.state)
+      R.propEq('expanded', true), R.always('up'), R.always('down'),
+    )(this.state);
 
     const Wrapper = styled.div`
       display: flex;

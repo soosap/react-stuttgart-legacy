@@ -10,6 +10,7 @@ import type { Event } from '../../../../types';
 
 type Props = {
   event: ?Event,
+  showModal: () => void;
 };
 
 const Wrapper = styled.div`
@@ -45,7 +46,7 @@ const renderSpeakerWanted = (event: ?Event) => {
   ])(R.length(R.propOr([], 'talks', event)));
 };
 
-const renderTechTalks = (event: ?Event): ?Array<Element<TechTalk>> => {
+const renderTechTalks = (event: ?Event, showModal: Function): ?Array<Element<TechTalk>> => {
   if (!event) { return null; }
 
   return event.talks.map((talk, index) => {
@@ -61,12 +62,13 @@ const renderTechTalks = (event: ?Event): ?Array<Element<TechTalk>> => {
         technology={technology}
         title={title}
         description={description}
+        showModal={showModal}
       />
     );
   });
 };
 
-const NextEvent = ({ event }: Props): Element<Wrapper> => {
+const NextEvent = ({ event, showModal }: Props): Element<Wrapper> => {
   // Todo: Refactor getFormattedDate outside of here
   // Todo: Handle flickering of tba/formattedDate
   const formattedDate: ?Object = R.ifElse(
@@ -83,7 +85,7 @@ const NextEvent = ({ event }: Props): Element<Wrapper> => {
   return (
     <Wrapper>
       <EventDate date={formattedDate} />
-      {renderTechTalks(event)}
+      {renderTechTalks(event, showModal)}
       {renderSpeakerWanted(event)}
     </Wrapper>
   );
