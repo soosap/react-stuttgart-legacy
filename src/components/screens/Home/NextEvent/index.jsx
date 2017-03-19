@@ -15,6 +15,7 @@ type Props = {
 
 const Wrapper = styled.div`
   margin-bottom: 1rem;
+  margin-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
 
