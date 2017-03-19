@@ -81,7 +81,9 @@ export function* handleFetchEvents(): Generator<*, *, *> {
 
     const mostRecentEventId = R.compose(
       R.prop('id'),
-      R.nth(2),
+      R.nth(1),
+      R.reverse,
+      R.sortBy(R.prop('eventDate')),
       R.values
     )(events);
 
