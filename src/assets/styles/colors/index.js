@@ -33,6 +33,7 @@ export const techstack = {
 export default {
   primary,
   secondary,
+  secondaryDark,
   secondaryDarkRGB,
   backgroundDark,
   backgroundDarkRGB,

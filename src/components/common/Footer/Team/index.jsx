@@ -7,23 +7,26 @@ import { media } from '../../../../assets/styles';
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+
   margin: 2.5rem 2rem;
 
-  ${media.tabletAndLargerThanThat} {
+  ${''/* ${media.tabletAndLargerThanThat} {
     flex-direction: row;
     justify-content: center;
-  }
+  } */}
 `;
 
 const Team = () => {
   return (
     <Wrapper>
-      <Member twitter="soosap" />
-      <Member twitter="chautzi" />
-      <Member twitter="FabioDeVasco" />
-      <Member twitter="BetterCallPaT" />
+      <Member nerd="nerd4" twitter="soosap" />
+      <Member nerd="nerd8" twitter="chautzi" />
+      <Member nerd="nerd6" twitter="FabioDeVasco" />
+      <Member nerd="nerd13" twitter="BetterCallPaT" />
     </Wrapper>
   );
 };

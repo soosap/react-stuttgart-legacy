@@ -42,7 +42,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: ${colors.primary};
+  background-color: ${colors.secondaryDark}
 `;
 
 const Wallpaper = styled.div`
