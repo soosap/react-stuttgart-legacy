@@ -31,14 +31,15 @@ const Tile = styled.div`
   }
 `;
 
-const EventHistory = (
-  { selectedEvent, events, selectEvent }: Props,
-): ?Element<Tiles> => {
+const EventHistory = (props: Props): ?Element<Tiles> => {
+  const { events, selectedEvent, selectEvent } = props;
   if (R.isEmpty(events)) return null;
+
+  const sortedEvents = R.reverse(R.sortBy(R.prop('eventDate'))(events));
 
   return (
     <Tiles>
-      {events.reverse().map((event, index) => {
+      {sortedEvents.map((event, index) => {
         if (R.isNil(event.id)) return null;
 
         const isActive: boolean = R.propEq('id', event.id, R.defaultTo({}, selectedEvent));
