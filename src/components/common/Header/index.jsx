@@ -16,7 +16,7 @@ const Wordmark = styled.div`
 
 const Logo = styled.img`
   width: 2rem !important;
-  
+
   ${media.tabletAndLargerThanThat} {
     width: 3.5rem !important;
   }
@@ -25,10 +25,10 @@ const Logo = styled.img`
 const Title = styled.h2`
   margin: 0;
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 400;
   color: ${colors.white};
   padding-left: 0.5rem;
-  
+
   ${media.tabletAndLargerThanThat} {
     font-size: 2rem;
     padding-left: 0.6rem;
