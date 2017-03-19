@@ -39,6 +39,7 @@ const renderSpeakerWanted = (event: ?Event) => {
   return R.cond([
     [R.gte(R.__, 2), R.always(null)],
     [R.equals(1), R.always(<SpeakerWanted index={0} gender="male" />)],
+    [R.T, R.always(null)],
     [R.T, R.always([
       <SpeakerWanted key={0} index={0} gender="male" />,
       <SpeakerWanted key={1} index={1} gender="female" />,
