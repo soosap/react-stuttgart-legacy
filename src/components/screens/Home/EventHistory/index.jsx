@@ -27,6 +27,8 @@ const Tile = styled.div`
 
   &:hover {
     cursor: pointer;
+    color: ${colors.backgroundDark};
+    background-color: ${colors.whiteDark};
     box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
   }
 `;
