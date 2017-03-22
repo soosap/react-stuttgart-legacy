@@ -44,7 +44,7 @@ class CheckList extends React.Component {
           <CheckListItem
             key={item.id}
             item={item}
-            checked={R.contains(item.text, this.state.checked)}
+            checked={R.contains(item.value, this.state.checked)}
             onChange={this.updateCheckedValues}
           />
         ))}
