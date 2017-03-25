@@ -15,6 +15,7 @@ const Label = styled.label`
   display: flex;
   align-items: center;
   height: 2.5rem;
+  min-height: 2.5rem;
   border-bottom: 1px solid grey;
   cursor: pointer;
 `;
