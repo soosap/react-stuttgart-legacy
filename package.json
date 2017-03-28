@@ -63,6 +63,7 @@
     "redux-saga": "^0.13.0",
     "regenerator-runtime": "^0.10.1",
     "reselect": "^2.5.4",
+    "saronia-ui": "^0.1.3",
     "semantic-ui-react": "0.62.0",
     "styled-components": "1.1.3"
   },
