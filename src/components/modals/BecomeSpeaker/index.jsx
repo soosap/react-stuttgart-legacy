@@ -1,6 +1,6 @@
 /* @flow */
 import React from 'react';
-import { Button } from 'saronia-ui';
+import { Button } from '@saronia/saronia-ui';
 
 import Modal from '../templates/Default';
 import BecomeSpeakerForm from '../../forms/BecomeSpeaker';

@@ -1,4 +1,4 @@
-FROM saronia/node:7.2.0.8
+FROM node:7.9.0
 MAINTAINER Prasath Soosaithasan <prasath.soosaithasan@gmail.com>
 
 # Change the working directory to /var/www
@@ -18,8 +18,7 @@ WORKDIR /var/www
 COPY package.json yarn.lock ./
 
 # Install the app's production dependencies using yarn
-# RUN yarn --pure-lockfile
-RUN npm install
+RUN yarn --pure-lockfile
 
 # Place all files from the build context inside the image
 COPY . .
@@ -29,21 +28,23 @@ COPY . .
 # -------------------------------------------------------------------------
 #
 #  Next we run unit tests and when successful we kick off a build script
-#  to generate the application artefacts.
+#  to generate the application artefacts. Testing and linting covered in
+#  yarn run prebuild.
 #
-
-# Upon successful test run build application artefacts
-# RUN yarn run build
-RUN npm run build
+RUN yarn run build
 
 # -------------------------------------------------------------------------
 #  pid1
 # -------------------------------------------------------------------------
 #
+#  We need to include the docker-entrypoint script to leverage docker
+#  swarm's built-in secret management.
+#
+ENTRYPOINT ["./.docker/production/docker-entrypoint.sh"]
 #  We are ready to spin up an express web server to serve our app.
-#  Either we run a real node.js app or we serve up static build artefacts.
 
-EXPOSE 8080
+ENV NODE_ENV production
+EXPOSE 3000
 
 # Serve application artefacts through a express web server
 CMD ["babel-node", "server.js"]

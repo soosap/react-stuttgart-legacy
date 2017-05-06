@@ -1,7 +1,29 @@
-# All these files are avoided being sent to the Docker Host during the build process
-# i.e. all these files are irrelevant in the build process
-
-node_modules
-dist
-# .env # Temporarily do not ignore this. Find a better way to handle secrets. i.e. with vault eventually.
+# -------------------------------------------------------------------------
+#  Development-only
+# -------------------------------------------------------------------------
+#
+#  All these files are avoided being sent to the Docker Host during the
+#  build process, i.e. all these files are irrelevant in the build process.
+#
+/.storybook
+.env
 .env.example
+.editorconfig
+.eslintignore
+.eslintrc.json
+.flowconfig
+.gitignore
+README.md
+
+# -------------------------------------------------------------------------
+#  Build artefacts
+# -------------------------------------------------------------------------
+#
+#  Of course node_modules and /dist folders are important. However they
+#  are not from a docker perspective. We run yarn install and yarn build
+#  commands as part of the Dockerfile after the context has been provided.
+#  Since we generate the build artefacts on the fly we do not need to pass
+#  /dist or /node_modules that we may have floating around locally.
+#
+/node_modules
+/dist
