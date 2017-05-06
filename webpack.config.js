@@ -119,7 +119,7 @@ export default function ({ development }) {
         publicPath: '/',
         filename: 'bundle.js',
       } : {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'build'),
         publicPath: '/',
         filename: '[name].[chunkhash].js',
       },

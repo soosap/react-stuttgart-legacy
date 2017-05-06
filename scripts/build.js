@@ -29,12 +29,12 @@ webpack(config({ development: false })).run((err, stats) => {
   console.log(`${chalk.green('Successfully compiled!')}`);
 
   console.log();
-  console.log(`The ${chalk.cyan('dist')} folder is ready to be deployed.`);
+  console.log(`The ${chalk.cyan('build')} folder is ready to be deployed.`);
   console.log('You may also serve it locally with a static server:');
 
   console.log();
   console.log(`    ${chalk.cyan('yarn')} global add pushstate-server`);
-  console.log(`    ${chalk.cyan('pushstate-server')} dist/`);
+  console.log(`    ${chalk.cyan('pushstate-server')} build/`);
   console.log(`    ${chalk.cyan('open')} http://localhost:9000`);
   console.log();
 
