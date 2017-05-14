@@ -1,6 +1,5 @@
-/* eslint-disable import/prefer-default-export */
-import addTechnology from './lib/addTechnology.action';
+import addTechnology from './addTechnology';
 
-export {
+export default {
   addTechnology,
 };

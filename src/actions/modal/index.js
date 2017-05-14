@@ -1,5 +1,5 @@
 /* @flow */
-import { showModal } from './lib/showModal.action';
-import { hideModal } from './lib/hideModal.action';
+import showModal from './showModal';
+import hideModal from './hideModal';
 
 export { showModal, hideModal };

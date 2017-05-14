@@ -1,21 +1,16 @@
 /* @flow */
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { compose } from 'recompose';
-import { addTechnology } from 'actions/tech';
+import { addTechnology } from '../../../actions/tech';
 
 export class About extends React.Component {
-  static propTypes = {
-    addTechnology: PropTypes.func.isRequired,
-    stack: PropTypes.array.isRequired,
-  }
-
   state = {
     technology: { title: '' },
   }
 
-  addTechnology = (e) => {
+  addTechnology = (e: Event) => {
     e.preventDefault();
 
     this.props.addTechnology(this.state.technology);
@@ -66,7 +61,7 @@ const mapStateToProps = (state, ownProps) => ({
   stack: state.tech.stack,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: Object) => ({
   ...bindActionCreators({
     // Pick actions needed by <About /> component
     addTechnology,
