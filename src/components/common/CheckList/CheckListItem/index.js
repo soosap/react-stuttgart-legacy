@@ -1,2 +1,4 @@
 /* @flow */
-export default from './CheckListItem';
+import CheckListItem from './CheckListItem';
+
+export default CheckListItem;

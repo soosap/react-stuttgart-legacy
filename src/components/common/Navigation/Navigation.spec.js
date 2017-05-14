@@ -2,26 +2,26 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import expect from 'expect';
 
-import { Header } from './';
+import { Navigation } from './';
 
-function renderHeader(props) {
-  return shallow(<Header {...props} />).dive();
+function renderNavigation(props) {
+  return shallow(<Navigation {...props} />).dive();
 }
 
-describe('<Header />', () => {
+describe('<Navigation />', () => {
   it('should render a <div> tag', () => {
-    const renderedComponent = renderHeader();
+    const renderedComponent = renderNavigation();
     expect(renderedComponent.type()).toEqual('div');
   });
 
   // it('sets active tab to "/home" when it first renders', () => {
-  //   const wrapper = renderHeader();
+  //   const wrapper = renderNavigation();
   //   const homeTab = wrapper.find('Link').filterWhere(link => link.prop('to') === '/');
   //   expect(homeTab.hasClass('active')).toBeTruthy();
   // });
   //
   // it('switches active tab to "/about" upon click', () => {
-  //   const wrapper = renderHeader();
+  //   const wrapper = renderNavigation();
   //   const aboutTab = wrapper.find('Link').filterWhere(link => link.prop('to') === 'about');
   //
   //   console.log('aboutTab: ', aboutTab.hasClass('active'));

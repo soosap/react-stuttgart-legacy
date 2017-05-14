@@ -1,2 +1,4 @@
 /* @flow */
-export default from './Links';
+import Links from './Links';
+
+export default Links;

@@ -41,8 +41,8 @@ const StickyFooter = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: ${colors.primary}
-  color: ${Color.white}
+  background-color: ${Color.PRIMARY}
+  color: ${Color.WHITE}
 `;
 
 class CheckList extends React.Component {

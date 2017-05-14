@@ -11,20 +11,16 @@ type Props = {
 };
 
 const Wrapper = styled.div`
-  ${''}
-  ${''}
   display: flex;
   justify-content: flex-end;
   padding-right: 0.5rem;
-  ${''}
-  ${''}
   margin-bottom: 0.2rem;
 `;
 
 const TwitterHandle = styled.div`
   font-size: 1.1rem;
   font-weight: 400;
-  color: ${Color.backgroundDarkRGB};
+  color: ${Color.BACKGROUND_DARK_RGB};
   margin-left: 0.3rem;
   margin-bottom: 0.25rem;
   opacity: no !important;

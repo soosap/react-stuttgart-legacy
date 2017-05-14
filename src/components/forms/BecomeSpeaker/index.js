@@ -1,2 +1,4 @@
 /* @flow */
-export default from './BecomeSpeakerForm';
+import BecomeSpeakerForm from './BecomeSpeakerForm';
+
+export default BecomeSpeakerForm;

@@ -1,10 +1,4 @@
 /* @flow */
-import React from 'react';
-
-import Modal from '../templates/Default';
-
-const ContactUsModal = () => {
-  return <Modal>Get in touch!</Modal>;
-};
+import ContactUsModal from './ContactUsModal';
 
 export default ContactUsModal;

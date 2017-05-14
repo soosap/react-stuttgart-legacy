@@ -1,5 +1,5 @@
-// flow-typed signature: 71d6f309a9d8ddb697f108d53ec68559
-// flow-typed version: fb2079e84e/react-router_v4.x.x/flow_>=v0.38.x
+// flow-typed signature: 2449e10c6e0aaea37c0c643493e48f5a
+// flow-typed version: 35f411754c/react-router_v4.x.x/flow_>=v0.38.x
 
 declare module 'react-router' {
   // NOTE: many of these are re-exported by react-router-dom and
@@ -46,7 +46,9 @@ declare module 'react-router' {
     url: string,
   }
 
-  declare export type ContextRouter = RouterHistory & {
+  declare export type ContextRouter = {
+    history: RouterHistory,
+    location: Location,
     match: Match,
   }
 

@@ -1,3 +1,4 @@
+/* @flow */
 import React from 'react';
 import styled from 'styled-components';
 import { colors, media } from '../../../assets/styles';
@@ -37,17 +38,16 @@ const Title = styled.h2`
   }
 `;
 
-export class Header extends React.Component {
-  render() {
-    return (
-      <Wrapper>
-        <Wordmark>
-          <Logo className="ui mini image" src={require('../../../assets/images/reactstuttgart@1x.png')} />
-          <Title>#ReactStuttgart</Title>
-        </Wordmark>
-      </Wrapper>
-    );
-  }
-}
+const Header = () => (
+  <Wrapper>
+    <Wordmark>
+      <Logo
+        className="ui mini image"
+        src={require('../../../assets/images/reactstuttgart@1x.png')}
+      />
+      <Title>#ReactStuttgart</Title>
+    </Wordmark>
+  </Wrapper>
+);
 
 export default Header;

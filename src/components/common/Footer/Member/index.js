@@ -1,2 +1,4 @@
 /* @flow */
-export default from './Member';
+import Member from './Member';
+
+export default Member;

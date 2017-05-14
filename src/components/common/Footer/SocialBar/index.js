@@ -1,2 +1,4 @@
 /* @flow */
-export default from './SocialBar';
+import SocialBar from './SocialBar';
+
+export default SocialBar;
