@@ -1,7 +1,8 @@
+/* @flow */
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux'
+import { syncHistoryWithStore } from 'react-router-redux';
 import { authenticate } from '../actions/users';
 import configureStore from '../store/configureStore';
 import routes from '../routes';
