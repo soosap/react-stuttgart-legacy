@@ -1,20 +1,16 @@
 FROM node:7.9.0
 MAINTAINER Prasath Soosaithasan <prasath.soosaithasan@gmail.com>
 
-# Change the working directory to /var/www
-WORKDIR /var/www
-
 # -------------------------------------------------------------------------
 #  Embed application files into image
 # -------------------------------------------------------------------------
+WORKDIR /var/www
 
 # Leverage docker's build cache mechanism
-COPY package.json yarn.lock .docker ./
+COPY package.json yarn.lock ./
+COPY build ./
 
-# Install the node.js production dependencies
 RUN yarn install --production --pure-lockfile
-
-COPY build .
 
 # -------------------------------------------------------------------------
 #  pid1
@@ -23,11 +19,11 @@ COPY build .
 #  We need to include the docker-entrypoint script to leverage docker
 #  swarm's built-in secret management.
 #
-ENTRYPOINT ["./.docker/production/docker-entrypoint.sh"]
-#  We are ready to spin up an express web server to serve our app.
+COPY .docker/production/docker-entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 ENV NODE_ENV production
 EXPOSE 3000
+USER node
 
-# Serve application artefacts through a express web server
-CMD ["babel-node", "server.js"]
+CMD ["node", "server.js"]

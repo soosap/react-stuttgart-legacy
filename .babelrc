@@ -1,32 +1,3 @@
 {
-  "presets": [
-    ["latest", { "modules": false }],
-    // Webpack understands the native import syntax and uses it for tree shaking
-
-    "react",
-    // Transpile React components to JavaScript
-
-    "stage-0"
-    // Specifies what level of language features to activate.
-    // stage-2 is "draft", stage-4 is "finished", stage-0 is "strawman".
-  ],
-
-  "env": {
-    "test": {
-      "plugins": ["transform-es2015-modules-commonjs"]
-    }
-  },
-
-  "plugins": [
-    ["module-resolver", {
-      "root": ["./src"],
-      "alias": {
-        "actions": "./actions",
-        "components": "./components",
-        "images": "./images",
-        "reducers": "./reducers",
-        "sagas": "./sagas"
-      }
-    }]
-  ]
+  "presets": ["env", "stage-1", "react", "flow"]
 }

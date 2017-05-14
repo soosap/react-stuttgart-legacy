@@ -23,24 +23,7 @@ file_env() {
 	unset "$fileVar"
 }
 
-for SECRET in CONTENTFUL_SPACE_ID CONTENTFUL_API_KEY MEETUP_API_KEY
-do
-  file_env $SECRET
-	if [ -z "$SECRET" ]; then
-    # The - option suppresses leading tabs but *not* spaces. :)
-    cat >&2 <<-'EOWARN'
-    ****************************************************
-    WARNING: No ${SECRET} has been set.
-           This will allow anyone with access to the
-           Postgres port to access your database. In
-           Docker's default configuration, this is
-           effectively any other container on the same
-           system.
-           Use "-e ${SECRET}=password" to set
-           it in "docker run".
-    ****************************************************
-		EOWARN
-  fi
-done
+file_env 'CONTENTFUL_API_KEY'
+file_env 'MEETUP_API_KEY'
 
 exec "$@"

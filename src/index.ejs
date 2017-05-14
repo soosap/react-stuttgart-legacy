@@ -1,7 +1,5 @@
 <!--
-|--------------------------------------------------------------------------
 | Environment-based index.html template
-|--------------------------------------------------------------------------
 |
 | It uses ejs and HtmlWebpackPlugin to generate a different index.html
 | for each environment. HtmlWebpackPlugin will dynamically add references
@@ -24,9 +22,6 @@
   <meta property="og:image" content="https://react-stuttgart.de/logo.png" />
   <meta property="og:description" content="Meetup for React, Redux, GraphQL, Relay, Apollo, FlowType, Reason." />
   <!-- END OPENGRAPH -->
-  <!-- Later only import the semantic bits that we are actually making use of. -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400">
 
   <% if (htmlWebpackPlugin.options.NODE_ENV !== 'development' && htmlWebpackPlugin.options.SEGMENT_WRITE_KEY) { %>
   <!-- BEGIN SEGMENT -->
