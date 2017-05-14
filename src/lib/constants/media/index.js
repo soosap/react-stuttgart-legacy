@@ -1,8 +1,8 @@
 /* @flow */
-export const tabletAndLargerThanThat = '@media (min-width: 768px)';
-export const desktopAndLargerThanThat = '@media (min-width: 1200px)';
+const TABLET_AND_LARGER_THAN_THAT = '@media (min-width: 768px)';
+const DESKTOP_AND_LARGER_THAN_THAT = '@media (min-width: 1200px)';
 
 export default {
-  tabletAndLargerThanThat,
-  desktopAndLargerThanThat,
+  TABLET_AND_LARGER_THAN_THAT,
+  DESKTOP_AND_LARGER_THAN_THAT,
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { compose, withHandlers } from 'recompose';
 
-import { colors, media } from '../../../../lib/constants';
+import { Color, Media } from '../../../../lib/constants';
 import { BECOME_SPEAKER } from '../../../modals/types';
 
 type Props = {
@@ -16,23 +16,23 @@ const Wrapper = styled.div`
   justify-content: center;
   padding: 1rem;
 
-  ${media.tabletAndLargerThanThat} {
+  ${Media.TABLET_AND_LARGER_THAN_THAT} {
     justify-content: space-between;
   }
 `;
 
 const Link = styled.a`
   margin: 5px;
-  color: ${colors.white};
+  color: ${Color.WHITE};
   &:hover {
-  color: ${colors.secondary};
+  color: ${Color.SECONDARY};
   text-decoration: underline;
   }
 `;
 
 const Brand = styled.span`
   margin: 5px;
-  color: ${colors.secondary};
+  color: ${Color.SECONDARY};
 `;
 
 const Left = styled.div`

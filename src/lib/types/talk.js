@@ -1,6 +1,6 @@
 /* @flow */
-import type { Technology } from './technology.type';
-import type { Member } from './member.type';
+import type { Technology } from './technology';
+import type { Member } from './member';
 
 export type Talk = {|
   id: string,

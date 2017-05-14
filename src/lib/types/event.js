@@ -1,8 +1,8 @@
 /* @flow */
-import type { Photo } from './photo.type';
-import type { Talk } from './talk.type';
-import type { Venue } from './venue.type';
-import type { Sponsor } from './sponsor.type';
+import type { Photo } from './photo';
+import type { Talk } from './talk';
+import type { Venue } from './venue';
+import type { Sponsor } from './sponsor';
 
 export type Event = {|
   id: string,

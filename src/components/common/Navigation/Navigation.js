@@ -1,10 +1,10 @@
 /* @flow */
 import React from 'react';
 import styled from 'styled-components';
-import { colors, media } from '../../../assets/styles';
+import { Color, Media } from '../../../lib/constants';
 
 const Wrapper = styled.div`
-  background: rgba(${colors.backgroundDarkRGB}, 0.5);
+  background: rgba(${Color.BACKGROUND_DARK_RGB}, 0.5);
 `;
 
 const Wordmark = styled.div`
@@ -18,7 +18,7 @@ const Wordmark = styled.div`
 const Logo = styled.img`
   width: 2rem !important;
 
-  ${media.tabletAndLargerThanThat} {
+  ${Media.TABLET_AND_LARGER_THAN_THAT} {
     width: 3.5rem !important;
   }
 `;
@@ -27,10 +27,10 @@ const Title = styled.h2`
   margin: 0;
   font-size: 1.5rem;
   font-weight: 400;
-  color: ${colors.white};
+  color: ${Color.WHITE};
   padding-left: 0.5rem;
 
-  ${media.tabletAndLargerThanThat} {
+  ${Media.TABLET_AND_LARGER_THAN_THAT} {
     font-size: 2rem;
     padding-left: 0.6rem;
     font-weight: 400;

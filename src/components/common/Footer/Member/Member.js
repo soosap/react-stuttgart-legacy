@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Image from 'react-inlinesvg';
 
-import { colors } from '../../../../lib/constants';
+import { Color } from '../../../../lib/constants';
 
 type Props = {
   twitter: string,
@@ -18,11 +18,11 @@ const Wrapper = styled.a`
 
   &:hover {
     a {
-      color: ${colors.secondary};
+      color: ${Color.SECONDARY};
     }
 
     svg {
-      fill: ${colors.secondary};
+      fill: ${Color.SECONDARY};
     }
 
     text-decoration: underline;
@@ -30,29 +30,25 @@ const Wrapper = styled.a`
   }
 
   svg {
-    fill: ${colors.white};
+    fill: ${Color.WHITE};
   }
 `;
 
 const Link = styled.a`
   font-size: 1.3rem;
   margin: 5px;
-  color: ${colors.white};
+  color: ${Color.WHITE};
   &:hover {
-    color: ${colors.secondary};
+    color: ${Color.SECONDARY};
     text-decoration: underline;
   }
 `;
 
-const Member = (props: Props) => {
-  return (
-    <Wrapper href={`https://twitter.com/${props.twitter}`}>
-      <Image
-        src={require(`../../../../assets/images/nerds/${props.nerd}.svg`)}
-      />
-      <Link>@{props.twitter}</Link>
-    </Wrapper>
-  );
-}
+const Member = (props: Props) => (
+  <Wrapper href={`https://twitter.com/${props.twitter}`}>
+    <Image src={require(`../../../../assets/images/nerds/${props.nerd}.svg`)} />
+    <Link>@{props.twitter}</Link>
+  </Wrapper>
+);
 
 export default Member;

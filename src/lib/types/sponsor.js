@@ -1,5 +1,5 @@
 /* @flow */
-import type { Member } from './member.type';
+import type { Member } from './member';
 
 export type Sponsor = {|
   id: string,

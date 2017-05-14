@@ -42,11 +42,7 @@ class Gallery extends React.Component {
     return (
       <Tiles>
         {this.props.photos.map(photo => (
-          <Tile
-            key={photo.id}
-            src={photo.photo_link}
-            onClick={this.props.onTileClick}
-          />
+          <Tile key={photo.id} src={photo.photo_link} onClick={this.props.onTileClick} />
         ))}
       </Tiles>
     );

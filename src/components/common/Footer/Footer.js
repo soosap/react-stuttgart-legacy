@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { colors } from '../../../assets/styles';
+import { Color } from '../../../lib/constants';
 import Team from './Team';
 import SocialBar from './SocialBar';
 import Links from './Links';
@@ -12,7 +12,7 @@ type Props = {
 };
 
 const Wrapper = styled.div`
-  background: rgba(${colors.secondaryDarkRGB}, 0.9);
+  background: rgba(${Color.SECONDARY_DARK_RGB}, 0.9);
 `;
 
 const Wallpaper = styled.div`
@@ -26,19 +26,17 @@ const Divider = styled.h3`
   font-family: Lullabies-Text;
 `;
 
-const Footer = ({ showModal }: Props) => {
-  return (
-    <Wallpaper>
-      <Wrapper>
-        <SocialBar />
-        <div className="ui horizontal inverted divider">
-          <Divider>Organized by</Divider>
-        </div>
-        <Team />
-        <Links showModal={showModal} />
-      </Wrapper>
-    </Wallpaper>
-  );
-};
+const Footer = ({ showModal }: Props) => (
+  <Wallpaper>
+    <Wrapper>
+      <SocialBar />
+      <div className="ui horizontal inverted divider">
+        <Divider>Organized by</Divider>
+      </div>
+      <Team />
+      <Links showModal={showModal} />
+    </Wrapper>
+  </Wallpaper>
+);
 
 export default Footer;

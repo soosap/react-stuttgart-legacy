@@ -1,5 +1,5 @@
 /* @flow */
-import React from 'react';
+import React, { Children } from 'react';
 import R from 'ramda';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -7,7 +7,7 @@ import Modal from 'react-modal';
 import { hideModal } from '../../../../actions/modal';
 
 type Props = {
-  children: ?any,
+  children: ?Children,
   hideModal: () => void,
   modalType: string,
   modalProps: Object,
@@ -29,7 +29,7 @@ const mapStateToProps = (state: Object) => ({
   modalProps: state.modal.modalProps,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: Object) => ({
   ...bindActionCreators({ hideModal }, dispatch),
 });
 
