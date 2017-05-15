@@ -1,6 +1,6 @@
 /* @flow */
-import { fetchEvents } from './lib/fetchEvents.action';
-import { fetchEventPhotos } from './lib/fetchEventPhotos.action';
-import { selectEvent } from './lib/selectEvent.action';
+import fetchEvents from './fetchEvents';
+import fetchEventPhotos from './fetchEventPhotos';
+import selectEvent from './selectEvent';
 
 export { fetchEvents, fetchEventPhotos, selectEvent };

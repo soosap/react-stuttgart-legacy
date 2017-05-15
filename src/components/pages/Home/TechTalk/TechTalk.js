@@ -5,10 +5,8 @@ import styled from 'styled-components';
 import marked from 'marked';
 
 import Header from './Header';
-import type { Member, Technology } from '../../../../types';
-import { media, colors } from '../../../../assets/styles';
-
-import { TECH_TALK_DESCRIPTION } from '../../../modals/types';
+import type { Member, Technology } from '../../../../lib/types';
+import { Media, Color } from '../../../../lib/constants';
 
 type Props = {
   index: number,
@@ -16,8 +14,8 @@ type Props = {
   technology: Technology,
   title: string,
   description: string,
-  length?: string,
-  showModal: () => void,
+  // length?: string,
+  // showModal: () => void,
 };
 
 type DefaultProps = {
@@ -48,7 +46,7 @@ const Footer = styled.div`
 `;
 
 const Title = styled.h1`
-  color: ${colors.backgroundDark};
+  color: ${Color.BACKGROUND_DARK};
   font-size: 1.3rem;
   font-weight: 400;
   padding-top: 15px;
@@ -88,6 +86,7 @@ class TechTalk extends React.Component {
   };
 
   render() {
+    console.log('speakers', this.props.speakers);
     const direction = R.ifElse(
       R.propEq('expanded', true), R.always('up'), R.always('down'),
     )(this.state);
@@ -103,7 +102,7 @@ class TechTalk extends React.Component {
       background-color: rgba(255,255,255, 0.9);
       border-radius: 3px;
 
-      ${media.desktopAndLargerThanThat} {
+      ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
         order: ${getOrder(this.props.index)};
       }
     `;

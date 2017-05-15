@@ -2,8 +2,8 @@
 import React, { Element } from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
-import { colors } from '../../../../assets/styles';
-import type { Event } from '../../../../types';
+import { Color } from '../../../../lib/constants';
+import type { Event } from '../../../../lib/types';
 
 type Props = {
   events: Array<Event>,
@@ -23,12 +23,12 @@ const Tile = styled.div`
   padding: 0.25rem 0.5rem;
   vertical-align: middle;
   margin: 0.25rem;
-  background-color: ${colors.secondary};
+  background-color: ${Color.SECONDARY};
 
   &:hover {
     cursor: pointer;
-    color: ${colors.backgroundDark};
-    background-color: ${colors.whiteDark};
+    color: ${Color.BACKGROUND_DARK};
+    background-color: ${Color.WHITE_DARK};
     box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
   }
 `;
@@ -51,11 +51,7 @@ const EventHistory = (props: Props): ?Element<Tiles> => {
         ])(index);
 
         return (
-          <Tile
-            key={event.id}
-            onClick={() => selectEvent(event.id)}
-            selected={isActive}
-          >
+          <Tile key={event.id} onClick={() => selectEvent(event.id)} selected={isActive}>
             {displayText}
           </Tile>
         );

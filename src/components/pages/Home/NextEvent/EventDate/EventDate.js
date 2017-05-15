@@ -1,7 +1,7 @@
 /* @flow */
 import React from 'react';
 import styled from 'styled-components';
-import { colors, fonts, media } from '../../../../../assets/styles';
+import { Color, Font, Media } from '../../../../../lib/constants';
 
 type Props = {
   date: ?Object,
@@ -13,12 +13,12 @@ const Wrapper = styled.div`
   justify-content: center;
   order: 0;
 
-  ${media.tabletAndLargerThanThat} {
+  ${Media.TABLET_AND_LARGER_THAN_THAT} {
     margin-top: 2.5rem;
     margin-bottom: 1.5rem;
   }
 
-  ${media.desktopAndLargerThanThat} {
+  ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     order: 1;
     margin-left: 3rem;
     margin-right: 3rem;
@@ -27,8 +27,8 @@ const Wrapper = styled.div`
 
 const Circle = styled.div`
   font-size: 2.5em;
-  color: ${colors.secondary};
-  background: rgba(${colors.backgroundDarkRGB}, 0.9);
+  color: ${Color.SECONDARY};
+  background: rgba(${Color.BACKGROUND_DARK_RGB}, 0.9);
   margin-bottom: 1rem;
   width: 15rem;
   height: 15rem;
@@ -39,7 +39,7 @@ const Circle = styled.div`
   justify-content: space-around;
   align-items: center;
 
-  ${media.desktopAndLargerThanThat} {
+  ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     width: 18rem;
     height: 18rem;
   }
@@ -48,10 +48,10 @@ const Circle = styled.div`
 const Header = styled.h1`
   padding-top: 2rem;
   margin: 0;
-  color: ${colors.white};
-  font-family: ${fonts.secondary};
+  color: ${Color.WHITE};
+  font-family: ${Font.SECONDARY};
 
-  ${media.desktopAndLargerThanThat} {
+  ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     font-size: 2.2rem;
   }
 `;
@@ -60,7 +60,7 @@ const EventDayAndMonth = styled.div`
   font-size: 4rem;
   padding-bottom: 0.75rem;
 
-  ${media.desktopAndLargerThanThat} {
+  ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     font-size: 5rem;
   }
 `;
@@ -69,12 +69,12 @@ const EventYear = styled.div`
   font-size: 2rem;
   padding-bottom: 1.25rem;
 
-  ${media.desktopAndLargerThanThat} {
+  ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     font-size: 2.5rem;
   }
 `;
 
-const renderContent = date => {
+const renderContent = (date) => {
   if (!date) {
     return <div>tba</div>;
   }
@@ -85,15 +85,13 @@ const renderContent = date => {
   ];
 };
 
-const EventDate = ({ date }: Props) => {
-  return (
-    <Wrapper>
-      <Circle>
-        <Header>Next Event</Header>
-        {renderContent(date)}
-      </Circle>
-    </Wrapper>
-  );
-};
+const EventDate = ({ date }: Props) => (
+  <Wrapper>
+    <Circle>
+      <Header>Next Event</Header>
+      {renderContent(date)}
+    </Circle>
+  </Wrapper>
+);
 
 export default EventDate;

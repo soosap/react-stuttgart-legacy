@@ -4,7 +4,7 @@ import type { Talk } from './talk';
 import type { Venue } from './venue';
 import type { Sponsor } from './sponsor';
 
-export type Event = {|
+export type Event = {
   id: string,
   name: string,
   eventDate: Date,
@@ -13,5 +13,5 @@ export type Event = {|
   photos?: Array<Photo>,
   talks: Array<Talk>,
   venue?: Venue,
-  sponsors: Array<Sponsor>
-|};
+  sponsors: Array<Sponsor>,
+};

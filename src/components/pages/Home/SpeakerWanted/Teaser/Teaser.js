@@ -1,7 +1,7 @@
 /* @flow */
 import React, { Children } from 'react';
 import styled from 'styled-components';
-import { colors, media } from '../../../../../assets/styles';
+import { Color, Media } from '../../../../../lib/constants';
 
 type Props = {
   children?: Children,
@@ -10,12 +10,12 @@ type Props = {
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  background: rgba(${colors.backgroundDarkRGB}, 0.9);
+  background: rgba(${Color.BACKGROUND_DARK_RGB}, 0.9);
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   height: 3rem;
 
-  ${media.desktopAndLargerThanThat} {
+  ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     height: 4rem;
   }
 `;
@@ -27,22 +27,18 @@ const TeaserIcon = styled.img`
 `;
 
 const TeaserText = styled.div`
-  color: ${colors.white};
+  color: ${Color.WHITE};
   font-size: 1.8rem;
   font-weight: 400;
   padding-bottom: 0.1rem;
 `;
 
-const Teaser = ({ children }: Props) => {
-  return (
-    <Wrapper>
-      <TeaserIcon
-        src={require('../../../../../assets/images/speaker/speaker_wanted.png')}
-      />
-      <TeaserText>{children}</TeaserText>
-    </Wrapper>
-  );
-};
+const Teaser = ({ children }: Props) => (
+  <Wrapper>
+    <TeaserIcon src={require('../../../../../assets/images/speaker/speaker_wanted.png')} />
+    <TeaserText>{children}</TeaserText>
+  </Wrapper>
+);
 
 Teaser.defaultProps = {
   children: null,

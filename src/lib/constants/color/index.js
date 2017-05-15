@@ -1,10 +1,10 @@
 /* @flow */
-const context = {
+const Context = {
   DANGER: '#DB5E7B',
   SUCCESS: '#86D39B',
 };
 
-const techstack = {
+const TechStack = {
   APOLLO: '#0F2A4A',
   RELAY: '#F66B00',
   GRAPHQL: '#E5009A',
@@ -24,6 +24,6 @@ export default {
   WHITE: '#FFFFFF',
   WHITE_DARK: '#F2F2F2',
   BLACK: '#000000',
-  context,
-  techstack,
+  Context,
+  TechStack,
 };

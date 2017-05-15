@@ -1,9 +1,9 @@
 /* @flow */
 // font family
-export const primary = 'Lato';
-export const secondary = 'Lullabies-Text';
+const PRIMARY = 'Lato';
+const SECONDARY = 'Lullabies-Text';
 
 export default {
-  primary,
-  secondary,
+  PRIMARY,
+  SECONDARY,
 };

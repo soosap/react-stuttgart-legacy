@@ -5,12 +5,12 @@ import styled from 'styled-components';
 import EventDate from '../NextEvent/EventDate';
 import TechTalk from '../TechTalk';
 import SpeakerWanted from '../SpeakerWanted';
-import { media } from '../../../../assets/styles';
-import type { Event } from '../../../../types';
+import { Media } from '../../../../lib/constants';
+import type { Event } from '../../../../lib/types';
 
 type Props = {
-  event: ?Event,
-  showModal: () => void;
+  event: Event,
+  showModal: () => void,
 };
 
 const Wrapper = styled.div`
@@ -26,35 +26,37 @@ const Wrapper = styled.div`
 
   min-height: 700px;
 
-  ${media.tabletAndLargerThanThat} {
+  ${Media.TABLET_AND_LARGER_THAN_THAT} {
     margin-top: 2rem;
   }
 
-  ${media.desktopAndLargerThanThat} {
+  ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     margin-top: 3rem;
     flex-direction: row;
   }
 `;
 
-const renderSpeakerWanted = (event: ?Event) => {
-  return R.cond([
+const renderSpeakerWanted = (event: ?Event) =>
+  R.cond([
     [R.gte(R.__, 2), R.always(null)],
     [R.equals(1), R.always(<SpeakerWanted index={0} gender="male" />)],
     [R.T, R.always(null)],
-    [R.T, R.always([
-      <SpeakerWanted key={0} index={0} gender="male" />,
-      <SpeakerWanted key={1} index={1} gender="female" />,
-    ])],
+    [
+      R.T,
+      R.always([
+        <SpeakerWanted key={0} index={0} gender="male" />,
+        <SpeakerWanted key={1} index={1} gender="female" />,
+      ]),
+    ],
   ])(R.length(R.propOr([], 'talks', event)));
-};
 
-const renderTechTalks = (event: ?Event, showModal: Function): ?Array<Element<TechTalk>> => {
-  if (!event) { return null; }
+const renderTechTalks = (event: ?Event, showModal: Function): ?Array<Element<*>> => {
+  if (!event) {
+    return null;
+  }
 
   return event.talks.map((talk, index) => {
     const { id, speakers, technology, description, title } = talk;
-
-    // console.log('talk', talk);
 
     return (
       <TechTalk
@@ -74,13 +76,18 @@ const NextEvent = ({ event, showModal }: Props): Element<Wrapper> => {
   // Todo: Refactor getFormattedDate outside of here
   // Todo: Handle flickering of tba/formattedDate
   const formattedDate: ?Object = R.ifElse(
-    R.isNil(), R.always(null), R.curry((strDate) => {
+    R.isNil(),
+    R.always(null),
+    R.curry((strDate) => {
       const eventDate = new Date(strDate);
-      return R.evolve({
-        day: R.always((`0${eventDate.getDate()}`).slice(-2)),
-        month: R.always((`0${R.inc(eventDate.getMonth())}`).slice(-2)),
-        year: R.always(`${eventDate.getFullYear()}`),
-      }, { day: '', month: '', year: '' });
+      return R.evolve(
+        {
+          day: R.always(`0${eventDate.getDate()}`.slice(-2)),
+          month: R.always(`0${R.inc(eventDate.getMonth())}`.slice(-2)),
+          year: R.always(`${eventDate.getFullYear()}`),
+        },
+        { day: '', month: '', year: '' },
+      );
     }),
   )(R.propOr(undefined, 'eventDate', event));
 

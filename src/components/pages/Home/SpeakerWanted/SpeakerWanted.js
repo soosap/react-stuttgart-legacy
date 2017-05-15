@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Avatar from '../../../common/Avatar';
 import CallToAction from './CallToAction';
 import Teaser from './Teaser';
-import { media } from '../../../../assets/styles';
+import { Media } from '../../../../lib/constants';
 
 type Props = {
   gender: string,
@@ -25,16 +25,12 @@ const Title = styled.h1`
   margin-bottom: 0.5rem;
 `;
 
-const Description = styled.p`
-
-`;
+const Description = styled.p``;
 
 function getOrder(index: number): number {
-  return R.cond([
-    [R.equals(0), R.always(0)],
-    [R.equals(1), R.always(2)],
-    [R.T, R.always(3)],
-  ])(index);
+  return R.cond([[R.equals(0), R.always(0)], [R.equals(1), R.always(2)], [R.T, R.always(3)]])(
+    index,
+  );
 }
 
 const SpeakerWanted = ({ index, gender }: Props) => {
@@ -51,7 +47,7 @@ const SpeakerWanted = ({ index, gender }: Props) => {
     background-color: rgba(255,255,255, 0.8);
     border-radius: 3px;
 
-    ${media.desktopAndLargerThanThat} {
+    ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
       order: ${getOrder(index)};
     }
   `;

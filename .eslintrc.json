@@ -8,6 +8,7 @@
   "plugins": ["react", "babel", "flowtype"],
 	"rules": {
 		"no-shadow": 0,
+		"no-underscore-dangle": [2, { "allow": ["__"] }],
 		"global-require": 0,
 		"import/no-dynamic-require": 0,
 		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]

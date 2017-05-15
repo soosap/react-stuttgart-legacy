@@ -3,35 +3,26 @@ import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, type Dispatch } from 'redux';
 
 import ModalRoot from '../../modals';
-import Header from '../../common/Header';
+import Navigation from '../../common/Navigation';
 import Footer from '../../common/Footer';
 import NextEvent from './NextEvent';
 import EventHistory from './EventHistory';
 import Gallery from '../../common/Gallery';
 
-import {
-  fetchEvents,
-  fetchEventPhotos,
-  selectEvent,
-} from '../../../actions/events';
+import { fetchEvents, fetchEventPhotos, selectEvent } from '../../../actions/events';
 import { showModal } from '../../../actions/modal';
 import { getSelectedEventPhotos } from '../../../selectors/photos';
-import {
-  getNextEvent,
-  getPreviousEvents,
-  getSelectedEvent,
-} from '../../../selectors/events';
-import { media, colors } from '../../../assets/styles';
+import { getNextEvent, getPreviousEvents, getSelectedEvent } from '../../../selectors/events';
+import { Media, Color } from '../../../lib/constants';
 
-import type { Photo, Event } from '../../../types';
+import type { Photo, Event, Action } from '../../../lib/types';
 
 type Props = {
-  fetchEvents: () => void,
-  selectEvent: () => void,
-  showModal: () => void,
+  selectEvent: (eventId: string) => void,
+  showModal: (modalType: string, modalProps: Object) => void,
   nextEvent: ?Event,
   photos: Array<Photo>,
   previousEvents: Array<Event>,
@@ -42,7 +33,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: ${colors.secondaryDark}
+  background-color: ${Color.SECONDARY_DARK}
 `;
 
 const Wallpaper = styled.div`
@@ -54,7 +45,7 @@ const Wallpaper = styled.div`
   background-attachment: fixed !important;
   background-position: center bottom;
 
-  ${media.tabletAndLargerThanThat} {
+  ${Media.TABLET_AND_LARGER_THAN_THAT} {
     background-size: cover;
   }
 `;
@@ -63,58 +54,55 @@ const Photos = styled.div`
   margin-top: 1rem;
   margin-bottom: 1rem;
 
-  ${media.tabletAndLargerThanThat} {
+  ${Media.TABLET_AND_LARGER_THAN_THAT} {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
 `;
 
-class Home extends React.Component {
-  componentWillMount() {
-    this.props.fetchEvents();
-  }
+const HomePage = ({
+  nextEvent,
+  previousEvents,
+  selectedEvent,
+  photos,
+  selectEvent,
+  showModal,
+}: Props) => (
+  <Wrapper>
+    <Wallpaper>
+      <Navigation />
+      <NextEvent event={nextEvent} showModal={showModal} />
+    </Wallpaper>
+    <Photos>
+      <EventHistory
+        events={previousEvents}
+        selectedEvent={selectedEvent}
+        selectEvent={selectEvent}
+      />
+      <Gallery photos={photos} showModal={showModal} />
+    </Photos>
+    <Footer showModal={showModal} />
+    <ModalRoot />
+  </Wrapper>
+);
 
-  props: Props;
-
-  render() {
-    return (
-      <Wrapper>
-        <Wallpaper>
-          <Header />
-          <NextEvent event={this.props.nextEvent} showModal={this.props.showModal} />
-        </Wallpaper>
-        <Photos>
-          <EventHistory
-            events={this.props.previousEvents}
-            selectedEvent={this.props.selectedEvent}
-            selectEvent={this.props.selectEvent}
-          />
-          <Gallery
-            photos={this.props.photos}
-            showModal={this.props.showModal}
-          />
-        </Photos>
-        <Footer showModal={this.props.showModal} />
-        <ModalRoot />
-      </Wrapper>
-    );
-  }
-}
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: Object) => ({
   photos: R.values(getSelectedEventPhotos(state)),
   nextEvent: getNextEvent(state),
   previousEvents: R.values(getPreviousEvents(state)),
   selectedEvent: getSelectedEvent(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators({
-    fetchEvents,
-    fetchEventPhotos,
-    selectEvent,
-    showModal,
-  }, dispatch),
+const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
+  ...bindActionCreators(
+    {
+      fetchEvents,
+      fetchEventPhotos,
+      selectEvent,
+      showModal,
+    },
+    dispatch,
+  ),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

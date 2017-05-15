@@ -1,8 +1,8 @@
 /* @flow */
 import React from 'react';
 import styled from 'styled-components';
-import type { Technology } from '../../../../../types';
-import { colors } from '../../../../../assets/styles';
+import type { Technology } from '../../../../../lib/types';
+import { Color } from '../../../../../lib/constants';
 
 type Props = {
   subject: Technology,
@@ -11,7 +11,7 @@ type Props = {
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  background: rgba(${colors.backgroundDarkRGB}, 0.9);
+  background: rgba(${Color.BACKGROUND_DARK_RGB}, 0.9);
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   height: 3rem;
@@ -25,7 +25,7 @@ const TechnologyIcon = styled.img`
 
 const Header = (props: Props) => {
   const TechnologyName = styled.div`
-    color: ${colors.techstack[props.subject]};
+    color: ${Color.TechStack[props.subject.toUpperCase()]};
     font-size: 1.8rem;
     font-weight: 400;
     padding-bottom: 0.1rem;
