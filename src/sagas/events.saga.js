@@ -15,10 +15,10 @@ import {
   SELECT_EVENT_REQUEST,
   SELECT_EVENT_SUCCESS,
   SELECT_EVENT_FAILURE,
-} from '../../actions/types';
+} from '../actions/types';
 
-import { selectEvent } from '../../actions/events';
-import type { Action } from '../../types';
+import { selectEvent } from '../actions/events';
+import type { Action } from '../lib/types';
 
 /*
  |--------------------------------------------------------------------------
@@ -70,9 +70,7 @@ export function* handleFetchEvents(): Generator<*, *, *> {
     });
 
     const normalizedData = normalize(stripped, [event]);
-    const {
-      entities: { events, speakers, sponsors, talks, venues },
-    } = normalizedData;
+    const { entities: { events, speakers, sponsors, talks, venues } } = normalizedData;
 
     yield put({
       type: FETCH_EVENTS_SUCCESS,
@@ -84,7 +82,7 @@ export function* handleFetchEvents(): Generator<*, *, *> {
       R.nth(1),
       R.reverse,
       R.sortBy(R.prop('eventDate')),
-      R.values
+      R.values,
     )(events);
 
     yield put(selectEvent(mostRecentEventId));
@@ -96,9 +94,9 @@ export function* handleFetchEvents(): Generator<*, *, *> {
 export function* handleFetchPhotos(action: Action): Generator<*, *, *> {
   try {
     const eventIds = R.propOr([], 'eventIds', action.payload);
-    const responses = yield eventIds.map(eventId => {
-      return call(axios.get, `/meetup/events/${eventId}/photos`);
-    });
+    const responses = yield eventIds.map(eventId =>
+      call(axios.get, `/meetup/events/${eventId}/photos`),
+    );
 
     const photoData = responses.map(response => response.data);
     const photo = new schema.Entity('photos');
@@ -107,7 +105,7 @@ export function* handleFetchPhotos(action: Action): Generator<*, *, *> {
 
     const events = {};
     const forEachEventId = R.addIndex(R.forEach(R.__, eventIds));
-    forEachEventId((id, index) => events[id] = { photos: result[index] });
+    forEachEventId((id, index) => (events[id] = { photos: result[index] }));
 
     yield put({ type: FETCH_PHOTOS_SUCCESS, payload: { photos, events } });
   } catch (error) {

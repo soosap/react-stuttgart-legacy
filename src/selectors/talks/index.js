@@ -1,4 +1,4 @@
 /* @flow */
-import getTalks from './lib/talks.selector';
+import getTalks from './talks.selector';
 
 export { getTalks };

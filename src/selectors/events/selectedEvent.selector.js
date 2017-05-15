@@ -1,15 +1,14 @@
 /* @flow */
-import { createSelector } from 'reselect';
-import type { Event } from '../../../types';
+import { createSelector, type Selector } from 'reselect';
+import type { Event } from '../../lib/types';
 
 const eventsSelector = state => state.events;
 const selectedSelector = state => state.selected;
 
-const retrieveSelectedEvent = (events: Object, selected: Object): ?Event => {
-  return selected.event && events[selected.event];
-};
+const retrieveSelectedEvent = (events: Object, selected: Object): ?Event =>
+  selected.event && events[selected.event];
 
-const selectedEventSelector = createSelector(
+const selectedEventSelector: Selector<*, *, *> = createSelector(
   eventsSelector,
   selectedSelector,
   retrieveSelectedEvent,

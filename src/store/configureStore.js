@@ -86,7 +86,7 @@ function configureStoreDevelopment(initialState: Object) {
      | Enable Webpack hot module replacement for reducers.
      |
      */
-    module.hot.accept('../reducers', () => {
+    (module:any).hot.accept('../reducers', () => {
       const nextReducer = require('../reducers').default;
       store.replaceReducer(nextReducer);
     });

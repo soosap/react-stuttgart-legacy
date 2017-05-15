@@ -1,13 +1,13 @@
 /* @flow */
 import R from 'ramda';
 import { createSelector } from 'reselect';
-import type { Event } from '../../../types';
+import type { Event } from '../../lib/types';
 
 import getEvents from './events.selector';
-import { getSpeakers } from '../../speakers';
-import { getSponsors } from '../../sponsors';
-import { getTalks } from '../../talks';
-import { getVenues } from '../../venues';
+import { getSpeakers } from '../speakers';
+import { getSponsors } from '../sponsors';
+import { getTalks } from '../talks';
+import { getVenues } from '../venues';
 
 const retrieveNextEvent = (
   events: Object,
@@ -27,7 +27,9 @@ const retrieveNextEvent = (
     ),
   )(events);
 
-  if (!nextEvent) { return undefined; }
+  if (!nextEvent) {
+    return undefined;
+  }
 
   const populatedNextEvent = R.compose(
     R.evolve({

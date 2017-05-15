@@ -1,4 +1,4 @@
 /* @flow */
-import getVenues from './lib/venues.selector';
+import getVenues from './venues.selector';
 
 export { getVenues };

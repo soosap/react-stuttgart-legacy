@@ -1,6 +1,4 @@
 /* @flow */
-const speakersSelector = (state: Object) => {
-  return state.speakers;
-};
+const speakersSelector = (state: Object) => state.speakers;
 
 export default speakersSelector;

@@ -1,4 +1,4 @@
 /* @flow */
-import getSponsors from './lib/sponsors.selector';
+import getSponsors from './sponsors.selector';
 
 export { getSponsors };

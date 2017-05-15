@@ -1,9 +1,8 @@
 /* @flow */
 import React from 'react';
-import { storiesOf, action, linkTo } from '@kadira/storybook';
+import { storiesOf } from '@kadira/storybook';
 
 import CheckList from '../components/common/CheckList';
-import CheckListItem from '../components/common/CheckList/CheckListItem';
 
 const stories = storiesOf('CheckList', module);
 const mockItems = [

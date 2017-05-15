@@ -1,4 +1,4 @@
 /* @flow */
-import getSpeakers from './lib/speakers.selector';
+import getSpeakers from './speakers.selector';
 
 export { getSpeakers };

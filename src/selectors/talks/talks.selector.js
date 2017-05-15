@@ -1,6 +1,4 @@
 /* @flow */
-const talksSelector = (state: Object) => {
-  return state.talks;
-}
+const talksSelector = (state: Object) => state.talks;
 
 export default talksSelector;

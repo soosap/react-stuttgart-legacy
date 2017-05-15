@@ -1,6 +1,4 @@
 /* @flow */
-const photosSelector = (state: Object) => {
-  return state.photos;
-}
+const photosSelector = (state: Object) => state.photos;
 
 export default photosSelector;

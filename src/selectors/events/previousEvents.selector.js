@@ -1,13 +1,13 @@
 /* @flow */
 import R from 'ramda';
 import { createSelector } from 'reselect';
-import type { Event } from '../../../types';
+import type { Event } from '../../lib/types';
 
 import getEvents from './events.selector';
-import { getSpeakers } from '../../speakers';
-import { getSponsors } from '../../sponsors';
-import { getTalks } from '../../talks';
-import { getVenues } from '../../venues';
+import { getSpeakers } from '../speakers';
+import { getSponsors } from '../sponsors';
+import { getTalks } from '../talks';
+import { getVenues } from '../venues';
 
 const retrievePreviousEvents = (
   events: Object,
@@ -15,12 +15,14 @@ const retrievePreviousEvents = (
   sponsors: Object,
   talks: Object,
   venues: Object,
-): ?Event => {
-  return R.compose(
+): ?Event =>
+  R.compose(
     R.evolve({
-      talks: R.map(R.evolve({
-        speakers: R.map(speakerId => speakers[speakerId])
-      })),
+      talks: R.map(
+        R.evolve({
+          speakers: R.map(speakerId => speakers[speakerId]),
+        }),
+      ),
     }),
     R.evolve({
       sponsors: R.map(sponsorId => sponsors[sponsorId]),
@@ -35,7 +37,6 @@ const retrievePreviousEvents = (
       }),
     ),
   )(events);
-};
 
 const previousEventsSelector = createSelector(
   getEvents,

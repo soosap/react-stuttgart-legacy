@@ -1,5 +1,4 @@
 import { formActionSaga } from 'redux-form-saga';
-import { watchForAuthenticateUser } from './auth.saga';
 import { watchForEventActions } from './events.saga';
 
 /*
@@ -18,7 +17,6 @@ import { watchForEventActions } from './events.saga';
 export default function* rootSaga() {
   yield [
     formActionSaga(),
-    watchForAuthenticateUser(),
     watchForEventActions(),
   ];
 }

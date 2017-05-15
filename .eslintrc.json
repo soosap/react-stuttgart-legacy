@@ -5,12 +5,14 @@
 		"node": true,
 		"browser": true
 	},
-  "plugins": ["react", "babel", "flowtype"],
+  "plugins": ["babel", "react", "flowtype"],
 	"rules": {
 		"no-shadow": 0,
 		"no-underscore-dangle": [2, { "allow": ["__"] }],
 		"global-require": 0,
+		"import/no-extraneous-dependencies": [2, { "devDependencies": true }],
 		"import/no-dynamic-require": 0,
-		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+		"flowtype/define-flow-type": 1
 	}
 }

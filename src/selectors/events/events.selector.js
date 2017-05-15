@@ -1,6 +1,4 @@
 /* @flow */
-const eventsSelector = (state: Object) => {
-  return state.events;
-}
+const eventsSelector = (state: Object) => state.events;
 
 export default eventsSelector;

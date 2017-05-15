@@ -1,6 +1,4 @@
 /* @flow */
-const sponsorsSelector = (state: Object) => {
-  return state.sponsors;
-}
+const sponsorsSelector = (state: Object) => state.sponsors;
 
 export default sponsorsSelector;
