@@ -1,6 +1,6 @@
 import { formActionSaga } from 'redux-form-saga';
-import { watchForAuthenticateUser } from './lib/auth.saga';
-import { watchForEventActions } from './lib/events.saga';
+import { watchForAuthenticateUser } from './auth.saga';
+import { watchForEventActions } from './events.saga';
 
 /*
  |--------------------------------------------------------------------------

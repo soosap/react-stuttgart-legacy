@@ -1,15 +1,16 @@
+/* @flow */
 import { createStore, compose, applyMiddleware } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import createSagaMiddleware from 'redux-saga';
-import rootReducer from 'reducers';
-import rootSaga from 'sagas';
+import rootReducer from '../reducers';
+import rootSaga from '../sagas';
 
 /*
  |==========================================================================
  | PRODUCTION
  |--------------------------------------------------------------------------
  */
-function configureStore(initialState) {
+function configureStore(initialState: Object) {
   const sagaMiddleware = createSagaMiddleware();
 
   const middleware = [
@@ -25,9 +26,7 @@ function configureStore(initialState) {
     sagaMiddleware,
   ];
 
-  const store = createStore(rootReducer, initialState, compose(
-    applyMiddleware(...middleware),
-  ));
+  const store = createStore(rootReducer, initialState, compose(applyMiddleware(...middleware)));
 
   sagaMiddleware.run(rootSaga);
 
@@ -39,7 +38,7 @@ function configureStore(initialState) {
  | DEVELOPMENT
  |--------------------------------------------------------------------------
  */
-function configureStoreDevelopment(initialState) {
+function configureStoreDevelopment(initialState: Object) {
   const sagaMiddleware = createSagaMiddleware();
 
   const middleware = [
@@ -70,9 +69,11 @@ function configureStoreDevelopment(initialState) {
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   /* eslint-enable no-underscore-dangle */
 
-  const store = createStore(rootReducer, initialState, composeEnhancers(
-    applyMiddleware(...middleware),
-  ));
+  const store = createStore(
+    rootReducer,
+    initialState,
+    composeEnhancers(applyMiddleware(...middleware)),
+  );
 
   sagaMiddleware.run(rootSaga);
 
@@ -86,7 +87,7 @@ function configureStoreDevelopment(initialState) {
      |
      */
     module.hot.accept('../reducers', () => {
-      const nextReducer = require('../reducers').default; // eslint-disable-line global-require
+      const nextReducer = require('../reducers').default;
       store.replaceReducer(nextReducer);
     });
   }
@@ -94,4 +95,6 @@ function configureStoreDevelopment(initialState) {
   return store;
 }
 
-export default (process.env.NODE_ENV === 'development' ? configureStoreDevelopment : configureStore);
+export default (process.env.NODE_ENV === 'development'
+  ? configureStoreDevelopment
+  : configureStore);

@@ -1,7 +1,7 @@
 /* @flow */
 import R from 'ramda';
-import { SHOW_MODAL, HIDE_MODAL } from '../../actions/types';
-import type { Action } from '../../types';
+import { SHOW_MODAL, HIDE_MODAL } from '../actions/types';
+import type { Action } from '../lib/types';
 
 const initialState = {
   modalType: null,

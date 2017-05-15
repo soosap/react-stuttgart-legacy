@@ -1,7 +1,7 @@
 /* @flow */
 import R from 'ramda';
-import { SELECT_EVENT_SUCCESS } from '../../actions/types';
-import type { Action } from '../../types';
+import { SELECT_EVENT_SUCCESS } from '../actions/types';
+import type { Action } from '../lib/types';
 
 type State = {
   event: ?string,

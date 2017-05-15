@@ -1,7 +1,7 @@
 /* @flow */
 import R from 'ramda';
-import { FETCH_PHOTOS_SUCCESS } from '../../actions/types';
-import type { Action } from '../../types';
+import { FETCH_PHOTOS_SUCCESS } from '../actions/types';
+import type { Action } from '../lib/types';
 
 export default function (state: Object = {}, action: Action) {
   switch (action.type) {

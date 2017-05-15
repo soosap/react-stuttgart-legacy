@@ -58,7 +58,7 @@ if (module.hot) {
     }
   };
 
-  module.hot.accept('./components/Root', render);
+  (module:any).hot.accept('./components/Root', render);
 }
 
 /*

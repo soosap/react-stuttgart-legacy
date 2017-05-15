@@ -1,21 +1,22 @@
+/* @flow */
 import { combineReducers } from 'redux';
-import { routerReducer as routing } from 'react-router-redux';
+import { routerReducer as router } from 'react-router-redux';
 import { reducer as form } from 'redux-form';
-import events from './lib/events.reducer';
-import modal from './lib/modal.reducer';
-import photos from './lib/photos.reducer';
-import selected from './lib/selected.reducer';
-import speakers from './lib/speakers.reducer';
-import sponsors from './lib/sponsors.reducer';
-import talks from './lib/talks.reducer';
-import venues from './lib/venues.reducer';
+import events from './events.reducer';
+import modal from './modal.reducer';
+import photos from './photos.reducer';
+import selected from './selected.reducer';
+import speakers from './speakers.reducer';
+import sponsors from './sponsors.reducer';
+import talks from './talks.reducer';
+import venues from './venues.reducer';
 
 const rootReducer = combineReducers({
   events,
   form,
   modal,
   photos,
-  routing,
+  router,
   selected,
   speakers,
   sponsors,
