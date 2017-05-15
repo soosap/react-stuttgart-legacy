@@ -6,16 +6,20 @@ services:
     user: node
     ports:
       - 3000:3000
-    working_dir: /var/www
-    command: ["npm", "start"]
     volumes:
-      - "../..:/var/www"
+      - "~/Documents/ReactProjects/react-stuttgart:/var/www"
+    working_dir: "/var/www"
+    entrypoint: ".docker/production/docker-entrypoint.sh"
+    command: ["babel-node", "src/server.js"]
     environment:
       NODE_ENV: development
       PATH: $PATH:node_modules/.bin
       CONTENTFUL_SPACE_ID: heiwjzet8gfx
       CONTENTFUL_API_KEY_FILE: "/run/secrets/reactstuttgart_contentful_api_key"
       MEETUP_API_KEY_FILE: "/run/secrets/reactstuttgart_meetup_api_key"
+    secrets:
+      - reactstuttgart_contentful_api_key
+      - reactstuttgart_meetup_api_key
 
 secrets:
   reactstuttgart_contentful_api_key:

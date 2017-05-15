@@ -1,8 +1,8 @@
+/* @flow */
+/* eslint no-console: 0 */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/css/lullabies.css';
-
-// import Root from './components/Root';
 
 /*
  |--------------------------------------------------------------------------
@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === 'development') {
  */
 const rootEl = document.getElementById('root');
 let render = () => {
-  const Root = require('./components/Root.jsx').default;
+  const Root = require('./components/Root').default;
   ReactDOM.render(
     <Root />,
     rootEl,
@@ -53,12 +53,12 @@ if (module.hot) {
     try {
       renderApp();
     } catch (err) {
-      console.log(err); // eslint-disable-line no-console
+      console.log(err);
       renderErr(err);
     }
   };
 
-  module.hot.accept('./components/Root.jsx', render);
+  module.hot.accept('./components/Root', render);
 }
 
 /*

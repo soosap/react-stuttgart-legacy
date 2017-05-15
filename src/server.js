@@ -7,7 +7,7 @@ import createMeetupClient from 'meetup-api';
 import contentfulService from 'contentful';
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 const meetup = createMeetupClient({
   key: process.env.MEETUP_API_KEY,

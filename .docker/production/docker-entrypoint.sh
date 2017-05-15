@@ -23,6 +23,8 @@ file_env() {
 	unset "$fileVar"
 }
 
+ls -la /run/secrets
+
 file_env 'CONTENTFUL_API_KEY'
 file_env 'MEETUP_API_KEY'
 

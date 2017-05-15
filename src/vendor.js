@@ -18,12 +18,10 @@
  | here will be bundled into main.js for the production build.
  |
  */
-import 'classnames';
 import 'react';
 import 'react-dom';
 import 'react-redux';
-import 'react-router';
-import 'react-router-redux';
+import 'react-router-dom';
 import 'recompose';
 import 'regenerator-runtime/runtime';
 import 'redux';
