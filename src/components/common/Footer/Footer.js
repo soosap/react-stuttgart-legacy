@@ -8,7 +8,7 @@ import SocialBar from './SocialBar';
 import Links from './Links';
 
 type Props = {
-  showModal: () => void,
+  showModal: (modalType: string, modalProps: Object) => void,
 };
 
 const Wrapper = styled.div`
