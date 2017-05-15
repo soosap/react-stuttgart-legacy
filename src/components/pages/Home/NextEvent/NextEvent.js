@@ -9,8 +9,8 @@ import { Media } from '../../../../lib/constants';
 import type { Event } from '../../../../lib/types';
 
 type Props = {
-  event: Event,
-  showModal: () => void,
+  event: ?Event,
+  showModal: (modalType: string, modalProps: Object) => void,
 };
 
 const Wrapper = styled.div`
