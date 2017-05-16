@@ -1,5 +1,5 @@
 /* @flow */
-import React from 'react';
+import React, { Component } from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -22,6 +22,7 @@ import type { Photo, Event, Action } from '../../../lib/types';
 
 type Props = {
   selectEvent: (eventId: string) => void,
+  fetchEvents: Function,
   showModal: (modalType: string, modalProps: Object) => void,
   nextEvent: ?Event,
   photos: Array<Photo>,
@@ -60,31 +61,36 @@ const Photos = styled.div`
   }
 `;
 
-const HomePage = ({
-  nextEvent,
-  previousEvents,
-  selectedEvent,
-  photos,
-  selectEvent,
-  showModal,
-}: Props) => (
-  <Wrapper>
-    <Wallpaper>
-      <Navigation />
-      <NextEvent event={nextEvent} showModal={showModal} />
-    </Wallpaper>
-    <Photos>
-      <EventHistory
-        events={previousEvents}
-        selectedEvent={selectedEvent}
-        selectEvent={selectEvent}
-      />
-      <Gallery photos={photos} showModal={showModal} />
-    </Photos>
-    <Footer showModal={showModal} />
-    <ModalRoot />
-  </Wrapper>
-);
+class HomePage extends Component {
+  componentWillMount() {
+    this.props.fetchEvents();
+  }
+
+  props: Props;
+
+  render() {
+    const { nextEvent, previousEvents, selectedEvent, photos, selectEvent, showModal } = this.props;
+
+    return (
+      <Wrapper>
+        <Wallpaper>
+          <Navigation />
+          <NextEvent event={nextEvent} showModal={showModal} />
+        </Wallpaper>
+        <Photos>
+          <EventHistory
+            events={previousEvents}
+            selectedEvent={selectedEvent}
+            selectEvent={selectEvent}
+          />
+          <Gallery photos={photos} showModal={showModal} />
+        </Photos>
+        <Footer showModal={showModal} />
+        <ModalRoot />
+      </Wrapper>
+    );
+  }
+}
 
 const mapStateToProps = (state: Object) => ({
   photos: R.values(getSelectedEventPhotos(state)),
