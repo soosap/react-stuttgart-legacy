@@ -1,7 +1,6 @@
 /* @flow */
 import R from 'ramda';
-import { takeEvery, takeLatest } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
+import { call, put, takeEvery, takeLatest, all } from 'redux-saga/effects';
 import { normalize, schema } from 'normalizr';
 import axios from 'axios';
 
@@ -94,9 +93,9 @@ export function* handleFetchEvents(): Generator<*, *, *> {
 export function* handleFetchPhotos(action: Action): Generator<*, *, *> {
   try {
     const eventIds = R.propOr([], 'eventIds', action.payload);
-    const responses = yield eventIds.map(eventId =>
+    const responses = yield all(eventIds.map(eventId =>
       call(axios.get, `/meetup/events/${eventId}/photos`),
-    );
+    ));
 
     const photoData = responses.map(response => response.data);
     const photo = new schema.Entity('photos');

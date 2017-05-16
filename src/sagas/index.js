@@ -1,3 +1,4 @@
+import { all } from 'redux-saga/effects';
 import { formActionSaga } from 'redux-form-saga';
 import { watchForEventActions } from './events.saga';
 
@@ -15,8 +16,8 @@ import { watchForEventActions } from './events.saga';
  |
  */
 export default function* rootSaga() {
-  yield [
+  yield all([
     formActionSaga(),
     watchForEventActions(),
-  ];
+  ]);
 }
