@@ -51,7 +51,7 @@ const renderSpeakerWanted = (event: ?Event) =>
   ])(R.length(R.propOr([], 'talks', event)));
 
 const renderTechTalks = (event: ?Event, showModal: Function): ?Array<Element<*>> => {
-  if (!event) {
+  if (!event || !event.talks) {
     return null;
   }
 
