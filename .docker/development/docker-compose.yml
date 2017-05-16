@@ -7,7 +7,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - "~/Documents/Projects/react-stuttgart:/var/www"
+      - "~/Documents/ReactProjects/react-stuttgart:/var/www"
     working_dir: "/var/www"
     entrypoint: ".docker/production/docker-entrypoint.sh"
     command: ["babel-node", "src/server.js"]
