@@ -37,7 +37,7 @@ const Wrapper = styled.a`
 `;
 
 const Handle = styled.div`
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin: 5px;
   color: ${Color.WHITE};
   &:hover {
