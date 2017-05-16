@@ -2,12 +2,13 @@
 import React, { Element } from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
-import { Color } from '../../../../lib/constants';
+
+import EventTile from './EventTile';
 import type { Event } from '../../../../lib/types';
 
 type Props = {
   events: Array<Event>,
-  selectEvent: () => void,
+  selectEvent: (eventId: string) => void,
   selectedEvent: Event,
 };
 
@@ -19,20 +20,6 @@ const Tiles = styled.div`
   margin-bottom: 1rem;
 `;
 
-const Tile = styled.div`
-  padding: 0.25rem 0.5rem;
-  vertical-align: middle;
-  margin: 0.25rem;
-  background-color: ${Color.SECONDARY};
-
-  &:hover {
-    cursor: pointer;
-    color: ${Color.BACKGROUND_DARK};
-    background-color: ${Color.WHITE_DARK};
-    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
-  }
-`;
-
 const EventHistory = (props: Props): ?Element<Tiles> => {
   const { events, selectedEvent, selectEvent } = props;
   if (R.isEmpty(events)) return null;
@@ -41,19 +28,13 @@ const EventHistory = (props: Props): ?Element<Tiles> => {
 
   return (
     <Tiles>
-      {sortedEvents.map((event, index) => {
+      {sortedEvents.map((event) => {
         if (R.isNil(event.id)) return null;
 
         const isActive: boolean = R.propEq('id', event.id, R.defaultTo({}, selectedEvent));
-        const displayText: string = R.cond([
-          [R.gte(2), () => event.name],
-          [R.T, () => `#${R.slice(0, 1, event.name)}`],
-        ])(index);
 
         return (
-          <Tile key={event.id} onClick={() => selectEvent(event.id)} selected={isActive}>
-            {displayText}
-          </Tile>
+          <EventTile key={event.id} selectEvent={selectEvent} isActive={isActive} event={event} />
         );
       })}
     </Tiles>
