@@ -4,8 +4,10 @@
 
 ### development
 
-1. Create a `.env` file at the root of the project which contains the exact same key-value pairs that are specified inside of `.env.example`.
-2. Start the webpack-dev-server using `$ yarn start`
+1. Clone the repository w/ `$ git clone https://github.com/soosap/react-stuttgart.git`
+2. Install node modules w/ `$ cd react-stuttgart && yarn install`
+3. Create a `.env` file at the root of the project which contains the exact same key-value pairs that are specified inside of `.env.example`.
+4. Start the webpack-dev-server using `$ yarn start`
 
 ### docker in development
 
