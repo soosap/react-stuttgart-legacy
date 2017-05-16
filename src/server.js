@@ -86,6 +86,11 @@ if (process.env.NODE_ENV === 'development') {
       // https://webpack.js.org/configuration/dev-server/
       noInfo: true,
       publicPath: config.output.publicPath,
+      // Enable watch mode to allow HMR w/ "Docker in development"
+      // watchOptions: {
+      //   aggregateTimeout: 300,
+      //   poll: true,
+      // },
     }),
   );
 

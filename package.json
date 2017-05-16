@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Website for #ReactStuttgart meetup",
   "scripts": {
-    "start": "NODE_ENV=development babel-node src/server.js",
+    "start": "env-cmd .env babel-node src/server.js",
     "stack:deploy": "docker stack deploy -c .docker/development/docker-compose.yml reactstuttgart",
     "stack:remove": "docker stack rm reactstuttgart",
     "prebuild": "rimraf ./build && mkdir build",
@@ -67,6 +67,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.26.1",
+    "env-cmd": "^5.1.0",
     "enzyme": "^2.6.0",
     "enzyme-to-json": "^1.4.5",
     "eslint": "^3.19.0",

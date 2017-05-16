@@ -26,3 +26,12 @@ secrets:
     external: true
   reactstuttgart_meetup_api_key:
     external: true
+
+# Docker in development
+# --------------------------------
+#
+# It's possible to use this configuration along w/ webpack-dev-server's watchMode.
+# Unfortunately, it's a cpu hungry biest. The docker team is doing a lot in the
+# space of volumes. So let's give this a break and check back in 6m.
+#
+# Bottom line: At the moment Docker is not the right tool for development.

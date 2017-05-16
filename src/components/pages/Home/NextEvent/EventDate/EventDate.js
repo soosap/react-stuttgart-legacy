@@ -52,7 +52,7 @@ const Header = styled.h1`
   font-family: ${Font.SECONDARY};
 
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
 `;
 
