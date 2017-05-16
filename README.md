@@ -29,5 +29,5 @@ In production, we use docker swarm mode. When you push code into the `master` br
 ## new feature
 Whenever we develop a new feature or fix/improve an existing one, we checkout a new branch, develop the feature/fix/improvement and eventually merge it back into master by creating a PR.
 
-`$ git checkout -b 'fix/improve-styling-event-history' origin/master`
-`$ git checkout -b 'feature/gallery-component' origin/master`
+* `$ git checkout -b 'fix/improve-styling-event-history' origin/master`
+* `$ git checkout -b 'feature/gallery-component' origin/master`
