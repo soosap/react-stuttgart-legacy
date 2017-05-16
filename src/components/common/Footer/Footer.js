@@ -22,6 +22,8 @@ const Wallpaper = styled.div`
 `;
 
 const Divider = styled.h3`
+  display: flex;
+  justify-content: center;
   color: white;
   font-family: Lullabies-Text;
 `;
@@ -30,9 +32,7 @@ const Footer = ({ showModal }: Props) => (
   <Wallpaper>
     <Wrapper>
       <SocialBar />
-      <div className="ui horizontal inverted divider">
-        <Divider>Organized by</Divider>
-      </div>
+      <Divider>Organized by</Divider>
       <Team />
       <Links showModal={showModal} />
     </Wrapper>
