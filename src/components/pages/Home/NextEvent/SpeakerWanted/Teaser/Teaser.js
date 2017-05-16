@@ -1,7 +1,7 @@
 /* @flow */
 import React, { Children } from 'react';
 import styled from 'styled-components';
-import { Color, Media } from '../../../../../lib/constants';
+import { Color, Media } from '../../../../../../lib/constants';
 
 type Props = {
   children?: Children,
@@ -20,12 +20,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const TeaserIcon = styled.img`
-  width: 30px;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-`;
-
 const TeaserText = styled.div`
   color: ${Color.WHITE};
   font-size: 1.8rem;
@@ -35,7 +29,6 @@ const TeaserText = styled.div`
 
 const Teaser = ({ children }: Props) => (
   <Wrapper>
-    <TeaserIcon src={require('../../../../../assets/images/speaker/speaker_wanted.png')} />
     <TeaserText>{children}</TeaserText>
   </Wrapper>
 );

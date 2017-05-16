@@ -3,10 +3,9 @@ import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 
-import Avatar from '../../../common/Avatar';
 import CallToAction from './CallToAction';
 import Teaser from './Teaser';
-import { Media } from '../../../../lib/constants';
+import { Media } from '../../../../../lib/constants';
 
 type Props = {
   gender: string,
@@ -64,10 +63,6 @@ const SpeakerWanted = ({ index, gender }: Props) => {
         </Description>
         <CallToAction />
       </Body>
-      <Avatar
-        twitterHandle="ReactStuttgart"
-        imageUrl={require('../../../../assets/images/reactstuttgart@1x.png')}
-      />
     </Wrapper>
   );
 };
