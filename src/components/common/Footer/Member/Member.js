@@ -15,9 +15,10 @@ const Wrapper = styled.a`
   flex-direction: column;
   align-items: center;
   margin: 0.75rem 1rem;
+  text-decoration: none;
 
   &:hover {
-    a {
+    div {
       color: ${Color.SECONDARY};
     }
 
@@ -26,6 +27,7 @@ const Wrapper = styled.a`
     }
 
     text-decoration: underline;
+    color: ${Color.SECONDARY};
     cursor: pointer;
   }
 
@@ -34,7 +36,7 @@ const Wrapper = styled.a`
   }
 `;
 
-const Link = styled.a`
+const Handle = styled.div`
   font-size: 1.3rem;
   margin: 5px;
   color: ${Color.WHITE};
@@ -47,7 +49,7 @@ const Link = styled.a`
 const Member = (props: Props) => (
   <Wrapper href={`https://twitter.com/${props.twitter}`}>
     <Image src={require(`../../../../assets/images/nerds/${props.nerd}.svg`)} />
-    <Link>@{props.twitter}</Link>
+    <Handle>@{props.twitter}</Handle>
   </Wrapper>
 );
 
