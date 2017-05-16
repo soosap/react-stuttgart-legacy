@@ -23,3 +23,9 @@ Starting the project w/ the attached `.docker/development/docker-compose.yml` re
 ### production
 
 In production, we use docker swarm mode. When you push code into the `master` branch you automatically trigger a build via the TeamCity (TC) continuous integration tool. TC checks out the new code base and builds a docker image using the Dockerfile located in `.docker/production/Dockerfile`. If the build is successful the service's docker image will be updated w/ the new one.
+
+## new feature
+Whenever we develop a new feature or fix/improve an existing one, we checkout a new branch, develop the feature/fix/improvement and eventually merge it back into master by creating a PR.
+
+`$ git checkout -b 'fix/improve-styling-event-history' origin/master`
+`$ git checkout -b 'feature/gallery-component' origin/master`
