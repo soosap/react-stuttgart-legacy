@@ -16,6 +16,8 @@ const Wrapper = styled.div`
   ${Media.TABLET_AND_LARGER_THAN_THAT} {
     margin-top: 0;
     margin-bottom: .5rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
   }
 
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {

@@ -24,7 +24,8 @@ const Wrapper = styled.div`
   justify-content: center;
 
   width: 100%;
-  max-width: 200px;
+  max-width: 240px;
+  min-width: 200px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-bottom: 1rem;
@@ -51,15 +52,10 @@ const Body = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 400;
   margin-top: .7rem;
   margin-bottom: 0.5rem;
-`;
-
-const Description = styled.p`
-  margin-top: .5rem;
-  margin-bottom: .5rem;
 `;
 
 const Wanted = styled(Image)`
@@ -75,7 +71,7 @@ const CallToAction = styled(Button)`
 
 const SpeakerWanted = ({ index }: Props) => (
   <Wrapper index={index}>
-    <Teaser />
+    <Teaser index={index} />
     <Body>
       <Title>Speaker wanted!</Title>
       {/* <Description>

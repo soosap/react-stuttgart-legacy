@@ -1,11 +1,11 @@
 /* @flow */
 // https://tympanus.net/codrops/2012/04/17/rotating-words-with-css-animations/
-import React, { Children } from 'react';
+import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Color, Media } from '../../../../../../lib/constants';
 
 type Props = {
-  children?: Children,
+  index: number,
 };
 
 const rotateTitle = keyframes`
@@ -59,7 +59,6 @@ const Wrapper = styled.div`
     &:nth-child(9) { animation-delay: 32s; }
   }
 
-
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     height: 3rem;
   }
@@ -69,27 +68,30 @@ const Title = styled.span`
   position: absolute;
   opacity: 0;
   overflow: hidden;
-  width: 100%;
-  color: ${props => props.technology ? Color.TechStack[props.technology] : Color.WHITE_DARK};
+  color: ${props => (props.technology ? Color.TechStack[props.technology] : Color.WHITE_DARK)};
   font-size: 1.3rem;
   font-weight: 400;
-  padding: 0 1rem;
+  padding: 0 .5rem;
   white-space: nowrap;
 
   ${Media.TABLET_AND_LARGER_THAN_THAT} {
+    font-size: 1.4rem;
+  }
+
+  ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     font-size: 1.6rem;
-    padding: .2rem 1rem;
+    padding: .2rem .75rem;
   }
 `;
 
-const Teaser = ({ children }: Props) => (
+const Teaser = ({ index }: Props) => (
   <Wrapper>
     <Title technology="REACT">React</Title>
     <Title technology="GRAPHQL">GraphQL</Title>
     <Title technology="REDUX">Redux</Title>
     <Title technology="FLOWTYPE">FlowType</Title>
     <Title>redux-saga</Title>
-    <Title technology="REACT_NATIVE">react-native</Title>
+    <Title index={index} technology="REACT_NATIVE">react-native</Title>
     <Title>redux-form</Title>
     <Title technology="RELAY">Relay</Title>
     <Title>Apollo Client</Title>

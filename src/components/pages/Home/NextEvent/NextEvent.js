@@ -27,13 +27,19 @@ const Wrapper = styled.div`
   align-items: center;
 
   ${Media.TABLET_AND_LARGER_THAN_THAT} {
-    margin-top: 3rem;
-    align-items: flex-start;
+    margin: auto;
+    margin-top: 2.5rem;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 720px;
   }
 
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     margin-top: 6rem;
-    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    max-width: unset;
   }
 `;
 
