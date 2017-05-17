@@ -13,18 +13,18 @@ const Wrapper = styled.div`
   background: rgba(${Color.BACKGROUND_DARK_RGB}, 0.9);
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  height: 3rem;
+  height: 2.4rem;
 
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
-    height: 4rem;
+    height: 3rem;
   }
 `;
 
 const TeaserText = styled.div`
   color: ${Color.WHITE};
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 400;
-  padding-bottom: 0.1rem;
+  padding: .1rem 1rem;
 `;
 
 const Teaser = ({ children }: Props) => (

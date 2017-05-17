@@ -22,17 +22,17 @@ const Wrapper = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 
   min-height: 700px;
 
   ${Media.TABLET_AND_LARGER_THAN_THAT} {
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
-    margin-top: 3rem;
+    margin-top: 6rem;
     flex-direction: row;
   }
 `;

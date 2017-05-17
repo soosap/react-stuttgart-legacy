@@ -41,10 +41,12 @@ const Wallpaper = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-image: url(${require('../../../assets/images/meduana-6917.jpg')});
+  background-image: url(${require('../../../assets/images/stuttgart_library_hauesle.png')});
   background-repeat: no-repeat;
   background-attachment: fixed !important;
   background-position: center bottom;
+
+  ${''/* background: linear-gradient(to right, #4CA1AF, #C4E0E5); */}
 
   ${Media.TABLET_AND_LARGER_THAN_THAT} {
     background-size: cover;
