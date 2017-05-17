@@ -3,8 +3,8 @@ import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 import Image from 'react-inlinesvg';
+import { Button } from '@saronia/saronia-ui';
 
-import CallToAction from './CallToAction';
 import Teaser from './Teaser';
 import { Media, Color } from '../../../../../lib/constants';
 
@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   justify-content: center;
 
   width: 100%;
-  max-width: 400px;
+  max-width: 200px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-bottom: 1rem;
@@ -38,11 +38,12 @@ const Wrapper = styled.div`
 `;
 
 const Body = styled.div`
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
+  margin-left: .75rem;
+  margin-right: .75rem;
+  margin-bottom: .75rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 `;
 
 const Title = styled.h1`
@@ -52,29 +53,40 @@ const Title = styled.h1`
   margin-bottom: 0.5rem;
 `;
 
-const Description = styled.p``;
+const Description = styled.p`
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+`;
 
 const Wanted = styled(Image)`
-  align-self: ${props => (props.index % 2 ? 'flex-end' : 'flex-start')};
+  /*align-self: ${props => (props.index % 2 ? 'flex-end' : 'flex-start')};*/
   fill: ${Color.BACKGROUND_DARK};
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+`;
+
+const CallToAction = styled(Button)`
+  /*align-self: ${props => (props.index % 2 ? 'flex-end' : 'flex-start')};*/
 `;
 
 const SpeakerWanted = ({ index }: Props) => (
   <Wrapper index={index}>
-    <Teaser>Redux</Teaser>
+    <Teaser />
     <Body>
-      <Title>Call for Speakers</Title>
-      <Description>
-        We are looking for more speaker on React, Redux, GraphQL, Apollo,
-        Relay, Flow, Reason or anything related. If you have something to share,
+      <Title>Speaker wanted!</Title>
+      {/* <Description>
+        We are looking for more speaker on React, react-native, Redux, GraphQL, Apollo,
+        Relay, FlowType or anything related. If you have something to share,
         please catch up w/ us!
-      </Description>
-      <CallToAction />
+      </Description> */}
       <Wanted
         src={require('../../../../../assets/images/speaker/np_wanted_27332_000000.svg')}
         alt="speaker_wanted"
         index={index}
       />
+      <CallToAction index={index}>
+        Take the spot!
+      </CallToAction>
     </Body>
   </Wrapper>
 );
