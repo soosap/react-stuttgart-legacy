@@ -19,7 +19,7 @@ function getOrder(index: number): number {
 }
 
 const Wrapper = styled.div`
-  display: flex;
+  display: ${props => props.index % 2 ? 'none' : 'flex'};
   flex-direction: column;
   justify-content: center;
 
@@ -31,6 +31,10 @@ const Wrapper = styled.div`
   background-color: rgba(255,255,255, 0.2);
 
   border-radius: 3px;
+
+  ${Media.TABLET_AND_LARGER_THAN_THAT} {
+    display: flex;
+  }
 
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     order: ${props => getOrder(props.index)};

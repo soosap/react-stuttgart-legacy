@@ -19,16 +19,16 @@ const Wrapper = styled.div`
   margin-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  min-height: 600px;
 
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-
-  min-height: 700px;
+  justify-content: space-around;
+  align-items: center;
 
   ${Media.TABLET_AND_LARGER_THAN_THAT} {
     margin-top: 3rem;
+    align-items: flex-start;
   }
 
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {

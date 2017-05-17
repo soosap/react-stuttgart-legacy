@@ -17,7 +17,7 @@ const rotateTitle = keyframes`
 
   2% {
     opacity: 1;
-    top: 5px;
+    top: 0.3rem;
   }
 
   10% {
@@ -71,10 +71,15 @@ const Title = styled.span`
   overflow: hidden;
   width: 100%;
   color: ${props => props.technology ? Color.TechStack[props.technology] : Color.WHITE_DARK};
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-weight: 400;
-  padding: .1rem 1rem;
+  padding: 0 1rem;
   white-space: nowrap;
+
+  ${Media.TABLET_AND_LARGER_THAN_THAT} {
+    font-size: 1.6rem;
+    padding: .2rem 1rem;
+  }
 `;
 
 const Teaser = ({ children }: Props) => (
