@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Color } from '../../../../../lib/constants';
+import { Color } from '../../../../../../lib/constants';
 
 const Wrapper = styled.div`
   display:flex;

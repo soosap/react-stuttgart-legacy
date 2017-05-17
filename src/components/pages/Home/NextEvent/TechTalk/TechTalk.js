@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import marked from 'marked';
 
 import Header from './Header';
-import type { Member, Technology } from '../../../../lib/types';
-import { Media, Color } from '../../../../lib/constants';
+import type { Member, Technology } from '../../../../../lib/types';
+import { Media, Color } from '../../../../../lib/constants';
 
 type Props = {
   index: number,

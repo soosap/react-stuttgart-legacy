@@ -20,7 +20,7 @@ injectGlobal([`
   body {
     font-family: 'Open Sans', sans-serif;;
     margin: 0;
-    background: rgba(${Color.SECONDARY_DARK_RGB}, 0.9);
+    background-color: ${Color.SECONDARY};
   }
 `]);
 

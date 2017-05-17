@@ -2,9 +2,10 @@
 import React, { Element } from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
-import EventDate from '../NextEvent/EventDate';
-import TechTalk from '../TechTalk';
-import SpeakerWanted from '../SpeakerWanted';
+
+import EventDate from './EventDate';
+import TechTalk from './TechTalk';
+import SpeakerWanted from './SpeakerWanted';
 import { Media } from '../../../../lib/constants';
 import type { Event } from '../../../../lib/types';
 
@@ -18,21 +19,27 @@ const Wrapper = styled.div`
   margin-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  min-height: 600px;
 
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-
-  min-height: 700px;
 
   ${Media.TABLET_AND_LARGER_THAN_THAT} {
-    margin-top: 2rem;
+    margin: auto;
+    margin-top: 2.5rem;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 720px;
   }
 
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
-    margin-top: 3rem;
-    flex-direction: row;
+    margin-top: 6rem;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    max-width: unset;
   }
 `;
 
@@ -40,7 +47,6 @@ const renderSpeakerWanted = (event: ?Event) =>
   R.cond([
     [R.gte(R.__, 2), R.always(null)],
     [R.equals(1), R.always(<SpeakerWanted index={0} gender="male" />)],
-    [R.T, R.always(null)],
     [
       R.T,
       R.always([

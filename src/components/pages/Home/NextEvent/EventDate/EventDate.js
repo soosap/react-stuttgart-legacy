@@ -14,8 +14,10 @@ const Wrapper = styled.div`
   order: 0;
 
   ${Media.TABLET_AND_LARGER_THAN_THAT} {
-    margin-top: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: 0;
+    margin-bottom: .5rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
   }
 
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
@@ -50,6 +52,7 @@ const Header = styled.h1`
   margin: 0;
   color: ${Color.WHITE};
   font-family: ${Font.SECONDARY};
+  font-size: 1.3rem;
 
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     font-size: 1.8rem;
@@ -58,7 +61,10 @@ const Header = styled.h1`
 
 const EventDayAndMonth = styled.div`
   font-size: 4rem;
-  padding-bottom: 0.75rem;
+
+  ${Media.TABLET_AND_LARGER_THAN_THAT} {
+    font-size: 4.5rem;
+  }
 
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     font-size: 5rem;
@@ -67,7 +73,7 @@ const EventDayAndMonth = styled.div`
 
 const EventYear = styled.div`
   font-size: 2rem;
-  padding-bottom: 1.25rem;
+  padding-bottom: 1.5rem;
 
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     font-size: 2.5rem;
