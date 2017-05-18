@@ -17,18 +17,22 @@ const retrievePreviousEvents = (
   venues: Object,
 ): ?Event =>
   R.compose(
-    R.evolve({
-      talks: R.map(
-        R.evolve({
-          speakers: R.map(speakerId => speakers[speakerId]),
-        }),
-      ),
-    }),
-    R.evolve({
-      sponsors: R.map(sponsorId => sponsors[sponsorId]),
-      talks: R.map(talkId => talks[talkId]),
-      venue: venueId => venues[venueId],
-    }),
+    R.map(
+      R.evolve({
+        talks: R.map(
+          R.evolve({
+            speakers: R.map(speakerId => speakers[speakerId]),
+          }),
+        ),
+      }),
+    ),
+    R.map(
+      R.evolve({
+        sponsors: R.map(sponsorId => sponsors[sponsorId]),
+        talks: R.map(talkId => talks[talkId]),
+        venue: venueId => venues[venueId],
+      }),
+    ),
     R.sortBy(() => Date.parse(R.prop('eventDate'))),
     R.values,
     R.filter(

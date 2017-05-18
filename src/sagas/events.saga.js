@@ -76,15 +76,12 @@ export function* handleFetchEvents(): Generator<*, *, *> {
       payload: { events, speakers, sponsors, talks, venues },
     });
 
-    const mostRecentEventId = R.compose(
-      R.prop('id'),
-      R.nth(0),
-      R.reverse,
-      R.sortBy(R.prop('eventDate')),
-      R.values,
-    )(events);
+    const eventsSorted = R.compose(R.reverse, R.sortBy(R.prop('eventDate')), R.values)(events);
+    const mostRecentEvent = Date.parse(R.nth(0, eventsSorted).eventDate) > Date.now()
+      ? R.nth(1, eventsSorted)
+      : R.nth(0, eventsSorted);
 
-    yield put(selectEvent(mostRecentEventId));
+    yield put(selectEvent(mostRecentEvent.id));
   } catch (error) {
     yield put({ type: FETCH_EVENTS_FAILURE, payload: error });
   }
@@ -93,9 +90,9 @@ export function* handleFetchEvents(): Generator<*, *, *> {
 export function* handleFetchPhotos(action: Action): Generator<*, *, *> {
   try {
     const eventIds = R.propOr([], 'eventIds', action.payload);
-    const responses = yield all(eventIds.map(eventId =>
-      call(axios.get, `/meetup/events/${eventId}/photos`),
-    ));
+    const responses = yield all(
+      eventIds.map(eventId => call(axios.get, `/meetup/events/${eventId}/photos`)),
+    );
 
     const photoData = responses.map(response => response.data);
     const photo = new schema.Entity('photos');
