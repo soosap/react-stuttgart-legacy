@@ -12,12 +12,12 @@ const rotateTitle = keyframes`
   0% {
     animation-timing-function: ease-in;
     opacity: .8;
-    top: -10px;
+    bottom: 14px;
   }
 
   2% {
     opacity: 1;
-    top: 0.3rem;
+    bottom: 4px;
   }
 
   10% {
