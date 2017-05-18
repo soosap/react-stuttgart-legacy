@@ -52,20 +52,23 @@ const EventNumber = styled.h2`
   flex: 1;
 `;
 
-const EventTile = ({ event, isActive, selectEvent }: Props) => (
-  <Wrapper>
-    <Tile active={isActive} onClick={() => selectEvent(event.id)}>
-      <CompanyShort>
-        {event.sponsors[0].companyShortName}
-      </CompanyShort>
-      <EventNumber>
-        #{R.slice(0, 1, event.name)}
-      </EventNumber>
-    </Tile>
-    <Company>
-      {R.slice(0, 2, event.name)} React Stuttgart
-    </Company>
-  </Wrapper>
-);
+const EventTile = ({ event, isActive, selectEvent }: Props) => {
+
+  return (
+    <Wrapper>
+      <Tile active={isActive} onClick={() => selectEvent(event.id)}>
+        <CompanyShort>
+          {event.sponsors[0].companyShortName}
+        </CompanyShort>
+        <EventNumber>
+          #{R.slice(0, 1, event.name)}
+        </EventNumber>
+      </Tile>
+      <Company>
+        {R.slice(0, 2, event.name)} React Stuttgart
+      </Company>
+    </Wrapper>
+  );
+};
 
 export default EventTile;
