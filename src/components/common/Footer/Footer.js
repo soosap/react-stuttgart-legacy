@@ -31,7 +31,7 @@ const Divider = styled.h3`
 const Footer = ({ showModal }: Props) => (
   <Wallpaper>
     <Wrapper>
-      <SocialBar />
+      {/* <SocialBar /> */}
       <Divider>Organized by</Divider>
       <Team />
       <Links showModal={showModal} />
