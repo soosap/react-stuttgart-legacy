@@ -17,6 +17,7 @@ const Tiles = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 2rem;
   margin-bottom: 1rem;
 `;
 

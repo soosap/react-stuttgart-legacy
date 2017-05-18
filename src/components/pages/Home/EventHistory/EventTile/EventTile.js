@@ -15,9 +15,7 @@ type Props = {
 const Wrapper = styled.div``;
 
 const Tile = styled.div`
-  padding: .25rem .5rem;
   vertical-align: middle;
-  margin: 1.5rem;
   color: ${props => (props.active ? Color.SECONDARY : Color.WHITE)};
   background-color: ${props => (props.active ? Color.WHITE : Color.SECONDARY)};
   border: 2px solid ${props => (props.active ? Color.BLACK : Color.SECONDARY)};
@@ -25,8 +23,9 @@ const Tile = styled.div`
   display: flex;
   flex-direction: column;
   flex: 4;
-  height: 125px;
   width: 125px;
+  margin-right: .5rem;
+  margin-left: .5rem;
 
   &:hover {
     cursor: pointer;
@@ -39,36 +38,37 @@ const Tile = styled.div`
 
 const Company = styled.h2`
   text-align: center;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: ${Color.PRIMARY};
 `;
 
-const CompanyShort = styled.h1`
-  font-size: 1.5rem;
+const CompanyShort = styled.div`
+  font-size: 3rem;
   flex: 3;
 `;
 
-const EventNumber = styled.h2`
+const EventNumber = styled.div`
   font-size: 1rem;
   text-align: right;
   flex: 1;
+  padding-right: .3rem;
 `;
 
-const EventTile = ({ event, isActive, selectEvent }: Props) => {
-
-  return (
-    <Wrapper>
-      <Tile active={isActive} onClick={() => selectEvent(event.id)}>
-        <CompanyShort>
-          {event.sponsors[0].companyShortName}
-        </CompanyShort>
-        <EventNumber>
-          #{R.slice(0, 1, event.name)}
-        </EventNumber>
-      </Tile>
-      <Company>
-        {R.slice(0, 2, event.name)} React Stuttgart
-      </Company>
-    </Wrapper>
-  );
-};
+const EventTile = ({ event, isActive, selectEvent }: Props) => (
+  <Wrapper>
+    <Tile active={isActive} onClick={() => selectEvent(event.id)}>
+      <CompanyShort>
+        {R.toUpper(R.slice(0, 3, event.sponsors[0].companyShortName))}
+      </CompanyShort>
+      <EventNumber>
+        #{R.slice(0, 1, event.name)}
+      </EventNumber>
+    </Tile>
+    <Company>
+      {event.sponsors[0].companyShortName}
+    </Company>
+  </Wrapper>
+);
 
 export default EventTile;
