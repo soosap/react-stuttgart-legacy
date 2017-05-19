@@ -1,32 +1,76 @@
 /* @flow */
-import React from 'react';
+import React, { Component } from 'react';
 import { compose } from 'recompose';
 import { Field, reduxForm } from 'redux-form';
+import styled from 'styled-components';
+import { Input, Button } from '@saronia/saronia-ui';
 
+import { sendEmail } from '../../../actions/contact';
 import { BECOME_SPEAKER_FORM } from '../types';
+import { Color } from '../../../lib/constants';
 
 type Props = {
   handleSubmit: () => void,
 };
 
-const submit = (values: Object) => {
-  console.log('values', values);
+type Values = {
+  email: string,
+  message?: string,
 };
 
-const BecomeSpeakerForm = ({ handleSubmit }: Props) => (
-  <form onSubmit={handleSubmit(submit)}>
-    <div>
-      <label htmlFor="email">Email</label>
-      <Field name="email" component="input" type="email" />
-    </div>
-    <div>
-      <label htmlFor="message">Message</label>
-      <Field name="message" component="input" />
-    </div>
-    <button type="submit">Submit</button>
-  </form>
-);
+const FieldSet = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: .4rem;
+`;
+
+const Label = styled.label`
+  margin-bottom: .1rem;
+  margin-left: .1rem;
+  font-size: .9rem
+`;
+
+const ErrorMessage = styled.div`
+  color: ${Color.Context.DANGER};
+  font-size: .7rem;
+  margin-bottom: .2rem;
+  margin-left: .1rem;
+`;
+
+class BecomeSpeakerForm extends Component {
+  props: Props;
+
+  renderInputField = (field: Object) => (
+    <FieldSet>
+      <Label htmlFor={field.name}>{field.label}</Label>
+      <Input {...field.input} type={field.type} invalid={field.meta.touched && field.meta.error} />
+      {field.meta.touched && field.meta.error && <ErrorMessage>{field.meta.error}</ErrorMessage>}
+    </FieldSet>
+  );
+
+  render() {
+    const { handleSubmit } = this.props;
+
+    return (
+      <form onSubmit={handleSubmit(sendEmail)}>
+        <Field name="email" label="Email" component={this.renderInputField} type="email" />
+        <Field name="message" label="Message" component={this.renderInputField} type="text" />
+        <button type="submit">Submit</button>
+      </form>
+    );
+  }
+}
+
+function validate(values: Values) {
+  const errors = {};
+
+  if (!values.email) {
+    errors.email = 'Please enter a valid email.';
+  }
+
+  return errors;
+}
 
 export default compose(
-  reduxForm({ form: BECOME_SPEAKER_FORM }),
+  reduxForm({ form: BECOME_SPEAKER_FORM, validate })
 )(BecomeSpeakerForm);

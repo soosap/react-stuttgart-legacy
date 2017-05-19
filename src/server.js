@@ -1,10 +1,13 @@
 /* @flow */
 /* eslint no-console: 0, import/no-extraneous-dependencies: 0 */
+import R from 'ramda';
 import chalk from 'chalk';
 import express, { type $Request, type $Response } from 'express';
 import path from 'path';
+import bodyParser from 'body-parser';
 import createMeetupClient from 'meetup-api';
 import contentfulService from 'contentful';
+import postmarkService from 'postmark';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +21,10 @@ const contentful = contentfulService.createClient({
   accessToken: process.env.CONTENTFUL_API_KEY,
 });
 
+const postmark = new postmarkService.Client(process.env.POSTMARK_SERVER_TOKEN);
+
+app.use(bodyParser.json());
+
 app.get('/meetup/events', (req: $Request, res: $Response) => {
   contentful
     .getEntries({
@@ -25,7 +32,6 @@ app.get('/meetup/events', (req: $Request, res: $Response) => {
       include: 3,
     })
     .then((entries) => {
-      console.log('entries', entries);
       res.send(entries);
     })
     .catch((err) => {
@@ -73,6 +79,22 @@ app.get('/meetup/events/:id/photos', (req: $Request, res: $Response) => {
       res.json(photos);
     }
   });
+});
+
+app.post('/become-a-speaker', (req: $Request, res: $Response) => {
+  postmark.sendEmail(
+    {
+      From: 'contact@react-stuttgart.de',
+      To: 'prasath.soosaithasan@gmail.com',
+      Subject: `Become a speaker (${R.prop('email', req.body)})`,
+      TextBody: R.prop('message', req.body),
+    },
+    (error) => {
+      if (error) res.status(400).end();
+      console.log('error', error);
+      res.status(200).end();
+    },
+  );
 });
 
 if (process.env.NODE_ENV === 'development') {
