@@ -3,6 +3,7 @@ import axios from 'axios';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { sendEmail } from '../actions/contact';
+import { hideModal } from '../actions/modal';
 import type { Action } from '../lib/types';
 
 /*
@@ -16,9 +17,9 @@ import type { Action } from '../lib/types';
  */
 export function* handleSendEmail(action: Action): Generator<*, *, *> {
   try {
-    const response = yield call(axios.post, '/become-a-speaker', action.payload);
-
-    console.log('response', response);
+    yield call(axios.post, '/become-a-speaker', action.payload);
+    yield put(hideModal());
+    yield put(sendEmail.success());
   } catch (error) {
     yield put(sendEmail.failure(error));
   }
