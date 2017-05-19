@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
-import { Input, Button } from '@saronia/saronia-ui';
+import { Input, Button, H1 } from '@saronia/saronia-ui';
 
 import { sendEmail } from '../../../actions/contact';
 import { BECOME_SPEAKER_FORM } from '../types';
@@ -53,6 +53,7 @@ class BecomeSpeakerForm extends Component {
 
     return (
       <form onSubmit={handleSubmit(sendEmail)}>
+        <H1>Become a speaker</H1>
         <Field name="email" label="Email" component={this.renderInputField} type="email" />
         <Field name="message" label="Message" component={this.renderInputField} type="text" />
         <button type="submit">Submit</button>
