@@ -56,6 +56,7 @@ const Wallpaper = styled.div`
 const Photos = styled.div`
   margin-top: 1rem;
   margin-bottom: 1rem;
+  background-color: white;
 
   ${Media.TABLET_AND_LARGER_THAN_THAT} {
     margin-top: 2rem;
