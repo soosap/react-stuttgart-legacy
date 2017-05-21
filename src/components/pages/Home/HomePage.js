@@ -12,10 +12,18 @@ import NextEvent from './NextEvent';
 import EventHistory from './EventHistory';
 import Gallery from '../../common/Gallery';
 
-import { fetchEvents, fetchEventPhotos, selectEvent } from '../../../actions/events';
+import {
+  fetchEvents,
+  fetchEventPhotos,
+  selectEvent,
+} from '../../../actions/events';
 import { showModal } from '../../../actions/modal';
 import { getSelectedEventPhotos } from '../../../selectors/photos';
-import { getNextEvent, getPreviousEvents, getSelectedEvent } from '../../../selectors/events';
+import {
+  getNextEvent,
+  getPreviousEvents,
+  getSelectedEvent,
+} from '../../../selectors/events';
 import { Media, Color } from '../../../lib/constants';
 
 import type { Photo, Event, Action } from '../../../lib/types';
@@ -23,7 +31,7 @@ import type { Photo, Event, Action } from '../../../lib/types';
 type Props = {
   selectEvent: (eventId: string) => void,
   fetchEvents: Function,
-  showModal: (modalType: string, modalProps: Object) => void,
+  showModal: (modalType: string, modalProps?: Object) => void,
   nextEvent: ?Event,
   photos: Array<Photo>,
   previousEvents: Array<Event>,
@@ -46,7 +54,7 @@ const Wallpaper = styled.div`
   background-attachment: fixed !important;
   background-position: center bottom;
 
-  ${''/* background: linear-gradient(to right, #4CA1AF, #C4E0E5); */}
+  ${''}
 
   ${Media.TABLET_AND_LARGER_THAN_THAT} {
     background-size: cover;
@@ -71,7 +79,14 @@ class HomePage extends Component {
   props: Props;
 
   render() {
-    const { nextEvent, previousEvents, selectedEvent, photos, selectEvent, showModal } = this.props;
+    const {
+      nextEvent,
+      previousEvents,
+      selectedEvent,
+      photos,
+      selectEvent,
+      showModal,
+    } = this.props;
 
     return (
       <Wrapper>
