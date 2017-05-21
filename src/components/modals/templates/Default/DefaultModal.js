@@ -15,7 +15,12 @@ type Props = {
   modalProps: Object,
 };
 
-const DefaultModal = ({ children, hideModal, modalType, modalProps }: Props) => {
+const DefaultModal = ({
+  children,
+  hideModal,
+  modalType,
+  modalProps,
+}: Props) => {
   const isOpen: boolean = R.complement(R.isNil)(modalType);
   const contentLabel: string = R.propOr('Modal', 'contentLabel', modalProps);
   const style = {
@@ -33,8 +38,8 @@ const DefaultModal = ({ children, hideModal, modalType, modalProps }: Props) => 
       left: '40px',
       right: '40px',
       bottom: '40px',
-      border: `4px solid ${Color.PRIMARY}`,
-      background: 'rgba(255, 255, 255, .95)',
+      border: `2px solid ${Color.BACKGROUND_DARK}`,
+      background: '#FFFDFC',
       overflow: 'auto',
       WebkitOverflowScrolling: 'touch',
       borderRadius: BORDER_RADIUS,
@@ -44,7 +49,12 @@ const DefaultModal = ({ children, hideModal, modalType, modalProps }: Props) => 
   };
 
   return (
-    <Modal onRequestClose={hideModal} isOpen={isOpen} contentLabel={contentLabel} style={style}>
+    <Modal
+      onRequestClose={hideModal}
+      isOpen={isOpen}
+      contentLabel={contentLabel}
+      style={style}
+    >
       {children}
     </Modal>
   );
