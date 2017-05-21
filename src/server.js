@@ -21,8 +21,6 @@ const contentful = contentfulService.createClient({
   accessToken: process.env.CONTENTFUL_API_KEY,
 });
 
-console.log('process.env', process.env);
-
 const postmark = new postmarkService.Client(process.env.POSTMARK_SERVER_TOKEN);
 
 app.use(bodyParser.json());
