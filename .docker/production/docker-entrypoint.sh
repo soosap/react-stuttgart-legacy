@@ -27,5 +27,6 @@ ls -la /run/secrets
 
 file_env 'CONTENTFUL_API_KEY'
 file_env 'MEETUP_API_KEY'
+file_env 'POSTMARK_SERVER_TOKEN'
 
 exec "$@"
