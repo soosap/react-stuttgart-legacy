@@ -24,9 +24,11 @@ const Wrapper = styled.div`
 const Link = styled.a`
   margin: 5px;
   color: ${Color.WHITE};
+  text-decoration: none;
+
   &:hover {
-  color: ${Color.SECONDARY};
-  text-decoration: underline;
+    color: ${Color.SECONDARY};
+    text-decoration: underline;
   }
 `;
 

@@ -1,25 +1,30 @@
 /* @flow */
 import React from 'react';
 import R from 'ramda';
+import { compose, withHandlers } from 'recompose';
 import styled from 'styled-components';
 import Image from 'react-inlinesvg';
 import { Button } from '@saronia/saronia-ui';
 
 import Teaser from './Teaser';
 import { Media, Color } from '../../../../../lib/constants';
+import { BECOME_SPEAKER } from '../../../../modals/types';
 
 type Props = {
   index: number,
+  showModal: (modalType: string, modalProps?: Object) => void,
 };
 
 function getOrder(index: number): number {
-  return R.cond([[R.equals(0), R.always(0)], [R.equals(1), R.always(2)], [R.T, R.always(3)]])(
-    index,
-  );
+  return R.cond([
+    [R.equals(0), R.always(0)],
+    [R.equals(1), R.always(2)],
+    [R.T, R.always(3)],
+  ])(index);
 }
 
 const Wrapper = styled.div`
-  display: ${props => props.index % 2 ? 'none' : 'flex'};
+  display: ${props => (props.index % 2 ? 'none' : 'flex')};
   flex-direction: column;
   justify-content: center;
 
@@ -69,26 +74,29 @@ const CallToAction = styled(Button)`
   /*align-self: ${props => (props.index % 2 ? 'flex-end' : 'flex-start')};*/
 `;
 
-const SpeakerWanted = ({ index }: Props) => (
+const enhance = compose(
+  withHandlers({
+    onClick: (props: Props) => () => {
+      props.showModal(BECOME_SPEAKER);
+    },
+  }),
+);
+
+const SpeakerWanted = enhance(({ index, onClick }) => (
   <Wrapper index={index}>
     <Teaser index={index} />
     <Body>
       <Title>Speaker wanted!</Title>
-      {/* <Description>
-        We are looking for more speaker on React, react-native, Redux, GraphQL, Apollo,
-        Relay, FlowType or anything related. If you have something to share,
-        please catch up w/ us!
-      </Description> */}
       <Wanted
         src={require('../../../../../assets/images/speaker/np_wanted_27332_000000.svg')}
         alt="speaker_wanted"
         index={index}
       />
-      <CallToAction index={index}>
+      <CallToAction index={index} onClick={onClick}>
         Take the spot!
       </CallToAction>
     </Body>
   </Wrapper>
-);
+));
 
 export default SpeakerWanted;
