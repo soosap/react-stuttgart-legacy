@@ -14,11 +14,17 @@ const store = configureStore({});
 injectGlobal([`
   @font-face {
     font-family: 'Open Sans', sans-serif;
-    src: url('https://fonts.googleapis.com/css?family=Open+Sans');
+    src: url('https://fonts.googleapis.com/css?family=Sanchez');
   }
 
-  body {
+  @font-face {
     font-family: 'Open Sans', sans-serif;
+    src: url('https://fonts.googleapis.com/css?family=Cinzel');
+  }
+
+
+  body {
+    font-family: 'Sanchez', serif;
     margin: 0;
     background-color: ${Color.SECONDARY};
   }

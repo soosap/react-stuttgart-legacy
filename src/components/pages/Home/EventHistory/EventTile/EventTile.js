@@ -15,7 +15,7 @@ type Props = {
 const Tile = styled.div`
   padding: .25rem .5rem;
   vertical-align: middle;
-  margin: 1.5rem;
+  margin: 1.5rem 1.5rem .25rem 1.5rem;
   color: ${props => (props.active ? Color.SECONDARY : Color.WHITE)};
   background-color: ${props => (props.active ? Color.WHITE : Color.SECONDARY)};
   border: 2px solid ${props => (props.active ? Color.BLACK : Color.SECONDARY)};
@@ -36,16 +36,18 @@ const Tile = styled.div`
   }
 `;
 
-const Company = styled.h2`
+const Company = styled.div`
   text-align: center;
   flex: 1;
+  font-size: 1.5rem;
 `;
 
 const CompanyShort = styled.div`
   font-size: 3rem;
   flex: 3;
   text-transform: uppercase;
-  font-weight: bold;
+  ${''/* font-weight: bold; */}
+  font-family: 'Cinzel', serif;
 `;
 
 const EventNumber = styled.div`
