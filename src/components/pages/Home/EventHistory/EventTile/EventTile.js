@@ -40,6 +40,7 @@ const Company = styled.div`
   text-align: center;
   flex: 1;
   font-size: 1.5rem;
+  margin-bottom: 2rem;
 `;
 
 const CompanyShort = styled.div`
