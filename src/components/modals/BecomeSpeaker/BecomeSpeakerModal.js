@@ -1,18 +1,26 @@
 /* @flow */
-import React from 'react';
-import { Button } from '@saronia/saronia-ui';
+import React, { Component } from 'react';
+import styled from 'styled-components';
 
 import Modal from '../templates/Default';
 import BecomeSpeakerForm from '../../forms/BecomeSpeaker';
 
-const BecomeSpeakerModal = () => (
-  <Modal>
-    Become a speaker!
-    Work in progress bro...
-    <Button accent>Subscribe</Button>
-    hello
-    <BecomeSpeakerForm />
-  </Modal>
-);
+const Wrapper = styled.div`
+  max-width: 500px;
+  margin: auto;
+  ${''/* display: flex; */}
+`;
+
+class BecomeSpeakerModal extends Component {
+  render() {
+    return (
+      <Modal>
+        <Wrapper>
+          <BecomeSpeakerForm />
+        </Wrapper>
+      </Modal>
+    );
+  }
+}
 
 export default BecomeSpeakerModal;

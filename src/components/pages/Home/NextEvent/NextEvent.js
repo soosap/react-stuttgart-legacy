@@ -11,7 +11,7 @@ import type { Event } from '../../../../lib/types';
 
 type Props = {
   event: ?Event,
-  showModal: (modalType: string, modalProps: Object) => void,
+  showModal: (modalType: string, modalProps?: Object) => void,
 };
 
 const Wrapper = styled.div`
@@ -43,20 +43,28 @@ const Wrapper = styled.div`
   }
 `;
 
-const renderSpeakerWanted = (event: ?Event) =>
+const renderSpeakerWanted = (event: ?Event, showModal: Function) =>
   R.cond([
     [R.gte(R.__, 2), R.always(null)],
     [R.equals(1), R.always(<SpeakerWanted index={0} gender="male" />)],
     [
       R.T,
       R.always([
-        <SpeakerWanted key={0} index={0} gender="male" />,
-        <SpeakerWanted key={1} index={1} gender="female" />,
+        <SpeakerWanted key={0} index={0} gender="male" showModal={showModal} />,
+        <SpeakerWanted
+          key={1}
+          index={1}
+          gender="female"
+          showModal={showModal}
+        />,
       ]),
     ],
   ])(R.length(R.propOr([], 'talks', event)));
 
-const renderTechTalks = (event: ?Event, showModal: Function): ?Array<Element<*>> => {
+const renderTechTalks = (
+  event: ?Event,
+  showModal: Function,
+): ?Array<Element<*>> => {
   if (!event || !event.talks) {
     return null;
   }
@@ -101,7 +109,7 @@ const NextEvent = ({ event, showModal }: Props): Element<Wrapper> => {
     <Wrapper>
       <EventDate date={formattedDate} />
       {renderTechTalks(event, showModal)}
-      {renderSpeakerWanted(event)}
+      {renderSpeakerWanted(event, showModal)}
     </Wrapper>
   );
 };
