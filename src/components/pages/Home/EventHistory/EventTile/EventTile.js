@@ -23,8 +23,9 @@ const Tile = styled.div`
   display: flex;
   flex-direction: column;
   flex: 4;
-  height: 125px;
-  width: 125px;
+  height: 110px;
+  width: 110px;
+  transition: all 0.3s;
 
   &:hover {
     cursor: pointer;
@@ -40,17 +41,18 @@ const Company = styled.h2`
   flex: 1;
 `;
 
-const CompanyShort = styled.h1`
+const CompanyShort = styled.div`
   font-size: 3rem;
   flex: 3;
   text-transform: uppercase;
   font-weight: bold;
 `;
 
-const EventNumber = styled.h2`
+const EventNumber = styled.div`
   font-size: 1rem;
   text-align: right;
   flex: 1;
+  font-weight: bold;
 `;
 
 const EventTile = ({ event, isActive, selectEvent }: Props) => {
@@ -62,11 +64,11 @@ const EventTile = ({ event, isActive, selectEvent }: Props) => {
           {R.slice(0, 3, event.sponsors[0].companyShortName)}
         </CompanyShort>
         <EventNumber>
-          #{R.slice(0, 1, event.name)}RS
+          N°{R.slice(0, 1, event.name)}
         </EventNumber>
       </Tile>
       <Company>
-        {R.slice(0, 2, event.name)} React Stuttgart
+        {event.sponsors[0].companyShortName}
       </Company>
     </div>
   );

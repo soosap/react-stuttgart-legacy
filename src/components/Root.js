@@ -13,12 +13,12 @@ const store = configureStore({});
 
 injectGlobal([`
   @font-face {
-    font-family: 'Open Sans', sans-serif;;
+    font-family: 'Open Sans', sans-serif;
     src: url('https://fonts.googleapis.com/css?family=Open+Sans');
   }
 
   body {
-    font-family: 'Open Sans', sans-serif;;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     background-color: ${Color.SECONDARY};
   }
