@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Color } from '../../../lib/constants';
+import { Color, Font } from '../../../lib/constants';
 import Team from './Team';
 import SocialBar from './SocialBar';
 import Links from './Links';
@@ -25,7 +25,7 @@ const Divider = styled.h3`
   display: flex;
   justify-content: center;
   color: white;
-  font-family: Lullabies-Text;
+  font-family: ${Font.PRIMARY};
 `;
 
 const Footer = ({ showModal }: Props) => (

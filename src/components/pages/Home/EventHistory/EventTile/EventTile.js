@@ -3,7 +3,7 @@ import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 
-import { Color } from '../../../../../lib/constants';
+import { Color, BORDER_RADIUS } from '../../../../../lib/constants';
 import type { Event } from '../../../../../lib/types';
 
 type Props = {
@@ -19,7 +19,7 @@ const Tile = styled.div`
   color: ${props => (props.active ? Color.SECONDARY : Color.WHITE)};
   background-color: ${props => (props.active ? Color.WHITE : Color.SECONDARY)};
   border: 2px solid ${props => (props.active ? Color.BLACK : Color.SECONDARY)};
-  border-radius: 10px;
+  border-radius: ${BORDER_RADIUS};
   display: flex;
   flex-direction: column;
   flex: 4;
