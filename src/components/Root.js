@@ -7,24 +7,19 @@ import { injectGlobal } from 'styled-components';
 import HomePage from './pages/Home';
 import AboutPage from './pages/About';
 import configureStore from '../store/configureStore';
-import { Color } from '../lib/constants';
+import { Color, Font, FONT_URL } from '../lib/constants';
 
 const store = configureStore({});
 
 injectGlobal([`
   @font-face {
-    font-family: 'Open Sans', sans-serif;
-    src: url('https://fonts.googleapis.com/css?family=Sanchez');
+    font-family: ${Font.PRIMARY};
+    font-family: ${Font.SECONDARY};
+    src: url(${FONT_URL});
   }
-
-  @font-face {
-    font-family: 'Open Sans', sans-serif;
-    src: url('https://fonts.googleapis.com/css?family=Cinzel');
-  }
-
 
   body {
-    font-family: 'Sanchez', serif;
+    font-family: ${Font.PRIMARY};
     margin: 0;
     background-color: ${Color.SECONDARY};
   }

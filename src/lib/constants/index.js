@@ -1,10 +1,5 @@
 /* @flow */
-import Color from './color';
-import Font from './font';
-import Media from './media';
-
-export {
-  Color,
-  Font,
-  Media,
-};
+export { default as Color } from './color';
+export { default as Font, FONT_URL } from './font';
+export { default as Media } from './media';
+export { default as Border, BORDER_RADIUS } from './border';

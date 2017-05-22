@@ -51,7 +51,7 @@ const Header = styled.h1`
   padding-top: 2rem;
   margin: 0;
   color: ${Color.WHITE};
-  font-family: ${Font.SECONDARY};
+  font-family: ${Font.PRIMARY};
   font-size: 1.3rem;
 
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
