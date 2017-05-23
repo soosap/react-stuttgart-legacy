@@ -49,8 +49,9 @@ const Wallpaper = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-image: url(${require('../../../assets/images/stuttgart_library_hauesle.png')});
+  background-image: url(${require('../../../assets/images/stuttgartbib.jpg')});
   background-repeat: no-repeat;
+  background-size: cover;
   background-attachment: fixed !important;
   background-position: center bottom;
 
