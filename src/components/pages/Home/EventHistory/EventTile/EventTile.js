@@ -3,7 +3,7 @@ import React from 'react';
 import R from 'ramda';
 import styled from 'styled-components';
 
-import { Color, BORDER_RADIUS } from '../../../../../lib/constants';
+import { Color, BORDER_RADIUS, Media } from '../../../../../lib/constants';
 import type { Event } from '../../../../../lib/types';
 
 type Props = {
@@ -27,12 +27,14 @@ const Tile = styled.div`
   width: 110px;
   transition: all 0.3s;
 
-  &:hover {
-    cursor: pointer;
-    color: ${Color.BLACK};
-    background-color: ${Color.SECONDARY};
-    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
-    border: 2px solid ${Color.BLACK};
+  ${Media.TABLET_AND_LARGER_THAN_THAT} {
+    &:hover {
+      cursor: pointer;
+      color: ${Color.BLACK};
+      background-color: ${Color.SECONDARY};
+      box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
+      border: 2px solid ${Color.BLACK};
+    }
   }
 `;
 
