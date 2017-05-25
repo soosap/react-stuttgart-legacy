@@ -7,7 +7,7 @@ import Image from 'react-inlinesvg';
 import { Button } from '@saronia/saronia-ui';
 
 import Teaser from './Teaser';
-import { Media, Color } from '../../../../../lib/constants';
+import { Media, Color, BORDER_RADIUS } from '../../../../../lib/constants';
 import { BECOME_SPEAKER } from '../../../../modals/types';
 
 type Props = {
@@ -30,13 +30,13 @@ const Wrapper = styled.div`
 
   width: 100%;
   max-width: 240px;
-  min-width: 200px;
+  min-width: 280px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-bottom: 1rem;
-  background-color: rgba(255,255,255, 0.2);
+  background-color: rgba(255,255,255, 0.7);
 
-  border-radius: 3px;
+  border-radius: ${BORDER_RADIUS};
 
   ${Media.TABLET_AND_LARGER_THAN_THAT} {
     display: flex;
@@ -57,7 +57,7 @@ const Body = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 400;
   margin-top: .7rem;
   margin-bottom: 0.5rem;
@@ -92,7 +92,7 @@ const SpeakerWanted = enhance(({ index, onClick }) => (
         alt="speaker_wanted"
         index={index}
       />
-      <CallToAction index={index} onClick={onClick}>
+      <CallToAction index={index} onClick={onClick} breed="primary">
         Take the spot!
       </CallToAction>
     </Body>

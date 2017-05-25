@@ -54,7 +54,8 @@ const Wallpaper = styled.div`
   background-size: cover;
   background-attachment: fixed !important;
   background-position: center bottom;
-
+  background-color: white;
+  background-blend-mode: darken, luminosity;
   ${''}
 
   ${Media.TABLET_AND_LARGER_THAN_THAT} {

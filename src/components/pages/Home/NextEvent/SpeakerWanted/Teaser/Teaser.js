@@ -41,7 +41,7 @@ const Wrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  background: rgba(${Color.BACKGROUND_DARK_RGB}, 0.9);
+  background: rgba(${Color.SECONDARY_DARK_RGB}, 0.9);
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   height: 2.4rem;
@@ -73,6 +73,8 @@ const Title = styled.span`
   font-weight: 400;
   padding: 0 .5rem;
   white-space: nowrap;
+  left: 50%;
+  transform: translate(-50%, 0);
 
   ${Media.TABLET_AND_LARGER_THAN_THAT} {
     font-size: 1.4rem;
