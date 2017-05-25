@@ -57,7 +57,7 @@ const Body = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 400;
   margin-top: .7rem;
   margin-bottom: 0.5rem;
@@ -92,7 +92,7 @@ const SpeakerWanted = enhance(({ index, onClick }) => (
         alt="speaker_wanted"
         index={index}
       />
-      <CallToAction index={index} onClick={onClick}>
+      <CallToAction index={index} onClick={onClick} breed="primary">
         Take the spot!
       </CallToAction>
     </Body>

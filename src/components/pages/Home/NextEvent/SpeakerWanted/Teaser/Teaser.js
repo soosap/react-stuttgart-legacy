@@ -73,6 +73,8 @@ const Title = styled.span`
   font-weight: 400;
   padding: 0 .5rem;
   white-space: nowrap;
+  left: 50%;
+  transform: translate(-50%, 0);
 
   ${Media.TABLET_AND_LARGER_THAN_THAT} {
     font-size: 1.4rem;
