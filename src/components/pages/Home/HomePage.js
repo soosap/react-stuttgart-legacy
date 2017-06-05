@@ -53,7 +53,7 @@ const Wallpaper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed !important;
-  background-position: center bottom;
+  background-position:center;
   background-color: white;
   background-blend-mode: darken, luminosity;
   ${''}

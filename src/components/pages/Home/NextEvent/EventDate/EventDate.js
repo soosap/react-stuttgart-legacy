@@ -30,11 +30,13 @@ const Wrapper = styled.div`
 const Circle = styled.div`
   font-size: 2.5em;
   color: ${Color.SECONDARY};
-  background: rgba(${Color.BACKGROUND_DARK_RGB}, 0.9);
+  background: rgba(${Color.SECONDARY_DARK_RGB}, 0.9);
   margin-bottom: 1rem;
   width: 15rem;
   height: 15rem;
   border-radius: 500em;
+  border: 2px solid;
+  border-color: white;
 
   display: flex;
   flex-direction: column;
@@ -48,11 +50,12 @@ const Circle = styled.div`
 `;
 
 const Header = styled.h1`
-  padding-top: 2rem;
+  padding-top: 3.5rem;
   margin: 0;
   color: ${Color.WHITE};
   font-family: ${Font.PRIMARY};
   font-size: 1.3rem;
+  letter-spacing: 0.3rem;
 
   ${Media.DESKTOP_AND_LARGER_THAN_THAT} {
     font-size: 1.8rem;

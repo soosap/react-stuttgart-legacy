@@ -4,15 +4,15 @@ import styled from 'styled-components';
 import { Color, Media } from '../../../lib/constants';
 
 const Wrapper = styled.div`
-  background: rgba(${Color.BACKGROUND_DARK_RGB}, 0.5);
+  background: rgba(${Color.SECONDARY_DARK_RGB}, 0.5);
 `;
 
 const Wordmark = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
 `;
 
 const Logo = styled.img`
@@ -29,12 +29,13 @@ const Title = styled.h2`
   font-weight: 400;
   color: ${Color.WHITE};
   padding-left: 0.5rem;
+  letter-spacing: .3rem;
 
   ${Media.TABLET_AND_LARGER_THAN_THAT} {
     font-size: 2rem;
     padding-left: 0.6rem;
     font-weight: 400;
-    opacity: 0.8;
+    opacity: 0.9;
   }
 `;
 
